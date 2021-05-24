@@ -12,12 +12,16 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('owner/css/app.css') }}">
 
+        
+    </head>
+    <body>
+        @inertia
+        
         <!-- Scripts -->
         @routes
         <script src="{{ mix('js/app.js') }}" defer></script>
-    </head>
-    <body class="font-sans antialiased">
-        @inertia
+        <script src="{{ asset('owner/js/app.js') }}">
     </body>
 </html>

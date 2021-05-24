@@ -19,10 +19,23 @@
         "axios": "^0.21",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
+        "node-sass": "^6.0.0",
         "postcss": "^8.1.14",
         "postcss-import": "^12.0.1",
+        "sass-loader": "^11.1.1",
         "tailwindcss": "^2.0.1",
-        "vue": "^3.0.5",
+        "vue": "^3.0.11",
         "vue-loader": "^16.1.2"
+    },
+    "dependencies": {
+        "@left4code/tw-starter": "^1.0.27",
+        "@zhuowenli/vue-feather-icons": "^5.0.2",
+        "cash-dom": "^8.1.0",
+        "feather-icons": "^4.28.0",
+        "velocity-animate": "^1.5.2",
+        "vue-dayjs-plugin": "^1.0.0",
+        "vue-feather-icons": "^5.1.0",
+        "vue-router": "^4.0.8",
+        "vuex": "^4.0.0"
     }
 }
