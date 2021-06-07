@@ -5,160 +5,40 @@
         <div class="wrapper">
             <div class="wrapper-box">
                 <!-- BEGIN: Side Menu -->
-                <nav class="side-nav">
-                <ul>
-                    <!-- BEGIN: First Child -->
-                    <template v-for="(menu, menuKey) in formattedMenu">
-                    <li
-                        v-if="menu == 'devider'"
-                        :key="menu + menuKey"
-                        class="side-nav__devider my-6"
-                    ></li>
-                    <li v-else :key="menu + menuKey">
-                        <SideMenuTooltip
-                        tag="a"
-                        :content="menu.title"
-                        :href="
-                            menu.subMenu
-                            ? 'javascript:;'
-                            : router.resolve({ name: menu.pageName }).path
-                        "
-                        class="side-menu"
-                        :class="{
-                            'side-menu--active': menu.active,
-                            'side-menu--open': menu.activeDropdown
-                        }"
-                        @click="linkTo(menu, router, $event)"
-                        >
-                        <div class="side-menu__icon">
-                            <component :is="menu.icon" />
-                        </div>
-                        <div class="side-menu__title">
-                            {{ menu.title }}
-                            <div
-                            v-if="menu.subMenu"
-                            class="side-menu__sub-icon"
-                            :class="{ 'transform rotate-180': menu.activeDropdown }"
-                            >
-                            <ChevronDownIcon />
-                            </div>
-                        </div>
-                        </SideMenuTooltip>
-                        <!-- BEGIN: Second Child -->
-                        <transition @enter="enter" @leave="leave">
-                        <ul v-if="menu.subMenu && menu.activeDropdown">
-                            <li
-                            v-for="(subMenu, subMenuKey) in menu.subMenu"
-                            :key="subMenuKey"
-                            >
-                            <SideMenuTooltip
-                                tag="a"
-                                :content="subMenu.title"
-                                :href="
-                                subMenu.subMenu
-                                    ? 'javascript:;'
-                                    : router.resolve({ name: subMenu.pageName }).path
-                                "
-                                class="side-menu"
-                                :class="{ 'side-menu--active': subMenu.active }"
-                                @click="linkTo(subMenu, router, $event)"
-                            >
-                                <div class="side-menu__icon">
-                                <ActivityIcon />
-                                </div>
-                                <div class="side-menu__title">
-                                {{ subMenu.title }}
-                                <div
-                                    v-if="subMenu.subMenu"
-                                    class="side-menu__sub-icon"
-                                    :class="{
-                                    'transform rotate-180': subMenu.activeDropdown
-                                    }"
-                                >
-                                    <ChevronDownIcon />
-                                </div>
-                                </div>
-                            </SideMenuTooltip>
-                            <!-- BEGIN: Third Child -->
-                            <transition @enter="enter" @leave="leave">
-                                <ul v-if="subMenu.subMenu && subMenu.activeDropdown">
-                                <li
-                                    v-for="(lastSubMenu,
-                                    lastSubMenuKey) in subMenu.subMenu"
-                                    :key="lastSubMenuKey"
-                                >
-                                    <SideMenuTooltip
-                                    tag="a"
-                                    :content="lastSubMenu.title"
-                                    :href="
-                                        lastSubMenu.subMenu
-                                        ? 'javascript:;'
-                                        : router.resolve({
-                                            name: lastSubMenu.pageName
-                                            }).path
-                                    "
-                                    class="side-menu"
-                                    :class="{
-                                        'side-menu--active': lastSubMenu.active
-                                    }"
-                                    @click="linkTo(lastSubMenu, router, $event)"
-                                    >
-                                    <div class="side-menu__icon">
-                                        <ZapIcon />
-                                    </div>
-                                    <div class="side-menu__title">
-                                        {{ lastSubMenu.title }}
-                                    </div>
-                                    </SideMenuTooltip>
-                                </li>
-                                </ul>
-                            </transition>
-                            <!-- END: Third Child -->
-                            </li>
-                        </ul>
-                        </transition>
-                        <!-- END: Second Child -->
-                    </li>
-                    </template>
-                    <!-- END: First Child -->
-                </ul>
-                </nav>
+                <SideMenu />
                 <!-- END: Side Menu -->
                 <!-- BEGIN: Content -->
                 <div class="content">
-                <router-view />
+                    <slot></slot>
                 </div>
                 <!-- END: Content -->
             </div>
-            </div>
-        <slot></slot>
+        </div>
     </div>
 </template>
 
 
 <script>
-import { computed, onMounted, ref, watch } from 'vue'
-import { helper as $h } from '@/utils/helper'
+import feather from 'feather-icons'
+import { computed, onMounted, ref, watch, onBeforeMount } from 'vue'
 
-import { useRouter, useRoute } from 'vue-router'
-import { useStore } from '@/Store'
 import cash from "cash-dom";
 import MobileMenu from '@/Components/Layout/Partials/MobileMenu'
 import TopBar from '@/Components/Layout/Partials/TopBar'
-import { linkTo, nestedMenu, enter, leave } from '../menu_loader.js'
+import SideMenu from '@/Components/Layout/Partials/SideMenu'
 
 export default {
     components: {
         MobileMenu,
-        TopBar
+        TopBar,
+        SideMenu
     },
     setup() {
-        
-        const router = useRouter()
+        /*const router = useRouter()
         const route = useRoute()
         const store = useStore()
         const formattedMenu = ref([])
-  
+        
         const sideMenu = computed(() =>
             nestedMenu(store.state.sideMenu.menu, route)
         )
@@ -168,23 +48,26 @@ export default {
                 () => {
                     formattedMenu.value = $h.toRaw(sideMenu.value)
                 }
-        )
+        )*/
 
-        onMounted(() => {
+        onBeforeMount(() => {
             cash('body')
                 .removeClass('error-page')
                 .removeClass('login')
                 .addClass('main')
-            formattedMenu.value = $h.toRaw(sideMenu.value)
+            //formattedMenu.value = $h.toRaw(sideMenu.value)
         })
 
-        return {
-            formattedMenu,
-            linkTo,
-            enter,
-            leave
+        /*return {
+            //formattedMenu,
+            //linkTo,
+            //enter,
+            //leave
+        }*/
+    },
+    mounted() {
+            feather.replace();
         }
-    }
 
 }
 </script>

@@ -12,7 +12,8 @@
             <!-- BEGIN: Breadcrumb -->
             <div class="-intro-x breadcrumb mr-auto">
                 <a href="">Application</a>
-                    <ChevronRightIcon class="breadcrumb__icon" />
+                    <div class="breadcrumb__icon"> <i data-feather="chevron-right"></i> </div>
+                    
                 <a href="" class="breadcrumb--active">Dashboard</a>
             </div>
             <!-- END: Breadcrumb -->
@@ -60,6 +61,48 @@
             </div>
             <!-- END: Search -->
             
+            <!-- BEGIN: Account Menu -->
+            <div class="intro-x dropdown w-8 h-8">
+                <div v-if="$page.props.jetstream.managesProfilePhotos" 
+                    class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110"
+                    role="button"
+                    aria-expanded="false"
+                    >
+                    <img class="h-10 w-10 rounded-full object-cover" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.name" />
+                </div>
+                <div class="dropdown-menu w-56" id="accountSetting" ref="accountSetting">
+                    <div
+                        class="dropdown-menu__content box bg-theme-11 dark:bg-dark-6 text-white"
+                    >
+                        <div class="p-4 border-b border-theme-12 dark:border-dark-3">
+                            <div class="font-medium">{{ $page.props.user.name }}</div>
+                            <div class="text-xs text-theme-13 mt-0.5 dark:text-gray-600">
+                                {{ $page.props.user.email }}
+                            </div>
+                        </div>
+                        <div class="p-2">
+                            <NavLink :href="route('profile.show')" 
+                                                    :active="route().current('profile.show')"
+                                                    class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"
+                                                    >
+                                <UserIcon class="w-4 h-4 mr-2" /> Profile
+                            </NavLink>
+                            <NavLink :href="route('api-tokens.index')" :active="route().current('api-tokens.index')" v-if="$page.props.jetstream.hasApiFeatures">
+                                API Tokens
+                            </NavLink>
+                        </div>
+                        <div class="p-2 border-t border-theme-12 dark:border-dark-3">
+                            <!-- Authentication -->
+                            <form method="POST" @submit.prevent="logout">
+                                <NavButton class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md">
+                                    <ToggleRightIcon class="w-4 h-4 mr-2" /> Log Out
+                                </NavButton>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END: Account Menu -->
         </div>
     </div>
     <!-- END: Top Bar -->
@@ -67,24 +110,67 @@
 
 <script>
 import { defineComponent, ref } from 'vue'
+ import JetApplicationMark from '@/Jetstream/ApplicationMark'
+import JetBanner from '@/Jetstream/Banner'
+import JetDropdown from '@/Jetstream/Dropdown'
+import JetDropdownLink from '@/Jetstream/DropdownLink'
+import JetNavLink from '@/Jetstream/NavLink'
+
+
+
+import NavLink from '@/Components/Common/NavLink'
+import NavButton from '@/Components/Common/NavButton'
+
+import cash from 'cash-dom'
 
 export default defineComponent({
-  setup() {
-    const searchDropdown = ref(false)
+    components: {
+            JetApplicationMark,
+            JetBanner,
+            JetDropdown,
+            JetDropdownLink,
+            JetNavLink,
 
-    const showSearchDropdown = () => {
-      searchDropdown.value = true
-    }
+            NavLink,
+            NavButton
+        },
+        data() {
+            return {
+                showingNavigationDropdown: false,
+            }
+        },
 
-    const hideSearchDropdown = () => {
-      searchDropdown.value = false
-    }
+        methods: {
+            switchToTeam(team) {
+                this.$inertia.put(route('current-team.update'), {
+                    'team_id': team.id
+                }, {
+                    preserveState: false
+                })
+            },
 
-    return {
-      searchDropdown,
-      showSearchDropdown,
-      hideSearchDropdown
-    }
-  }
+            logout() {
+                console.log(this.$refs['accountSetting']); 
+                return  false;
+                this.$inertia.post(route('logout'));
+            },
+        },
+        setup() {
+            const searchDropdown = ref(false)
+
+            const showSearchDropdown = () => {
+                searchDropdown.value = true
+            }
+
+            const hideSearchDropdown = () => {
+                searchDropdown.value = false
+            }
+
+            return {
+                searchDropdown,
+                showSearchDropdown,
+                hideSearchDropdown
+            }
+        }
 })
 </script>

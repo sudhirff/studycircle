@@ -1,9 +1,9 @@
 import Velocity from 'velocity-animate'
 
+
 // Setup side menu
 const findActiveMenu = (subMenu, route) => {
   let match = false
-  console.log(subMenu);
   subMenu.forEach(item => {
     if (item.pageName === route.name && !item.ignore) {
       match = true
@@ -15,7 +15,7 @@ const findActiveMenu = (subMenu, route) => {
 }
 
 const nestedMenu = (menu, route) => {
-  
+  //console.log(route);
   menu.forEach((item, key) => {
     if (typeof item !== 'string') {
       let menuItem = menu[key]

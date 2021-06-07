@@ -28,7 +28,9 @@ createApp({
             route
         } 
     })
-    .use(InertiaPlugin, store, router, FeatherIcons)
+    .use(InertiaPlugin)
+    .use(store)
+    .use(router)
+    .use(FeatherIcons)
     .mount(el);
-
 InertiaProgress.init({ color: '#4B5563' });

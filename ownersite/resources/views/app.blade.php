@@ -16,12 +16,12 @@
 
         
     </head>
-    <body>
+    <body class="login">
         @inertia
         
         <!-- Scripts -->
         @routes
         <script src="{{ mix('js/app.js') }}" defer></script>
-        <script src="{{ asset('owner/js/app.js') }}">
+        <script src="{{ asset('owner/js/app.js') }}"></script>
     </body>
 </html>
