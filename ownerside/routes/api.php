@@ -19,9 +19,13 @@ use App\Models\User;
 Route::middleware('api')->group(function () {
     Route::resource('users', UserController::class);
     
-    Route::get('/users/check_email_exists/{email}', function ($email) {
-
-        $user = User::where('email', $email)->get()->toArray();
+    Route::get('/users/check_email_exists/{email}/{id}', function ($email, $id = null) {
+        if ($id != null) {
+            $user = User::where([['email', '=', $email], ['id', '!=', $id]])->get()->toArray();
+        } else {
+            $user = User::where('email', $email)->get()->toArray();
+        }
+        
         
         if (!empty($user)) {
             return true;

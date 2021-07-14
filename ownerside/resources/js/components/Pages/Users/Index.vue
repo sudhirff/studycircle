@@ -1,118 +1,131 @@
 <template>
     <div>
-        <h2 class="intro-y text-lg font-medium mt-10">Users List</h2>
-        <div class="grid grid-cols-12 gap-6 mt-5">
-            <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-                <div class="text-center">
+        <the-page-header :title="'User Listing'"></the-page-header>
+        <the-base-card>
+            <the-base-header-card>
+                <the-add-new-button>
                     <a href="javascript:;" 
-                        @click="createUserForm"
+                        @click.prevent="openModal(options.createComponentName)"
                         class="btn btn-primary"
                         >
                         Add New User
                     </a>
+                </the-add-new-button>
+                <div class="hidden md:block mx-auto text-gray-600">
+                    
                 </div>
-            </div>
-        </div>
-        <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
-            <table class="table table-report -mt-2">
-                <thead>
-                    <tr>
-                        <th class="whitespace-nowrap">ID</th>
-                        <th class="whitespace-nowrap">NAME</th>
-                        <th class="whitespace-nowrap">EMAIL</th>
-                        <th class="whitespace-nowrap">MOBILE</th>
-                        <th class="text-center whitespace-nowrap">ACTIONS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="user in users" :key="user" class="intro-x">
-                        <td  class="w-40">{{ user.id }}</td>
-                        <td>{{ user.name }}</td>
-                        <td>{{ user.email }}</td>
-                        <td class="w-40">{{ user.mobile_no }}</td>
-                        <td class="table-report__action w-56">
-                            <div class="flex justify-center items-center">
-                                <EditBtn module-name="User"
-                                        :dialog-id="`edit-dialog-id-`+user.id"
-                                        :actionName="`editUser`"
-                                        :item="user.id"
-                                        :modalHeader = "`Edit User`">
+                <base-search-card></base-search-card>
+            </the-base-header-card>
+            
+            <!-- BEGIN: Data List -->
+            <the-base-data-list-card>
+                <p v-if="isLoading">I am loading</p>
+                <the-base-crud-table>
+                    <thead>
+                        <base-row-card :columns="columns" :showHeaders="true"></base-row-card>
+                    </thead>
+                    <tbody>
+                        <base-row-card v-for="(item, index) in items" 
+                                        :key="index" 
+                                        :columns="columns"
+                                        :item="item"
+                                        @EditRow="showEditModal"
+                                        @DeleteRow="showDeleteModal"
+                                        ></base-row-card>
+                    </tbody>
+                </the-base-crud-table>
+            </the-base-data-list-card>
+        </the-base-card>
+        <!-- BEGIN: Component form -->
 
-                                    <EditUser :userId="user.id"></EditUser>
-
-                                </EditBtn>
-                                <DeleteBtn module-name="User"
-                                           :dialog-id="`delete-dialog-id-`+user.id"
-                                           :actionName="`deleteUser`"
-                                           :item="user" />
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <!-- BEGIN: Create User form -->
-        <ModalBoxCard :divId="`create-user`"
-                    :header = "`Add User`"
-                    >
-            <CreateUser></CreateUser>
-        </ModalBoxCard>
-        
-        <!-- END: Create User form -->
+        <teleport to='#app'>
+            <component v-if="selectedComponent !== null" 
+                        :is="selectedComponent"
+                        @closeComp="removeComponent"
+                        @deleteConfirm="deleteItem"
+                        :item="selectedItem"
+                        :moduleName="moduleName"
+                        ></component>
+        </teleport>
+        <!-- END: Component form -->
     </div>
+    
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import { ref } from 'vue';
 
-import CreateUser from '@/components/Pages/Users/Create'
-import EditUser from '@/components/Pages/Users/Edit'
-import RowCard from '@/components/shared/RowCard'
-import ModalBoxCard from '@/components/shared/ModalBoxCard'
-import DeleteBtn from '@/components/shared/DeleteBtn'
-import EditBtn from '@/components/shared/EditBtn'
+import useListing from '@/hooks/listing.js';
+
+import CreateUser from '@/components/Pages/Users/Create.vue';
+import EditUser from '@/components/Pages/Users/Edit.vue';
+import BaseDeleteModalCard from '@/components/UI/BaseDeleteModalCard.vue';
 
 export default {
     components: {
         CreateUser,
         EditUser,
-        RowCard,
-        ModalBoxCard,
-        DeleteBtn,
-        EditBtn,
+        BaseDeleteModalCard
     },
-    props: {
-        //users: [],
-        headings: {
-            type: Array,
-            default: [],
-            required: false,
-        },
-    },
-    data() {
+    setup(){
+        
+        const columns = {
+            id: "ID",
+            name: "NAME",
+            email: "EMAIL",
+            mobile_no: "MOBILE",
+            actions: "ACTIONS"
+        };
+
+        const options = {
+            createModalFormId: 'create-user',
+            createComponentName: 'CreateUser',
+            listGetter: 'users/users',
+            listDispatch: 'users/fetchUsers',
+            editModalFormId: 'edit-user',
+            editComponentName: 'EditUser',
+            editGetter: 'users/editUser',
+            editDispatch: 'users/editUser',
+            deleteDispatch: 'users/deleteUser',
+            deleteComponentName: 'BaseDeleteModalCard',
+            moduleName: "User"
+        };
+        
+        const {
+            isLoading,
+            items,
+            //editItemRequest,
+            //editItem,
+            selectedComponent,
+            deleteItem,
+            openModal,
+            removeComponent,
+            selectedItem
+         } = useListing(options);
+
         return {
-            headers: [],
-        }
+            columns,
+            options,
+            isLoading,
+            items,
+            //editItemRequest,
+            //editItem,
+            selectedComponent,
+            deleteItem,
+            openModal,
+            removeComponent,
+            selectedItem,
+            moduleName: options.moduleName
+        };
     },
     methods: {
-        editModalForm(dialogId)
-        {
-            cash("#"+dialogId).modal("show");
+        showEditModal(item) {
+            this.openModal(this.options.editComponentName, item)
         },
-        createUserForm()
-        {
-            cash("#create-user").modal("show");
-        },
-    },
-    mounted() {
-        this.$store.dispatch('fetchUsers')
-    },
-    computed: {
-        ...mapGetters([
-            'users'
-        ])
+        showDeleteModal(itemId) {
+            this.openModal(this.options.deleteComponentName, itemId)
+        }
     }
-
 }
 </script>
 

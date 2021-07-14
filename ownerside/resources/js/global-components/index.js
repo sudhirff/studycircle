@@ -13,6 +13,15 @@ import FullCalendar from './calendar/Main.vue'
 import FullCalendarDraggable from './calendar/Draggable.vue'
 import * as featherIcons from '@zhuowenli/vue-feather-icons'
 
+import ThePageHeader from '@/components/UI/ThePageHeader.vue'
+import TheAddNewButton from '@/components/UI/TheAddNewButton.vue'
+import BaseSearchCard from '@/components/UI/BaseSearchCard.vue'
+import TheBaseDataListCard from '@/components/UI/TheBaseDataListCard.vue'
+import TheBaseCard from '@/components/UI/TheBaseCard.vue'
+import TheBaseHeaderCard from '@/components/UI/TheBaseHeaderCard.vue'
+import TheBaseCrudTable from '@/components/UI/TheBaseCrudTable.vue'
+import BaseRowCard from '@/components/UI/BaseRowCard.vue'
+
 export default app => {
   app.component('Chart', Chart)
   //app.component('GoogleMapLoader', GoogleMapLoader)
@@ -27,7 +36,17 @@ export default app => {
   app.component('CKEditor', CKEditor)
   app.component('FullCalendar', FullCalendar)
   app.component('FullCalendarDraggable', FullCalendarDraggable)
-
+  
+  app.component('ThePageHeader', ThePageHeader)
+  app.component('TheAddNewButton', TheAddNewButton)
+  app.component('BaseSearchCard', BaseSearchCard)
+  app.component('TheBaseDataListCard', TheBaseDataListCard)
+  app.component('TheBaseCard', TheBaseCard)
+  app.component('TheBaseHeaderCard', TheBaseHeaderCard)
+  app.component('TheBaseCrudTable', TheBaseCrudTable)
+  app.component('BaseRowCard', BaseRowCard)  
+  app.component('Notification', Notification)
+  
   for (const [key, icon] of Object.entries(featherIcons)) {
     icon.props.size.default = '24'
     app.component(key, icon)

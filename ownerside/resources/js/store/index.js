@@ -1,21 +1,25 @@
 import { createStore } from 'vuex'
-//import main from './main'
+
 import sideMenu from './side-menu'
 
-import state from "./state"
-import getters from './getters'
-import actions from './actions'
-import mutations from './mutations'
+import rootGetters from './getters'
+import rootActions from './actions'
+import rootMutations from './mutations'
+import userModules from './modules/users/index.js'
 
 const store = createStore({
-  state,
-  getters,
-  actions,
-  mutations,
   modules: {
-    //main,
-    sideMenu,
-  }
+    users: userModules,
+    sideMenu
+  },
+  state() {
+    return {
+      isLoggedIn: false,
+    }
+  },
+  getters: rootGetters,
+  actions: rootActions,
+  mutations: rootMutations,
 })
 
 export function useStore() {

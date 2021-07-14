@@ -15,12 +15,10 @@ class CreateCoursesTypes extends Migration
     {
         Schema::create('courses_types', function (Blueprint $table) {
             $table->unsignedBigInteger('course_id');
-           $table->unsignedBigInteger('type_id');
-          
-           $table->foreign('courses')->references('id')->on('courses');
-           $table->foreign('type_id')->references('id')->on('courses_type');
-
-
+            $table->unsignedBigInteger('type_id');
+            
+            $table->foreign('course_id')->references('id')->on('courses');
+            $table->foreign('type_id')->references('id')->on('courses_type');
         });
     }
 

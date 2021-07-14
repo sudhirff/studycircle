@@ -56,6 +56,20 @@ class UserController extends Controller
         return response()->json($response);
     }
 
+
+    public function edit(User $user)
+    {
+        $status = 200;
+        if (!$user) {
+            $status = 404;
+        }
+        $response = [
+            'status' => $status,
+            'user' => $user,
+        ];
+        return response()->json($response);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -79,7 +93,6 @@ class UserController extends Controller
             $response = [
                 'success' => true,
                 'message' => 'User updated successfully.',
-                'users' => User::latest()->get(),
             ];
         } else {
             $response = [
