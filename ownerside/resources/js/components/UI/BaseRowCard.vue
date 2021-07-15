@@ -5,7 +5,7 @@
                 v-for="(column, index) in columns" 
                 :key="index"
                 :class="{ ' text-center': (index == 'actions') }">
-                {{ column }}
+                {{ column.label }}
             </th>
         </template>
         <template v-else>

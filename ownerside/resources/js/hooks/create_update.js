@@ -12,7 +12,7 @@ export default function useCreateUpdate(options) {
         options.context.emit('closeComp');
         document.getElementById(options.modalBoxId).remove();
 
-        Toastify({
+        /*Toastify({
             node: cash("#success-notification-content")
             .clone()
             .removeClass("hidden")[0],
@@ -22,7 +22,7 @@ export default function useCreateUpdate(options) {
             gravity: "top",
             position: "right",
             stopOnFocus: true
-        }).showToast();
+        }).showToast();*/
             
     }
 

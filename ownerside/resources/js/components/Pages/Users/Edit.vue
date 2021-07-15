@@ -12,7 +12,7 @@
                                 type="text" 
                                 class="form-control" 
                                 placeholder="Enter full name."
-                                v-model="user.name"
+                                v-model.trim="user.name"
                                 :class="{ 'border-theme-21': submitted && v$.name.$error }"
                                 />
                         <span v-if="submitted && v$.name.$error" class="text-theme-21 mt-2">
@@ -26,7 +26,7 @@
                                 type="email" 
                                 class="form-control" 
                                 placeholder="Enter Email address"
-                                v-model="user.email"
+                                v-model.trim="user.email"
                                 :class="{ 'border-theme-21': (submitted && (v$.email.$error || v$.email.exists)) }"
                                 />
                         <span v-if="submitted && v$.email.$error" class="text-theme-21 mt-2">
@@ -40,11 +40,11 @@
                     <div class="mt-3">
                         <label for="form-mobile_no" class="form-label">Mobile No.</label>
                         <input id="form-mobile_no" 
-                                type="text" 
+                                type="number" 
                                 name="mobile_no"
                                 class="form-control" 
                                 placeholder="Enter mobile number"
-                                v-model="user.mobile_no"
+                                v-model.trim="user.mobile_no"
                                 :class="{ 'border-theme-21': submitted && v$.mobile_no.$error }"
                                 />
                         <span v-if="submitted && v$.mobile_no.$error" class="text-theme-21 mt-2">
@@ -62,7 +62,7 @@
                         Cancel
                     </button>
                     <button type="submit" class="btn btn-primary w-20">
-                        Send
+                        Save
                     </button>
                 </div>
                 <!-- END: Slide Over Footer -->
@@ -146,6 +146,8 @@ export default {
                 mobile_no: {
                     required,
                     numeric,
+                    maxLength: maxLength(10),
+                    minLength: minLength(8)
                 }
             }
         });

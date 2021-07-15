@@ -70,11 +70,26 @@ export default {
     setup(){
         
         const columns = {
-            id: "ID",
-            name: "NAME",
-            email: "EMAIL",
-            mobile_no: "MOBILE",
-            actions: "ACTIONS"
+            id: {
+                label: "ID",
+                sorting: true,
+            },
+            name: {
+                label: "NAME",
+                sorting: true,
+            },
+            email: {
+                label: "EMAIL",
+                sorting: true,
+            },
+            mobile_no: {
+                label:"MOBILE",
+                sorting: true,
+            },
+            actions: {
+                label:"ACTIONS",
+                sorting: false,
+            }
         };
 
         const options = {
