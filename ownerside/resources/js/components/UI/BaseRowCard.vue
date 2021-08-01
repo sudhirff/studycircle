@@ -6,6 +6,7 @@
                 :key="index"
                 :class="{ ' text-center': (index == 'actions') }">
                 {{ column.label }}
+                <span></span>
             </th>
         </template>
         <template v-else>

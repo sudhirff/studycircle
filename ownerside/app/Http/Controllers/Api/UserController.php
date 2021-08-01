@@ -20,7 +20,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::latest()->get();
+        $users = User::when(request('search'), function ($query) {
+                $query->where('name', 'like', '%'. request('search'). '%');
+                $query->whereOr('email', 'like', '%'. request('search'). '%');
+                $query->whereOr('mobile_no', 'like', '%'. request('search'). '%');
+            })->orderBy('id', 'desc')->get();
         return response()->json($users);
     }
 
