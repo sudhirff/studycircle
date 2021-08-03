@@ -30,7 +30,7 @@ export default {
     TheSideMenu,
   },
   setup() {
-    console.log(this.$route.name);
+    //console.log(this.$route.name);
     onMounted(() => {
       cash('body')
         .removeClass('error-page')

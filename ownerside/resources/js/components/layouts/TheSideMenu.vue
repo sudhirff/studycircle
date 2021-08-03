@@ -2,15 +2,11 @@
     <div>
     <!-- BEGIN: Side Menu -->
         <nav class="side-nav">
-            <router-link to="/" class="intro-x flex items-center pl-5 pt-4 mt-3">
+            <router-link to="/" class="intro-x flex items-center logo">
                 <img
                     alt="Studycircle"
-                    class="w-6"
-                    :src="getImage('logo.svg')"
+                    :src="getImage('logo.png')"
                     />
-                <span class="hidden xl:block text-white text-lg ml-3">
-                Study<span class="font-medium">Circle</span>
-                </span>
             </router-link>
             <div class="side-nav__devider my-6"></div>
             <ul>
@@ -177,8 +173,14 @@ export default defineComponent({
   methods: {
       getImage(image)
       {
-          return '/owner/images/' + image;
+          return '/owner/images/logo/' + image;
       }
   }
 })
 </script>
+
+<style scoped>
+.logo {
+    top: -10px;
+}
+</style>

@@ -10,17 +10,20 @@
                 
                     <div class="col-sm-12 col-md-3 mb-30">
                     
-                        <div class="footer-logo">
-                            <router-link to="/"><i class="education-icon-book7"></i> Meri<strong class="uppercase">Test</strong></router-link>
+                        <div class="footer-logo logo">
+                            <router-link to="/"><img :src="getLogo()" alt="Meritest" /></router-link>
                         </div>
                         
-                        <p class="about-us-footer">Abilities or he perfectly pretended so strangers be exquisite. Oh to another chamber pleased imagine do in. Went me rank at last loud shot an draw. Excellent so to no sincerity smallness.</p>
+                        <p class="about-us-footer">
+                            <strong>MERITEST </strong>is an online exam software service provider brought to you by <strong>MERITEST SOLUTIONS Pvt Ltd.</strong><br />
+			We have developed an innovative <strong>online examination solution</strong> for university, colleges, institutions and corporate to conduct examinations anywhere, anytime. 
+                        </p>
                     
                     </div>
                     
                     <div class="col-xs-12 col-sm-12 col-md-6 mb-30">
                     
-                        <div class="newsletter-footer">
+                        <!--<div class="newsletter-footer">
                         
                             <form action="#" method="post" class="row">
                                 
@@ -35,7 +38,7 @@
                                 
                             </form>
                             
-                        </div>
+                        </div>-->
 
                         <ul class="menu-footer">
                             <li><router-link to="/about-us">About</router-link></li>
@@ -96,11 +99,23 @@ export default {
             mobile_number: process.env.CONTACT_MOBILE_NUMBER, 
             email: process.env.CONTACT_EMAIL,  
         }
+    },
+    methods: {
+        getLogo()
+        {
+            return '/meritest/images/logo/logo.png';
+        }
     }
-
 }
 </script>
 
-<style>
-
+<style scoped>
+    
+.logo {
+    width: 250px;
+    height: 62px;
+}
+.footer-logo {
+    margin-top: -65px;
+}
 </style>

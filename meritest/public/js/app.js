@@ -20874,6 +20874,11 @@ __webpack_require__.r(__webpack_exports__);
       mobile_number: process.env.CONTACT_MOBILE_NUMBER,
       email: process.env.CONTACT_EMAIL
     };
+  },
+  methods: {
+    getLogo: function getLogo() {
+      return '/meritest/images/logo/logo.png';
+    }
   }
 });
 
@@ -20893,7 +20898,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   methods: {
     getLogo: function getLogo() {
-      return '/meritest/images/logo.png';
+      return '/meritest/images/logo/logo.png';
     }
   }
 });
@@ -21297,10 +21302,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/layout/TheFooter.vue?vue&type=template&id=1e15c5a5":
-/*!***************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/layout/TheFooter.vue?vue&type=template&id=1e15c5a5 ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/layout/TheFooter.vue?vue&type=template&id=1e15c5a5&scoped=true":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/layout/TheFooter.vue?vue&type=template&id=1e15c5a5&scoped=true ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -21309,6 +21314,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+var _withId = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.withScopeId)("data-v-1e15c5a5");
+
+(0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-1e15c5a5");
 
 var _hoisted_1 = {
   "class": "footer-wrapper scrollspy-footer"
@@ -21326,132 +21336,102 @@ var _hoisted_5 = {
   "class": "col-sm-12 col-md-3 mb-30"
 };
 var _hoisted_6 = {
-  "class": "footer-logo"
+  "class": "footer-logo logo"
 };
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("i", {
-  "class": "education-icon-book7"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Meri");
-
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("strong", {
-  "class": "uppercase"
-}, "Test", -1
-/* HOISTED */
-);
-
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
   "class": "about-us-footer"
-}, "Abilities or he perfectly pretended so strangers be exquisite. Oh to another chamber pleased imagine do in. Went me rank at last loud shot an draw. Excellent so to no sincerity smallness.", -1
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("strong", null, "MERITEST "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("is an online exam software service provider brought to you by "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("strong", null, "MERITEST SOLUTIONS Pvt Ltd."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" We have developed an innovative "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("strong", null, "online examination solution"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" for university, colleges, institutions and corporate to conduct examinations anywhere, anytime. ")], -1
 /* HOISTED */
 );
 
-var _hoisted_11 = {
+var _hoisted_8 = {
   "class": "col-xs-12 col-sm-12 col-md-6 mb-30"
 };
-
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "newsletter-footer"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
-  action: "#",
-  method: "post",
-  "class": "row"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "col-xs-12 col-sm-12 col-md-8"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "form-group"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-  type: "text",
-  "class": "form-control",
-  placeholder: "Enter your email address"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-  type: "submit",
-  "class": "btn btn-submit",
-  value: "SUBSCRIBE"
-})])])])], -1
-/* HOISTED */
-);
-
-var _hoisted_13 = {
+var _hoisted_9 = {
   "class": "menu-footer"
 };
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("About");
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("About");
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Features");
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Features");
 
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("How it works");
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("How it works");
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Contact");
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Contact");
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Blogs");
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Blogs");
 
-var _hoisted_19 = {
+var _hoisted_15 = {
   "class": "col-xs-12 col-sm-12 col-md-3 mb-30"
 };
 
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"social-footer clearfix\"><a href=\"#\"><i class=\"fa fa-facebook-official\"></i></a><a href=\"#\"><i class=\"fa fa-twitter\"></i></a><a href=\"#\"><i class=\"fa fa-google-plus \"></i></a></div>", 1);
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"social-footer clearfix\" data-v-1e15c5a5><a href=\"#\" data-v-1e15c5a5><i class=\"fa fa-facebook-official\" data-v-1e15c5a5></i></a><a href=\"#\" data-v-1e15c5a5><i class=\"fa fa-twitter\" data-v-1e15c5a5></i></a><a href=\"#\" data-v-1e15c5a5><i class=\"fa fa-google-plus \" data-v-1e15c5a5></i></a></div>", 1);
 
-var _hoisted_21 = {
+var _hoisted_17 = {
   "class": "footer-address"
 };
 
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Plot No 09, Vidya Nagar Wathoda Layout");
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Plot No 09, Vidya Nagar Wathoda Layout");
+
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Behind Ganesh Mandir");
+
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" NAGPUR, MAHARASHTRA 440009");
 
 var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
 /* HOISTED */
 );
 
-var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Behind Ganesh Mandir");
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" India ");
 
 var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
 /* HOISTED */
 );
 
-var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" NAGPUR, MAHARASHTRA 440009");
-
-var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
-/* HOISTED */
-);
-
-var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" India ");
-
-var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
-/* HOISTED */
-);
-
-var _hoisted_30 = {
+var _hoisted_26 = {
   "class": "block text-white font20 font700 line20 mt-5 mb-5"
 };
 
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
   href: "mailto: support@meritest.com"
 }, "support@meritest.com", -1
 /* HOISTED */
 );
 
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<footer class=\"secondary-footer\"><div class=\"container\"><div class=\"row\"><div class=\"col-xs-12 col-sm-6\"><p class=\"copy-right\">© Copyright @2021 Meritest - Sabse Best.</p></div></div></div></footer>", 1);
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<footer class=\"secondary-footer\" data-v-1e15c5a5><div class=\"container\" data-v-1e15c5a5><div class=\"row\" data-v-1e15c5a5><div class=\"col-xs-12 col-sm-6\" data-v-1e15c5a5><p class=\"copy-right\" data-v-1e15c5a5>© Copyright @2021 Meritest - Sabse Best.</p></div></div></div></footer>", 1);
 
-function render(_ctx, _cache, $props, $setup, $data, $options) {
+(0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)();
+
+var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("footer", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/"
   }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_7, _hoisted_8, _hoisted_9];
+    "default": _withId(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
+        src: $options.getLogo(),
+        alt: "Meritest"
+      }, null, 8
+      /* PROPS */
+      , ["src"])];
     }),
     _: 1
     /* STABLE */
 
-  })]), _hoisted_10]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ul", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })]), _hoisted_7]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("<div class=\"newsletter-footer\">\r\n                        \r\n                            <form action=\"#\" method=\"post\" class=\"row\">\r\n                                \r\n                                <div class=\"col-xs-12 col-sm-12 col-md-8\">\r\n\r\n                                    <div class=\"form-group\">\r\n                                        <input type=\"text\" class=\"form-control\" placeholder=\"Enter your email address\">\r\n                                        <input type=\"submit\" class=\"btn btn-submit\" value=\"SUBSCRIBE\">\r\n                                    </div>\r\n                                    \r\n                                </div>\r\n                                \r\n                            </form>\r\n                            \r\n                        </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ul", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/about-us"
   }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_14];
+    "default": _withId(function () {
+      return [_hoisted_10];
     }),
     _: 1
     /* STABLE */
@@ -21459,8 +21439,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/features"
   }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_15];
+    "default": _withId(function () {
+      return [_hoisted_11];
     }),
     _: 1
     /* STABLE */
@@ -21468,8 +21448,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/how-it-works"
   }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_16];
+    "default": _withId(function () {
+      return [_hoisted_12];
     }),
     _: 1
     /* STABLE */
@@ -21477,8 +21457,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/contact-us"
   }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_17];
+    "default": _withId(function () {
+      return [_hoisted_13];
     }),
     _: 1
     /* STABLE */
@@ -21486,16 +21466,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/blogs"
   }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_18];
+    "default": _withId(function () {
+      return [_hoisted_14];
     }),
     _: 1
     /* STABLE */
 
-  })])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_21, [_hoisted_22, _hoisted_23, _hoisted_24, _hoisted_25, _hoisted_26, _hoisted_27, _hoisted_28, _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.mobile_number) + "+91 762 009 8848", 1
+  })])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_17, [_hoisted_18, _hoisted_19, _hoisted_20, _hoisted_21, _hoisted_22, _hoisted_23, _hoisted_24, _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.mobile_number) + "+91 762 009 8848", 1
   /* TEXT */
-  ), _hoisted_31])])])])]), _hoisted_32]);
-}
+  ), _hoisted_27])])])])]), _hoisted_28]);
+});
 
 /***/ }),
 
@@ -21706,16 +21686,73 @@ var _withId = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.withScopeId)("dat
 
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-3eec1a12");
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"container pt-60 pb-70\" data-v-3eec1a12><div class=\"row\" data-v-3eec1a12><div class=\"col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3\" data-v-3eec1a12><div class=\"section-title\" data-v-3eec1a12><h2 class=\"text-center\" data-v-3eec1a12>About Us</h2><p data-v-3eec1a12>However venture pursuit he am mr cordial. Forming musical am hearing studied be luckily. <strong data-v-3eec1a12>Ourselves for determine</strong> attending how led gentleman sincerity.</p></div></div><div class=\"col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2\" data-v-3eec1a12><p data-v-3eec1a12>Tiled say decay spoil now walls meant house. My mr interest thoughts screened of outweigh removing. Evening society musical besides inhabit ye my. Lose hill well up will he over on. Increasing sufficient everything men him admiration unpleasing sex. Around really his use uneasy longer him man. His our pulled nature elinor talked now for excuse result. Admitted add peculiar get joy doubtful.</p><p data-v-3eec1a12>Ever man are put down his very. And marry may table him avoid. Hard sell it were into it upon. He forbade affixed parties of assured to me windows. Happiness him nor she disposing provision. Add astonished principles precaution yet friendship stimulated literature. State thing might stand one his plate. Offending or extremity therefore so difficult he on provision. Tended depart turned not are. Though and highly the enough county for man. Of it up he still court alone widow seems. Suspected he remainder rapturous my sweetness. All vanity regard sudden nor simple can. World mrs and vexed china since after often.</p><p data-v-3eec1a12>In it except to so temper mutual tastes mother. Interested cultivated its continuing now yet are. Out interested acceptance our partiality affronting unpleasant why add. Esteem garden men yet shy course. Consulted up my tolerably sometimes perpetual oh. Expression acceptance imprudence particular had eat unsatiable.</p></div></div><div class=\"counting-wrapper mt-70 mb-70 counting\" data-v-3eec1a12><div class=\"GridLex-gap-30 relative\" data-v-3eec1a12><div class=\"GridLex-grid-noGutter-equalHeight\" data-v-3eec1a12><div class=\"GridLex-col-4_sm-4_xs-12\" data-v-3eec1a12><div class=\"counting-item\" data-v-3eec1a12><div class=\"icon-number\" data-v-3eec1a12><i class=\"ion-ios-people-outline\" data-v-3eec1a12></i> A Few </div> Happy Students </div></div><div class=\"GridLex-col-4_sm-4_xs-12\" data-v-3eec1a12><div class=\"counting-item\" data-v-3eec1a12><div class=\"icon-number\" data-v-3eec1a12><i class=\"ion-ios-lightbulb-outline\" data-v-3eec1a12></i> A Few </div> Courses Available </div></div><div class=\"GridLex-col-4_sm-4_xs-12\" data-v-3eec1a12><div class=\"counting-item\" data-v-3eec1a12><div class=\"icon-number\" data-v-3eec1a12><i class=\"ion-ios-personadd-outline\" data-v-3eec1a12></i> A Few </div> Certified Teachers </div></div></div></div></div></div>", 1);
-
+var _hoisted_1 = {
+  "class": "container pt-60 pb-70"
+};
 var _hoisted_2 = {
+  "class": "row"
+};
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h3 data-v-3eec1a12>“The use of online assessment tools is giving teachers a more fine-grained understanding of individual students’ skills, and assisting them to determine the necessary next steps to enable them to achieve their own learning goals. We are seeing more effective differentiation in classrooms as a result.”</h3><p data-v-3eec1a12>— Susan Mann</p><p data-v-3eec1a12><strong data-v-3eec1a12>MERITEST </strong>is an online exam software service provider brought to you by <strong data-v-3eec1a12>MERITEST SOLUTIONS Pvt Ltd.</strong><br data-v-3eec1a12> We have developed an innovative <strong data-v-3eec1a12>online examination solution</strong> for university, colleges, institutions and corporate to conduct examinations anywhere, anytime.</p><p data-v-3eec1a12>Our examination process have very fast processing speed, which is secure and simple that saves your time and money. </p><p data-v-3eec1a12>Use this <strong data-v-3eec1a12>test maker</strong> to create <strong data-v-3eec1a12>career </strong>booster <strong data-v-3eec1a12>Competitive </strong><em data-v-3eec1a12><strong data-v-3eec1a12>Exam</strong></em> <em data-v-3eec1a12>Online Test</em> Series for <em data-v-3eec1a12><strong data-v-3eec1a12>Bank</strong></em><strong data-v-3eec1a12>, </strong><em data-v-3eec1a12><strong data-v-3eec1a12>SSC</strong></em><strong data-v-3eec1a12>, </strong><em data-v-3eec1a12><strong data-v-3eec1a12>Railways</strong></em><strong data-v-3eec1a12>, LIC, RBI, CTET, GATE, Defence, UPSC, LAW, MBA, NET, BBA </strong>&amp; other 2021 <em data-v-3eec1a12>Exams.</em><br data-v-3eec1a12> Use our <em data-v-3eec1a12><strong data-v-3eec1a12>online test generator</strong></em> which creates <strong data-v-3eec1a12>Engineering and Medical</strong> entrance exam like <strong data-v-3eec1a12>JEE Main, JEE Advanced, BITSAT, VITEEE, SRMJEEE, COMEDK, KIITEE, WBJEE, MHTCET, BCECE, NTA NEET, AIIMS, JIPMER, AFMC</strong> and many more for your convenience.</p><p data-v-3eec1a12>We will manage the entire process of the examination platform as a service, including exam center supervision and candidate validation except administrative activities.</p><p data-v-3eec1a12>The system can be used for all types of <strong data-v-3eec1a12>online assessment</strong> services like quizzes, tests, assessments, exams or get feedback from surveys and polls. <strong data-v-3eec1a12>MERITEST</strong> is delivered through a <strong data-v-3eec1a12>SaaS model</strong> where the application is provided as a service to customers across the internet platform.</p><p data-v-3eec1a12><strong data-v-3eec1a12>FEATURES THAT MAKE MERITEST STAND OUT</strong></p>", 8);
+
+var _hoisted_11 = {
+  "class": "table"
+};
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
+  width: "50%"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h4", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  style: {
+    "color": "#ff991f"
+  }
+}, "Top 10 features from the Administrator’s point of view")])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
+  width: "50%"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h4", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  style: {
+    "color": "#ff991f"
+  }
+}, "Top 10 features from the User’s point of view")])])], -1
+/* HOISTED */
+);
+
+var _hoisted_13 = {
+  "class": "list-group"
+};
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<li class=\"list-group-item\" data-v-3eec1a12>1. Analytical Report and Interactive Dashboard.</li><li class=\"list-group-item\" data-v-3eec1a12>2. Online quiz maker: Easy to add/import questions from word/excel format as per different topics &amp; subjects.</li><li class=\"list-group-item\" data-v-3eec1a12>3. Support different types of questions including MCQ’s, Match the pairs Questions, Fill in the blanks, images, formulas, and videos.</li><li class=\"list-group-item\" data-v-3eec1a12>4. Configuration of question types with different difficulty levels according your requirements.</li><li class=\"list-group-item\" data-v-3eec1a12>5. Speed Exam: Create tests quickly by choosing the option Question Bank, Topic wise, Chapter wise, PYQ questions and download/share it with users or assign the date &amp; time to the test to limits availability.</li><li class=\"list-group-item\" data-v-3eec1a12>6. Instant Announcements,Send emails, notifications and share news, documents and videos on Web, Mobile, and Tablet which is accessible 24/7.</li><li class=\"list-group-item\" data-v-3eec1a12>7. Analyze the performance of students from different available reports.</li><li class=\"list-group-item\" data-v-3eec1a12>8. Publish the results automatically or by defining the date and time.</li><li class=\"list-group-item\" data-v-3eec1a12>9. Third-party integration is possible, i.e., SMS, email, online payment gateway etc.</li>", 9);
+
+var _hoisted_23 = {
+  "class": "list-group-item"
+};
+
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("10. Sell your online test series and get monetary benefits. ");
+
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("...and many more");
+
+var _hoisted_26 = {
+  "class": "list-group"
+};
+
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<li class=\"list-group-item\" data-v-3eec1a12>1. Analytical Result View and Interactive Dashboard.</li><li class=\"list-group-item\" data-v-3eec1a12>2. Synchronization of online test on Web and Mobile/Tablet which is accessible 24/7.</li><li class=\"list-group-item\" data-v-3eec1a12>3. Instant scorecard after submitting the online test.</li><li class=\"list-group-item\" data-v-3eec1a12>4. Identify questions/topics/sections that take most/least time.</li><li class=\"list-group-item\" data-v-3eec1a12>5. Question wise solution and explanation.</li><li class=\"list-group-item\" data-v-3eec1a12>6. Detailed reports are available for proper Test Analysis.</li><li class=\"list-group-item\" data-v-3eec1a12>7. Analyze performance by comparing with toppers.</li><li class=\"list-group-item\" data-v-3eec1a12>8. Bookmark questions and review them anytime.</li><li class=\"list-group-item\" data-v-3eec1a12>9. Focus on weak areas and concentrate more on it.</li>", 9);
+
+var _hoisted_36 = {
+  "class": "list-group-item"
+};
+
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("10. Download the available Documents and Videos for exam prep. ");
+
+var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("...and many more");
+
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<p data-v-3eec1a12>We will provide products as per your requirement <a href=\"/contact-us\" data-v-3eec1a12><span style=\"color:#ff991f;\" data-v-3eec1a12>(Contact Us Button)</span></a></p><p data-v-3eec1a12><strong data-v-3eec1a12>MERITEST Exam software </strong>is developed by deep research in examination domain with highly qualified team which are specialized in creating best efficacy in <strong data-v-3eec1a12>online exam preparation software </strong>which is highly efficient in terms of reliability and speed.</p><p data-v-3eec1a12><strong data-v-3eec1a12>Final Word:</strong></p><p data-v-3eec1a12><strong data-v-3eec1a12>Online examination system </strong>is gateway towards modernization of conventional examination system. It will decrease your expenses and increase benefits. <strong data-v-3eec1a12>MERITEST</strong> always attempts to offer the best <strong data-v-3eec1a12>Online Examination Builder </strong>to you.</p><p data-v-3eec1a12>We are pursuing to sustain and build on the remarkable success which we have enjoyed since <strong data-v-3eec1a12>MERITEST online exam tool </strong>launch. Our vision and focus then and now is to challenge the status of working proactively with our customers to find the optimum solutions and applications to assure ‘sustainable’ long term relationships. These are exciting times for <strong data-v-3eec1a12>MERITEST </strong>and we think you will get a sense of our passion, expertise, reliability, and innovative nature as you browse through this website. <strong data-v-3eec1a12>We believe in &quot;Make a customer, not a sale&quot;.</strong></p>", 5);
+
+var _hoisted_44 = {
   "class": "pt-80 pb-80 bg-light"
 };
-var _hoisted_3 = {
+var _hoisted_45 = {
   "class": "container"
 };
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "row"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2"
@@ -21727,32 +21764,32 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 /* HOISTED */
 );
 
-var _hoisted_5 = {
+var _hoisted_47 = {
   "class": "teacher-item-grid-wrapper"
 };
-var _hoisted_6 = {
+var _hoisted_48 = {
   "class": "GridLex-gap-30"
 };
-var _hoisted_7 = {
+var _hoisted_49 = {
   "class": "GridLex-grid-noGutter-equalHeight"
 };
-var _hoisted_8 = {
+var _hoisted_50 = {
   "class": "GridLex-col-3_sm-4_xs-6_xss-12"
 };
-var _hoisted_9 = {
+var _hoisted_51 = {
   "class": "team-item"
 };
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<ul class=\"team-item-social\" data-v-3eec1a12><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Facebook\" data-v-3eec1a12><i class=\"fa fa-facebook\" data-v-3eec1a12></i></a></li><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Twitter\" data-v-3eec1a12><i class=\"fa fa-twitter\" data-v-3eec1a12></i></a></li><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Google Plus\" data-v-3eec1a12><i class=\"fa fa-google-plus\" data-v-3eec1a12></i></a></li><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Pinterest\" data-v-3eec1a12><i class=\"fa fa-pinterest\" data-v-3eec1a12></i></a></li></ul>", 1);
+var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<ul class=\"team-item-social\" data-v-3eec1a12><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Facebook\" data-v-3eec1a12><i class=\"fa fa-facebook\" data-v-3eec1a12></i></a></li><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Twitter\" data-v-3eec1a12><i class=\"fa fa-twitter\" data-v-3eec1a12></i></a></li><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Google Plus\" data-v-3eec1a12><i class=\"fa fa-google-plus\" data-v-3eec1a12></i></a></li><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Pinterest\" data-v-3eec1a12><i class=\"fa fa-pinterest\" data-v-3eec1a12></i></a></li></ul>", 1);
 
-var _hoisted_11 = {
+var _hoisted_53 = {
   "class": "team-item-inner"
 };
-var _hoisted_12 = {
+var _hoisted_54 = {
   "class": "image"
 };
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "content"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", null, "Sudhir Mishra"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
   "class": "labeling"
@@ -21760,23 +21797,23 @@ var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
-var _hoisted_14 = {
+var _hoisted_56 = {
   "class": "GridLex-col-3_sm-4_xs-6_xss-12"
 };
-var _hoisted_15 = {
+var _hoisted_57 = {
   "class": "team-item"
 };
 
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<ul class=\"team-item-social\" data-v-3eec1a12><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Facebook\" data-v-3eec1a12><i class=\"fa fa-facebook\" data-v-3eec1a12></i></a></li><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Twitter\" data-v-3eec1a12><i class=\"fa fa-twitter\" data-v-3eec1a12></i></a></li><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Google Plus\" data-v-3eec1a12><i class=\"fa fa-google-plus\" data-v-3eec1a12></i></a></li><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Pinterest\" data-v-3eec1a12><i class=\"fa fa-pinterest\" data-v-3eec1a12></i></a></li></ul>", 1);
+var _hoisted_58 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<ul class=\"team-item-social\" data-v-3eec1a12><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Facebook\" data-v-3eec1a12><i class=\"fa fa-facebook\" data-v-3eec1a12></i></a></li><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Twitter\" data-v-3eec1a12><i class=\"fa fa-twitter\" data-v-3eec1a12></i></a></li><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Google Plus\" data-v-3eec1a12><i class=\"fa fa-google-plus\" data-v-3eec1a12></i></a></li><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Pinterest\" data-v-3eec1a12><i class=\"fa fa-pinterest\" data-v-3eec1a12></i></a></li></ul>", 1);
 
-var _hoisted_17 = {
+var _hoisted_59 = {
   "class": "team-item-inner"
 };
-var _hoisted_18 = {
+var _hoisted_60 = {
   "class": "image"
 };
 
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "content"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", null, "Pallavi Dighe"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
   "class": "labeling"
@@ -21784,23 +21821,23 @@ var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
-var _hoisted_20 = {
+var _hoisted_62 = {
   "class": "GridLex-col-3_sm-4_xs-6_xss-12"
 };
-var _hoisted_21 = {
+var _hoisted_63 = {
   "class": "team-item"
 };
 
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<ul class=\"team-item-social\" data-v-3eec1a12><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Facebook\" data-v-3eec1a12><i class=\"fa fa-facebook\" data-v-3eec1a12></i></a></li><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Twitter\" data-v-3eec1a12><i class=\"fa fa-twitter\" data-v-3eec1a12></i></a></li><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Google Plus\" data-v-3eec1a12><i class=\"fa fa-google-plus\" data-v-3eec1a12></i></a></li><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Pinterest\" data-v-3eec1a12><i class=\"fa fa-pinterest\" data-v-3eec1a12></i></a></li></ul>", 1);
+var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<ul class=\"team-item-social\" data-v-3eec1a12><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Facebook\" data-v-3eec1a12><i class=\"fa fa-facebook\" data-v-3eec1a12></i></a></li><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Twitter\" data-v-3eec1a12><i class=\"fa fa-twitter\" data-v-3eec1a12></i></a></li><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Google Plus\" data-v-3eec1a12><i class=\"fa fa-google-plus\" data-v-3eec1a12></i></a></li><li data-v-3eec1a12><a href=\"#\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Pinterest\" data-v-3eec1a12><i class=\"fa fa-pinterest\" data-v-3eec1a12></i></a></li></ul>", 1);
 
-var _hoisted_23 = {
+var _hoisted_65 = {
   "class": "team-item-inner"
 };
-var _hoisted_24 = {
+var _hoisted_66 = {
   "class": "image"
 };
 
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_67 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "content"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", null, "Pooja Mishra"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
   "class": "labeling"
@@ -21813,24 +21850,44 @@ var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 var render = /*#__PURE__*/_withId(function (_ctx, _cache, $props, $setup, $data, $options) {
   var _component_breadcrumb = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("breadcrumb");
 
+  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
+
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_breadcrumb, {
     pageTitle: 'About Us'
-  }), _hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("table", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tbody", null, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("<tr>\r\n\t\t\t\t\t\t<td>1. Analytical Report and Interactive Dashboard.</td>\r\n\t\t\t\t\t\t<td>1. Analytical Result View and Interactive Dashboard.</td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<td>2. Online quiz maker: Easy to add/import questions from word/excel format as per different topics &amp; subjects.</td>\r\n\t\t\t\t\t\t<td>2. Synchronization of online test on Web and Mobile/Tablet which is accessible 24/7.</td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<td>3. Support different types of questions including MCQ&rsquo;s, Match the pairs Questions, Fill in the blanks, images, formulas, and videos.</td>\r\n\t\t\t\t\t\t<td>3. Instant scorecard after submitting the online test.</td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<td></td>\r\n\t\t\t\t\t\t<td></td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<td></td>\r\n\t\t\t\t\t\t<td></td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<td></td>\r\n\t\t\t\t\t\t<td></td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<td></td>\r\n\t\t\t\t\t\t<td></td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<td></td>\r\n\t\t\t\t\t\t<td></td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<td></td>\r\n\t\t\t\t\t\t<td></td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<td></td>\r\n\t\t\t\t\t\t<td></td>\r\n\t\t\t\t\t</tr>\r\n\t\t\t\t\t<tr>\r\n\t\t\t\t\t\t<td></td>\r\n\t\t\t\t\t\t<td></td>\r\n\t\t\t\t\t</tr>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ul", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: "/features"
+  }, {
+    "default": _withId(function () {
+      return [_hoisted_25];
+    }),
+    _: 1
+    /* STABLE */
+
+  })])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ul", _hoisted_26, [_hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", _hoisted_36, [_hoisted_37, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: "/features"
+  }, {
+    "default": _withId(function () {
+      return [_hoisted_38];
+    }),
+    _: 1
+    /* STABLE */
+
+  })])])])])])]), _hoisted_39])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_44, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_45, [_hoisted_46, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_47, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_49, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_50, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_51, [_hoisted_52, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_53, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
     src: $options.getImage('man/02.jpg'),
     alt: "Image"
   }, null, 8
   /* PROPS */
-  , ["src"])]), _hoisted_13])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
+  , ["src"])]), _hoisted_55])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_56, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_57, [_hoisted_58, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_59, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_60, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
     src: $options.getImage('man/02.jpg'),
     alt: "Image"
   }, null, 8
   /* PROPS */
-  , ["src"])]), _hoisted_19])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
+  , ["src"])]), _hoisted_61])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_62, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_63, [_hoisted_64, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_65, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_66, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
     src: $options.getImage('man/02.jpg'),
     alt: "Image"
   }, null, 8
   /* PROPS */
-  , ["src"])]), _hoisted_25])])])])])])])])], 64
+  , ["src"])]), _hoisted_67])])])])])])])])], 64
   /* STABLE_FRAGMENT */
   );
 });
@@ -22200,24 +22257,80 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "row"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2"
+  "class": "col-sm-10 col-sm-offset-1 col-md-12 col-md-offset-0"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "section-title"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", {
-  "class": "text-center"
-}, "Our Key Features")])])], -1
+  "class": "text-left"
+}, "Top features from the Administrator’s point of view")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ul", {
+  "class": "list-group"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "1. Analytical Report and Interactive Dashboard."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "2. Online quiz maker: Easy to add/import questions from word/excel format as per different topics & subjects."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "3. Support different types of questions including MCQ’s, Match the pairs Questions, Fill in the blanks, images, formulas, and videos."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "4. Configuration of question types with different difficulty levels according your requirements."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "5. Speed Exam: Create tests quickly by choosing the option Question Bank, Topic wise, Chapter wise, PYQ questions and download/share it with users or assign the date & time to the test to limits availability."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "6. Instant Announcements,Send emails, notifications and share news, documents and videos on Web, Mobile, and Tablet which is accessible 24/7."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "7. Analyze the performance of students from different available reports."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "8. Publish the results automatically or by defining the date and time."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "9. Third-party integration is possible, i.e., SMS, email, online payment gateway etc."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "10. Sell your online test series and get monetary benefits."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "11. Create sub admins under your supervision and assign different roles and responsibilities to conduct exams. ."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "12. Import and Export of data in excel and available data formats."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "13. Fees management, Staff Management..")])])], -1
 /* HOISTED */
 );
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "row"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2"
+  "class": "col-sm-10 col-sm-offset-1 col-md-12 col-md-offset-0"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "section-title"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", {
-  "class": "text-center"
-}, "How MeriTest Works for Teachers")])])], -1
+  "class": "text-left"
+}, "Top 10 features from the User’s point of view")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("ul", {
+  "class": "list-group"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "1. Analytical Result View and Interactive Dashboard."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "2. Synchronization of online test on Web and Mobile/Tablet which is accessible 24/7."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "3. Instant scorecard after submitting the online test."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "4. Identify questions/topics/sections that take most/least time."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "5. Question wise solution and explanation."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "6. Detailed reports are available for proper Test Analysis."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "7. Analyze performance by comparing with toppers."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "8. Bookmark questions and review them anytime."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "9. Focus on weak areas and concentrate more on it."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "10. Download the available Documents and Videos for exam prep."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "11. Homework/Assignment details."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "12. Attendance Checking."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", {
+  "class": "list-group-item"
+}, "13. Weekly Progress Reports to boost your performance via Notifications alert..")])])], -1
 /* HOISTED */
 );
 
@@ -22685,6 +22798,30 @@ var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_6__.createRouter)({
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/layout/TheFooter.vue?vue&type=style&index=0&id=1e15c5a5&scoped=true&lang=css":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/layout/TheFooter.vue?vue&type=style&index=0&id=1e15c5a5&scoped=true&lang=css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.logo[data-v-1e15c5a5] {\r\n    width: 250px;\r\n    height: 62px;\n}\n.footer-logo[data-v-1e15c5a5] {\r\n    margin-top: -65px;\n}\r\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/layout/TheHeader.vue?vue&type=style&index=0&id=3f482997&scoped=true&lang=css":
 /*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/layout/TheHeader.vue?vue&type=style&index=0&id=3f482997&scoped=true&lang=css ***!
@@ -22726,7 +22863,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.counting[data-v-3eec1a12] {\r\n  background-image: url('/meritest/images/banner/sigmund-TJxotQTUr8o-unsplash.jpg');\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.counting[data-v-3eec1a12] {\r\n  background-image: url('/meritest/images/banner/sigmund-TJxotQTUr8o-unsplash.jpg');\n}\n.quote[data-v-3eec1a12] {\r\n\tfont-style: italic;\r\n\tfont-weight: bold;\n}\n.list-group-item[data-v-3eec1a12] {\r\n\torder: inherit;\r\n\tpadding: 10px;\n}\r\n\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -41310,6 +41447,36 @@ try {
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/layout/TheFooter.vue?vue&type=style&index=0&id=1e15c5a5&scoped=true&lang=css":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/layout/TheFooter.vue?vue&type=style&index=0&id=1e15c5a5&scoped=true&lang=css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TheFooter_vue_vue_type_style_index_0_id_1e15c5a5_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TheFooter.vue?vue&type=style&index=0&id=1e15c5a5&scoped=true&lang=css */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/layout/TheFooter.vue?vue&type=style&index=0&id=1e15c5a5&scoped=true&lang=css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TheFooter_vue_vue_type_style_index_0_id_1e15c5a5_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TheFooter_vue_vue_type_style_index_0_id_1e15c5a5_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/layout/TheHeader.vue?vue&type=style&index=0&id=3f482997&scoped=true&lang=css":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/layout/TheHeader.vue?vue&type=style&index=0&id=3f482997&scoped=true&lang=css ***!
@@ -41768,12 +41935,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _TheFooter_vue_vue_type_template_id_1e15c5a5__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TheFooter.vue?vue&type=template&id=1e15c5a5 */ "./resources/js/layout/TheFooter.vue?vue&type=template&id=1e15c5a5");
+/* harmony import */ var _TheFooter_vue_vue_type_template_id_1e15c5a5_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TheFooter.vue?vue&type=template&id=1e15c5a5&scoped=true */ "./resources/js/layout/TheFooter.vue?vue&type=template&id=1e15c5a5&scoped=true");
 /* harmony import */ var _TheFooter_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TheFooter.vue?vue&type=script&lang=js */ "./resources/js/layout/TheFooter.vue?vue&type=script&lang=js");
+/* harmony import */ var _TheFooter_vue_vue_type_style_index_0_id_1e15c5a5_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TheFooter.vue?vue&type=style&index=0&id=1e15c5a5&scoped=true&lang=css */ "./resources/js/layout/TheFooter.vue?vue&type=style&index=0&id=1e15c5a5&scoped=true&lang=css");
 
 
 
-_TheFooter_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _TheFooter_vue_vue_type_template_id_1e15c5a5__WEBPACK_IMPORTED_MODULE_0__.render
+
+;
+_TheFooter_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _TheFooter_vue_vue_type_template_id_1e15c5a5_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render
+_TheFooter_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__scopeId = "data-v-1e15c5a5"
 /* hot reload */
 if (false) {}
 
@@ -42201,18 +42372,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/layout/TheFooter.vue?vue&type=template&id=1e15c5a5":
-/*!*************************************************************************!*\
-  !*** ./resources/js/layout/TheFooter.vue?vue&type=template&id=1e15c5a5 ***!
-  \*************************************************************************/
+/***/ "./resources/js/layout/TheFooter.vue?vue&type=template&id=1e15c5a5&scoped=true":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/layout/TheFooter.vue?vue&type=template&id=1e15c5a5&scoped=true ***!
+  \*************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TheFooter_vue_vue_type_template_id_1e15c5a5__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TheFooter_vue_vue_type_template_id_1e15c5a5_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TheFooter_vue_vue_type_template_id_1e15c5a5__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TheFooter.vue?vue&type=template&id=1e15c5a5 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/layout/TheFooter.vue?vue&type=template&id=1e15c5a5");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TheFooter_vue_vue_type_template_id_1e15c5a5_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TheFooter.vue?vue&type=template&id=1e15c5a5&scoped=true */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/layout/TheFooter.vue?vue&type=template&id=1e15c5a5&scoped=true");
 
 
 /***/ }),
@@ -42325,6 +42496,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_HowItWorks_vue_vue_type_template_id_6ed15d20__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_HowItWorks_vue_vue_type_template_id_6ed15d20__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./HowItWorks.vue?vue&type=template&id=6ed15d20 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/pages/HowItWorks.vue?vue&type=template&id=6ed15d20");
+
+
+/***/ }),
+
+/***/ "./resources/js/layout/TheFooter.vue?vue&type=style&index=0&id=1e15c5a5&scoped=true&lang=css":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/layout/TheFooter.vue?vue&type=style&index=0&id=1e15c5a5&scoped=true&lang=css ***!
+  \***************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TheFooter_vue_vue_type_style_index_0_id_1e15c5a5_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader/dist/cjs.js!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../../node_modules/vue-loader/dist/stylePostLoader.js!../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TheFooter.vue?vue&type=style&index=0&id=1e15c5a5&scoped=true&lang=css */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/layout/TheFooter.vue?vue&type=style&index=0&id=1e15c5a5&scoped=true&lang=css");
 
 
 /***/ }),

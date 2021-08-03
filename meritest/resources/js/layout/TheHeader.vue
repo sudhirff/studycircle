@@ -100,7 +100,7 @@ export default {
     methods: {
         getLogo()
         {
-            return '/meritest/images/logo.png';
+            return '/meritest/images/logo/logo.png';
         }
     }
 
