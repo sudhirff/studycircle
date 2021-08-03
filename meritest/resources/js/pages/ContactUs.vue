@@ -261,8 +261,8 @@ export default {
 		asyncFunction();
 
 		async function asyncFunction() {
-			const recaptcha = await load('6LfL6wAVAAAAAFvQtjwR1gpXwz-u3D25KPpTNN3Q')
-			const token = await recaptcha.execute('/api/contactus')
+			const recaptcha = await load('6LfL6wAVAAAAAFvQtjwR1gpXwz-u3D25KPpTNN3Q');
+			const token = await recaptcha.execute('/api/contactus');
 
 			data.recaptcha_token = token;
 		}
