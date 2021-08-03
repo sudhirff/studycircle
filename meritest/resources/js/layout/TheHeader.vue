@@ -54,8 +54,8 @@
             <div class="container">
                 
                 <div class="navbar-header">
-                    <router-link to="/" class="navbar-brand">
-                        <!--<img :src="getLogo()" alt="Meritest" style="height: 100px; width: 100px;" />--><i class="education-icon-book7"></i> Meri<strong class="uppercase">test</strong>
+                    <router-link to="/" class="navbar-brand logo">
+                        <img :src="getLogo()" alt="Meritest" />
                     </router-link>
                 </div>
                 
@@ -100,7 +100,7 @@ export default {
     methods: {
         getLogo()
         {
-            return '/meritest/images/logo2.jpeg';
+            return '/meritest/images/logo.png';
         }
     }
 
@@ -112,5 +112,11 @@ export default {
 .navbar>.container>.navbar-collapse>.navbar-nav>li>a.active {
 	color: #0D7CC9 !important;
     background: none !important;
+}
+
+.logo {
+    top: -66px;
+    left: -67px;
+    width: 250px;
 }
 </style>

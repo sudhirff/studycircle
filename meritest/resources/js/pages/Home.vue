@@ -109,7 +109,7 @@
                         <div class="GridLex-col-3_sm-4_xs-12_xss-12">
                         
                             <div class="GridLex-inner">
-                                <router-link to="/features" class="btn btn-danger">Features</router-link>
+                                <router-link to="/features" class="btn btn-customer-org">Features</router-link>
                             </div>
                             
                         </div>
@@ -203,7 +203,7 @@
                         <div class="GridLex-col-3_sm-4_xs-12_xss-12">
                         
                             <div class="GridLex-inner">
-                                <router-link to="/about-us" class="btn btn-danger">About Us</router-link>
+                                <router-link to="/about-us" class="btn btn-customer-org">About Us</router-link>
                             </div>
                             
                         </div>

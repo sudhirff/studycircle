@@ -2611,12 +2611,12 @@ a.link-alt:hover {
  */
 
 .bg-primary {
-    background: #0D7CC9 !important;
+    background: #057fd7 !important;
     color: #FFF !important;
 }
 
 .bg-info {
-    background: #055586 !important;
+    background: #057fd7 !important;
     color: #FFF !important;
 }
 
@@ -5175,4 +5175,8 @@ a.link-alt:hover {
 .GridLex-gap-40.no-mb > div > div > div,
 .GridLex-gap-50.no-mb > div > div > div {
     margin-bottom: 0;
+}
+
+.btn-customer-org {
+    background-color: #da380d;
 }
