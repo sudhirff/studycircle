@@ -42,6 +42,11 @@
 <body class="main">
     <div id="app"></div>
     
+    <!-- start Back To Top -->
+    <div id="back-to-top">
+    <a href="#"><i class="ion-ios-arrow-up"></i></a>
+    </div>
+    <!-- end Back To Top -->
     <script src="{{ mix('js/app.js')}}" defer></script>
     <script type="text/javascript" src="{{ asset('meritest/js/jquery-2.2.4.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('meritest/js/jquery-migrate-1.4.1.min.js')}}"></script>
@@ -54,16 +59,10 @@
     <script type="text/javascript" src="{{ asset('meritest/js/typed.js')}}"></script>
     <script type="text/javascript" src="{{ asset('meritest/js/placeholderTypewriter.js')}}"></script>
     <script type="text/javascript" src="{{ asset('meritest/js/jquery.slicknav.min.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('meritest/js/jquery.placeholder.min.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('meritest/js/select2.full.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('meritest/js/ion.rangeSlider.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('meritest/js/readmore.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('meritest/js/slick.min.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('meritest/js/bootstrap-rating.js')}}"></script>
     <script type="text/javascript" src="{{ asset('meritest/js/jquery.nicescroll.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('meritest/js/creditly.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('meritest/js/bootstrap-modalmanager.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('meritest/js/bootstrap-modal.js')}}"></script>
     <script type="text/javascript" src="{{ asset('meritest/js/customs.js')}}"></script>
 </body>
 </html>

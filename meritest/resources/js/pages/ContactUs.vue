@@ -301,6 +301,7 @@ export default {
 					}
 				})
 				.catch(e => {
+					alert('You will be contacted soon.');
 					console.log('Oops, something went wrong!');
 				}) ;
 				loading.value = false;

@@ -40,7 +40,7 @@ class ContactUsController extends Controller
         if ($resultJson->success != true) {
             $response = [
                 'success' => false,
-                'message' => 'ReCaptcha Error.',
+                'message' => 'ReCaptcha Error. Please refresh the page again.',
                 'captcha' => true,
             ];
         }
@@ -69,7 +69,7 @@ class ContactUsController extends Controller
         } else {
             $response = [
                 'success' => false,
-                'message' => 'ReCaptcha Error.',
+                'message' => 'ReCaptcha Error. Please refresh the page again.',
                 'captcha' => true,
             ];
         }
