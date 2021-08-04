@@ -117,5 +117,6 @@ export default {
 }
 .footer-logo {
     margin-top: -65px;
+    margin-left: -70px;
 }
 </style>
