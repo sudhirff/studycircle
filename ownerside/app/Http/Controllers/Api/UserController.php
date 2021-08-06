@@ -46,10 +46,13 @@ class UserController extends Controller
             ];
             $user = User::create($inputs);
 
+            $token = $user->createToken('myapptoken')->plainTextToken;
+
             $response = [
                 'success' => true,
                 'message' => 'User created successfully.',
                 'user' => $user,
+                'token' => $token,
             ];
         } else {
             $response = [

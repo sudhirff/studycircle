@@ -5,6 +5,7 @@ import router from './router'
 import store from './store'
 import globalComponents from './global-components'
 import utils from './utils'
+import axios from 'axios'
 
 import Toastify from 'toastify-js'
 
@@ -18,5 +19,6 @@ const app = createApp(App)
 
 globalComponents(app)
 utils(app)
+app.config.globalProperties.$axios = axios;
 
 app.mount('#app')

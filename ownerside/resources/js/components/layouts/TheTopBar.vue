@@ -24,24 +24,26 @@
             <div class="dropdown-menu w-56">
                 <div class="dropdown-menu__content box dark:bg-dark-6">
                     <div class="p-4 border-b border-black border-opacity-5 dark:border-dark-3">
-                        <div class="font-medium">Johnny Depp</div>
-                        <div class="text-xs text-gray-600 mt-0.5 dark:text-gray-600">DevOps Engineer</div>
+                        <div class="font-medium">{{user.name}}</div>
+                        <div class="text-xs text-gray-600 mt-0.5 dark:text-gray-600">Engineer</div>
                     </div>
                     <div class="p-2">
                         <router-link to="/profile" 
                             class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-dark-3 rounded-md"> 
                             <UserIcon class="w-4 h-4 mr-2" /> Profile 
                         </router-link>
-                        <router-link to="" 
+                        <router-link to="/reset-password" 
                                     class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-dark-3 rounded-md"> 
                             <LockIcon class="w-4 h-4 mr-2" /> Reset Password 
                         </router-link>
                         
                     </div>
                     <div class="p-2 border-t border-black border-opacity-5 dark:border-dark-3">
-                        <router-link to="/logout" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-dark-3 rounded-md"> 
+                        <a href="/logout" 
+                            class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-dark-3 rounded-md"
+                             @click.prevent="logout"> 
                             <ToggleRightIcon class="w-4 h-4 mr-2" /> Logout 
-                        </router-link>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -51,7 +53,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import TheBreadcrumb from '@/components/layouts/TheBreadcrumb'
 
 export default {
@@ -59,6 +61,7 @@ export default {
         TheBreadcrumb
     },
     setup() {
+        //const user = reactive({});
         const searchDropdown = ref(false);
 
         const showSearchDropdown = () => {
@@ -68,19 +71,35 @@ export default {
         const hideSearchDropdown = () => {
             searchDropdown.value = false;
         }
-
+        
         // Show hide account drop down
-
-        return {
-            searchDropdown,
-            showSearchDropdown,
-            hideSearchDropdown,
+        if (window.Laravel.isLoggedin) {
+            const user = window.Laravel.user;
+            
+            return {
+                searchDropdown,
+                showSearchDropdown,
+                hideSearchDropdown,
+                user
+            }
         }
     },
     methods: {
         getImage(image)
         {
             return "/owner/images/"+image;
+        },
+        logout() {
+            this.$axios.get('/sanctum/csrf-cookie').then(response => {
+                this.$axios.post('/logout')
+                    .then(response => {
+                        window.location.href = "/login"
+                        
+                    })
+                    .catch(function (error) {
+                        console.error(error);
+                    });
+            })
         }
     }
 }

@@ -1,5 +1,5 @@
 <template>
-    <div class="flex overflow-hidden">
+    <div class="flex overflow-hidden" v-if="loggedIn">
         <!-- BEGIN: Side Menu -->
         <the-side-menu />
         <!-- END: Side Menu -->
@@ -14,10 +14,14 @@
         </div>
         <!-- END: Content -->
     </div>
+    <div v-else>
+        <router-view />
+    </div>
 </template>
 
 <script>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue';
+
 
 //import TheMobileMenu from './layouts/TheMobileMenu'
 import TheTopBar from "./layouts/TheTopBar"
@@ -30,16 +34,27 @@ export default {
     TheSideMenu,
   },
   setup() {
-    //console.log(this.$route.name);
+    const loggedIn = ref(false);
+
+    if (window.Laravel.isLoggedin) {
+        loggedIn.value = true;
+    }
     onMounted(() => {
       cash('body')
         .removeClass('error-page')
         .removeClass('login')
         .addClass('main')
-    })
+    });
 
     return {
+      loggedIn
     }
+  },
+  beforeRouteEnter(to, from, next) {
+      if (!window.Laravel.isLoggedin) {
+          window.location.href = "/login";
+      }
+      next();
   }
 }
 </script>

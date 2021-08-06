@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +15,22 @@ use App\Http\Controllers\DashboardController;
 */
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+// Authentication...
+
+$limiter = config('fortify.limiters.login');
+
+Route::post('/login', [AuthenticatedSessionController::class, 'store'])
+->middleware(
+    array_filter(
+        [
+            'guest:'.config('fortify.guard'),
+            $limiter ? 'throttle:'.$limiter : null,
+        ]
+    )
+);
+
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+->name('logout');
 
 Route::get('/{vue_capture?}', function() {
     return view('app');
