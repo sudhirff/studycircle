@@ -11,7 +11,7 @@
                     <div class="col-sm-12 col-md-3 mb-30">
                     
                         <div class="footer-logo logo">
-                            <router-link to="/"><img :src="getLogo()" alt="Meritest" /></router-link>
+                            <router-link to="/"><img :src="getLogo()" alt="Meritest" class="logo" /></router-link>
                         </div>
                         
                         <p class="about-us-footer">
@@ -103,20 +103,12 @@ export default {
     methods: {
         getLogo()
         {
-            return '/meritest/images/logo/logo.png';
+            return '/meritest/images/logo/150_height.png';
         }
     }
 }
 </script>
 
 <style scoped>
-    
-.logo {
-    width: 250px;
-    height: 62px;
-}
-.footer-logo {
-    margin-top: -65px;
-    margin-left: -70px;
-}
+ 
 </style>

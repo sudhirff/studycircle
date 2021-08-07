@@ -297,7 +297,7 @@ export default {
 						alert(response.data.message);
 					} else {
 						alert(response.data.message);
-						//location.reload();
+						
 					}
 				})
 				.catch(e => {
@@ -306,6 +306,7 @@ export default {
 				}) ;
 				loading.value = false;
 				submitted.value = false;
+				location.reload();
 				clearForm();
 		}
 		function clearForm()

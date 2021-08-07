@@ -54,8 +54,8 @@
             <div class="container">
                 
                 <div class="navbar-header">
-                    <router-link to="/" class="navbar-brand logo">
-                        <img :src="getLogo()" alt="Meritest" />
+                    <router-link to="/" class="navbar-brand ">
+                        <img :src="getLogo()" alt="Meritest" class="logo" />
                     </router-link>
                 </div>
                 
@@ -98,7 +98,7 @@ export default {
     methods: {
         getLogo()
         {
-            return '/meritest/images/logo/logo.png';
+            return '/meritest/images/logo/150_height.png';
         }
     }
 
@@ -113,8 +113,8 @@ export default {
 }
 
 .logo {
-    top: -66px;
-    left: -75px;
-    width: 250px;
+    /*top: -66px;
+    left: -75px;*/
+    height: 40px;
 }
 </style>
