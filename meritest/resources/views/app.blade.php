@@ -48,6 +48,8 @@
     </div>
     <!-- end Back To Top -->
     <script src="{{ mix('js/app.js')}}" defer></script>
+    
+    
     <script type="text/javascript" src="{{ asset('meritest/js/jquery-2.2.4.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('meritest/js/jquery-migrate-1.4.1.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('meritest/bootstrap/js/bootstrap.min.js')}}"></script>
@@ -63,6 +65,14 @@
     <script type="text/javascript" src="{{ asset('meritest/js/slick.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('meritest/js/jquery.nicescroll.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('meritest/js/creditly.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('meritest/js/jquery.placeholder.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('meritest/js/select2.full.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('meritest/js/ion.rangeSlider.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('meritest/js/bootstrap-rating.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('meritest/js/bootstrap-modalmanager.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('meritest/js/bootstrap-modal.js')}}"></script>
     <script type="text/javascript" src="{{ asset('meritest/js/customs.js')}}"></script>
+
+    
 </body>
 </html>

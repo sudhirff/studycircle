@@ -45,7 +45,7 @@
                             <li><router-link to="/features">Features</router-link></li>
                             <li><router-link to="/how-it-works">How it works</router-link></li>
                             <li><router-link to="/contact-us">Contact</router-link></li>
-                            <li><router-link to="/blogs">Blogs</router-link></li>
+                            <li><a href="/sitemap.xml" target="_blank">Site Map</a></li>
                         </ul>
                     
                     </div>
@@ -56,14 +56,19 @@
                             <a href="#"><i class="fa fa-facebook-official"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
                             <a href="#"><i class="fa fa-google-plus "></i></a>
+                            <a href="https://www.youtube.com/channel/UC2jXBWiTxsr-KQlBexxPvXA" target="_blank"><i class="fa fa-youtube "></i></a>
                         </div>
                         
                         <p class="footer-address">
-                                            Plot No 09, Vidya Nagar Wathoda Layout<br />
-                                            Behind Ganesh Mandir<br />
-                                            NAGPUR, MAHARASHTRA 440009<br />
-                                            India <br />
-                        <span class="block text-white font20 font700 line20 mt-5 mb-5">{{ mobile_number }}+91 762 009 8848</span><a href="mailto: support@meritest.com">support@meritest.com</a></p>
+                            Plot No 09, Vidya Nagar Wathoda Layout<br />
+                            Behind Ganesh Mandir<br />
+                            NAGPUR, MAHARASHTRA 440009<br />
+                            India <br />
+                            <span class="block text-white font20 font700 line20 mt-5 mb-5">
+                                {{ mobile_number }}+91 762 009 8848
+                            </span>
+                            <a href="mailto: support@meritest.com">support@meritest.com</a>
+                        </p>
                     
                     </div>
                     

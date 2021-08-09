@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SitemapXmlController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('app');
 });
+
+Route::get('/sitemap.xml', [SitemapXmlController::class, 'index'])->name('site-map');
+
 
 Route::get('/{vue_capture?}', function() {
     return view('app');
