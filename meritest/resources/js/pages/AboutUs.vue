@@ -117,7 +117,7 @@
 									<div class="team-item-inner">
 									
 										<div class="image">
-											<img :src="getImage('man/02.jpg')" alt="Image" />
+											<img :src="getImage('profiles/sudhir_mishra.jpeg')" alt="Image" />
 										</div>
 										
 										<div class="content">
@@ -139,17 +139,17 @@
 								
 									<ul class="team-item-social">
 									
-										<li><a href="#" data-toggle="tooltip" data-placement="right" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="right" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+										<li><a href="https://www.facebook.com/palsver/" data-toggle="tooltip" data-placement="right" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
+										<li><a href="https://twitter.com/palsverma" data-toggle="tooltip" data-placement="right" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
 										<li><a href="#" data-toggle="tooltip" data-placement="right" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="right" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+										<li><a href="https://in.pinterest.com/palsver/" data-toggle="tooltip" data-placement="right" title="Pinterest" target="_blank"><i class="fa fa-pinterest"></i></a></li>
 										
 									</ul>
 									
 									<div class="team-item-inner">
 									
 										<div class="image">
-											<img :src="getImage('man/02.jpg')" alt="Image" />
+											<img :src="getImage('profiles/pallavi_dighe.png')" alt="Image" />
 										</div>
 										
 										<div class="content">
@@ -180,7 +180,7 @@
 									<div class="team-item-inner">
 									
 										<div class="image">
-											<img :src="getImage('man/02.jpg')" alt="Image" />
+											<img :src="getImage('profiles/pooja_mishra.jpeg')" alt="Image" />
 										</div>
 										
 										<div class="content">
@@ -234,5 +234,7 @@ export default {
 	padding: 10px;
 }
 
-
+.image img {
+	filter: grayscale(100%);
+}
 </style>

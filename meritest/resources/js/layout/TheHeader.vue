@@ -35,14 +35,11 @@
                         </div>
                         
                         <div class="col-sm-6">
-            
                             <div class="top-header-widget pull-right hidden-xs">
-                                <a href="#">
+                                <router-link to="/contact-us">
                                     <i class="fa fa-comments mr-3"></i> Support
-                                </a>
+                                </router-link>
                             </div>
-                            
-                        
                         </div>
                         
                     </div>
