@@ -5,7 +5,7 @@
             <router-link to="/" class="intro-x flex items-center logo">
                 <img
                     alt="Studycircle"
-                    :src="getImage('logo.png')"
+                    :src="getImage('logo/150_height.png')"
                     />
             </router-link>
             <div class="side-nav__devider my-6"></div>
@@ -173,7 +173,7 @@ export default defineComponent({
   methods: {
       getImage(image)
       {
-          return '/owner/images/logo/' + image;
+          return '/owner/images/' + image;
       }
   }
 })
@@ -181,6 +181,6 @@ export default defineComponent({
 
 <style scoped>
 .logo {
-    top: -10px;
+    top: 15px;
 }
 </style>

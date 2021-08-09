@@ -140,6 +140,12 @@ export default {
         showDeleteModal(itemId) {
             this.openModal(this.options.deleteComponentName, itemId)
         }
+    },
+    beforeRouteEnter(to, from, next) {
+        if (!window.Laravel.isLoggedin) {
+            window.location.href = "/login";
+        }
+        next();
     }
 }
 </script>
