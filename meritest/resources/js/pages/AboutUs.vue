@@ -13,7 +13,7 @@
 
 				<p>Our examination process have very fast processing speed, which is secure and simple that saves your time and money.&nbsp;</p>
 
-				<p>Use this <strong>test maker</strong> to create <strong>career </strong>booster <strong>Competitive </strong><em><strong>Exam</strong></em> <em>Online Test</em> Series for <em><strong>Bank</strong></em><strong>, </strong><em><strong>SSC</strong></em><strong>, </strong><em><strong>Railways</strong></em><strong>, LIC, RBI, CTET, GATE, Defence, UPSC, LAW, MBA, NET, BBA </strong>&amp; other 2021 <em>Exams.</em><br />
+				<p>Use this <strong>test maker</strong> to create <strong>career </strong>booster <strong>Competitive </strong><em><strong>Exam</strong></em> <em>Online Test</em> Series for <em><strong>Bank</strong></em><strong>, </strong><em><strong>SSC</strong></em><strong>, </strong><em><strong>Railways</strong></em><strong>, LIC, RBI, CTET, GATE, Defence, UPSC, LAW, MBA, NET, BBA </strong>&amp; other {{ currentYear}} <em>Exams.</em><br />
 				Use our <em><strong>online test generator</strong></em> which creates <strong>Engineering and Medical</strong> entrance exam like <strong>JEE Main, JEE Advanced, BITSAT, VITEEE, SRMJEEE, COMEDK, KIITEE, WBJEE, MHTCET, BCECE, NTA NEET, AIIMS, JIPMER, AFMC</strong> and many more for your convenience.</p>
 
 				<p>We will manage the entire process of the examination platform as a service, including exam center supervision and candidate validation except administrative activities.</p>
@@ -210,6 +210,11 @@
 
 <script>
 export default {
+	computed: {
+		currentYear() {
+			return new Date().getFullYear();
+		}
+	},
     methods: {
       getImage(image)
       {

@@ -85,7 +85,7 @@
                 <div class="row">
                 
                     <div class="col-xs-12 col-sm-6">
-                        <p class="copy-right">&#169; Copyright @2021 Meritest - Sabse Best.</p>
+                        <p class="copy-right">&#169; Copyright @{{currentYear}} Meritest - Sabse Best.</p>
                     </div>
                     
                 </div>
@@ -110,7 +110,12 @@ export default {
         {
             return '/meritest/images/logo/150_height.png';
         }
-    }
+    },
+	computed: {
+		currentYear() {
+			return new Date().getFullYear();
+		}
+	},
 }
 </script>
 
