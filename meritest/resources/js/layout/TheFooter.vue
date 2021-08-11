@@ -57,7 +57,7 @@
                             <a href="https://twitter.com/meritestdotin"><i class="fa fa-twitter"></i></a>
                             <a href="https://www.linkedin.com/in/meritestdotin"><i class="fa fa-linkedin "></i></a>
                             <a href="https://www.pinterest.com/meritestdotin"><i class="fa fa-pinterest "></i></a>
-                            <a href="https://www.quora.com/profile/meritestdotin"><i class="fa fa-quora "></i></a>
+                            <a href="https://www.quora.com/profile/meritestdotin"><i class="fa fa-quora "></i>Q</a>
                             <a href="https://medium.com/"><i class="fa fa-medium "></i></a>
                             <a href="https://www.youtube.com/channel/UC2jXBWiTxsr-KQlBexxPvXA" target="_blank"><i class="fa fa-youtube "></i></a>
                         </div>
