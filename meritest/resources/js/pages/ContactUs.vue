@@ -268,6 +268,8 @@ export default {
 			const token = await recaptcha.execute('/api/contactus');
 
 			data.recaptcha_token = token;
+			var thingToShow = document.querySelectorAll(".grecaptcha-badge")[0];
+			thingToShow.parentNode.classList.remove("hidden");
 		}
 
 		function submitForm() {
@@ -330,5 +332,10 @@ export default {
 			asyncFunction
 		 }
 	},
+	beforeRouteLeave (to, from, next) {
+		var thingToHide = document.querySelectorAll(".grecaptcha-badge")[0];
+		thingToHide.parentNode.classList.add("hidden");
+		next();
+	}
 }
 </script>
