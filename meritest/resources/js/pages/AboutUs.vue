@@ -106,7 +106,7 @@
 									
 										<li><a href="#" data-toggle="tooltip" data-placement="right" title="Facebook"><i class="fa fa-facebook"></i></a></li>
 										<li><a href="#" data-toggle="tooltip" data-placement="right" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="right" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+										<li><a href="#" data-toggle="tooltip" data-placement="right" title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
 										<li><a href="#" data-toggle="tooltip" data-placement="right" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
 										
 									</ul>
@@ -138,7 +138,7 @@
 									
 										<li><a href="https://www.facebook.com/palsver/" data-toggle="tooltip" data-placement="right" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
 										<li><a href="https://twitter.com/palsverma" data-toggle="tooltip" data-placement="right" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="right" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+										<li><a href="https://www.linkedin.com/in/pallavi-dighe-8235817/" data-toggle="tooltip" data-placement="right" title="LinkedIn" target="_blank"><i class="fa fa-linkedin"></i></a></li>
 										<li><a href="https://in.pinterest.com/palsver/" data-toggle="tooltip" data-placement="right" title="Pinterest" target="_blank"><i class="fa fa-pinterest"></i></a></li>
 										
 									</ul>
@@ -169,7 +169,7 @@
 									
 										<li><a href="#" data-toggle="tooltip" data-placement="right" title="Facebook"><i class="fa fa-facebook"></i></a></li>
 										<li><a href="#" data-toggle="tooltip" data-placement="right" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="right" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+										<li><a href="#" data-toggle="tooltip" data-placement="right" title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
 										<li><a href="#" data-toggle="tooltip" data-placement="right" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
 										
 									</ul>

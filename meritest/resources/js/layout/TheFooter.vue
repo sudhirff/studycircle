@@ -11,7 +11,7 @@
                     <div class="col-sm-12 col-md-3 mb-30">
                     
                         <div class="footer-logo logo">
-                            <router-link to="/"><img :src="getLogo()" alt="Meritest" class="logo" /></router-link>
+                            <router-link to="/"><img :src="getLogo('logo/150_height.png')" alt="Meritest" class="logo" /></router-link>
                         </div>
                         
                         <p class="about-us-footer">
@@ -53,9 +53,12 @@
                     <div class="col-xs-12 col-sm-12 col-md-3 mb-30">
                     
                         <div class="social-footer clearfix">
-                            <a href="#"><i class="fa fa-facebook-official"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-google-plus "></i></a>
+                            <a href="https://meritestdotin.com"><i class="fa fa-facebook-official"></i></a>
+                            <a href="https://twitter.com/meritestdotin"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/in/meritestdotin"><i class="fa fa-linkedin "></i></a>
+                            <a href="https://www.pinterest.com/meritestdotin"><i class="fa fa-pinterest "></i></a>
+                            <a href="https://www.quora.com/profile/meritestdotin"><i class="fa fa-quora "></i></a>
+                            <a href="https://medium.com/"><i class="fa fa-medium "></i></a>
                             <a href="https://www.youtube.com/channel/UC2jXBWiTxsr-KQlBexxPvXA" target="_blank"><i class="fa fa-youtube "></i></a>
                         </div>
                         
@@ -106,9 +109,9 @@ export default {
         }
     },
     methods: {
-        getLogo()
+        getLogo(img)
         {
-            return '/meritest/images/logo/150_height.png';
+            return '/meritest/images/'+img;
         }
     },
 	computed: {
