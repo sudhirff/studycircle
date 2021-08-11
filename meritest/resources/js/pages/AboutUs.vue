@@ -5,10 +5,11 @@
 					
 			<div class="row">
 				<div class="col-sm-10 col-sm-offset-1 col-md-12 col-md-offset-0">
-					<h3>&ldquo;The use of online assessment tools is giving teachers a more fine-grained understanding of individual students&rsquo; skills, and assisting them to determine the necessary next steps to enable them to achieve their own learning goals. We are seeing more effective differentiation in classrooms as a result.&rdquo;</h3>
+					<div class="quote">
+						<h3>&ldquo;The use of online assessment tools is giving teachers a more fine-grained understanding of individual students&rsquo; skills, and assisting them to determine the necessary next steps to enable them to achieve their own learning goals. We are seeing more effective differentiation in classrooms as a result.&rdquo;</h3>
 
-					<p>&mdash;&nbsp;Susan Mann</p>
-
+						<p>&mdash;&nbsp;Susan Mann</p>
+					</div>
 					<p><strong>MERITEST </strong>is an online exam software service provider brought to you by <strong>MERITEST SOLUTIONS Pvt Ltd.</strong><br />
 					We have developed an innovative <strong>online examination solution</strong> for university, colleges, institutions and corporate to conduct examinations anywhere, anytime.</p>
 
@@ -221,13 +222,11 @@ export default {
 </script>
 
 <style scoped>
-.counting {
-  background-image: url('/meritest/images/banner/sigmund-TJxotQTUr8o-unsplash.jpg');
-}
 
 .quote {
 	font-style: italic;
 	font-weight: bold;
+	padding-bottom: 25px;
 }
 
 .list-group-item {
