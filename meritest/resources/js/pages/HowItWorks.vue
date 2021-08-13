@@ -1,18 +1,20 @@
 <template>
+<div>
     <breadcrumb :pageTitle="'How It Works'"></breadcrumb>
     <!-- start How It works for teachers -->
     <base-card>
-        <div class="row">
+        <div class="row" style="margin-bottom: 40px;">
 					
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
             
                 <div class="section-title">
-                    <h2 class="text-center">How MeriTest Works for Teachers</h2>
+                    <h2 class="text-center">How Meritest Works for Teachers</h2>
                 </div>
                 
             </div>
             
             <div class="col-sm-10 col-sm-offset-1 col-md-12 col-md-offset-0">
+                
                 <div class="col-sm-3">
                     
                     <div class="icon-featured">
@@ -63,7 +65,7 @@
             </div>
 
         </div>
-        <div class="hr"></div>
+        
         <div class="row">
 					
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
@@ -115,7 +117,7 @@
         </div>
         
     </base-card>
-    
+</div>
 </template>
 
 <script>
@@ -125,6 +127,21 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.icon-featured {
+    min-height: 260px;
+    text-align: center;
+    padding: 10px 30px 30px;
+    border: 1px solid #057fd7;
+    border-radius: 10px;
+    height: auto;
+    width: auto;
+    background: #F7F7F7;
+    margin-bottom: 10px;
+}
+.icon-featured:hover {
+    -moz-box-shadow: 0 0 10px #ccc;
+    -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #ccc;  
+}/**/
 </style>

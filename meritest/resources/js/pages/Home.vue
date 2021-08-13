@@ -236,122 +236,25 @@
                     <div class="GridLex-gap-20">   
                     
                         <div class="GridLex-grid-noGutter-equalHeight">  
-                        
-                            <div class="GridLex-col-2_sm-3_xs-4_xss-6">
                             
-                                <div class="category-item">
-                                    <div class="icon">
-                                        <i class="icon-basket-loaded"></i>
+                            <div v-for="(service, index) in services" 
+                                 :key="index"
+                                 class="GridLex-col-2_sm-3_xs-4_xss-6">
+
+                                <a href="#" 
+                                    data-toggle="modal" 
+                                    @click.prevent="selectComp(service.comp)"
+                                    :id="service.comp">
+                                    <div class="category-item">
+                                        <div class="icon">
+                                            <i :class="service.icon"></i>
+                                        </div>
+                                        <div class="content">
+                                            <h6>{{ service.label }}</h6>
+                                        </div>
                                     </div>
-                                    <div class="content">
-                                        <h6>Educational Institutions</h6>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            
-                            <div class="GridLex-col-2_sm-3_xs-4_xss-6">
-                            
-                                <div class="category-item">
-                                    <div class="icon">
-                                        <i class="icon-screen-desktop"></i>
-                                    </div>
-                                    <div class="content">
-                                        <h6>Coaching Institutions &amp; IT</h6>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            
-                            <div class="GridLex-col-2_sm-3_xs-4_xss-6">
-                            
-                                <div class="category-item">
-                                    <div class="icon">
-                                        <i class="icon-chemistry"></i>
-                                    </div>
-                                    <div class="content">
-                                        <h6>Gov. & PSUs</h6>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            
-                            <div class="GridLex-col-2_sm-3_xs-4_xss-6">
-                            
-                                <div class="category-item">
-                                    <div class="icon">
-                                        <i class="icon-music-tone-alt"></i>
-                                    </div>
-                                    <div class="content">
-                                        <h6>Educational Publishers</h6>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            
-                            <div class="GridLex-col-2_sm-3_xs-4_xss-6">
-                            
-                                <div class="category-item">
-                                    <div class="icon">
-                                        <i class="icon-vector"></i>
-                                    </div>
-                                    <div class="content">
-                                        <h6>Schools and Olympiads</h6>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            
-                            <div class="GridLex-col-2_sm-3_xs-4_xss-6">
-                            
-                                <div class="category-item">
-                                    <div class="icon">
-                                        <i class="icon-camera"></i>
-                                    </div>
-                                    <div class="content">
-                                        <h6>Recruitment, Appraisals & Surveys.</h6>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            
-                            <div class="GridLex-col-2_sm-3_xs-4_xss-6">
-                            
-                                <div class="category-item">
-                                    <div class="icon">
-                                        <i class="icon-note"></i>
-                                    </div>
-                                    <div class="content">
-                                        <h6>Trainig Certificate</h6>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            
-                            <div class="GridLex-col-2_sm-3_xs-4_xss-6">
-                            
-                                <div class="category-item">
-                                    <div class="icon">
-                                        <i class="icon-cup"></i>
-                                    </div>
-                                    <div class="content">
-                                        <h6>Collage and Universities</h6>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            
-                            <div class="GridLex-col-2_sm-3_xs-4_xss-6">
-                            
-                                <div class="category-item">
-                                    <div class="icon">
-                                        <i class="icon-basket-loaded"></i>
-                                    </div>
-                                    <div class="content">
-                                        <h6>Distance education</h6>
-                                    </div>
-                                </div>
-                                
+                                </a>
+
                             </div>
                             
                         </div>
@@ -405,17 +308,108 @@
             </div>
             
         </div>
+        <!-- BEGIN: Component  -->
+
+        <teleport to='#app'>
+            <component v-if="selectComponent !== null" 
+                        :is="selectComponent"
+                        :id="selectComponent"
+                        @close="closeMe"
+                        ></component>
+        </teleport>
+        <!-- END: Component  -->
     </div>
 </template>
 
 <script>
-export default {
+import EducationalInstitutions from './home/EducationalInstitutions.vue';
+import CoachingClasses from './home/CoachingClasses.vue';
+import CollageUniversities from './home/CollageUniversities.vue';
+import DistanceEducation from './home/DistanceEducation.vue';
+import ITSolutions from './home/ITSolutions.vue';
+import RecruitmentSurveys from './home/RecruitmentSurveys.vue';
+import SchoolsOlympiads from './home/SchoolsOlympiads.vue';
+import TrainingCertificate from './home/TrainingCertificate.vue';
 
+export default {
+    components: {
+        EducationalInstitutions,
+        CoachingClasses,
+        CollageUniversities,
+        DistanceEducation,
+        ITSolutions,
+        RecruitmentSurveys,
+        TrainingCertificate,
+        SchoolsOlympiads
+    },
+    data() {
+        return {
+            selectComponent: '',
+            services: {
+               educational: {
+                   label: 'Educational Institutions',
+                   icon: 'fa fa-university',
+                   comp: 'EducationalInstitutions'
+               },
+               coaching: {
+                   label: 'Coaching Classes',
+                   icon: 'icon-screen-desktop',
+                   comp: 'CoachingClasses',
+               },
+               schools: {
+                   label: 'Schools and Olympiads',
+                   icon: 'fa education-icon-schoolclass',
+                   comp: 'SchoolsOlympiads',
+               },
+               collage: {
+                   label: 'Collage and Universities',
+                   icon: 'fa fa-graduation-cap',
+                   comp: 'CollageUniversities',
+               },
+               recruitment: {
+                   label: 'Recruitment & Surveys',
+                   icon: 'fa fa-users',
+                   comp: 'RecruitmentSurveys',
+               },
+               training: {
+                   label: 'Trainig Certificate',
+                   icon: 'fa education-icon-certificate3',
+                   comp: 'TrainingCertificate',
+               },
+               distance: {
+                   label: 'Distance education',
+                   icon: 'fa fa-location-arrow',
+                   comp: 'DistanceEducation',
+               },
+               it: {
+                   label: 'IT Solutions',
+                   icon: 'fa fa-tablet',
+                   comp: 'ITSolutions',
+               },
+            }
+        }
+    },
+    methods: {
+        selectComp(comp) {
+            this.selectComponent = comp;
+        },
+        closeMe() {
+            this.selectComponent = "";
+        }
+    },
 }
 </script>
 
 <style scoped>
 .banner {
     background-image:url('/meritest/images/banner/girl-with-red-hat-rqvk6PU3ylI-unsplash.jpg');
+}
+.category-item{
+    min-height: 150px;
+}
+.category-item:hover{
+    -moz-box-shadow: 0 0 10px #ccc;
+    -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #ccc;
 }
 </style>
