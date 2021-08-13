@@ -1,16 +1,18 @@
-import { createStore } from 'vuex'
+import { createStore } from 'vuex';
 
-import sideMenu from './side-menu'
+import sideMenu from './side-menu';
 
-import rootGetters from './getters'
-import rootActions from './actions'
-import rootMutations from './mutations'
-import userModules from './modules/users/index.js'
+import rootGetters from './getters';
+import rootActions from './actions';
+import rootMutations from './mutations';
+import userModule from './modules/users/index.js';
+import authModule from './modules/auth/index.js';
 
 const store = createStore({
   modules: {
-    users: userModules,
-    sideMenu
+    users: userModule,
+    sideMenu,
+    auth: authModule,
   },
   state() {
     return {

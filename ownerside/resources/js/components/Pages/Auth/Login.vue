@@ -11,7 +11,7 @@
           </div>
           <div class="my-auto">
             <img
-              alt="Icewall Tailwind HTML Admin Template"
+              alt="Time to have fun with learning"
               class="-intro-x w-1/2 -mt-16"
               :src="getImage('illustration.svg')"
             />
@@ -94,7 +94,7 @@
               </div>
             </form>
           </div>
-          
+          <loading v-if="isLoading" fixed></loading>
         </div>
         <!-- END: Login Form -->
       </div>
@@ -119,6 +119,7 @@ export default {
     const error = ref(false);
     const submitted = ref(false);
     const message = ref('');
+    const isLoading = ref(false);
 
     const rules = computed(() => {
         return {
@@ -142,31 +143,33 @@ export default {
     });
 
     function handleLogin() {
-      submitted.value = true;
-      v$.value.$validate(); // checks all inputs
+        isLoading.value = true;
+        
+        submitted.value = true;
+        v$.value.$validate(); // checks all inputs
 
-      if (!v$.value.$error) {
-          if (user.password.value != '') {
-              axios.get('/sanctum/csrf-cookie').then(response => {
-                axios.post('/login', user)
-                  .then(response => {
-                      submitted.value = false;
-                      router.go('/dashboard');
-                  })
-                  .catch(function () {
-                      submitted.value = false;
-                      error.value = true;
-                      message.value = 'These credentials do not match our records.';
-                  });
-              })
-              .catch(function (error) {
+        if (!v$.value.$error) {
+            isLoading.value = true;
+            try {
+                store.dispatch('auth/login');
+                if (response) {
+
+                }
+                submitted.value = false;
+                isLoading.value = false;
+                /*router.go('/dashboard');*/
+            } catch (error) {
+                isLoading.value = false;
                 console.error("Got nothing from server. Prompt user to check internet connection and try again")
-              });
-          }
-      } else {
-          // if ANY fail validation
-          return ;
-      }
+                error.value = true;
+                message.value = 'These credentials do not match our records.';
+            }
+
+        } else {
+            // if ANY fail validation
+            isLoading.value = false;
+            return ;
+        }
     }
 
     return {
@@ -175,7 +178,8 @@ export default {
       message,
       user,
       submitted,
-      v$
+      v$,
+      isLoading
     }
   },
   methods: {
