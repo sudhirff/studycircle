@@ -175,7 +175,7 @@
 												India </address>
 								</li>
 								<li>
-										<h5>Email</h5><a href="mailto: support@meritest.in">support@meritest.in</a>
+										<h5>Email</h5><a href="mailto:support@meritest.in">support@meritest.in</a>
 								</li>
 								<li>
 										<h5>Phone Number</h5><a href="#">+91 762 009 8848</a>
@@ -183,12 +183,13 @@
 								<li>
 										<h5>Social Networks</h5>
 										<div class="contact-social">
-										
-											<a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
-											<a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
-											<a href="#" data-toggle="tooltip" data-placement="top" title="Google Plus"><i class="fa fa-google-plus"></i></a>
-											<a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a>
-										
+											<a href="https://www.facebook.com/meritestdotin" target="_blank" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook-official"></i></a>
+											<a href="https://twitter.com/meritestdotin" target="_blank" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
+											<a href="https://www.linkedin.com/in/meritestdotin" target="_blank" data-toggle="tooltip" data-placement="top" title="LinkedIn"><i class="fa fa-linkedin "></i></a>
+											<a href="https://www.pinterest.com/meritestdotin" target="_blank" data-toggle="tooltip" data-placement="top" title="Pintrest"><i class="fa fa-pinterest "></i></a>
+											<a href="https://www.quora.com/profile/meritestdotin" target="_blank" data-toggle="tooltip" data-placement="top" title="Quora"><i class="fa fa-quora "></i>Q</a>
+											<a href="https://medium.com/" target="_blank" data-toggle="tooltip" data-placement="top" title="Medium"><i class="fa fa-medium "></i></a>
+											<a href="https://www.youtube.com/channel/UC2jXBWiTxsr-KQlBexxPvXA" target="_blank" data-toggle="tooltip" data-placement="top" title="Youtube"><i class="fa fa-youtube "></i></a>
 										</div>
 								</li>
 									

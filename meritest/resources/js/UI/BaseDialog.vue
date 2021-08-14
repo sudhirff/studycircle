@@ -33,7 +33,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 div.backdrop {
     position: fixed;
     top: 0;
@@ -46,7 +46,7 @@ div.backdrop {
 
 dialog {
     position: fixed;
-    top: 20vh;
+    top: 15vh;
     left: 10%;
     width: 80%;
     z-index: 100;
@@ -68,10 +68,14 @@ header {
 
 header h2 {
     margin: 0;
+    color: white;
 }
 
 section {
     padding: 1rem;
+    overflow-y: scroll;
+    scroll-behavior: auto;
+    max-height: 500px;
 }
 
 menu {

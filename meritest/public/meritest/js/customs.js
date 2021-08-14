@@ -14,14 +14,14 @@ jQuery(function() {
 				options: {
 					ease: "easeInOutCirc",
 					style: 'dark bubble',
-					delayBefore: 100,
+					delayBefore: 0,
 					delayAfter: 0,
-					exitTime: 300,
+					exitTime: 0,
 					onAfter: function(){
 						
 						var placeholderText = [
 							"What do you want to study?",
-							"Business?",
+							"JEEE?",
 							"Computer & IT?",
 							"Science?",
 							"Design?",
@@ -36,8 +36,8 @@ jQuery(function() {
 
 						$("#typed").typed({
 								stringsElement: $('#typed-strings'),
-								typeSpeed: 120,
-								backDelay: 900,
+								typeSpeed: 0,
+								backDelay: 0,
 								loop: true,
 								contentType: 'html',
 								showCursor: false,

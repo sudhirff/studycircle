@@ -1,25 +1,28 @@
 <template>
-    <!--<div id="introLoader" class="introLoading"></div>-->
+	<div>
+		<div id="introLoader"></div>
 	
-	<!-- start Container Wrapper -->
-	<div class="container-wrapper">
+		<!-- start Container Wrapper -->
+		<div class="container-wrapper">
 
-		<!-- start Header -->
-		<the-header />
-		<!-- end Header -->
+			<!-- start Header -->
+			<the-header />
+			<!-- end Header -->
 
-		<!-- start Main Wrapper -->
-		<div class="main-wrapper scrollspy-container">
-			<router-view></router-view>
+			<!-- start Main Wrapper -->
+			<div class="main-wrapper scrollspy-container">
+				<router-view></router-view>
+			</div>
+			<!-- end Main Wrapper -->
+			
+			<!-- start Footer Wrapper -->
+			<the-footer />
+			<!-- end Footer Wrapper -->
+			
 		</div>
-		<!-- end Main Wrapper -->
-		
-		<!-- start Footer Wrapper -->
-        <the-footer />
-		<!-- end Footer Wrapper -->
-		
+		<!-- end Container Wrapper -->
 	</div>
-	<!-- end Container Wrapper -->
+    
 </template>
 
 <script>

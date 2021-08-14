@@ -3,7 +3,14 @@
         <base-dialog :title="'Educational Institutions'" @close="$emit('close')">
             <template #default>
                 <div>
-                    <p>An educational institution is a place where people of different ages gain an education, including preschools, childcare, primary-elementary schools, secondary-high schools, and universities. They provide a large variety of learning environments and learning spaces.</p>
+                    <p>
+                        Easily Conduct online entrance exam for engineering, medical and management courses.
+                    </p>
+                    <p>
+                    Superfast Create online entrance exam JEE main, JEE Advanced, NEET, CMAT.
+                    These included CAT, JMET, XAT, Gitam SAT, NMAT, SNAP, MAT, state-specific exams.
+                    Easy to create state wise other CET exams also.
+                    <router-link to="/contact-us">Contact us Now</router-link></p>
                 </div>
             </template>
         </base-dialog>

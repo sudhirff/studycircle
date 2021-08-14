@@ -57,7 +57,7 @@
                         
                         <h4>Generate Result</h4>
                         <span class="icon text-primary"><i class="ion-trophy"></i></span>
-                        <p>Generate automated complete analytic result.</p>
+                        <p>Generate instant automated complete analytic result.</p>
                     
                     </div>
                 

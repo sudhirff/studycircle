@@ -12,7 +12,7 @@
                     
                         <div class="col-sm-6">
                             
-                            <div class="top-header-widget">
+                            <!--<div class="top-header-widget">
                                 <ul class="top-header-dropdown">
                                     <li class="dropdown dropdown_hover">
                                         <a id="language-dropdown" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -26,16 +26,16 @@
                                         </ul>
                                     </li>
                                 </ul>
-                            </div>
+                            </div>-->
                             
-                            <div class="top-header-widget hidden-xs">
+                            <div class="top-header-widget">
                                 <i class="ion-android-call"></i> <span class="number">+91 762 009 8848</span>
                             </div>
                         
                         </div>
                         
                         <div class="col-sm-6">
-                            <div class="top-header-widget pull-right hidden-xs">
+                            <div class="top-header-widget pull-right">
                                 <router-link to="/contact-us">
                                     <i class="fa fa-comments mr-3"></i> Support
                                 </router-link>

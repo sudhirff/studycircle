@@ -88,7 +88,8 @@
             
         </div>
         <!-- end hero-header -->
-        <div class="promo-box-bg-color bg-primary">
+        
+        <div class="promo-box-bg-color bg-org">
         
             <div class="container">
             
@@ -100,7 +101,7 @@
                         
                             <div class="GridLex-inner">
                             
-                                <h3>Know more about our features</h3>
+                                <h3>Want to know more about us?</h3>
                                 
                             </div>
                             
@@ -109,7 +110,7 @@
                         <div class="GridLex-col-3_sm-4_xs-12_xss-12">
                         
                             <div class="GridLex-inner">
-                                <router-link to="/features" class="btn btn-customer-org">Features</router-link>
+                                <router-link to="/about-us" class="btn btn-primary">About Us</router-link>
                             </div>
                             
                         </div>
@@ -194,7 +195,7 @@
                         
                             <div class="GridLex-inner">
                             
-                                <h3>Want to know more about us?</h3>
+                                <h3>Know more about our features</h3>
                                 
                             </div>
                             
@@ -203,7 +204,7 @@
                         <div class="GridLex-col-3_sm-4_xs-12_xss-12">
                         
                             <div class="GridLex-inner">
-                                <router-link to="/about-us" class="btn btn-customer-org">About Us</router-link>
+                                <router-link to="/features" class="btn btn-customer-org">Features</router-link>
                             </div>
                             
                         </div>
@@ -225,7 +226,7 @@
                     <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
                     
                         <div class="section-title">
-                            <h2 class="text-center">Our online exam software services</h2>
+                            <h2 class="text-center">Meritest online exam software solutions</h2>
                         </div>
                     </div>
                 
@@ -271,7 +272,7 @@
         
             <div class="GridLex-grid-noGutter-equalHeight">
             
-                <div class="GridLex-col-6_sm-12_xs-12 bg-img" style="background-image:url('images/hero-header-slider/02.jpg'); background-position: top right">
+                <div class="GridLex-col-6_sm-12_xs-12 bg-img bg-org">
                 
                     <div class="promo-box-03 overlay-danger">
                     
@@ -288,7 +289,7 @@
                     
                 </div>
                 
-                <div class="GridLex-col-6_sm-12_xs-12 bg-img" style="background-image:url('images/teacher-bg.jpg'); background-position: top right">
+                <div class="GridLex-col-6_sm-12_xs-12 bg-img bg-blue">
                 
                     <div class="promo-box-03 overlay-primary">
                         
@@ -297,7 +298,7 @@
                             <h2 class="mb-20 text-white">Join a Teacher Community</h2>
                             <p class="mb-25">Join teacher community and unlock features that will make your life much easier. Join teacher community and unlock features that will make your life much easier.</p>
                             
-                            <router-link to="/contact-us" class="btn btn-danger">Contact Us</router-link>
+                            <router-link to="/contact-us" class="btn btn-customer-org">Contact Us</router-link>
                         
                         </div>
                         
@@ -362,7 +363,7 @@ export default {
                    comp: 'SchoolsOlympiads',
                },
                collage: {
-                   label: 'Collage and Universities',
+                   label: 'College and Universities',
                    icon: 'fa fa-graduation-cap',
                    comp: 'CollageUniversities',
                },
@@ -411,5 +412,13 @@ export default {
     -moz-box-shadow: 0 0 10px #ccc;
     -webkit-box-shadow: 0 0 10px #ccc;
     box-shadow: 0 0 10px #ccc;
+}
+.bg-org {
+    background:#da380d; 
+    background-position: top right;
+}
+.bg-blue {
+    background:#057fd7; 
+    background-position: top right;
 }
 </style>
