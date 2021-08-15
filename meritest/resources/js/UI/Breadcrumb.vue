@@ -15,7 +15,7 @@
                 </div>
                 
                 <div class="col-xs-12 col-sm-4 hidden-xs">
-                    <p class="hot-line"> <i class="fa fa-phone"></i> Hot Line: +91 762 009 8848</p>
+                    <p class="hot-line"> <a href="tel:91-762-009-8848"><i class="fa fa-phone"></i> Hot Line: +91 762 009 8848</a></p>
                 </div>
                 
             </div>

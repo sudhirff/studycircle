@@ -29,7 +29,7 @@
                             </div>-->
                             
                             <div class="top-header-widget">
-                                <i class="ion-android-call"></i> <span class="number">+91 762 009 8848</span>
+                                <a href="tel:91-762-009-8848"><i class="ion-android-call"></i> <span class="number">+91 762 009 8848</span></a>
                             </div>
                         
                         </div>
@@ -64,13 +64,13 @@
                             <router-link to="/">Home</router-link>
                         </li>
                         <li>
-                            <router-link to="/how-it-works">How it works</router-link>
-                        </li>
-                        <li>
                             <router-link to="/about-us">About Us</router-link>
                         </li>
                         <li>
                             <router-link to="/features">Features</router-link>
+                        </li>
+                        <li>
+                            <router-link to="/how-it-works">How It Works</router-link>
                         </li>
                         <li>
                             <router-link to="/contact-us">Contact Us</router-link>
@@ -103,15 +103,14 @@ export default {
 </script>
 
 <style scoped>
-
-.navbar>.container>.navbar-collapse>.navbar-nav>li>a.active {
-	color: #0D7CC9 !important;
-    background: none !important;
+.navbar-nav a {
+    font-size: large;
+    font-weight: bold;
+    color: #656566;
+    font-variant-caps: all-small-caps;
 }
 
-.logo {
-    /*top: -66px;
-    left: -75px;*/
-    height: 40px;
+.navbar-nav a:hover {
+    color: #da380d;
 }
 </style>

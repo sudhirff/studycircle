@@ -12,10 +12,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
 	<!-- Fav and Touch Icons -->
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('meritest/images/ico/apple-touch-icon-144-precomposed.png')}}">
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('meritest/images/ico/apple-touch-icon-114-precomposed.png')}}">
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('meritest/images/ico/apple-touch-icon-72-precomposed.png')}}">
-	<link rel="apple-touch-icon-precomposed" href="{{ asset('meritest/images/ico/apple-touch-icon-57-precomposed.png')}}">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('meritest/images/ico/android-chrome-192x192.png')}}">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('meritest/images/ico/android-chrome-512x512.png')}}">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('meritest/images/ico/apple-touch-icon.png')}}">
+	<link rel="apple-touch-icon-precomposed" href="{{ asset('meritest/images/ico/apple-touch-icon.png')}}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -29,7 +29,7 @@
 
 	<!-- CSS Custom -->
 	<link href="{{ asset('meritest/css/style.css')}}" rel="stylesheet">
-	
+    <link href="{{ asset('meritest/css/your-style.css')}}" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>

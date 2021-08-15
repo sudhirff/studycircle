@@ -11,3 +11,137 @@ Created:        18/10/2016
 *	Add your own style
 *
 * -------------------------------------------------------------------*/
+
+.banner {
+    background-image:url('../images/banner/girl-with-red-hat-rqvk6PU3ylI-unsplash.jpg');
+}
+.category-item{
+    min-height: 150px;
+}
+.category-item:hover{
+    -moz-box-shadow: 0 0 10px #ccc;
+    -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #ccc;
+}
+.bg-org {
+    background:#da380d; 
+    background-position: top right;
+}
+.bg-blue {
+    background:#057fd7; 
+    background-position: top right;
+}
+
+
+.navbar>.container>.navbar-collapse>.navbar-nav>li>a.active {
+	color: #0D7CC9 !important;
+    background: none !important;
+}
+
+.logo {
+    /*top: -66px;
+    left: -75px;*/
+    height: 40px;
+    /*margin-top:10px;
+    margin-bottom:10px;*/
+}
+
+@media (max-width: 768px) {
+    .slicknav_nav {
+        margin-top: 0;
+        border-top: 1px solid #423F4F;
+        background: #057fd7;
+        color: white;
+        font-weight: bold;
+    }
+}
+@media (max-width: 768px) {
+    .slicknav_nav a {
+        font-size: 12px;
+        color: white;
+        font-weight: bold;
+    }
+}
+
+.quote {
+	padding: 25px;
+	margin-bottom: 10px; 
+}
+.quote h4 {
+	color: white;
+}
+.quote p {
+	color: white;
+}
+.list-group-aboutus {
+	color: white;
+	min-height: 500px;
+	padding-left: 5px;
+}
+.list-group-item-aboutus {
+	background: none;
+	border: none;
+	list-style: disclosure-closed;
+	padding: 5px;
+}
+
+.image img {
+	filter: grayscale(100%);
+}
+
+.org-color {
+	color: #da380d;
+}
+
+.min-ht{
+	min-height: 200px;
+}
+
+.text-org{
+    color: #da380d;
+}
+
+.icon-featured {
+    min-height: 260px;
+    text-align: center;
+    padding: 10px 30px 30px;
+    border: 1px solid #057fd7;
+    border-radius: 10px;
+    height: auto;
+    width: auto;
+    background: #F7F7F7;
+    margin-bottom: 10px;
+}
+@media (max-width: 768px) {
+    .icon-featured{
+        min-height: 352px;
+        margin-bottom: 35px;
+        margin-top: 20px;
+    }
+}
+.icon-featured:hover {
+    -moz-box-shadow: 0 0 10px #ccc;
+    -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #ccc;  
+}/**/
+@media (max-width: 767px) {
+    .section-title{
+        padding: 10px;
+        display: block;
+        margin-top: -25px;
+    }
+}
+
+.about-us-footer {
+    width: auto;
+    max-width: 265px;
+}
+
+.menu-footer a {
+    font-size: 15px;
+    font-weight: bold;
+    font-variant-caps: all-small-caps;
+}
+.menu-footer a:hover {
+    color: #057fd7;
+}

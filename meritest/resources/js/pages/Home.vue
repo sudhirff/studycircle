@@ -402,23 +402,4 @@ export default {
 </script>
 
 <style scoped>
-.banner {
-    background-image:url('/meritest/images/banner/girl-with-red-hat-rqvk6PU3ylI-unsplash.jpg');
-}
-.category-item{
-    min-height: 150px;
-}
-.category-item:hover{
-    -moz-box-shadow: 0 0 10px #ccc;
-    -webkit-box-shadow: 0 0 10px #ccc;
-    box-shadow: 0 0 10px #ccc;
-}
-.bg-org {
-    background:#da380d; 
-    background-position: top right;
-}
-.bg-blue {
-    background:#057fd7; 
-    background-position: top right;
-}
 </style>

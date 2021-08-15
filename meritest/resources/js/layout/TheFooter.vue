@@ -41,10 +41,11 @@
                         </div>-->
 
                         <ul class="menu-footer">
-                            <li><router-link to="/about-us">About</router-link></li>
+                            <li><router-link to="/">Home</router-link></li>
+                            <li><router-link to="/about-us">About Us</router-link></li>
                             <li><router-link to="/features">Features</router-link></li>
-                            <li><router-link to="/how-it-works">How it works</router-link></li>
-                            <li><router-link to="/contact-us">Contact</router-link></li>
+                            <li><router-link to="/how-it-works">How It Works</router-link></li>
+                            <li><router-link to="/contact-us">Contact Us</router-link></li>
                             <li><a href="/sitemap.xml" target="_blank">Site Map</a></li>
                         </ul>
                     
@@ -67,9 +68,9 @@
                             Behind Ganesh Mandir<br />
                             NAGPUR, MAHARASHTRA 440009<br />
                             India <br />
-                            <span class="block text-white font20 font700 line20 mt-5 mb-5">
-                                {{ mobile_number }}+91 762 009 8848
-                            </span>
+                            <a href="tel:91-762-009-8848"><span class="block text-white font20 font700 line20 mt-5 mb-5">
+                                +91 762 009 8848
+                            </span></a>
                             <a href="mailto: support@meritest.com">support@meritest.com</a>
                         </p>
                     
@@ -123,5 +124,5 @@ export default {
 </script>
 
 <style scoped>
- 
+
 </style>
