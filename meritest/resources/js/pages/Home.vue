@@ -132,7 +132,7 @@
                     <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
                     
                         <div class="section-title">
-                            <h2 class="text-center">MeriTest Built For</h2>
+                            <h2 class="text-center">Meritest Built For</h2>
                         </div>
                     </div>
                 

@@ -108,7 +108,7 @@
 										<div class="content">
 										
 											<h3>Sudhir Mishra</h3>
-											<p class="labeling">Founder &amp; CEO</p>
+											<!--<p class="labeling">Founder &amp; CEO</p>-->
 											
 										</div>
 										
@@ -139,8 +139,8 @@
 										
 										<div class="content">
 											<h3>Pallavi Dighe</h3>
-											<p class="labeling">Chief Technical Officer</p>
-											
+											<!-- <p class="labeling">Chief Technical Officer</p>
+											<p>An artist, learner, mother and so many roles, she is playing all these roles like rockstar. <br />She is a Zend Certified PHP 5 Engineer. She is having vast experience in web development industry. </p>-->
 										</div>
 										
 									</div>
@@ -171,8 +171,7 @@
 										<div class="content">
 
 											<h3>Pooja Tripathi</h3>
-											<p class="labeling">Communication Head</p>
-											
+											<!-- <p class="labeling">Communication Head</p>-->
 										</div>
 										
 									</div>

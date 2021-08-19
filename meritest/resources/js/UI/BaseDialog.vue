@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="backdrop" @click="$emit('close')"></div>
-        <dialog open>
+        <dialog open class="dialog">
             <header>
                 
                 <slot name="header">
@@ -34,67 +34,5 @@ export default {
 </script>
 
 <style scoped>
-div.backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.75);
-    z-index: 50;
-}
 
-dialog {
-    position: fixed;
-    top: 15vh;
-    left: 10%;
-    width: 80%;
-    z-index: 100;
-    border-radius: 12px;
-    border: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-}
-
-header {
-    min-height: 70px;
-    background-color: #057fd7;
-    color: white;
-    width: 100%;
-    padding: 0.5rem;
-}
-
-header h2 {
-    margin: 0;
-    color: white;
-}
-
-section {
-    padding: 1rem;
-    overflow-y: scroll;
-    scroll-behavior: auto;
-    max-height: 500px;
-}
-
-menu {
-    padding: 1rem;
-    display: flex;
-    justify-content: flex-end;
-    margin: 0;
-}
-
-@media (min-width: 768px) {
-    dialog {
-        left: calc(40% - 20rem);
-        width: 60rem;
-    }
-}
-
-.closeIcon {
-    color: #FFFFFF;
-    margin-top: -40px;
-    margin-right: 10px;
-}
 </style>

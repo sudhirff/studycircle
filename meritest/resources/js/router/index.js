@@ -37,6 +37,10 @@ const routes = [
         path: '/features',
         name: 'features',
         component: Features
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        component: Home
     }
 ];
 

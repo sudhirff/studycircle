@@ -36,9 +36,9 @@ export default {
   setup() {
     const loggedIn = ref(false);
 
-    if (window.Laravel.isLoggedin) {
+    /*if (window.Laravel.isLoggedin) {
         loggedIn.value = true;
-    }
+    }*/
     onMounted(() => {
       cash('body')
         .removeClass('error-page')
@@ -50,11 +50,11 @@ export default {
       loggedIn
     }
   },
-  beforeRouteEnter(to, from, next) {
+  /*beforeRouteEnter(to, from, next) {
       if (!window.Laravel.isLoggedin) {
           window.location.href = "/login";
       }
       next();
-  }
+  }*/
 }
 </script>

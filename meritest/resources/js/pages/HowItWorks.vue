@@ -65,7 +65,7 @@
             <div class="col-sm-10 col-sm-offset-1 col-md-12 col-md-offset-0">
             
                 <div class="section-title">
-                    <h3 class="text-center">How MeriTest Works for Students</h3>
+                    <h3 class="text-center">How Meritest Works for Students</h3>
                 </div>
                 <div class="col-sm-4" style="padding-left: 0px;">
                     

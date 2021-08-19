@@ -359,7 +359,7 @@ ul.top-header-dropdown li:first-child {
 
 .navbar-sticky .navbar-brand:hover,
 .navbar-sticky .navbar-brand:focus {
-    color: #4D82B8;
+    color: #da380d;
     background-color: transparent
 }
 
@@ -374,14 +374,14 @@ ul.top-header-dropdown li:first-child {
 
 .navbar-sticky .navbar-nav > li > a:hover,
 .navbar-sticky .navbar-nav > li > a:focus {
-    color: #4D82B8;
+    color: #da380d;
     background-color: transparent
 }
 
 .navbar-sticky .navbar-nav > .active > a,
 .navbar-sticky .navbar-nav > .active > a:hover,
 .navbar-sticky .navbar-nav > .active > a:focus {
-    color: #4D82B8;
+    color: #da380d;
     background-color: transparent
 }
 
@@ -393,7 +393,7 @@ ul.top-header-dropdown li:first-child {
 }
 
 .navbar-sticky .navbar-nav > li.navbar-separator span:after {
-    background: #4D82B9;
+    background: #da380d;
 }
 
 .navbar-sticky .navbar-toggle {
@@ -419,7 +419,7 @@ ul.top-header-dropdown li:first-child {
 }
 
 .transparent-header .navbar-sticky .navbar-nav > li > a .border:hover {
-    border-color: #4D82B9;
+    border-color: #da380d;
 }
 
 .navbar-sticky .navbar-nav > li > ul {
@@ -4299,7 +4299,7 @@ ul.comment-item ul {
     letter-spacing: 1px;
     line-height: 1.2;
     margin: 30px 0 20px;
-    color: #ABABABA;
+    color: #ababaa;
 }
 
 .recent-post-item .recent-post-meta > div {
@@ -4335,13 +4335,13 @@ ul.comment-item ul {
 .main-footer {
     background: #202734;
     color: rgba(255, 255, 255, 0.7);
-    padding-top: 80px;
-    padding-bottom: 40px;
+    padding-top: 30px;
+    /*padding-bottom: 40px;*/
 }
 
 .main-footer a {
     color: rgba(255, 255, 255, 0.7);
-    font-weight: 400;
+    font-weight: 800;
 }
 
 .main-footer a:hover {
@@ -4355,7 +4355,7 @@ ul.comment-item ul {
 
 .footer-logo {
     font-size: 30px;
-    margin: 0 0 50px;
+    margin: 0 0 15px;
     color: #FFF;
 }
 
@@ -4370,9 +4370,14 @@ ul.menu-footer li {
 }
 
 ul.menu-footer li a {
-    font-size: 13px;
+    font-size: 18px;
 }
 
+@media only screen and (max-width: 360px) {
+    ul.menu-footer li a {
+        font-size: 13px;
+    }
+}
 .newsletter-footer {
     margin: 0 0 50px;
 }
@@ -4423,7 +4428,7 @@ ul.menu-footer li a {
 }
 
 .social-footer {
-    margin: 0 0 50px;
+    margin: 0 0 25px;
 }
 
 .social-footer a {
@@ -4473,6 +4478,9 @@ ul.secondary-footer-menu li a:hover {
     color: #FFF;
 }
 
+@media only screen and (max-width: 360px) {
+    
+}
 @media only screen and (max-width: 1199px) {}
 
 @media only screen and (max-width: 991px) {

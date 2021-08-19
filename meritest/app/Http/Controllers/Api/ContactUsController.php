@@ -19,22 +19,47 @@ class ContactUsController extends Controller
      */
     public function store(ContactURequest $request)
     {
-        $url = 'https://www.google.com/recaptcha/api/siteverify';
-        $remoteip = $_SERVER['REMOTE_ADDR'];
-        $data = [
+        /*$curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_URL => 'https://www.google.com/recaptcha/api/siteverify',
+            CURLOPT_POST => 1,
+            CURLOPT_POSTFIELDS => array(
                 'secret' => config('services.recaptcha.secret'),
-                'response' => $request->recaptcha_token,
-                'remoteip' => $remoteip
+                'response' => $request->recaptcha_token
+            )
+        ));
+        $response = curl_exec($curl);
+        
+        curl_close($curl);
+        
+        dd($resultJson);
+        if(strpos($response, '"success": true') !== FALSE) {
+            echo '<h3>Thanks for your message!</h3>';
+        } else {
+            $response = [
+                'success' => false,
+                'message' => 'ReCaptcha Error. Please refresh the page again.',
+                'captcha' => true,
             ];
+        }*/
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $remoteip = env('APP_URL');//$_SERVER['REMOTE_ADDR'];
+
+        $data = [
+                    'secret' => config('services.recaptcha.secret'),
+                    'response' => $request->recaptcha_token,
+                    'remoteip' => $remoteip
+                ];
         $options = [
                 'http' => [
-                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-                'method' => 'POST',
-                'content' => http_build_query($data)
+                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method' => 'POST',
+                    'content' => http_build_query($data)
                 ]
             ];
         $context = stream_context_create($options);
-        $result = file_get_contents($url, false, $context);
+        $result = file_get_contents($url, false, $context);        
         $resultJson = json_decode($result);
 
         if ($resultJson->success != true) {
@@ -55,6 +80,7 @@ class ContactUsController extends Controller
                 'subject' => $request->subject,
                 'message' => $request->message
             ];
+            
             $contact = Contact::create($inputs);
             Mail::to('support@meritest.in')->send(new ContactUsMail($contact));
             

@@ -1,6 +1,5 @@
 <template>
 	<div>
-
 		<breadcrumb :pageTitle="'Contact Us'"></breadcrumb>
 		<base-card>
 				
@@ -29,6 +28,7 @@
 												data-error="Your name is required" 
 												v-model.trim="data.name"
 												placeholder="Your name"
+												tabindex="0"
 												>
 										<span v-if="submitted && v$.name.$error" class="help-block with-errors">
 											{{ v$.name.$errors[0].$message }}
@@ -45,7 +45,8 @@
 												type="email" 
 												class="form-control" 
 												v-model.trim="data.email"
-												placeholder="Your email address">
+												placeholder="Your email address"
+												tabindex="1">
 										<span v-if="submitted && v$.email.$error" class="help-block with-errors">
 											{{ v$.email.$errors[0].$message }}
 										</span>
@@ -58,10 +59,11 @@
 									<div class="form-group" :class="{ 'has-error': submitted && v$.mobile_no.$error }">
 										<label for="mobile_number">Mobile Number <span class="font10 text-danger">*</span></label>
 										<input id="mobile_number" 
-												type="text" 
+												type="number" 
 												class="form-control" 
 												placeholder="Your mobile number" 
-												v-model.trim="data.mobile_no">
+												v-model.trim="data.mobile_no"
+												tabindex="2">
 										<span v-if="submitted && v$.mobile_no.$error" class="help-block with-errors">
 											{{ v$.mobile_no.$errors[0].$message }}
 										</span>
@@ -78,7 +80,8 @@
 													rows="3" 
 													data-minlength="4" 
 													placeholder="Your address" 
-													v-model.trim="data.address"></textarea>
+													v-model.trim="data.address"
+													tabindex="3"></textarea>
 										<span v-if="submitted && v$.address.$error" class="help-block with-errors">
 											{{ v$.address.$errors[0].$message }}
 										</span>
@@ -92,18 +95,16 @@
 									<div class="form-group" :class="{ 'has-error': submitted && v$.heard_from.$error }">
 										<label for="heard-from">Heard From <span class="font10 text-danger">*</span></label>
 										
-										<select id="heard-from" 
+										<select id="heard-from-me" 
 												class="form-control select2"
-												v-model="data.heard_from">
+												v-model="data.heard_from"
+												tabindex="4">
+												
 											<option value="">Select from where you heard about us</option>
-											<option value="google">Google</option>
-											<option value="facebook">Facebook</option>
-											<option value="twitter">Twitter</option>
-											<option value="sms">Mobile SMS</option>
-											<option value="executive">Marketing Executive</option>
-											<option value="friends">Friends</option>
-											<option value="mobile">Mobile Application</option>
-											<option value="others">Others</option>
+											<option v-for="(heardFromOption, index) in heardFromOptions" 
+													:key="index" :value="index">
+													{{ heardFromOption }}
+											</option>
 										</select>
 										<span v-if="submitted && v$.heard_from.$error" class="help-block with-errors">
 											{{ v$.heard_from.$errors[0].$message }}
@@ -120,6 +121,7 @@
 												class="form-control"
 												v-model.trim="data.subject"
 												placeholder="Your subject" 
+												tabindex="5"
 												/>
 										<span v-if="submitted && v$.subject.$error" class="help-block with-errors">
 											{{ v$.subject.$errors[0].$message }}
@@ -137,7 +139,8 @@
 													rows="8" 
 													data-minlength="50" 
 													placeholder="Your message" 
-													v-model.trim="data.message"></textarea>
+													v-model.trim="data.message"
+													tabindex="6"></textarea>
 										<span v-if="submitted && v$.message.$error" class="help-block with-errors">
 											{{ v$.message.$errors[0].$message }}
 										</span>
@@ -191,22 +194,40 @@
 			
 			</div>
 		</base-card>
+		<loading v-if="loading" fixed></loading>
 	</div>
 </template>
 
 <script>
 import { ref, reactive, computed } from 'vue';
 import useVuelidate from '@vuelidate/core';
-
-import { required, email, maxLength, minLength, numeric, helpers } from '@vuelidate/validators';
+import { required, 
+		 email, 
+		 maxLength, 
+		 minLength, 
+		 numeric, 
+		 helpers 
+		} from '@vuelidate/validators';
 import axios from "axios";
 import { load } from 'recaptcha-v3';
+import { useRouter } from 'vue-router'
 
 export default {
 	setup () {
 		const submitted = ref(false);
 		const loading = ref(false);
+		const router = useRouter();
+		var showMessage = '';
 
+		const heardFromOptions = {
+			google: 'Google',
+			facebook: 'Facebook',
+			twitter: 'Twitter',
+			sms: 'Mobile SMS',
+			executive: 'Marketing Executive',
+			friends: 'Friends',
+			mobile: 'Mobile Application',
+		};
 		const data = reactive({
             name: '',
             email: '',
@@ -266,39 +287,36 @@ export default {
 			v$.value.$validate(); // checks all inputs
 
 			if (!v$.value.$error) {
-				
 				loading.value = true;
-
 				saveContact();
 				
             } else {
                 // if ANY fail validation
-                
                 return ;
             }
 		}
 
 		
 		async function saveContact()
-		{
+		{			
 			await axios.post('/api/contactus', data)
 				.then(response => {
-					if (response.data.success == true) {
-						alert(response.data.message);
-					} else {
-						alert(response.data.message);
-						
-					}
+					showMessage = response.data.message;
 				})
 				.catch(e => {
-					alert('You will be contacted soon.');
-					console.log('Oops, something went wrong!');
-				}) ;
+					showMessage = e.message;
+				});
 				loading.value = false;
 				submitted.value = false;
-				location.reload();
+				alert(showMessage);
+				//router.push('/contact-us');
 				clearForm();
+				router.push({
+					name: 'ContactUs',
+				})
+				//location.reload();
 		}
+
 		function clearForm()
 		{
 			 data.name = '';
@@ -309,15 +327,14 @@ export default {
 			 data.subject = '';
 			 data.message = '';
 		}
-
 		return { 
 			v$,
 			submitForm,
 			submitted,
 			loading,
 			data,
-			clearForm,
-			asyncFunction
+			asyncFunction,
+			heardFromOptions,
 		 }
 	},
 	beforeRouteLeave (to, from, next) {
@@ -327,3 +344,11 @@ export default {
 	}
 }
 </script>
+<style scoped>
+.address-list li {
+	margin-bottom: 20px;
+}
+.address-list li h5{
+	margin-bottom: 2px;
+}
+</style>
