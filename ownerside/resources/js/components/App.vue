@@ -34,9 +34,6 @@ export default {
     //TheMobileMenu,
     TheSideMenu,
   },
-  data() {
-
-  },
   setup() {
     const store = useStore();
     //const authenticated = ref(store.getters.isAuthenticated);

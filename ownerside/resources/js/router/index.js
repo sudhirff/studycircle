@@ -40,7 +40,7 @@ const routes = [
         meta: { requiresAuth: true },
         children: [
             {
-                path:'/create',
+                path:'/institutes/create',
                 name: 'instituteCreate',
                 component: InstituteCreate,
                 meta: { requiresAuth: true }
@@ -80,14 +80,24 @@ const routes = [
         component: Register
     },
     {
+        path: '/profile',
+        name: 'profile',
+        component: Register
+    },
+    {
+        path: '/reset-password',
+        name: 'resetPassword',
+        component: Register
+    },
+    {
         path: '/error-page',
         name: 'error-page',
         component: ErrorPage
     },
-    {
+    /*{
         path: '/:pathMatch(.*)*',
         component: ErrorPage
-    }
+    }*/
 ]
 
 const router = createRouter({

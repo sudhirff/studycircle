@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Institute;
 
 class InstituteController extends Controller
 {
@@ -14,7 +15,12 @@ class InstituteController extends Controller
      */
     public function index()
     {
-        //
+        $institutes = Institute::when(request('search'), function ($query) {
+            $query->where('name', 'like', '%'. request('search'). '%');
+            $query->whereOr('email', 'like', '%'. request('search'). '%');
+            $query->whereOr('mobile_no', 'like', '%'. request('search'). '%');
+        })->orderBy('id', 'desc')->get();
+    return response()->json($institutes);
     }
 
     /**

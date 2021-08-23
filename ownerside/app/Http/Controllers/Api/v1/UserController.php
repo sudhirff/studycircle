@@ -10,6 +10,7 @@ use App\Http\Resources\UserResource;
 use App\Http\Requests\UserRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {

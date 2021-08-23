@@ -21,7 +21,8 @@ use App\Models\User;
 Route::middleware('api')->group(function () {
     Route::middleware('auth:sanctum')->group(
         function () {
-            Route::resource('v1/users', UserController::class);    
+            Route::resource('v1/users', UserController::class);  
+            Route::resource('v1/institutes', InstituteController::class);    
 
             Route::get('/v1/users/check_email_exists/{email}/{id}', function ($email, $id = null) {
                 if ($id != null) {
