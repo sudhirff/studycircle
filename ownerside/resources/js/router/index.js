@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import store from '../store/index.js';
 
 /*** Begin Dashboard component(s)  */
 import Dashboard from '@/components/Pages/Dashboard/Index.vue'
@@ -24,21 +25,25 @@ const routes = [
     {
         path: '/',
         redirect: '/dashboard',
+        meta: { requiresAuth: true }
     },
     {
         path: '/dashboard',
         name: 'dashboard',
-        component: Dashboard
+        component: Dashboard,
+        meta: { requiresAuth: true }
     },
     {
         path: '/institutes',
         name: 'institutes',
         component: InstituteList,
+        meta: { requiresAuth: true },
         children: [
             {
                 path:'/create',
                 name: 'instituteCreate',
                 component: InstituteCreate,
+                meta: { requiresAuth: true }
             }
         ]
     },
@@ -46,24 +51,28 @@ const routes = [
         path: '/users',
         name: 'users',
         component: UserList,
+        meta: { requiresAuth: true },
         children: [
         {
             path: '/create',
             name: 'userCreate',
             component: UserCreate,
+            meta: { requiresAuth: true },
         },
         {
             path: '/:id/edit',
             name: 'userEdit',
             component: UserEdit,
             props: true,
+            meta: { requiresAuth: true },
         },
     ]
     },
     {
         path: '/login',
         name: 'login',
-        component: Login
+        component: Login,
+        meta: { requiresUnauth: true }
     },
     {
         path: '/register',
@@ -90,4 +99,14 @@ const router = createRouter({
         return savedPosition || { left: 0, top: 0 }
     }
 });
+
+router.beforeEach(function(to, _, next) {
+    if (to.meta.requiresAuth && !store.getters.isAuthenticated) {
+      next('/login');
+    } else if (to.meta.requiresUnauth && store.getters.isAuthenticated) {
+      next('/dashboard');
+    } else {
+      next();
+    }
+  });
 export default router;

@@ -24,7 +24,7 @@
             <div class="dropdown-menu w-56">
                 <div class="dropdown-menu__content box dark:bg-dark-6">
                     <div class="p-4 border-b border-black border-opacity-5 dark:border-dark-3">
-                        <div class="font-medium">{{user.name}}</div>
+                        <div class="font-medium">Pallavi Dighe</div>
                         <div class="text-xs text-gray-600 mt-0.5 dark:text-gray-600">Engineer</div>
                     </div>
                     <div class="p-2">
@@ -73,15 +73,11 @@ export default {
         }
         
         // Show hide account drop down
-        if (window.Laravel.isLoggedin) {
-            const user = window.Laravel.user;
-            
-            return {
-                searchDropdown,
-                showSearchDropdown,
-                hideSearchDropdown,
-                user
-            }
+        
+        return {
+            searchDropdown,
+            showSearchDropdown,
+            hideSearchDropdown,
         }
     },
     methods: {
@@ -89,17 +85,9 @@ export default {
         {
             return "/owner/images/"+image;
         },
-        logout() {
-            this.$axios.get('/sanctum/csrf-cookie').then(response => {
-                this.$axios.post('/logout')
-                    .then(response => {
-                        window.location.href = "/login"
-                        
-                    })
-                    .catch(function (error) {
-                        console.error(error);
-                    });
-            })
+        async logout() {
+            await this.$store.dispatch('logout');
+            window.location.href = "/login";
         }
     }
 }

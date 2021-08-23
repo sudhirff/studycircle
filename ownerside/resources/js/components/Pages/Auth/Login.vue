@@ -107,9 +107,11 @@ import { onMounted, ref, reactive, computed } from 'vue'
 import { useVuelidate } from '@vuelidate/core';
 import { required, email, helpers } from '@vuelidate/validators'
 import axios from 'axios'
+import { useStore } from 'vuex';
 
 export default {
   setup() {
+    const store = useStore();
     const router = useRouter();
     const user = reactive({
         email: '',
@@ -142,7 +144,7 @@ export default {
         .addClass('login')
     });
 
-    function handleLogin() {
+    async function handleLogin() {
         isLoading.value = true;
         
         submitted.value = true;
@@ -151,26 +153,21 @@ export default {
         if (!v$.value.$error) {
             isLoading.value = true;
             try {
-                store.dispatch('auth/login');
-                if (response) {
-
-                }
-                submitted.value = false;
-                isLoading.value = false;
-                /*router.go('/dashboard');*/
-            } catch (error) {
-                isLoading.value = false;
-                console.error("Got nothing from server. Prompt user to check internet connection and try again")
-                error.value = true;
-                message.value = 'These credentials do not match our records.';
+              await store.dispatch('login', user);
+              submitted.value = false;
+              isLoading.value = false;
+              router.go('/dashboard');
+            } catch(e) {
+              isLoading.value = false;
+              error.value = true;
+              message.value = e.message;
             }
-
         } else {
             // if ANY fail validation
             isLoading.value = false;
             return ;
         }
-    }
+    };
 
     return {
       handleLogin,
@@ -189,13 +186,6 @@ export default {
       },
       
   },
-  beforeRouteEnter(to, from, next) {
-      if (window.Laravel.isLoggedin) {
-          return next('dashboard');
-      }
-      next();
-  }
-
 }
 </script>
 

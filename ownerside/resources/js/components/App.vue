@@ -1,5 +1,5 @@
 <template>
-    <div class="flex overflow-hidden" v-if="loggedIn">
+    <div class="flex overflow-hidden" v-if="authenticated">
         <!-- BEGIN: Side Menu -->
         <the-side-menu />
         <!-- END: Side Menu -->
@@ -26,6 +26,7 @@ import { onMounted, ref } from 'vue';
 //import TheMobileMenu from './layouts/TheMobileMenu'
 import TheTopBar from "./layouts/TheTopBar"
 import TheSideMenu from './layouts/TheSideMenu'
+import { useStore } from 'vuex';
 
 export default {
   components: {
@@ -33,12 +34,13 @@ export default {
     //TheMobileMenu,
     TheSideMenu,
   },
-  setup() {
-    const loggedIn = ref(false);
+  data() {
 
-    /*if (window.Laravel.isLoggedin) {
-        loggedIn.value = true;
-    }*/
+  },
+  setup() {
+    const store = useStore();
+    //const authenticated = ref(store.getters.isAuthenticated);
+
     onMounted(() => {
       cash('body')
         .removeClass('error-page')
@@ -46,15 +48,28 @@ export default {
         .addClass('main')
     });
 
+    store.dispatch('tryLogin');
     return {
-      loggedIn
+      //authenticated
     }
   },
-  /*beforeRouteEnter(to, from, next) {
-      if (!window.Laravel.isLoggedin) {
-          window.location.href = "/login";
+
+  computed: {
+    didAutoLogout() {
+      return this.$store.getters.didAutoLogout;
+    },
+    authenticated() {      
+      return this.$store.getters.isLoggedIn;
+    }
+  },
+  watch: {
+    didAutoLogout(curValue, oldValue) {
+      if (curValue && curValue !== oldValue) {
+        this.authenticated = false;
+        window.href('/login');
+        //this.$router.go('/login');
       }
-      next();
-  }*/
+    }
+  }
 }
 </script>

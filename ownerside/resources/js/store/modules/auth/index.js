@@ -3,12 +3,13 @@ import actions from "./actions.js"
 import mutations from "./mutations.js"
 
 export default {
-    namespaced: true,
+    //namespaced: true,
     state() {
         return {
-            authUser: [],
+            userId: null,
             token: null,
             isLoggedIn: false,
+            didAutoLogout: false,
         }
     },
     actions,

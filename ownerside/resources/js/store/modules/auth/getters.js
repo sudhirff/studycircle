@@ -1,6 +1,6 @@
-export default {    
-    authUser(state) {
-        return state.authUser;
+export default {
+    userId(state) {
+        return state.userId;
     },
     token(state) {
         return state.token;
@@ -10,5 +10,8 @@ export default {
     },
     isLoggedIn(state) {
         return state.isLoggedIn;
+    },
+    didAutoLogout(state) {
+      return state.didAutoLogout;
     }
 }

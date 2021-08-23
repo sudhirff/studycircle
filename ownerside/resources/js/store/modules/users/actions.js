@@ -3,7 +3,7 @@ import axios from "axios"
 export default {
     // This action is used to fetch all the users present in database
     async fetchUsers(context) {
-        const response = await axios.get('/api/users') ;
+        const response = await axios.get('/api/v1/users') ;
 
         if (response.status != 200) {
             const error = new Error('Failed to fetch users')
@@ -13,7 +13,7 @@ export default {
     },
     
     async createUser(context, user) {
-        const response = await axios.post('/api/users', user) ;
+        const response = await axios.post('/api/v1/users', user) ;
 
         if (response.status != 200) {
             const error = new Error('Failed to fetch users')
@@ -24,7 +24,7 @@ export default {
 
     // This action is used to fetch only selected user
     async editUser(context, id) {
-        const response = await axios.get(`/api/users/${id}/edit`);
+        const response = await axios.get(`/api/v1/users/${id}/edit`);
 
         if (response.status != 200) {
             const error = new Error('Failed to fetch user')
@@ -35,7 +35,7 @@ export default {
 
     // After user submits the form, user information must be updated in database.
     async updateUser(context, user) {
-        const response = await axios.put(`/api/users/${user.id}`, user);
+        const response = await axios.put(`/api/v1/users/${user.id}`, user);
 
         if (response.status != 200) {
             const error = new Error('Failed to update user')
@@ -47,7 +47,7 @@ export default {
 
     // This action is used to delete user from serve.
     async deleteUser(context, id) {
-        const response = await axios.delete(`/api/users/${id}`);
+        const response = await axios.delete(`/api/v1/users/${id}`);
         if (response.status != 200) {
             const error = new Error('Failed to delete user')
             throw error;
@@ -58,9 +58,9 @@ export default {
     async checkEmailExists(context, user) {
         return new Promise((resolve, reject) => {
             // Do something here... lets say, a http call using vue-resource
-            let apiUrl = `/api/users/check_email_exists/${user.email}/null`;
+            let apiUrl = `/api/v1/users/check_email_exists/${user.email}/null`;
             if (user.id != '') {
-                apiUrl = `/api/users/check_email_exists/${user.email}/${user.id}`
+                apiUrl = `/api/v1/users/check_email_exists/${user.email}/${user.id}`
             }
             axios.get(apiUrl).then(response => {
                 // http success, call the mutator and change something in state
