@@ -10,7 +10,10 @@ export default function useCreateUpdate(options) {
     function closeModal() {
         cash("#"+options.modalBoxId).modal("hide");
         options.context.emit('closeComp');
-        document.getElementById(options.modalBoxId).remove();
+        if (document.getElementById(options.modalBoxId) != null) {
+            document.getElementById(options.modalBoxId).remove();
+        }
+        
 
         /*Toastify({
             node: cash("#success-notification-content")

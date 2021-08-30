@@ -22,21 +22,11 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::when(request('search'), function ($query) {
-            $query->where('name', 'like', '%'. request('search'). '%');
-        })->orderBy('id', 'desc')->get();
+        $roles = RoleResource::collection(Role::latest()->simplePaginate(10));
+        /*$roles = Role::when(request('search'), function ($query) {
+                                                    $query->where('name', 'like', '%'. request('search'). '%');
+                                                })->orderBy('id', 'desc')->get();*/
         return response()->json($roles);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $permission = Permission::get();
-        return response()->json($permission);
     }
 
     /**
@@ -47,41 +37,28 @@ class RoleController extends Controller
      */
     public function store(RoleRequest $request)
     {
-        $this->validate($request, ['name' => 'required|unique:roles,name','permission' => 'required',]);
-        $role = Role::create([
-                'name' => $request->input('name')
-                ]);
-        $role->syncPermissions($request->input('permission'));
-        $response = [];
+        if ($request->validated()) {
+            $inputs = [
+                'name'=> $request->name,
+                'permissions' => $request->permissions,
+            ];
+            $role = Role::create($inputs);
+            $role->syncPermissions($inputs['permissions']);
+            $response = [
+                'success' => true,
+                'message' => 'Permission created successfully.',
+                'role' => $role,
+            ];
+        } else {
+            $response = [
+                'success' => false,
+                'message' => 'Oops, there seems to have some errors.',
+                'errors' => $this->validated()->errors(),
+            ];
+        }
         return response()->json($response);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Role $role)
-    {
-        $permission = Permission::get();
-        $response = DB::table("role_has_permissions")
-                            ->where("role_has_permissions.role_id",$role->id)
-                            ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
-                            ->all();
-        return response()->json($response);
-    }
 
     /**
      * Update the specified resource in storage.

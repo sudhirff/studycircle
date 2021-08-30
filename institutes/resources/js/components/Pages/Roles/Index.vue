@@ -19,19 +19,52 @@
             
             <!-- BEGIN: Data List -->
             <the-base-data-list-card>
-                <p v-if="isLoading">I am loading</p>
                 <the-base-crud-table>
                     <thead>
-                        <base-row-card :columns="columns" :showHeaders="true"></base-row-card>
+                        <tr>
+                            <th class="whitespace-nowrap">SR. NO.</th>
+                            <th class="whitespace-nowrap">NAME</th>
+                            <th class="whitespace-nowrap">PERMISSIONS</th>
+                            <th class="text-center whitespace-nowrap">ACTIONS</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        <base-row-card v-for="(item, index) in items" 
-                                        :key="index" 
-                                        :columns="columns"
-                                        :item="item"
-                                        @EditRow="showEditModal"
-                                        @DeleteRow="showDeleteModal"
-                                        ></base-row-card>
+                        <tr class="intro-x" v-for="role in items" :key="role.id">
+                            <td class="w-40">
+                                <div class="flex">
+                                    {{ role.id }}
+                                </div>
+                            </td>
+                            <td>
+                                <div>{{ role.name }}</div>
+                            </td>
+                            <td>
+                                <span v-for="permission in role.permissions" 
+                                        :key="permission.id" 
+                                        class="text-xs px-1 rounded-full bg-theme-1 text-white mr-1">
+                                    {{ permission.name }}
+                                </span>
+                            </td>
+                            <td class="table-report__action w-56">
+                                <div class="flex justify-center items-center">
+                                    <a class="flex items-center mr-3" 
+                                        href="#" 
+                                        @click.prevent="editMe"
+                                        > 
+                                        <CheckSquareIcon class="w-4 h-4 mr-1" /> Edit
+                                    </a>
+                                    <a class="flex items-center text-theme-21" 
+                                        href="#" 
+                                        data-toggle="modal" 
+                                        @click.prevent="deleteMe"
+                                        > 
+                                        <Trash2Icon class="w-4 h-4 mr-1" /> Delete
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+
+                        
                     </tbody>
                 </the-base-crud-table>
             </the-base-data-list-card>
@@ -48,6 +81,7 @@
                         ></component>
         </teleport>
         <!-- END: Component form -->
+        <loading v-if="isLoading" fixed></loading>
     </div>
 </template>
 
@@ -76,6 +110,10 @@ export default {
                 label: "NAME",
                 sorting: true,
             },
+            permissions: {
+                label: "PERMISSIONS",
+                sorting: true,
+            },
             actions: {
                 label:"ACTIONS",
                 sorting: false,
@@ -99,8 +137,6 @@ export default {
         const {
             isLoading,
             items,
-            //editItemRequest,
-            //editItem,
             selectedComponent,
             deleteItem,
             openModal,
@@ -113,8 +149,6 @@ export default {
             options,
             isLoading,
             items,
-            //editItemRequest,
-            //editItem,
             selectedComponent,
             deleteItem,
             openModal,

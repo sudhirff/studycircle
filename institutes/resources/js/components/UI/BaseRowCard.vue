@@ -13,7 +13,7 @@
             <td v-for="(column, index) in columns" :key="index"  
                 :class="{ 'table-report__action w-56': (index === 'actions') }">
                 <template v-if="index !== 'actions'">
-                    {{ item[index] }}                    
+                    {{ item[index] }}
                 </template>
                 <template v-else>
                     <div class="flex justify-center items-center">

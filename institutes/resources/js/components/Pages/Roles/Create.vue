@@ -13,12 +13,32 @@
                                 class="form-control" 
                                 placeholder="Enter name of role."
                                 v-model.trim="role.name"
-                                :class="{ 'border-theme-21': submitted && v$.name.$error }"
+                                :class="{ 'border-theme-24': submitted && v$.name.$error }"
                                 />
-                        <span v-if="submitted && v$.name.$error" class="text-theme-21 mt-2">
+                        <span v-if="submitted && v$.name.$error" class="text-theme-24 mt-2">
                             {{ v$.name.$errors[0].$message }}
                         </span>
-                    </div>                    
+                    </div>
+                    <div>
+                        <label for="form-permission" class="form-label">Permission</label>
+
+                        <div class="form-check mt-2"
+                            v-for="permission in permissions"
+                            :key="permission.id">
+                            <input :id="permission.name" 
+                                    class="form-check-input" 
+                                    type="checkbox" 
+                                    v-model="role.permissions"
+                                    :value="permission.id" />
+                            <label class="form-check-label" 
+                                    :for="permission.name">
+                                    {{ permission.name }}
+                            </label>
+                        </div>
+                        <span v-if="submitted && v$.permissions.$error" class="text-theme-24 mt-2">
+                            {{ v$.permissions.$errors[0].$message }}
+                        </span>
+                    </div>                 
                 </div>
                 <!-- BEGIN: Slide Over Footer -->
                 <div class="modal-footer text-right w-full absolute bottom-0">
@@ -71,7 +91,7 @@ import { useStore } from 'vuex';
 import { ref, reactive, computed } from 'vue'
 
 import { useVuelidate } from '@vuelidate/core';
-import { required, email, minLength, maxLength, sameAs, numeric } from '@vuelidate/validators'
+import { required, helpers } from '@vuelidate/validators'
 
 
 import ModalBoxCard from '@/components/UI/BaseModalBoxCard.vue'
@@ -85,19 +105,25 @@ export default {
     setup(props, context) {
         const store = useStore();
         const submitted = ref(false);
-        const emailExists = ref(false);
-        const loading = ref(false);
+        
+        const isErrored = ref(false);
+        const message = ref('');
+        const isLoading = ref(false);
 
         const role = reactive({
             id: '',
             name: '',
+            permissions: []
         });
 
         const rules = computed(() => {
             return {
                 name: {
-                    required,
+                    required: helpers.withMessage('Please enter name of role.', required),
                 },
+                permissions: {
+                    required: helpers.withMessage('Please select atleast perimission.', required)
+                }
             }
         });
 
@@ -110,26 +136,29 @@ export default {
         };
         const { closeModal } = useCreateUpdate(options);
 
-        function submitForm() {
+        // Code below is to get all the permissions.
+        getPermissions(); // Here we are calling 
+
+        async function getPermissions() {
+            await store.dispatch('permissions/fetchPermissions');
+        }
+
+        async function submitForm() {
             submitted.value = true;
             v$.value.$validate(); // checks all inputs
 
             if (!v$.value.$error) {
-                /*store.dispatch("roles/checkEmailExists", role).then(response => {
-                    if(response.data != "") {
-                        v$.value.email.exists = "Entered email address already exists. Please try with another one.";
-                        emailExists.value = true; 
-                        return false;
-                    } else {
-                        loading.value = true;
-                        store.dispatch('roles/createUser', role);
-                        loading.value = false;
-                        submitted.value = false;
-                        closeModal();
-                    }
-                }, error => {
-                    console.error("Got nothing from server. Prompt role to check internet connection and try again")
-                });*/
+                isLoading.value = true;
+                try {
+                    await store.dispatch('roles/createRole', role);
+                    isLoading.value = false;
+                    submitted.value = false;
+                    closeModal();
+                } catch(e) {
+                    isLoading.value = false;
+                    isErrored.value = true;
+                    message.value = "This name is already taken.";
+                }
             } else {
                 // if ANY fail validation
                 
@@ -142,8 +171,15 @@ export default {
             role,
             submitForm,
             closeModal,
-            loading,
+            isLoading,
+            isErrored,
+            message,
             v$
+        }
+    },
+    computed: {
+        permissions() {
+            return this.$store.state.permissions.permissions;
         }
     },
     methods: {

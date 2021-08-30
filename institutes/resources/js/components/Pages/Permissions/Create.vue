@@ -67,6 +67,7 @@
               </div>
               <!-- END: Failed Notification Content -->
         </div>
+        <loading v-if="isLoading" fixed></loading>
     </ModalBoxCard>
 </template>
 
@@ -131,7 +132,7 @@ export default {
                     isLoading.value = false;
                     isErrored.value = true;
                     message.value = "This name is already taken.";
-                }                
+                }
             } else {
                 // if ANY fail validation
                 

@@ -4,6 +4,10 @@
                     @closeModal="closeModal"
                     >
         <div>
+            <div class="alert alert-danger show flex items-center mb-2" role="alert" v-if="isErrored">
+                <AlertOctagonIcon class="w-6 h-6 mr-2" />
+                {{ message }}
+            </div>
             <form @submit.prevent = "submitForm" class="validate-form">
                 <div class="modal-body">
                     <div>
@@ -64,6 +68,7 @@
               </div>
               <!-- END: Failed Notification Content -->
         </div>
+        <loading v-if="isLoading" fixed></loading>
     </ModalBoxCard>
 </template>
 

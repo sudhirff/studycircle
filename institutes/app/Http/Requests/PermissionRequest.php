@@ -30,9 +30,5 @@ class PermissionRequest extends FormRequest
                 Rule::unique('permissions')->ignore($this->permission)
             ],
         ];
-
-        return [
-            'name' => 'required|unique:permissions,name',
-        ];
     }
 }
