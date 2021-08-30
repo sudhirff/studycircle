@@ -38,14 +38,20 @@ const routes = [
         name: 'institutes',
         component: InstituteList,
         meta: { requiresAuth: true },
-        children: [
+        /*children: [
             {
                 path:'/institutes/create',
                 name: 'instituteCreate',
                 component: InstituteCreate,
                 meta: { requiresAuth: true }
             }
-        ]
+        ],*/
+    },
+    {
+        path:'/institutes/create',
+        name: 'instituteCreate',
+        component: InstituteCreate,
+        meta: { requiresAuth: true }
     },
     {
         path: '/users',
@@ -103,7 +109,7 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes,
-    linkActiveClass: "side-menu--active",
+    linkActiveClass: "side-menu--active router-active-link",
     linkExactActiveClass: "exact-active",
     scrollBehavior(to, from, savedPosition) {
         return savedPosition || { left: 0, top: 0 }

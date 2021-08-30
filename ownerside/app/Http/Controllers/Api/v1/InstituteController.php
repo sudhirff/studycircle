@@ -20,7 +20,7 @@ class InstituteController extends Controller
             $query->whereOr('email', 'like', '%'. request('search'). '%');
             $query->whereOr('mobile_no', 'like', '%'. request('search'). '%');
         })->orderBy('id', 'desc')->get();
-    return response()->json($institutes);
+        return response()->json($institutes);
     }
 
     /**

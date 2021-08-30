@@ -19,7 +19,11 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('mobile_no')->nullable();
+            $table->string('avatar')->nullable();
+            $table->string('designation')->nullable();
             $table->rememberToken();
+            //$table->softDeletes();
             $table->timestamps();
         });
     }
@@ -31,6 +35,10 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        /*Schema::table('users', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });*/
+
         Schema::dropIfExists('users');
     }
 }

@@ -23,6 +23,7 @@
         "vue-loader": "^16.1.0"
     },
     "dependencies": {
+        "@anivive/vue3-form-wizard": "^1.0.1",
         "@ckeditor/ckeditor5-build-classic": "^27.1.0",
         "@ckeditor/ckeditor5-vue": "^2.0.1",
         "@fullcalendar/core": "^5.7.0",
@@ -70,6 +71,7 @@
         "vue-cli": "^2.9.6",
         "vue-dayjs-plugin": "^1.0.0",
         "vue-feather-icons": "^5.1.0",
+        "vue-form-wizard": "^0.8.4",
         "vue-i18n": "^8.24.4",
         "vue-progressbar": "^0.7.5",
         "vue-router": "^4.0.8",

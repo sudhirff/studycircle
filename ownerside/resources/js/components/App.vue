@@ -63,8 +63,8 @@ export default {
     didAutoLogout(curValue, oldValue) {
       if (curValue && curValue !== oldValue) {
         this.authenticated = false;
-        window.href('/login');
-        //this.$router.go('/login');
+        //window.location.replace('/login');
+        this.$router.go('/login');
       }
     }
   }

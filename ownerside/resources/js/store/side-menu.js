@@ -10,6 +10,19 @@ const state = () => {
         icon: 'HomeIcon',
         pageName: 'institutes',
         title: 'Institutes',
+        subMenu: [
+          {
+            icon: 'HomeIcon',
+            pageName: 'institutes',
+            title: 'Institutes',
+          },
+          {
+            icon: 'DatabaseIcon',
+            pageName: 'instituteCreate',
+            title: 'Create Institute',
+          }
+          
+        ]
       },
       {
         icon: 'UsersIcon',
