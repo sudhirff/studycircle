@@ -13,7 +13,16 @@
             <td v-for="(column, index) in columns" :key="index"  
                 :class="{ 'table-report__action w-56': (index === 'actions') }">
                 <template v-if="index !== 'actions'">
-                    {{ item[index] }}
+                    <template v-if="column.isMany">
+                        <span v-for="many in item[index]" 
+                                :key="many.id" 
+                                class="text-xs px-1 rounded-full bg-theme-1 text-white mr-1">
+                            {{ many[column.manyFieldName] }}
+                        </span>
+                    </template>
+                    <template v-else>
+                        {{ item[index] }}
+                    </template>
                 </template>
                 <template v-else>
                     <div class="flex justify-center items-center">

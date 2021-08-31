@@ -22,17 +22,6 @@ export default {
         context.commit('CREATE_ROLE', response.data);
     },
 
-    // This action is used to fetch only selected role
-    async editRole(context, id) {
-        const response = await axios.get(`/api/v1/roles/${id}/edit`);
-
-        if (response.status != 200) {
-            const error = new Error('Failed to fetch role')
-            throw error;
-        }
-        context.commit('EDIT_ROLE', response.data.role);
-    },
-
     // After role submits the form, role information must be updated in database.
     async updateRole(context, role) {
         const response = await axios.put(`/api/v1/roles/${role.id}`, role);

@@ -4,6 +4,10 @@
                     @closeModal="closeModal"
                     >
         <div>
+            <div class="alert alert-danger show flex items-center mb-2" role="alert" v-if="isErrored">
+                <AlertOctagonIcon class="w-6 h-6 mr-2" />
+                {{ message }}
+            </div>
             <form @submit.prevent = "submitForm" class="validate-form">
                 <div class="modal-body">
                     <div>
@@ -38,7 +42,7 @@
                         <span v-if="submitted && v$.permissions.$error" class="text-theme-24 mt-2">
                             {{ v$.permissions.$errors[0].$message }}
                         </span>
-                    </div>                 
+                    </div>
                 </div>
                 <!-- BEGIN: Slide Over Footer -->
                 <div class="modal-footer text-right w-full absolute bottom-0">

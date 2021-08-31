@@ -21,50 +21,16 @@
             <the-base-data-list-card>
                 <the-base-crud-table>
                     <thead>
-                        <tr>
-                            <th class="whitespace-nowrap">SR. NO.</th>
-                            <th class="whitespace-nowrap">NAME</th>
-                            <th class="whitespace-nowrap">PERMISSIONS</th>
-                            <th class="text-center whitespace-nowrap">ACTIONS</th>
-                        </tr>
+                        <base-row-card :columns="columns" :showHeaders="true"></base-row-card>
                     </thead>
                     <tbody>
-                        <tr class="intro-x" v-for="role in items" :key="role.id">
-                            <td class="w-40">
-                                <div class="flex">
-                                    {{ role.id }}
-                                </div>
-                            </td>
-                            <td>
-                                <div>{{ role.name }}</div>
-                            </td>
-                            <td>
-                                <span v-for="permission in role.permissions" 
-                                        :key="permission.id" 
-                                        class="text-xs px-1 rounded-full bg-theme-1 text-white mr-1">
-                                    {{ permission.name }}
-                                </span>
-                            </td>
-                            <td class="table-report__action w-56">
-                                <div class="flex justify-center items-center">
-                                    <a class="flex items-center mr-3" 
-                                        href="#" 
-                                        @click.prevent="editMe"
-                                        > 
-                                        <CheckSquareIcon class="w-4 h-4 mr-1" /> Edit
-                                    </a>
-                                    <a class="flex items-center text-theme-21" 
-                                        href="#" 
-                                        data-toggle="modal" 
-                                        @click.prevent="deleteMe"
-                                        > 
-                                        <Trash2Icon class="w-4 h-4 mr-1" /> Delete
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-
-                        
+                        <base-row-card v-for="(item, index) in items" 
+                                        :key="index" 
+                                        :columns="columns"
+                                        :item="item"
+                                        @EditRow="showEditModal"
+                                        @DeleteRow="showDeleteModal"
+                                        ></base-row-card>
                     </tbody>
                 </the-base-crud-table>
             </the-base-data-list-card>
@@ -105,18 +71,23 @@ export default {
             id: {
                 label: "ID",
                 sorting: true,
+                isMany: false,
             },
             name: {
                 label: "NAME",
                 sorting: true,
+                isMany: false,
             },
             permissions: {
                 label: "PERMISSIONS",
                 sorting: true,
+                isMany: true,
+                manyFieldName: 'name',
             },
             actions: {
                 label:"ACTIONS",
                 sorting: false,
+                isMany: false,
             }
         };
 

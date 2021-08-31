@@ -67,13 +67,29 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(RoleRequest $request, $role)
+    public function update(RoleRequest $request, Role $role)
     {
-        $this->validate($request, ['name' => 'required','permission' => 'required',]);
-        //$role = Role::find($id);
-        $role->name = $request->input('name');
-        $role->save();
-        $role->syncPermissions($request->input('permission'));
+        if ($request->validated()) {
+            $inputs = [
+                'name'=> $request->name,
+                'permissions' => $request->permissions,
+            ];
+            $role->save();
+            $role->syncPermissions($inputs['permissions']);
+//dd($role);
+            $response = [
+                'success' => true,
+                'message' => 'Permission created successfully.',
+                'role' => $role,
+            ];
+        } else {
+            $response = [
+                'success' => false,
+                'message' => 'Oops, there seems to have some errors.',
+                'errors' => $this->validated()->errors(),
+            ];
+        }
+        return response()->json($response);
     }
 
     /**
@@ -94,7 +110,7 @@ class RoleController extends Controller
                 'success' => true,
                 'message' => 'Role deleted successfully.',
                 'role' => $role,
-                'roles' => Role::latest()->get(),
+                'roles' => RoleResource::collection(Role::latest()->simplePaginate(10)),
             ];
         }
         return response()->json($response);
