@@ -71,7 +71,7 @@
                             <a href="tel:91-762-009-8848"><span class="block text-white font20 font700 line20 mt-5 mb-5">
                                 +91 762 009 8848
                             </span></a>
-                            <a href="mailto: support@meritest.com">support@meritest.com</a>
+                            <a href="mailto: support@meritest.in">support@meritest.in</a>
                         </p>
                     
                     </div>

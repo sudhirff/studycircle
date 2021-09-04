@@ -21,7 +21,7 @@ jQuery(function() {
 						
 						var placeholderText = [
 							"What do you want to study?",
-							"JEEE?",
+							"JEE?",
 							"Computer & IT?",
 							"Science?",
 							"Design?",
