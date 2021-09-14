@@ -16,7 +16,8 @@ class CreateCourses extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('course_code')->unique()->nullable();
-            $table->json('name');
+            $table->string('name');
+            //$table->bigIncrements('language_id);
             
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');

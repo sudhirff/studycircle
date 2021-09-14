@@ -7,7 +7,7 @@ export default {
     state() {
         return {
             roles: [],
-            role: null,
+            role: [],
         }
     },
     actions,

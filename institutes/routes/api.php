@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\V1\PermissionController;
 use App\Http\Controllers\Api\V1\RoleController;
+use App\Http\Controllers\Api\V1\CourseController;
+use App\Http\Controllers\Api\V1\CoursesTypeController;
 
 use App\Models\User;
 
@@ -21,8 +23,12 @@ use App\Models\User;
 Route::middleware('api')->group(function () {
     Route::middleware('auth:sanctum')->group(
         function () {
-            Route::resource('v1/permissions', PermissionController::class);  
-            Route::resource('v1/roles', RoleController::class);    
+            Route::get('v1/permissions/modules', [PermissionController::class, 'modules'])->name('permissions.modules');
+            Route::resource('v1/permissions', PermissionController::class);
+            
+            Route::resource('v1/roles', RoleController::class);
+            Route::resource('v1/courses_type', CoursesTypeController::class);
+            Route::resource('v1/courses', CourseController::class);
         });
     
 });

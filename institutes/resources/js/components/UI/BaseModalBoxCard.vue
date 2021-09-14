@@ -52,6 +52,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+/*.modal .modal-dialog {
+    width: 1050px;
+}*/
 </style>

@@ -28,6 +28,44 @@ const state = () => {
           }
         ]
       },
+      {
+        icon: 'BoxIcon',
+        pageName: 'courses',
+        title: 'Course Management',
+        subMenu: [
+          {
+            icon: 'HomeIcon',
+            pageName: 'courseType',
+            title: 'Course Types'
+          },
+          {
+            icon: 'HomeIcon',
+            pageName: 'courses',
+            title: 'Courses'
+          },
+          {
+            icon: 'HomeIcon',
+            pageName: 'subjects',
+            title: 'Subjects',
+          },
+          /*{
+            icon: 'HomeIcon',
+            pageName: 'subjectCreate',
+            title: 'Subject Create',
+            ignore: true
+          },*/
+          /*{
+            icon: 'HomeIcon',
+            pageName: 'roles',
+            title: 'Roles'
+          },
+          {
+            icon: 'HomeIcon',
+            pageName: 'users',
+            title: 'Users'
+          }*/
+        ]
+      },
     ]
   }
 }

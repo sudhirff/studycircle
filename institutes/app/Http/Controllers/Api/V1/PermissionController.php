@@ -34,6 +34,7 @@ class PermissionController extends Controller
         if ($request->validated()) {
             $inputs = [
                 'name'=> $request->name,
+                'guard_name' => 'web',
             ];
             $permission = Permission::create($inputs);
 
@@ -113,5 +114,35 @@ class PermissionController extends Controller
             ];
         }
         return response()->json($response);
+    }
+
+
+
+    public function modules()
+    {
+        $permissions = Permission::all();
+        $final = [];
+        foreach ($permissions as $permission) {
+            $permissionId = $permission->id;
+            $explodedPermission = array_reverse(explode(' ', $permission->name));
+
+            $moduleName = $explodedPermission[0];
+
+            if (count($explodedPermission) > 2) {
+                $j = 0;
+                for ($i = 1; $i < count($explodedPermission); $i++ ) {
+                    $remaining[$j++] = $explodedPermission[$i];
+                }
+                $actionName = implode(' ', array_reverse($remaining));
+            } else {
+                $actionName = $explodedPermission[1];
+            }
+            $key = 'All';
+            if (isset($remaining) && count($remaining) > 0) {
+                $key = 'Own';
+            }
+            $final[$key ." " . ucFirst($moduleName). " Management"][$permissionId] = $actionName;
+        }
+        return response()->json($final);
     }
 }

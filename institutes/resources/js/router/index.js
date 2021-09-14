@@ -23,7 +23,14 @@ import UserList from '@/components/Pages/Users/Index.vue'
 import UserCreate from '@/components/Pages/Users/Create.vue'
 import UserEdit from '@/components/Pages/Users/Edit.vue'
 
+/*** Begin Course components */
+import CoursesList from '@/components/Pages/Courses/Index.vue'
+import CourseTypeList from '@/components/Pages/CoursesTypes/Index.vue'
 
+/*** Begin Course components */
+import SubjectList from '@/components/Pages/Subjects/Index.vue'
+import SubjectCreate from '@/components/Pages/Subjects/Create.vue'
+import SubjectEdit from '@/components/Pages/Subjects/Edit.vue'
 
 /*** Begin Error component(s)  */
 import ErrorPage from '@/components/Error.vue'
@@ -50,13 +57,14 @@ const routes = [
                 path: '/roles/create',
                 name: 'roleCreate',
                 component: RoleCreate,
-                meta: { requiresAuth: true },
+                meta: { requiresAuth: true, parent: 'roles' },
             },
             {
                 path: '/roles/:id/edit',
                 name: 'roleEdit',
-                component: RoleEdit,
-                meta: { requiresAuth: true },
+                component: RoleEdit, 
+                props: true,
+                meta: { requiresAuth: true, parent: 'roles' },
             }
         ]
     },
@@ -70,15 +78,27 @@ const routes = [
                 path: '/permissions/create',
                 name: 'permissionCreate',
                 component: PermissionCreate,
-                meta: { requiresAuth: true },
+                meta: { requiresAuth: true, parent: 'permissions' },
             },
             {
                 path: '/permissions/:id/edit',
                 name: 'permissionEdit',
                 component: PermissionEdit,
-                meta: { requiresAuth: true },
+                meta: { requiresAuth: true, parent: 'permissions' },
             }
         ]
+    },
+    {
+        path: '/courses',
+        name: 'courses',
+        component: CoursesList,
+        meta: { requiresAuth: true },
+    },
+    {
+        path: '/course-types',
+        name: 'courseType',
+        component: CourseTypeList,
+        meta: { requiresAuth: true },
     },
     {
         path: '/users',
@@ -86,21 +106,49 @@ const routes = [
         component: UserList,
         meta: { requiresAuth: true },
         children: [
-        {
-            path: '/create',
-            name: 'userCreate',
-            component: UserCreate,
-            meta: { requiresAuth: true },
-        },
-        {
-            path: '/:id/edit',
-            name: 'userEdit',
-            component: UserEdit,
-            props: true,
-            meta: { requiresAuth: true },
-        },
-    ]
+            {
+                path: '/create',
+                name: 'userCreate',
+                component: UserCreate,
+                meta: { requiresAuth: true },
+            },
+            {
+                path: '/:id/edit',
+                name: 'userEdit',
+                component: UserEdit,
+                props: true,
+                meta: { requiresAuth: true },
+            },
+        ]
     },
+    {
+        path: '/subjects',
+        name: 'subjects',
+        component: SubjectList,
+        meta: { requiresAuth: true },
+        children: [
+            {
+                path: '/subjects/create',
+                name: 'subjectCreate',
+                component: SubjectCreate,
+                parent: 'subjects',
+                meta: { requiresAuth: true, parent: 'subjects' },
+            },
+            {
+                path: '/subjects/:id/edit',
+                name: 'subjectEdit',
+                component: SubjectEdit,
+                props: true,
+                meta: { requiresAuth: true, parent: 'subjects' },
+            },
+        ]
+    },
+    /*{
+        path: '/subjects/create',
+        name: 'subjects',
+        component: SubjectCreate,
+        meta: { requiresAuth: true },
+    },*/
     {
         path: '/login',
         name: 'login',
@@ -145,11 +193,12 @@ const router = createRouter({
 
 router.beforeEach(function(to, _, next) {
     if (to.meta.requiresAuth && !store.getters.isAuthenticated) {
-      next('/login');
+        next('/login');
     } else if (to.meta.requiresUnauth && store.getters.isAuthenticated) {
-      next('/dashboard');
+        next('/dashboard');
+        //prev();
     } else {
-      next();
+        next();
     }
-  });
+});
 export default router;

@@ -174,4 +174,8 @@ export default defineComponent({
 .logo {
     top: 15px;
 }
+
+.side-nav {
+    width: 275px;
+}
 </style>

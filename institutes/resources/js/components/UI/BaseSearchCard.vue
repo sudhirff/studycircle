@@ -15,11 +15,14 @@
 </template>
 
 <script>
-import { watch } from "vue";
+import { ref } from "vue";
 
 export default {
     setup() {
-        
+        const search = ref('');
+        return {
+            search
+        }
     }
 
 }

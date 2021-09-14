@@ -1,111 +1,112 @@
 <template>
-    <ModalBoxCard :divId="`create-role`"
-                    :header = "`Create Role`"
-                    @closeModal="closeModal"
-                    >
-        <div>
-            <div class="alert alert-danger show flex items-center mb-2" role="alert" v-if="isErrored">
-                <AlertOctagonIcon class="w-6 h-6 mr-2" />
-                {{ message }}
+    <div>
+        <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+            <h2 class="text-lg font-medium mr-auto">Add Role</h2>
+            <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+                <router-link to="/roles"
+                            class="btn box text-gray-700 dark:text-gray-300 mr-2 flex items-center ml-auto sm:ml-0"
+                            ><ArrowLeftCircleIcon class="w-4 h-4 mr-2" />Back
+                </router-link>
             </div>
-            <form @submit.prevent = "submitForm" class="validate-form">
-                <div class="modal-body">
-                    <div>
-                        <label for="form-name" class="form-label">Name</label>
-                        <input id="form-name" 
-                                type="text" 
-                                class="form-control" 
-                                placeholder="Enter name of role."
-                                v-model.trim="role.name"
-                                :class="{ 'border-theme-24': submitted && v$.name.$error }"
-                                />
-                        <span v-if="submitted && v$.name.$error" class="text-theme-24 mt-2">
-                            {{ v$.name.$errors[0].$message }}
-                        </span>
-                    </div>
-                    <div>
-                        <label for="form-permission" class="form-label">Permission</label>
-
-                        <div class="form-check mt-2"
-                            v-for="permission in permissions"
-                            :key="permission.id">
-                            <input :id="permission.name" 
-                                    class="form-check-input" 
-                                    type="checkbox" 
-                                    v-model="role.permissions"
-                                    :value="permission.id" />
-                            <label class="form-check-label" 
-                                    :for="permission.name">
-                                    {{ permission.name }}
-                            </label>
-                        </div>
-                        <span v-if="submitted && v$.permissions.$error" class="text-theme-24 mt-2">
-                            {{ v$.permissions.$errors[0].$message }}
-                        </span>
-                    </div>
-                </div>
-                <!-- BEGIN: Slide Over Footer -->
-                <div class="modal-footer text-right w-full absolute bottom-0">
-                    <button type="button" 
-                            data-dismiss="modal" 
-                            class="btn btn-outline-secondary w-20 mr-1" 
-                            @click="closeModal">
-                        Cancel
-                    </button>
-                    <button type="submit" class="btn btn-primary w-20">
-                        Save
-                    </button>
-                </div>
-                <!-- END: Slide Over Footer -->
-            </form>
-            <!-- BEGIN: Success Notification Content -->
-              <div
-                id="success-notification-content"
-                class="toastify-content hidden flex"
-              >
-                <CheckCircleIcon class="text-theme-20" />
-                <div class="ml-4 mr-4">
-                  <div class="font-medium">Role creation success!</div>
-                  <div class="text-gray-600 mt-1">
-                    Please check your e-mail for further info!
-                  </div>
-                </div>
-              </div>
-              <!-- END: Success Notification Content -->
-              <!-- BEGIN: Failed Notification Content -->
-              <div
-                id="failed-notification-content"
-                class="toastify-content hidden flex"
-              >
-                <XCircleIcon class="text-theme-21" />
-                <div class="ml-4 mr-4">
-                  <div class="font-medium">Role creation failed!</div>
-                  <div class="text-gray-600 mt-1">
-                    Please check the fileld form.
-                  </div>
-                </div>
-              </div>
-              <!-- END: Failed Notification Content -->
         </div>
-    </ModalBoxCard>
+        <div class="pos intro-y grid grid-cols-12 gap-5 mt-5">
+            <div class="intro-y box col-span-12 lg:col-span-12">
+                <div class="p-5">
+                    <div class="alert alert-danger show flex items-center mb-2" role="alert" v-if="isErrored">
+                        <AlertOctagonIcon class="w-6 h-6 mr-2" />
+                        {{ message }}
+                    </div>
+                    <form @submit.prevent = "submitForm" class="validate-form">
+                        <div>
+                            <label for="form-name" class="form-label">Name</label>
+                            <input id="form-name" 
+                                    type="text" 
+                                    class="form-control" 
+                                    placeholder="Enter name of role."
+                                    v-model.trim="role.name"
+                                    :class="{ 'border-theme-21': submitted && v$.name.$errors.length }"
+                                    />
+                            <div class="text-theme-21 mt-2" v-for="(error, index) of v$.name.$errors" :key="index">
+                                <div class="error-msg">{{ error.$message }}</div>
+                            </div>
+                            <!--<span v-if="submitted && v$.name.$error" class="text-theme-21 mt-2">
+                                {{ v$.name.$errors[0].$message }}
+                            </span>-->
+                        </div>
+                        <div class="mt-3">
+                            
+                            <label for="form-permission" class="form-label">Permission</label>
+                                <div
+                                class="p-5 flex flex-col-reverse sm:flex-row text-gray-600 border-b border-gray-200 dark:border-dark-1"
+                                >
+                                <div
+                                    class="flex items-center mt-3 sm:mt-0 border-t sm:border-0 border-gray-200 pt-5 sm:pt-0 mt-5 sm:mt-0 -mx-5 sm:mx-0 px-5 sm:px-0"
+                                >
+                                    <h2>Edit permissions by clicking on select all or toggling individual permissions per category</h2>
+                                </div>
+                            
+                            </div>
+                            <div class="mt-3 py-2" 
+                                v-for="(permission, index) in listPermissions" 
+                                :key="index">
+                                <div class="roles">
+                                    <label>{{ index }}</label>
+                                </div>
+                                <div class="flex flex-col sm:flex-row mt-2">
+
+                                    <div class="form-check mr-2" 
+                                        v-for="(individualPerms, perIdx) in permission" 
+                                        :key="perIdx">
+                                        <input :id="individualPerms" 
+                                            class="form-check-input" 
+                                            type="checkbox" 
+                                            v-model="role.permissions"
+                                            :value="perIdx"
+                                            :class="{ 'border-theme-21': submitted && v$.permissions.$errors.length }" />
+                                        <label class="form-check-label" :for="individualPerms">{{ individualPerms }}</label>
+                                    </div>
+                                </div>
+                            </div>
+                                
+                            <!-- END: Inbox Content -->
+                            <div class="text-theme-21 mt-2" v-for="(error, index) of v$.permissions.$errors" :key="index">
+                                <div class="error-msg">{{ error.$message }}</div>
+                            </div>
+                            <!--<span v-if="submitted && v$.permissions.$error" class="text-theme-24 mt-2">
+                                {{ v$.permissions.$errors[0].$message }}
+                            </span>-->
+                        </div>
+                        <!-- BEGIN: Slide Over Footer -->
+                        
+                        <div class="text-right w-full bottom-0">
+                            <router-link to="/roles" class="btn btn-outline-secondary w-20 mr-1" >
+                                Cancel
+                            </router-link>
+                            <button type="submit" class="btn btn-primary w-20">
+                                Save
+                            </button>
+                        </div>
+                        <!-- END: Slide Over Footer -->
+                    </form>
+                </div>
+                <!-- BEGIN: Post Content -->
+                
+                
+            </div>
+            <!-- END: Post Content -->
+        </div>
+    </div>
 </template>
 
 <script>
 import { useStore } from 'vuex';
-import { ref, reactive, computed } from 'vue'
+import { ref, reactive, computed, onMounted } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
 import { useVuelidate } from '@vuelidate/core';
 import { required, helpers } from '@vuelidate/validators'
 
-
-import ModalBoxCard from '@/components/UI/BaseModalBoxCard.vue'
-
-import useCreateUpdate from '@/hooks/create_update.js';
 export default {
-    emits: ['closeComp'],
-    components: {
-        ModalBoxCard
-    },
     setup(props, context) {
         const store = useStore();
         const submitted = ref(false);
@@ -114,10 +115,18 @@ export default {
         const message = ref('');
         const isLoading = ref(false);
 
+        const route = useRoute();
+        const router = useRouter();
+        // Now we must get editing details for the selected item
+        
         const role = reactive({
             id: '',
             name: '',
-            permissions: []
+            permissions: [],
+        });
+
+        onMounted(() => {
+            store.dispatch('permissions/modules');
         });
 
         const rules = computed(() => {
@@ -126,26 +135,12 @@ export default {
                     required: helpers.withMessage('Please enter name of role.', required),
                 },
                 permissions: {
-                    required: helpers.withMessage('Please select atleast perimission.', required)
+                    required: helpers.withMessage('Please select atleast one perimission.', required)
                 }
             }
         });
-
+        
         const v$ = useVuelidate (rules, role);
-
-        const options = {
-            modalBoxId: 'create-role',
-            context,
-            submitted
-        };
-        const { closeModal } = useCreateUpdate(options);
-
-        // Code below is to get all the permissions.
-        getPermissions(); // Here we are calling 
-
-        async function getPermissions() {
-            await store.dispatch('permissions/fetchPermissions');
-        }
 
         async function submitForm() {
             submitted.value = true;
@@ -157,41 +152,45 @@ export default {
                     await store.dispatch('roles/createRole', role);
                     isLoading.value = false;
                     submitted.value = false;
-                    closeModal();
+                    router.push('/roles');
                 } catch(e) {
                     isLoading.value = false;
                     isErrored.value = true;
                     message.value = "This name is already taken.";
-                }
+                }              
             } else {
                 // if ANY fail validation
-                
                 return ;
             }
         }
 
         return {
             submitted,
-            role,
             submitForm,
-            closeModal,
             isLoading,
             isErrored,
             message,
-            v$
+            v$,
+            role
         }
     },
     computed: {
-        permissions() {
-            return this.$store.state.permissions.permissions;
-        }
+        listPermissions() {
+            return this.$store.state.permissions.module_wise_permissions;
+        },
     },
     methods: {
         
     }
 }
 </script>
+<style scoped>
+.roles {
+    float: left; 
+    width: 18rem;
+}
 
-<style>
-
+.form-check-label {
+    width: 5rem;
+}
 </style>

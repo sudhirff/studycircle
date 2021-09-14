@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCoursesTypes extends Migration
+class CreateCourseType extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateCoursesTypes extends Migration
      */
     public function up()
     {
-        Schema::create('courses_types', function (Blueprint $table) {
+        Schema::create('course_type', function (Blueprint $table) {
             $table->unsignedBigInteger('course_id');
             $table->unsignedBigInteger('type_id');
             
             $table->foreign('course_id')->references('id')->on('courses');
-            $table->foreign('type_id')->references('id')->on('courses_type');
+            $table->foreign('type_id')->references('id')->on('courses_types');
         });
     }
 
@@ -29,6 +29,6 @@ class CreateCoursesTypes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('courses_types');
+        Schema::dropIfExists('course_type');
     }
 }

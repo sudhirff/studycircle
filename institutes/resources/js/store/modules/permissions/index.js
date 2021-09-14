@@ -8,6 +8,8 @@ export default {
         return {
             permissions: [],
             permission: null,
+            permission_count: 0,
+            module_wise_permissions: [],
         }
     },
     actions,

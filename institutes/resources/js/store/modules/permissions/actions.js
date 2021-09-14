@@ -54,4 +54,28 @@ export default {
         }
         context.commit('DELETE_PERMISSION', id);
     },
+
+
+    async permissionCount(context) {
+        const response = await axios.get('/api/v1/permissions') ;
+
+        if (response.status != 200) {
+            const error = new Error('Failed to fetch permissions')
+            throw error;
+        }
+        
+        context.commit('FETCH_PERMISSIONS_COUNT', response.data.length);
+    },
+
+
+    async modules(context) {
+        const response = await axios.get('/api/v1/permissions/modules') ;
+
+        if (response.status != 200) {
+            const error = new Error('Failed to fetch permissions')
+            throw error;
+        }
+
+        context.commit('FETCH_PERMISSIONS_MODULE_WISE', response.data);
+    }
 };

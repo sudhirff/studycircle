@@ -22,11 +22,12 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = RoleResource::collection(Role::latest()->simplePaginate(10));
+        $roles = RoleResource::collection(Role::latest()->orderBy('id', 'DESC')->simplePaginate(10));
+        //dd($roles);
         /*$roles = Role::when(request('search'), function ($query) {
                                                     $query->where('name', 'like', '%'. request('search'). '%');
                                                 })->orderBy('id', 'desc')->get();*/
-        return response()->json($roles);
+        return response()->json($roles, 200);
     }
 
     /**
@@ -41,6 +42,7 @@ class RoleController extends Controller
             $inputs = [
                 'name'=> $request->name,
                 'permissions' => $request->permissions,
+                'guard_name' => 'web',
             ];
             $role = Role::create($inputs);
             $role->syncPermissions($inputs['permissions']);
@@ -59,6 +61,53 @@ class RoleController extends Controller
         return response()->json($response);
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Role $role)
+    {
+        // We have to format role and permissions according to discussion.
+        // First of all get all the list of permissions
+        
+        $permissions = Permission::all();
+        foreach ($permissions as $permission) {
+            $permissionId = $permission->id;
+            $explodedPermission = array_reverse(explode(' ', $permission->name));
+
+            $moduleName = $explodedPermission[0];
+
+            if (count($explodedPermission) > 2) {
+                $j = 0;
+                for ($i = 1; $i < count($explodedPermission); $i++ ) {
+                    $remaining[$j++] = $explodedPermission[$i];
+                }
+                $actionName = implode(' ', array_reverse($remaining));
+            } else {
+                $actionName = $explodedPermission[1];
+            }
+            $key = 'All';
+            if (isset($remaining) && count($remaining) > 0) {
+                $key = 'Own';
+            }
+            $final[$moduleName][$key][$permissionId] = $actionName;
+        }
+        $response = $role;
+        $oldPermissions = [];
+        $rolePermissions = $role->permissions;
+        $i = 0;
+        foreach ($rolePermissions as $permission) {
+            $oldPermissions[$i++] = $permission->id;
+        }
+        $response->id = $role->id;
+        $response->name = $role->name;
+        $response->oldpermissions = $oldPermissions;
+        
+
+        return response()->json(['response' => $response, 'final' => $final], 200);
+    }
 
     /**
      * Update the specified resource in storage.
@@ -74,12 +123,13 @@ class RoleController extends Controller
                 'name'=> $request->name,
                 'permissions' => $request->permissions,
             ];
-            $role->save();
+            $role->name = $request->name;
+            $role->save($inputs);
             $role->syncPermissions($inputs['permissions']);
-//dd($role);
+
             $response = [
                 'success' => true,
-                'message' => 'Permission created successfully.',
+                'message' => 'Role updated successfully.',
                 'role' => $role,
             ];
         } else {
@@ -105,7 +155,7 @@ class RoleController extends Controller
             'message' => null,
             'errors' => null,
         ];
-        if (true) {
+        if ($role->delete()) {
             $response = [
                 'success' => true,
                 'message' => 'Role deleted successfully.',

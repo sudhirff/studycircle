@@ -45,8 +45,8 @@ export default {
           return;
         }
     
-       timer = setTimeout(function() {
-            context.dispatch('autoLogout');
+        timer = setTimeout(function() {
+            //context.dispatch('autoLogout');
         }, expiresIn);
     
         if (token && userId) {

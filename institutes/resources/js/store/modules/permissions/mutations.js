@@ -20,4 +20,12 @@ export default {
         let index = state.permissions.findIndex(item => item.id === permission.id);
         state.permissions[index] = permission;
     },
+
+    FETCH_PERMISSIONS_COUNT(state, count) {
+        state.permission_count = count;
+    },
+
+    FETCH_PERMISSIONS_MODULE_WISE(state, payload) {
+        state.module_wise_permissions = payload;
+    }
 };

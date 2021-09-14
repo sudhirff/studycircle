@@ -26,12 +26,19 @@
                 </template>
                 <template v-else>
                     <div class="flex justify-center items-center">
-                        <a class="flex items-center mr-3" 
-                            href="#" 
-                            @click.prevent="editMe"
-                            > 
-                            <CheckSquareIcon class="w-4 h-4 mr-1" /> Edit
-                        </a>
+                        <template v-if="showModal">
+                            <a class="flex items-center mr-3" 
+                                href="#" 
+                                @click.prevent="editMe"
+                                > 
+                                <CheckSquareIcon class="w-4 h-4 mr-1" /> Edit
+                            </a>
+                        </template>
+                        <template v-else>
+                            <router-link :to="editUrl" class="flex items-center mr-3">
+                                Edit
+                            </router-link>
+                        </template>
                         <a class="flex items-center text-theme-21" 
                             href="#" 
                             data-toggle="modal" 
@@ -64,6 +71,15 @@ export default {
             type: Boolean,
             required: false,
             default: false,
+        },
+        showModal: {
+            type: Boolean,
+            required: false,
+            default: true,
+        },
+        editUrl: {
+            type: String,
+            required: false,
         }
     },
     setup(props, context) {
