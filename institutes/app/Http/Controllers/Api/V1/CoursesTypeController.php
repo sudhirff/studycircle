@@ -39,8 +39,8 @@ class CoursesTypeController extends Controller
     {
         if ($request->validated()) {
             $inputs = [
-                'label'=> $request->label,
-                'description' => $request->description,
+                'label'=> json_encode([$request->label]),
+                'description' => json_encode([$request->description]),
             ];
             $coursesType = CoursesType::create($inputs);
             $response = [

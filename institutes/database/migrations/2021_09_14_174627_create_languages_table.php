@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCoursesTypes extends Migration
+class CreateLanguagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateCoursesTypes extends Migration
      */
     public function up()
     {
-        Schema::create('courses_types', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->json('label');
-            $table->json('description')->nullable();
-            $table->string('icon', 250)->nullable();
+        Schema::create('languages', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->default(null);
+            $table->string('iso_639-1')->default(null);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -30,6 +28,6 @@ class CreateCoursesTypes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('courses_types');
+        Schema::dropIfExists('languages');
     }
 }
