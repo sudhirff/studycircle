@@ -2,21 +2,21 @@ import axios from "axios"
 
 export default {
     // This action is used to fetch all the permissions present in database
-    async fetchPermissions(context) {
-        const response = await axios.get('/api/v1/permissions') ;
+    async fetch(context) {
+        const response = await axios.get('/api/v1/courses_type') ;
 
         if (response.status != 200) {
-            const error = new Error('Failed to fetch permissions')
+            const error = new Error('Failed to fetch course type')
             throw error;
         }
-        context.commit('FETCH_PERMISSIONS', response.data);
+        context.commit('FETCH_COURSES_TYPES', response.data);
     },
     
     async create(context, coursesType) {
         const response = await axios.post('/api/v1/courses_type', coursesType) ;
 
         if (response.status != 200) {
-            const error = new Error('Failed to create permissions')
+            const error = new Error('Failed to create course type')
             throw response.data.message;
         }
         context.commit('CREATE_COURSES_TYPE', response.data);

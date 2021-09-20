@@ -16,7 +16,10 @@ class CoursesTypeController extends Controller
      */
     public function index()
     {
-        //
+        $coursesType = CoursesType::when(request('search'), function ($query) {
+            $query->where('label', 'like', '%'. request('search'). '%');
+        })->orderBy('id', 'desc')->get();
+        return response()->json($coursesType);
     }
 
     /**

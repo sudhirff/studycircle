@@ -140,8 +140,8 @@ export default {
                 label: "ID",
                 sorting: true,
             },
-            name: {
-                label: "NAME",
+            label: {
+                label: "LABEL",
                 sorting: true,
             },
             actions: {
@@ -152,9 +152,10 @@ export default {
 
         const options = {
             listDispatch: 'coursesType/fetch',
+            listGetter: 'coursesType/coursesType',
             deleteDispatch: 'courseTypes/deletePermission',
             deleteComponentName: 'BaseDeleteModalCard',
-            moduleName: "Permission"
+            moduleName: "Courses Types"
         };
         
         const {
@@ -173,7 +174,7 @@ export default {
             icon: '',
         });
 
-        
+        console.log(items);
         const rules = computed(() => {
             return {
                 label: {
@@ -198,6 +199,8 @@ export default {
                     await store.dispatch('coursesType/create', courseType);
                     isLoading.value = false;
                     submitted.value = false;
+                    alert('Course type created successfully.');
+                    clearForm();
                 } catch(e) {
                     isLoading.value = false;
                     isErrored.value = true;
@@ -208,6 +211,12 @@ export default {
                 
                 return ;
             }
+        }
+
+        function clearForm() {
+            courseType.label = "";
+            courseType.description = "";
+            courseType.icon = "";
         }
 
         return {

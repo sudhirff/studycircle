@@ -21,6 +21,7 @@
                         </span>
                     </template>
                     <template v-else>
+                        
                         {{ item[index] }}
                     </template>
                 </template>

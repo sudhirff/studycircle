@@ -16,7 +16,7 @@ export default {
                 throw error;
             }
 
-            const expiresIn = +loginResponse.data.expiresIn * 1000;
+            const expiresIn = +loginResponse.data.expiresIn * 10000;
             
             // const expiresIn = 5000;
             const expirationDate = new Date().getTime() + expiresIn;

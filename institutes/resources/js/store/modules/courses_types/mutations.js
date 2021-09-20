@@ -1,6 +1,6 @@
 export default {
-    FETCH_PERMISSIONS(state, payload) {
-        state.permissions = payload;
+    FETCH_COURSES_TYPES(state, payload) {
+        state.coursesType = payload;
     },
     CREATE_COURSES_TYPE(state, coursesType)
     {
