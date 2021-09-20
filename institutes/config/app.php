@@ -107,7 +107,11 @@ return [
     */
 
     'faker_locale' => 'en_US',
-
+    'locales' => env('LOCALES', [
+        'en' => 'English', 
+        'hi' => 'Hindi', 
+        'mr' => 'Marathi',
+    ]),
     /*
     |--------------------------------------------------------------------------
     | Encryption Key

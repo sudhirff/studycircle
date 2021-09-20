@@ -1,0 +1,35 @@
+{
+    "navs": {
+        "Dashboard": "डॅशबोर्ड",
+        "User Management": "वापरकर्ता व्यवस्थापन",
+        "Permissions": "परवानगी",
+        "Roles": "भूमिका",
+        "Users": "वापरकर्ते",
+        "Course Management": "अभ्यासक्रम व्यवस्थापन",
+        "Course Types": "अभ्यासक्रमाचे प्रकार",
+        "Courses": "अभ्यासक्रम",
+        "Subjects": "विषय"
+    },
+    "role": {
+        "dasd": "adas"
+    },
+    "common": {
+        "ID": "आयडी",
+        "ACTIONS": "क्रिया"
+    },
+    "Permission Listing": "परवानगी सूची",
+    "Role Listing": "भूमिका सूची",
+    "Courses Types": "अभ्यासक्रमाचे प्रकार",
+    "Courses": "अभ्यासक्रम",
+    "Subjects": "विषय",
+    "ID": "आयडी",
+    "NAME": "नाव",
+    "ACTIONS": "क्रिया",
+    "Edit": "सुधारणे",
+    "Delete": "हटवा",
+    "Add New Permission": "नवीन परवानगी जोडा",
+    "Add New Role": "नवीन भूमिका जोडा",
+    "message": "मला आनंद आहे की तुम्ही येथे आहात.",
+    "addRoleText": "नवीन भूमिका जोडा",
+    "PERMISSIONS": "परवानगी"
+}

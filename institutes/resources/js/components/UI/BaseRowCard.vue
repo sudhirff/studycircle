@@ -5,7 +5,7 @@
                 v-for="(column, index) in columns" 
                 :key="index"
                 :class="{ ' text-center': (index == 'actions') }">
-                {{ column.label }}
+                {{ $tc(column.label) }}
                 <span></span>
             </th>
         </template>
@@ -17,7 +17,7 @@
                         <span v-for="many in item[index]" 
                                 :key="many.id" 
                                 class="text-xs px-1 rounded-full bg-theme-1 text-white mr-1">
-                            {{ many[column.manyFieldName] }}
+                            {{ $tc(many[column.manyFieldName]) }}
                         </span>
                     </template>
                     <template v-else>
@@ -31,12 +31,12 @@
                                 href="#" 
                                 @click.prevent="editMe"
                                 > 
-                                <CheckSquareIcon class="w-4 h-4 mr-1" /> Edit
+                                <CheckSquareIcon class="w-4 h-4 mr-1" /> {{ $tc('Edit')}}
                             </a>
                         </template>
                         <template v-else>
                             <router-link :to="editUrl" class="flex items-center mr-3">
-                                Edit
+                                {{ $tc('Edit') }}
                             </router-link>
                         </template>
                         <a class="flex items-center text-theme-21" 
@@ -44,7 +44,7 @@
                             data-toggle="modal" 
                             @click.prevent="deleteMe"
                             > 
-                                <Trash2Icon class="w-4 h-4 mr-1" /> Delete
+                                <Trash2Icon class="w-4 h-4 mr-1" /> {{ $tc('Delete') }}
                         </a>
                     </div>
                 </template>

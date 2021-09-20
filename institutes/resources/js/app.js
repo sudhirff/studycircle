@@ -6,6 +6,7 @@ import store from './store'
 import globalComponents from './global-components'
 import utils from './utils'
 import axios from 'axios'
+import i18n from './i18n';
 
 import Toastify from 'toastify-js'
 
@@ -17,6 +18,7 @@ const app = createApp(App)
   .use(store)
   .use(router)
   .use(Toastify)
+  .use(i18n)
 
 globalComponents(app)
 utils(app)

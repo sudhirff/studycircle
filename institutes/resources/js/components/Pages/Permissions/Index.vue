@@ -8,7 +8,7 @@
                         @click.prevent="openModal(options.createComponentName)"
                         class="btn btn-primary"
                         >
-                        Add New Permission
+                        {{ $t('Add New Permission') }}
                     </a>
                 </the-add-new-button>
                 <div class="hidden md:block mx-auto text-gray-600">

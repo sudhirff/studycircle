@@ -1,0 +1,34 @@
+{
+    "navs": {
+        "Dashboard": "डैशबोर्ड",
+        "User Management": "उपयोगकर्ता प्रबंधन",
+        "Permissions": "अनुमति",
+        "Roles": "भूमिकाएँ",
+        "Users": "उपयोगकर्ताओं",
+        "Course Management": "पाठ्यक्रम प्रबंधन",
+        "Course Types": "कोर्स के प्रकार",
+        "Courses": "अभ्यासक्रम",
+        "Subjects": "विषयों"
+    },
+    "role": {
+        "Role": "भूमिका"
+    },
+    "common": {
+        "ID": "पहचान",
+        "ACTIONS": "कार्रवाई"
+    },
+    "Permission Listing": "अनुमति सूची",
+    "Role Listing": "भूमिका सूची",
+    "Courses Types": "कोर्स के प्रकार",
+    "Courses": "अभ्यासक्रम",
+    "Subjects": "विषयों",
+    "ID": "पहचान",
+    "NAME": "नाम",
+    "ACTIONS": "कार्रवाई",
+    "Edit": "संपादित करें",
+    "Delete": "हटाएं",
+    "Add New Permission": "नई अनुमति जोड़ें",
+    "Add New Role": "नई भूमिका जोड़ें",
+    "message": "मुझे खुशी है कि आप यहां हैं।",
+    "PERMISSIONS": "अनुमति"
+}

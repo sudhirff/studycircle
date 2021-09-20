@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            I am in dashboard page.
+            I am in dashboard page. {{ $tc('message')}}
         </div>
     </div>
 </template>

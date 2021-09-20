@@ -29,7 +29,7 @@
                             <component :is="menu.icon" />
                         </div>
                         <div class="side-menu__title">
-                            {{ menu.title }}
+                            {{ $tc('navs.'+menu.title) }}
                         <div
                             v-if="menu.subMenu"
                             class="side-menu__sub-icon"
@@ -62,7 +62,7 @@
                                     <ActivityIcon />
                                 </div>
                                 <div class="side-menu__title">
-                                    {{ subMenu.title }}
+                                    {{ $tc("navs."+subMenu.title) }}
                                     <div
                                     v-if="subMenu.subMenu"
                                     class="side-menu__sub-icon"
@@ -102,7 +102,7 @@
                                         <ZapIcon />
                                         </div>
                                         <div class="side-menu__title">
-                                        {{ lastSubMenu.title }}
+                                            {{ $tc("navs."+lastSubMenu.title) }}
                                         </div>
                                     </TheSideMenuTooltip>
                                     </li>

@@ -1,5 +1,5 @@
 <template>
-  <h2 class="intro-y text-lg font-medium mt-10">{{ title }}</h2>
+  <h2 class="intro-y text-lg font-medium mt-10">{{ $tc(title) }}</h2>
 </template>
 
 <script>

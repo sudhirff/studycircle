@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="intro-y flex items-center mt-8">
-            <h2 class="text-lg font-medium mr-auto">Courses Types</h2>
+            <h2 class="text-lg font-medium mr-auto">{{ $tc('Courses Types') }}</h2>
         </div>
         <div class="grid grid-cols-12 gap-6">
             <!-- BEGIN: Profile Menu -->
@@ -10,7 +10,22 @@
             >
                 <div class="intro-y box mt-5">
                     <div class="relative flex items-center p-5">
-                                                
+                         <the-base-data-list-card>
+                            <the-base-crud-table>
+                                <thead>
+                                    <base-row-card :columns="columns" :showHeaders="true"></base-row-card>
+                                </thead>
+                                <tbody>
+                                    <base-row-card v-for="(item, index) in items" 
+                                                    :key="index" 
+                                                    :columns="columns"
+                                                    :item="item"
+                                                    @EditRow="showEditModal"
+                                                    @DeleteRow="showDeleteModal"
+                                                    ></base-row-card>
+                                </tbody>
+                            </the-base-crud-table>
+                        </the-base-data-list-card>
                     </div>
                 </div>
             </div>
@@ -105,7 +120,13 @@ import { ref, reactive, computed } from "vue";
 import { useVuelidate } from '@vuelidate/core';
 import { required, helpers } from '@vuelidate/validators'
 
+import useListing from '@/hooks/listing.js';
+import BaseDeleteModalCard from '@/components/UI/BaseDeleteModalCard.vue';
+
 export default {
+    components: {
+        BaseDeleteModalCard
+    },
     setup(props, context) {
         const store = useStore();
         const submitted = ref(false);
@@ -113,7 +134,38 @@ export default {
         const isErrored = ref(false);
         const message = ref('');
         const isLoading = ref(false);
+        
+        const columns = {
+            id: {
+                label: "ID",
+                sorting: true,
+            },
+            name: {
+                label: "NAME",
+                sorting: true,
+            },
+            actions: {
+                label:"ACTIONS",
+                sorting: false,
+            }
+        };
 
+        const options = {
+            listDispatch: 'coursesType/fetch',
+            deleteDispatch: 'courseTypes/deletePermission',
+            deleteComponentName: 'BaseDeleteModalCard',
+            moduleName: "Permission"
+        };
+        
+        const {
+            _,
+            items,
+            selectedComponent,
+            deleteItem,
+            openModal,
+            removeComponent,
+            selectedItem
+         } = useListing(options);
 
         const courseType = reactive({
             label: '',
@@ -163,7 +215,16 @@ export default {
             submit,
             isLoading,
             submitted,
-            v$
+            v$,            
+            columns,
+            options,
+            items,
+            selectedComponent,
+            deleteItem,
+            openModal,
+            removeComponent,
+            selectedItem,
+            moduleName: options.moduleName
         }
     }
 }

@@ -8,7 +8,7 @@
                     <the-add-new-button>
                         <router-link to="/roles/create" 
                                     @click="listing = !listing" 
-                                    class="btn btn-primary">Add New Role</router-link>
+                                    class="btn btn-primary">{{ $t('Add New Role')}} </router-link>
                     </the-add-new-button>
                     <div class="hidden md:block mx-auto text-gray-600">
                         
@@ -33,14 +33,14 @@
                                                     class="flex items-center mr-3" 
                                                     @click.prevent="listing = !listing"
                                                     >
-                                                    <CheckSquareIcon class="w-4 h-4 mr-1" /> Edit
+                                                    <CheckSquareIcon class="w-4 h-4 mr-1" /> {{ $t('Edit')}}
                                         </router-link>
                                         <a class="flex items-center text-theme-21" 
                                             href="#" 
                                             data-toggle="modal" 
                                             @click.prevent="showDeleteModal(item.id)"
                                             > 
-                                                <Trash2Icon class="w-4 h-4 mr-1" /> Delete
+                                                <Trash2Icon class="w-4 h-4 mr-1" /> {{ $t('Delete')}}
                                         </a>
                                     </div>
                                 </td>

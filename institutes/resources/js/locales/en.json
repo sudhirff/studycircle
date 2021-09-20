@@ -1,0 +1,34 @@
+{
+    "navs": {
+        "Dashboard": "Dashboard",
+        "User Management": "User Management",
+        "Permissions": "Permissions",
+        "Roles": "Roles",
+        "Users": "Users",
+        "Course Management": "Course Management",
+        "Course Types": "Course Types",
+        "Courses": "Courses",
+        "Subjects": "Subjects"
+    },
+    "role": {
+        "dasd": "adas"
+    },
+    "common": {
+        "ID": "ID",
+        "ACTIONS": "ACTIONS"
+    },
+    "Permission Listing": "Permission Listing",
+    "Role Listing": "Role Listing",
+    "Courses Types": "Courses Types",
+    "Courses": "Courses",
+    "Subjects": "Subjects",
+    "ID": "ID",
+    "ACTIONS": "ACTIONS",
+    "Edit": "Edit",
+    "Delete": "Delete",
+    "Add New": "Add New",
+    "message": "I am glad you are here.",
+    "addRoleText": "Add New Role",
+    "PERMISSIONS": "PERMISSIONS"
+
+}
