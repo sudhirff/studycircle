@@ -13,6 +13,14 @@
     "role": {
         "Role": "भूमिका"
     },
+    "coursetypes": {
+        "header": {
+            "LABEL": "लेबल",
+            "ICON": "चिन्ह"
+        },
+        "Add Course Type": "पाठ्यक्रम प्रकार जोड़ें",
+        "Edit Course Type": "पाठ्यक्रम प्रकार संपादित करें"       
+    },
     "common": {
         "ID": "पहचान",
         "ACTIONS": "कार्रवाई"
@@ -30,5 +38,7 @@
     "Add New Permission": "नई अनुमति जोड़ें",
     "Add New Role": "नई भूमिका जोड़ें",
     "message": "मुझे खुशी है कि आप यहां हैं।",
-    "PERMISSIONS": "अनुमति"
+    "PERMISSIONS": "अनुमति",
+    "LABEL": "लेबल",
+    "ICON": "चिन्ह"
 }

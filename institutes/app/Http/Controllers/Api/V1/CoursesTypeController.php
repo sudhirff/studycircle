@@ -42,8 +42,9 @@ class CoursesTypeController extends Controller
     {
         if ($request->validated()) {
             $inputs = [
-                'label'=> json_encode([$request->label]),
-                'description' => json_encode([$request->description]),
+                'label'=> json_encode($request->label),
+                'description' => json_encode($request->description),
+                'icon'=> $request->icon,
             ];
             $coursesType = CoursesType::create($inputs);
             $response = [
@@ -90,9 +91,28 @@ class CoursesTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CoursesTypeRequest $request, CoursesType $coursesType)
     {
-        //
+        if ($request->validated()) {
+
+            $coursesType->label = json_encode($request->label);
+            $coursesType->description = json_encode($request->description);
+            $coursesType->icon = $request->icon;
+
+            $coursesType->save();
+            $response = [
+                'success' => true,
+                'message' => 'Courses type updated successfully.',
+                'coursesType' => $coursesType,
+            ];
+        } else {
+            $response = [
+                'success' => false,
+                'message' => 'Oops, there seems to have some errors.',
+                'errors' => $this->validated()->errors(),
+            ];
+        }
+        return response()->json($response);
     }
 
     /**
@@ -101,8 +121,20 @@ class CoursesTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(CoursesType $coursesType)
     {
-        //
+        $response = [
+            'success' => false,
+            'message' => null,
+            'errors' => null,
+        ];
+        if ($coursesType->delete()) {
+            $response = [
+                'success' => true,
+                'message' => 'courses type deleted successfully.',
+                'coursesType' => $coursesType,
+            ];
+        }
+        return response()->json($response);
     }
 }

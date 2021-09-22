@@ -1,23 +1,23 @@
 export default {
     FETCH_COURSES_TYPES(state, payload) {
-        state.coursesType = payload;
+        state.coursesTypes = payload;
     },
     CREATE_COURSES_TYPE(state, coursesType)
     {
-        state.coursesType.unshift(coursesType.coursesType)
+        state.coursesTypes.unshift(coursesType.coursesType)
     },
-    EDIT_PERMISSION(state, payload) {
-        state.permission = payload;
-    },
-
-    DELETE_PERMISSION(state, id) {
-        let index = state.permissions.findIndex(item => item.id === id)
-        state.permissions.splice(index, 1)
+    EDIT_COURSES_TYPE(state, payload) {
+        state.coursesType = payload;
     },
 
-    UPDATE_PERMISSION(state, permission)
+    DELETE_COURSES_TYPE(state, id) {
+        let index = state.coursesTypes.findIndex(item => item.id === id)
+        state.coursesTypes.splice(index, 1)
+    },
+
+    UPDATE_COURSES_TYPE(state, courseType)
     {
-        let index = state.permissions.findIndex(item => item.id === permission.id);
-        state.permissions[index] = permission;
+        let index = state.coursesTypes.findIndex(item => item.id === courseType.id);
+        state.coursesTypes[index] = courseType;
     },
 };

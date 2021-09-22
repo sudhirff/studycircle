@@ -13,6 +13,14 @@
     "role": {
         "dasd": "adas"
     },
+    "coursetypes": {
+        "header": {
+            "LABEL": "लेबल",
+            "ICON": "चिन्ह"
+        },
+        "Add Course Type": "अभ्यासक्रमाचा प्रकार जोडा",
+        "Edit Course Type": "अभ्यासक्रम प्रकार संपादित करा"        
+    },
     "common": {
         "ID": "आयडी",
         "ACTIONS": "क्रिया"
@@ -31,5 +39,7 @@
     "Add New Role": "नवीन भूमिका जोडा",
     "message": "मला आनंद आहे की तुम्ही येथे आहात.",
     "addRoleText": "नवीन भूमिका जोडा",
-    "PERMISSIONS": "परवानगी"
+    "PERMISSIONS": "परवानगी",
+    "LABEL": "लेबल",
+    "ICON": "चिन्ह"
 }

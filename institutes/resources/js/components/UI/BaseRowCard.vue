@@ -21,7 +21,7 @@
                         </span>
                     </template>
                     <template v-else>
-                        
+                        <!-- {{ parsed(item[index]) }}-->
                         {{ item[index] }}
                     </template>
                 </template>
@@ -98,6 +98,28 @@ export default {
             deleteMe,
             deleteItem
         };
+    },
+    methods: {
+        /*parsed(val) {
+            if (this.isJSON(val)) {
+                return JSON.parse(val);
+            } else {
+                return val;
+            }
+        },
+        isJSON(MyTestStr){
+            try {
+                var MyJSON = JSON.stringify(MyTestStr);
+                var json = JSON.parse(MyJSON);
+                if(typeof(MyTestStr) == 'string')
+                    if(MyTestStr.length == 0)
+                        return false;
+            }
+            catch(e){
+                return false;
+            }
+            return true;
+        }*/
     },
 }
 </script>

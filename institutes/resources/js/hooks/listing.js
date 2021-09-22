@@ -9,7 +9,7 @@ export default function useListing(options) {
     const selectedItem = ref(null);
     const moduleName = options.moduleName;
     
-    // Here we will fetch all the users.
+    // Here we will fetch all the listing.
     loadItems();
 
     async function loadItems() {

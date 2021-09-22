@@ -23,35 +23,34 @@ export default {
     },
 
     // This action is used to fetch only selected permission
-    async editPermission(context, id) {
-        const response = await axios.get(`/api/v1/permissions/${id}/edit`);
+    async edit(context, id) {
+        const response = await axios.get(`/api/v1/courses_type/${id}/edit`);
 
         if (response.status != 200) {
             const error = new Error('Failed to fetch permission')
             throw error;
         }
-        context.commit('EDIT_PERMISSION', response.data.permission);
+        context.commit('EDIT_COURSES_TYPE', response.data.permission);
     },
 
-    // After permission submits the form, permission information must be updated in database.
-    async updatePermission(context, permission) {
-        const response = await axios.put(`/api/v1/permissions/${permission.id}`, permission);
+    // After coursesType submits the form, coursesType information must be updated in database.
+    async update(context, coursesType) {
+        const response = await axios.put(`/api/v1/courses_type/${coursesType.id}`, coursesType);
 
         if (response.status != 200) {
-            const error = new Error('Failed to update permission')
+            const error = new Error('Failed to update coursesType')
             throw error;
         }
-
-        context.commit('UPDATE_PERMISSION', permission);
+        context.commit('UPDATE_COURSES_TYPE', response.data.coursesType);
     },
 
-    // This action is used to delete permission from serve.
-    async deletePermission(context, id) {
-        const response = await axios.delete(`/api/v1/permissions/${id}`);
+    // This action is used to delete coursesType from serve.
+    async delete(context, id) {
+        const response = await axios.delete(`/api/v1/courses_type/${id}`);
         if (response.status != 200) {
-            const error = new Error('Failed to delete permission')
+            const error = new Error('Failed to delete courses type')
             throw error;
         }
-        context.commit('DELETE_PERMISSION', id);
+        context.commit('DELETE_COURSES_TYPE', id);
     },
 };

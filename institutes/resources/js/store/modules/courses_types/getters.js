@@ -1,9 +1,9 @@
 export default {
-    coursesType(state) {
-        return state.coursesType;
+    coursesTypes(state) {
+        return state.coursesTypes;
     },
 
-    permission(state) {
-        return state.permission;
+    coursesType(state) {
+        return state.coursesType;
     }
 }
