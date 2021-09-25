@@ -41,5 +41,6 @@
     "addRoleText": "नवीन भूमिका जोडा",
     "PERMISSIONS": "परवानगी",
     "LABEL": "लेबल",
-    "ICON": "चिन्ह"
+    "ICON": "चिन्ह",
+    "DESCRIPTION": "वर्णन"
 }

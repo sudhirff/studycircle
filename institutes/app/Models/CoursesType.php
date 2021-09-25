@@ -21,4 +21,15 @@ class CoursesType extends Model
         'icon',
     ];
 
+    protected $searchable = [
+        'label',
+        'description',
+    ];
+
+    protected $sortable = [
+        'id',
+        'label',
+        'description',
+    ];
+
 }

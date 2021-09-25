@@ -31,7 +31,7 @@ export default {
     },
     watch: {
         '$route' (to, from) {
-            if (to.fullPath === '/subjects') {
+            if (to.name === 'subjects') {
                 this.listing = true;
             }
         }

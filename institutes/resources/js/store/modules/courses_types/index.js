@@ -8,6 +8,8 @@ export default {
         return {
             coursesTypes: [],
             coursesType: [],
+            currentPage: '',
+            resources: [],
         }
     },
     actions,

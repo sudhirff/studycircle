@@ -1,5 +1,5 @@
 <template>
-    <table class="table table-report -mt-2">
+    <table class="table p-5 mt-2 mb-2">
         <slot></slot>                
     </table>
 </template>

@@ -68,6 +68,7 @@ export default function useListing(options) {
         openModal,
         removeComponent,
         selectedItem,
-        moduleName
+        moduleName,
+        loadItems
     };
 };

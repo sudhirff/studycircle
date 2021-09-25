@@ -5,5 +5,13 @@ export default {
 
     coursesType(state) {
         return state.coursesType;
+    },
+
+    currentPage(state) {
+        return state.currentPage;
+    },
+
+    resources(state) {
+        return state.resources;
     }
 }

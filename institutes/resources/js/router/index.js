@@ -98,6 +98,7 @@ const routes = [
         path: '/course-types',
         name: 'courseType',
         component: CourseTypeList,
+        params: true,
         meta: { requiresAuth: true },
     },
     {

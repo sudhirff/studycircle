@@ -24,10 +24,10 @@
                         </thead>
                         <tbody>
                             <tr v-for="(item, index) in items" :key="index">
-                                <td>{{ item.id }}</td>
-                                <td>{{ item.name }}</td>
-                                <td>{{ item.permissions_count }}/{{totalPermissionsCount}}</td>
-                                <td>
+                                <td class="border-b whitespace-nowrap">{{ item.id }}</td>
+                                <td class="border-b whitespace-nowrap">{{ item.name }}</td>
+                                <td class="border-b whitespace-nowrap  justify-center items-center">{{ item.permissions_count }}/{{totalPermissionsCount}}</td>
+                                <td class="border-b whitespace-nowrap">
                                     <div class="flex justify-center items-center">
                                         <router-link :to="'/roles/'+item.id+'/edit'" 
                                                     class="flex items-center mr-3" 
@@ -35,12 +35,12 @@
                                                     >
                                                     <CheckSquareIcon class="w-4 h-4 mr-1" /> {{ $t('Edit')}}
                                         </router-link>
-                                        <a class="flex items-center text-theme-21" 
+                                        <a class="flex items-center text-theme-24" 
                                             href="#" 
                                             data-toggle="modal" 
                                             @click.prevent="showDeleteModal(item.id)"
                                             > 
-                                                <Trash2Icon class="w-4 h-4 mr-1" /> {{ $t('Delete')}}
+                                            <Trash2Icon class="w-4 h-4 mr-1" /> {{ $t('Delete')}}
                                         </a>
                                     </div>
                                 </td>
@@ -182,7 +182,7 @@ export default {
     },
     watch: {
         '$route' (to, from) {
-            if (to.fullPath === '/roles') {
+            if (to.name === 'roles') {
                 this.listing = true;
                 this.$store.dispatch('roles/fetchRoles');
             }

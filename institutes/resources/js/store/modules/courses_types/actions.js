@@ -2,13 +2,16 @@ import axios from "axios"
 
 export default {
     // This action is used to fetch all the permissions present in database
-    async fetch(context) {
-        const response = await axios.get('/api/v1/courses_type') ;
+    async fetch(context, params) {
+        const response = await axios.get('/api/v1/courses_type?page='+params.page+'&search='+params.keyword+'&field='+params.field+'&sort='+params.sort) ;
 
         if (response.status != 200) {
             const error = new Error('Failed to fetch course type')
             throw error;
         }
+        
+        context.commit('COURSES_TYPE_RESOURCE', response.data);
+        context.commit('COURSES_TYPE_CURRENT_PAGE', response.data.current_page);
         context.commit('FETCH_COURSES_TYPES', response.data);
     },
     

@@ -18,18 +18,9 @@ class CoursesTypeController extends Controller
     {
         $coursesType = CoursesType::when(request('search'), function ($query) {
             $query->where('label', 'like', '%'. request('search'). '%');
-        })->orderBy('id', 'desc')->get();
+            $query->orWhere('description', 'like', '%'. request('search'). '%');
+        })->orderBy(request('field'), request('sort'))->paginate(5);
         return response()->json($coursesType);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -60,28 +51,6 @@ class CoursesTypeController extends Controller
             ];
         }
         return response()->json($response);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**

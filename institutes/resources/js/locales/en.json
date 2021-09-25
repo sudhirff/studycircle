@@ -41,5 +41,6 @@
     "addRoleText": "Add New Role",
     "PERMISSIONS": "PERMISSIONS",
     "LABEL": "LABEL",
-    "ICON": "ICON"
+    "ICON": "ICON",
+    "DESCRIPTION": "DESCRIPTION"
 }

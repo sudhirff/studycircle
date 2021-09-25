@@ -22,6 +22,7 @@ import TheBaseHeaderCard from '@/components/UI/TheBaseHeaderCard.vue'
 import TheBaseCrudTable from '@/components/UI/TheBaseCrudTable.vue'
 import BaseRowCard from '@/components/UI/BaseRowCard.vue'
 import Loading from '@/components/UI/Loading.vue'
+import Pagination from '@/components/UI/Pagination.vue';
 
 export default app => {
   app.component('Chart', Chart)
@@ -48,6 +49,7 @@ export default app => {
   app.component('BaseRowCard', BaseRowCard)  
   app.component('Notification', Notification)
   app.component('Loading', Loading)
+  app.component('Pagination', Pagination)
   
   for (const [key, icon] of Object.entries(featherIcons)) {
     icon.props.size.default = '24'

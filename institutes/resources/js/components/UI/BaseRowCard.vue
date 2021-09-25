@@ -1,16 +1,25 @@
 <template>
     <tr :class="{ 'intro-x': (!showHeaders) }">
         <template v-if="showHeaders">
-            <th class="whitespace-nowrap" 
+            <th class="border-b-2 dark:border-dark-5 whitespace-nowrap" 
                 v-for="(column, index) in columns" 
                 :key="index"
                 :class="{ ' text-center': (index == 'actions') }">
-                {{ $tc(column.label) }}
-                <span></span>
+                <template v-if="column.sorting">
+                    <a href="#" @click.prevent="sort(index)">
+                        {{ $tc(column.label) }}
+                        <template v-if="(index === setField) && setDirection === 'desc'"><ChevronDownIcon /></template>
+                        <template v-else-if="(index === setField) && setDirection === 'asc'"><ChevronUpIcon /></template>
+                        
+                    </a>
+                </template>
+                <template v-else>{{ $tc(column.label) }}</template>
             </th>
         </template>
         <template v-else>
-            <td v-for="(column, index) in columns" :key="index"  
+            <td v-for="(column, index) in columns" 
+                :key="index"
+                class="border-b whitespace-nowrap"  
                 :class="{ 'table-report__action w-56': (index === 'actions') }">
                 <template v-if="index !== 'actions'">
                     <template v-if="column.isMany">
@@ -40,7 +49,7 @@
                                 {{ $tc('Edit') }}
                             </router-link>
                         </template>
-                        <a class="flex items-center text-theme-21" 
+                        <a class="flex items-center text-theme-24" 
                             href="#" 
                             data-toggle="modal" 
                             @click.prevent="deleteMe"
@@ -56,9 +65,10 @@
 
 <script>
 
+import { ref } from "vue";
 
 export default {
-    emits: ['EditRow', 'DeleteRow', 'DeleteItem'],
+    emits: ['EditRow', 'DeleteRow', 'DeleteItem', 'sorting'],
     props: {
         item: {
             type: Object,
@@ -81,9 +91,20 @@ export default {
         editUrl: {
             type: String,
             required: false,
+        },
+        field: {
+            type: String,
+            required: false,
+        },
+        direction: {
+            type: String,
+            required: false,
         }
     },
     setup(props, context) {
+        const setDirection = ref(props.direction);
+        const setField = ref(props.field);
+        
         function editMe() {
             context.emit('EditRow', props.item)
         }
@@ -93,10 +114,33 @@ export default {
         function deleteItem(itemId) {
             context.emit('DeleteItem', itemId)
         }
+        function sort(index) {
+            if (setField.value === index) {
+                switch (setDirection.value) {
+                    case null:
+                        setDirection.value = 'asc';
+                        break;
+                    case 'asc':
+                        setDirection.value = 'desc';
+                        break;
+                    case 'desc':
+                        setDirection.value = 'asc';
+                        break;
+                    }
+            } else {
+                setDirection.value = 'desc'
+            }
+            setField.value = index;
+
+            context.emit('sorting', [setField.value, setDirection.value]);
+        }
         return {
             editMe,
             deleteMe,
-            deleteItem
+            deleteItem,
+            sort,
+            setDirection,
+            setField
         };
     },
     methods: {
