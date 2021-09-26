@@ -21,7 +21,13 @@
                                                     :direction="sortDirection"
                                                     ></base-row-card>
                                 </thead>
-                                <tbody id="listing">
+                                <tbody id="listing" v-if="!items">
+                                    <tr>
+                                        <td :colspan="columns.length">{{ $t('Sorry, no records found!')}}</td>
+                                    </tr>
+                                </tbody>
+                                <tbody v-else>
+                                                                            
                                     <tr v-for="(item, index) in items.data" 
                                                     :key="index" 
                                                     :id="'list-'+item.id"
@@ -53,7 +59,7 @@
                         </the-base-data-list-card>
                     </div>
                 </div>
-                <pagination align="center" :data="items" @pagination="paginate" v-if="showPagination"></pagination>
+                <pagination align="center" v-if="showPagination && items" :data="items" @pagination="paginate"></pagination>
             </div>
             <!-- END: Profile Menu -->
             <div class="col-span-12 lg:col-span-4 xxl:col-span-9">
@@ -222,8 +228,15 @@ export default {
 
         // After items are fetched, we have to get all the items using gettters
         const items = computed(function () {
-            return store.getters['coursesType/coursesTypes'];
+            const getItems = store.getters['coursesType/coursesTypes'];
+            if (getItems.data !== undefined) {
+                if (getItems.data.length > 0)
+                return getItems;
+            }
+            return false;
+            //return store.getters['coursesType/coursesTypes'];
         });
+
 
         const courseType = reactive({
             id: '',
@@ -345,7 +358,7 @@ export default {
             sort,
             sortField: params.field,
             sortDirection: params.sort,
-            moduleName: "Course Type"
+            moduleName: "Course Type",
         }
     },
     methods: {
@@ -388,7 +401,7 @@ export default {
                 return true;
             }
             return false;
-        }
+        },
     }
 }
 </script>
