@@ -2,12 +2,7 @@ export default {
     FETCH_COURSES_TYPES(state, payload) {
         state.coursesTypes = payload;
     },
-    COURSES_TYPE_RESOURCE(state, payload) {
-        state.resources = payload;
-    },
-    COURSES_TYPE_CURRENT_PAGE(state, payload) {
-        state.currentPage = payload;
-    },
+    
     CREATE_COURSES_TYPE(state, coursesType)
     {
         state.coursesTypes.data.unshift(coursesType.coursesType)

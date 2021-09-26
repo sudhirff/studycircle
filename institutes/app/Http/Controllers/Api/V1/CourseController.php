@@ -19,11 +19,10 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courseCategories = Course::when(request('search'), function ($query) {
+        $courses = Course::when(request('search'), function ($query) {
             $query->where('name', 'like', '%'. request('search'). '%');
-        })->orderBy('id', 'desc')->get()->toTree();
-        /*$courseCategories = Course::get();*/
-        return response()->json($courseCategories);
+        })->orderBy('id', 'desc')->paginate();
+        return response()->json($courses);
     }
 
 
@@ -35,20 +34,23 @@ class CourseController extends Controller
      */
     public function store(CourseRequest $request)
     {
+
         if ($request->validated()) {
             $inputs = [
                 'name'=> $request->name,
-                'parent_id' => $request->parent_id == '' ? NULL: $request->parent_id,
-                'course_code' => Hash::make($request->name),
+                'course_code' => $request->name,
                 'created_by' => Auth::user()->id,
                 'updated_by' => Auth::user()->id,
             ];
-            $courseCategory = Course::create($inputs);
+            
+    	    $tags = explode(",", $request->tags);
+            $course = Course::create($inputs);
+            $course->tag($tags);
 
             $response = [
                 'success' => true,
                 'message' => 'Course category created successfully.',
-                'courseCategory' => $courseCategory,
+                'course' => $course,
             ];
         } else {
             $response = [

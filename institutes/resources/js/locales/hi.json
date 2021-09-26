@@ -42,5 +42,13 @@
     "LABEL": "लेबल",
     "ICON": "चिन्ह",
     "DESCRIPTION": "विवरण",
-    "Sorry, no records found!": "क्षमा करें, कोई रिकॉर्ड नहीं मिला!"
+    "Sorry, no records found!": "क्षमा करें, कोई रिकॉर्ड नहीं मिला!",
+    "Add Course": "कोर्स जोड़ें",
+    "Choose course type": "कोर्स का प्रकार चुनें",
+    "Name": "नाम",
+    "Course code": "विषय क्रमांक",
+    "Tags": "टैग",
+    "COURSE CODE": "विषय क्रमांक",
+    "TAGS": "टैग",
+    "Language": "भाषा"
 }

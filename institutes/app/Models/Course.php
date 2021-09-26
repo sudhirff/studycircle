@@ -4,19 +4,28 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Kalnoy\Nestedset\NodeTrait;
+use \Conner\Tagging\Taggable;
+
 
 class Course extends Model
 {
-    use HasFactory, NodeTrait;
+    use HasFactory;
+    use Taggable;
+    
 
     protected $guarded = [];
 
-    protected $fillable = array('name', 'parent_id', 'created_by', 'updated_by');
-    
-    public function subcategory(){
+    protected $fillable = array('name', 'course_code', 'created_by', 'updated_by');
 
-        return $this->hasMany('App\Category', 'parent_id');
+    protected $searchable = [
+        'name',
+        'course_code',
+    ];
 
-    }
+    protected $sortable = [
+        'id',
+        'name',
+        'course_code',
+    ];
+
 }

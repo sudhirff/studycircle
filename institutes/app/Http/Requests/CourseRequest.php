@@ -28,10 +28,13 @@ class CourseRequest extends FormRequest
             'name' => [
                 'required',
             ],
-            /*'course_code' => [
+            'course_code' => [
                 'required',
                 Rule::unique('courses')->ignore($this->course)
-            ],*/
+            ],
+            'tags' => [
+                'required',
+            ],
         ];
     }
 }

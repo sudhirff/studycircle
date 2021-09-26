@@ -1,9 +1,9 @@
 export default {
-    permissions(state) {
-        return state.permissions;
+    courses(state) {
+        return state.courses;
     },
 
-    permission(state) {
-        return state.permission;
+    course(state) {
+        return state.course;
     }
 }

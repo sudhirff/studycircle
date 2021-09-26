@@ -9,7 +9,7 @@ import authModule from './modules/auth/index.js';
 import userModule from './modules/users/index.js';
 import permissionModule from './modules/permissions/index.js';
 import roleModule from './modules/roles/index.js';
-import courseCategoryModule from './modules/course_categories/index.js';
+import coursesModule from './modules/courses/index.js';
 import coursesTypeModule from './modules/courses_types/index.js';
 import subjectModule from './modules/subjects/index.js';
 
@@ -20,8 +20,8 @@ const store = createStore({
     users: userModule,
     permissions: permissionModule,
     roles: roleModule,
-    courseCategories: courseCategoryModule,
     coursesType: coursesTypeModule,
+    courses: coursesModule,
     subjects: subjectModule,
   },
   state() {

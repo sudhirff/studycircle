@@ -1,57 +1,46 @@
 import axios from "axios"
 
 export default {
-    // This action is used to fetch all the permissions present in database
-    async fetchPermissions(context) {
-        const response = await axios.get('/api/v1/permissions') ;
+    // This action is used to fetch all the courses present in database
+    async fetch(context) {
+        const response = await axios.get('/api/v1/courses') ;
 
         if (response.status != 200) {
-            const error = new Error('Failed to fetch permissions')
+            const error = new Error('Failed to fetch courses')
             throw error;
         }
-        context.commit('FETCH_PERMISSIONS', response.data);
+        context.commit('FETCH_COURSES', response.data);
     },
     
-    async createPermission(context, permission) {
-        const response = await axios.post('/api/v1/permissions', permission) ;
+    async create(context, course) {
+        const response = await axios.post('/api/v1/courses', course) ;
 
         if (response.status != 200) {
-            const error = new Error('Failed to create permissions')
+            const error = new Error('Failed to create courses')
             throw response.data.message;
         }
-        context.commit('CREATE_PERMISSION', response.data);
-    },
-
-    // This action is used to fetch only selected permission
-    async editPermission(context, id) {
-        const response = await axios.get(`/api/v1/permissions/${id}/edit`);
-
-        if (response.status != 200) {
-            const error = new Error('Failed to fetch permission')
-            throw error;
-        }
-        context.commit('EDIT_PERMISSION', response.data.permission);
+        context.commit('CREATE_COURSE', response.data);
     },
 
     // After permission submits the form, permission information must be updated in database.
-    async updatePermission(context, permission) {
-        const response = await axios.put(`/api/v1/permissions/${permission.id}`, permission);
+    async update(context, course) {
+        const response = await axios.put(`/api/v1/courses/${course.id}`, course);
 
         if (response.status != 200) {
-            const error = new Error('Failed to update permission')
+            const error = new Error('Failed to update course.')
             throw error;
         }
 
-        context.commit('UPDATE_PERMISSION', permission);
+        context.commit('UPDATE_COURSE', permission);
     },
 
     // This action is used to delete permission from serve.
-    async deletePermission(context, id) {
-        const response = await axios.delete(`/api/v1/permissions/${id}`);
+    async delete(context, id) {
+        const response = await axios.delete(`/api/v1/courses/${id}`);
         if (response.status != 200) {
-            const error = new Error('Failed to delete permission')
+            const error = new Error('Failed to delete course')
             throw error;
         }
-        context.commit('DELETE_PERMISSION', id);
+        context.commit('DELETE_COURSE', id);
     },
 };

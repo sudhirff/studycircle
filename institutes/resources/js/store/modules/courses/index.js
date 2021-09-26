@@ -6,8 +6,8 @@ export default {
     namespaced: true,
     state() {
         return {
-            permissions: [],
-            permission: null,
+            courses: [],
+            course: null,
         }
     },
     actions,

@@ -43,5 +43,13 @@
     "LABEL": "LABEL",
     "ICON": "ICON",
     "DESCRIPTION": "DESCRIPTION",
-    "Sorry, no records found!": "Sorry, no records found!"
+    "Sorry, no records found!": "Sorry, no records found!",
+    "Add Course": "Add Course",
+    "Choose course type": "Choose course type",
+    "Name": "Name",
+    "Course code": "Course code",
+    "Tags": "Tags",
+    "COURSE CODE": "COURSE CODE",
+    "TAGS": "TAGS",
+    "Language": "Language"
 }

@@ -1,23 +1,23 @@
 export default {
-    FETCH_PERMISSIONS(state, payload) {
-        state.permissions = payload;
+    FETCH_COURSES(state, payload) {
+        state.courses = payload;
     },
-    CREATE_PERMISSION(state, permission)
+    CREATE_COURSE(state, course)
     {
-        state.permissions.unshift(permission.permission)
+        state.courses.data.unshift(course.course)
     },
-    EDIT_PERMISSION(state, payload) {
-        state.permission = payload;
+    EDIT_COURSE(state, payload) {
+        state.course = payload;
     },
 
-    DELETE_PERMISSION(state, id) {
-        let index = state.permissions.findIndex(item => item.id === id)
-        state.permissions.splice(index, 1)
+    DELETE_COURSE(state, id) {
+        let index = state.courses.findIndex(item => item.id === id)
+        state.courses.data.splice(index, 1)
     },
 
-    UPDATE_PERMISSION(state, permission)
+    UPDATE_COURSE(state, course)
     {
-        let index = state.permissions.findIndex(item => item.id === permission.id);
-        state.permissions[index] = permission;
+        let index = state.courses.data.findIndex(item => item.id === course.id);
+        state.courses.data[index] = course;
     },
 };

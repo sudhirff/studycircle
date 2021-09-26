@@ -9,9 +9,7 @@ export default {
             const error = new Error('Failed to fetch course type')
             throw error;
         }
-        
-        context.commit('COURSES_TYPE_RESOURCE', response.data);
-        context.commit('COURSES_TYPE_CURRENT_PAGE', response.data.current_page);
+
         context.commit('FETCH_COURSES_TYPES', response.data);
     },
     
