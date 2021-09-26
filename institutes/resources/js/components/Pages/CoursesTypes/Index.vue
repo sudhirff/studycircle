@@ -137,9 +137,7 @@
 
             </div>
         </div>
-        <base-delete-modal-card v-if="showDelete"  
-                                @closeComp="removeComponent"
-                                @deleteConfirm="deleteItem"
+        <base-delete-modal-card v-if="showDelete" 
                                 :item="selectedItem"
                                 :moduleName="moduleName"
                                 :key="selectedItem"></base-delete-modal-card>
@@ -347,6 +345,7 @@ export default {
             sort,
             sortField: params.field,
             sortDirection: params.sort,
+            moduleName: "Course Type"
         }
     },
     methods: {
@@ -385,10 +384,10 @@ export default {
     },
     computed: {
         showPagination() {
-            if (this.items.current_page === this.items.last_page) {
-                return false;
+            if (this.items.total / this.items.to > 1 || this.items.current_page != 1) {
+                return true;
             }
-            return true;
+            return false;
         }
     }
 }
