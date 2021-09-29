@@ -22,6 +22,9 @@ class CourseController extends Controller
         $courses = Course::when(request('search'), function ($query) {
             $query->where('name', 'like', '%'. request('search'). '%');
         })->orderBy('id', 'desc')->paginate();
+        
+        
+        //$apiData = Course::getApiData();
         return response()->json($courses);
     }
 

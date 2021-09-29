@@ -6,6 +6,7 @@ import ContactUs from '../pages/ContactUs.vue';
 import Blogs from '../pages/Blogs.vue';
 import HowItWorks from '../pages/HowItWorks.vue';
 import Features from '../pages/Features.vue';
+import Kvpy from '../pages/Kvpy.vue';
 
 const routes = [
     {
@@ -27,6 +28,11 @@ const routes = [
         path: '/contact-us',
         name: 'ContactUs',
         component: ContactUs
+    },
+    {
+        path: '/kvpy',
+        name: 'kvpy',
+        component: Kvpy
     },
     {
         path: '/blogs',

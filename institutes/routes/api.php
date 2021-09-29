@@ -8,7 +8,7 @@ use App\Http\Controllers\Api\V1\RoleController;
 use App\Http\Controllers\Api\V1\CourseController;
 use App\Http\Controllers\Api\V1\CoursesTypeController;
 
-use App\Models\User;
+use App\Models\Language;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +28,12 @@ Route::middleware('api')->group(function () {
             
             Route::resource('v1/roles', RoleController::class);
             Route::resource('v1/courses_type', CoursesTypeController::class);
+            Route::get('v1/courses_type/list', [CoursesTypeController::class, 'list'])->name('coursesType.list');
             Route::resource('v1/courses', CourseController::class);
+
+            Route::get('v1/languages', function () {
+                return Language::get();
+            });
         });
     
 });

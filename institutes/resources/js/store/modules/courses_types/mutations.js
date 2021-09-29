@@ -21,4 +21,8 @@ export default {
         let index = state.coursesTypes.data.findIndex(item => item.id === courseType.id);
         state.coursesTypes.data[index] = courseType;
     },
+
+    LIST_COURSES_TYPE(state, payload) {
+        state.courseTypeList = payload;
+    }
 };

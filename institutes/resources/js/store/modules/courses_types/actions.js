@@ -54,4 +54,16 @@ export default {
         }
         context.commit('DELETE_COURSES_TYPE', id);
     },
+
+
+    // This action is used to get list of all the course categories
+    async list(context) {
+        //api/v1/courses_type/list
+        const resposnse = await axios.get('/api/v1/courses_type/list');
+        if (resposnse.status !== 200) {
+            const error = new Error('Failed to get list of cours types')
+            throw error;
+        }
+        context.commit('LIST_COURSES_TYPE', resposnse.data);
+    }
 };

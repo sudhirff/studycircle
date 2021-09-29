@@ -143,12 +143,11 @@
                                                     classNames: 'w-full'
                                                 }"
                                             >
-                                                <option value="">Select a language</option>
-                                                <option value="1">Leonardo DiCaprio</option>
-                                                <option value="2">Johnny Deep</option>
-                                                <option value="3">Robert Downey, Jr</option>
-                                                <option value="4">Samuel L. Jackson</option>
-                                                <option value="5">Morgan Freeman</option>
+                                            {{ languages}}
+                                                <option v-for="(language, index) in languages" 
+                                                        :key="index" 
+                                                        :value="language.id">{{ language.name}}</option>
+                                                
                                             </TailSelect>
                                         </div>
                                     </div>
@@ -203,7 +202,7 @@
 
 <script>
 import { useStore } from 'vuex';
-import { ref, reactive, computed } from 'vue'
+import { ref, reactive, computed, onMounted } from 'vue'
 
 import { useVuelidate } from '@vuelidate/core';
 import { required, helpers } from '@vuelidate/validators'
@@ -232,6 +231,7 @@ export default {
         const selectedItem = ref();
         const showDelete = ref(false);
         const editMode = ref(false);
+        
         const select = ref(0)
         const tags = ref([]);
 
@@ -266,13 +266,16 @@ export default {
         };
 
         // Here we will fetch all the listing.
-        loadItems();
-
+        //
+        onMounted(() => {
+            loadItems();
+        })
         async function loadItems() {
             isLoading.value = true;
             try {
                 await store.dispatch('courses/fetch', params);
-                await store.dispatch('coursesType/fetch', params);
+                await store.dispatch('languages/fetch');
+                await store.dispatch('coursesType/courseTypeList');
                 isLoading.value = false;
             } catch (error) {
                 error = error.message || 'Something went wrong!';
@@ -289,9 +292,10 @@ export default {
             }
             return false;
         });
-        // After items are fetched, we have to get all the items using gettters
+
+        // After items are fetched, we have to get all the course types using gettters
         const courseTypes = computed(function () {
-            const getItems = store.getters['coursesType/coursesTypes'];
+            const getItems = store.getters['coursesType/courseTypeList'];
 
             if (getItems.data !== undefined) {
                 if (getItems.data.length > 0)
@@ -300,6 +304,15 @@ export default {
             return false;
         });
 
+        const languages = computed(function() {
+            const itemLanguages = store.getters['languages/languages'];
+
+            if (itemLanguages.data !== undefined) {
+                if (itemLanguages.data.length > 0)
+                return itemLanguages;
+            }
+            return false;
+        });
 
         const course = reactive({
             id: '',
@@ -307,7 +320,7 @@ export default {
             name: '',
             course_code: '',
             tags: '',
-            language_id: '',
+            language_id: 1,
         });
 
         const rules = computed(() => {
@@ -431,7 +444,8 @@ export default {
             moduleName: "Course Type",
             tags,
             select,
-            courseTypes
+            courseTypes,
+            languages
         }
     },
     computed: {

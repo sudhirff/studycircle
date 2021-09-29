@@ -106,4 +106,11 @@ class CoursesTypeController extends Controller
         }
         return response()->json($response);
     }
+
+
+    public function list()
+    {
+        $coursesType = CoursesType::orderBy('label', 'asc')->get();
+        return response()->json($coursesType);
+    }
 }

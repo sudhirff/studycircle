@@ -90,14 +90,14 @@
 							
 								<div class="team-item">
 								
-									<ul class="team-item-social">
+									<!--<ul class="team-item-social">
 									
 										<li><a href="#" data-toggle="tooltip" data-placement="right" title="Facebook"><i class="fa fa-facebook"></i></a></li>
 										<li><a href="#" data-toggle="tooltip" data-placement="right" title="Twitter"><i class="fa fa-twitter"></i></a></li>
 										<li><a href="#" data-toggle="tooltip" data-placement="right" title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
 										<li><a href="#" data-toggle="tooltip" data-placement="right" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
 										
-									</ul>
+									</ul>-->
 									
 									<div class="team-item-inner">
 									
@@ -108,7 +108,7 @@
 										<div class="content">
 										
 											<h3>Sudhir Mishra</h3>
-											<!--<p class="labeling">Founder &amp; CEO</p>-->
+											<p class="labeling">Director &amp; CEO</p>
 											
 										</div>
 										
@@ -139,8 +139,7 @@
 										
 										<div class="content">
 											<h3>Pallavi Dighe</h3>
-											<!-- <p class="labeling">Chief Technical Officer</p>
-											<p>An artist, learner, mother and so many roles, she is playing all these roles like rockstar. <br />She is a Zend Certified PHP 5 Engineer. She is having vast experience in web development industry. </p>-->
+											<p class="labeling">Director &amp; CTO</p>
 										</div>
 										
 									</div>
@@ -149,36 +148,6 @@
 								
 							</div>
 							
-							<div class="GridLex-col-3_sm-4_xs-6_xss-12">
-							
-								<div class="team-item">
-								
-									<ul class="team-item-social">
-									
-										<li><a href="#" data-toggle="tooltip" data-placement="right" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="right" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="right" title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-										<li><a href="#" data-toggle="tooltip" data-placement="right" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
-										
-									</ul>
-									
-									<div class="team-item-inner">
-									
-										<div class="image">
-											<img :src="getImage('profiles/pooja_mishra.jpeg')" alt="Image" />
-										</div>
-										
-										<div class="content">
-
-											<h3>Pooja Tripathi</h3>
-											<!-- <p class="labeling">Communication Head</p>-->
-										</div>
-										
-									</div>
-								
-								</div>
-								
-							</div>
 							
 						</div>
 						

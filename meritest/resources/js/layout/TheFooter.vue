@@ -64,9 +64,9 @@
                         </div>
                         
                         <p class="footer-address">
-                            Plot No 09, Vidya Nagar Wathoda Layout<br />
+                            H.No. 2238/09, Vidya Nagar Wathoda Layout (Urban)<br />
                             Behind Ganesh Mandir<br />
-                            NAGPUR, MAHARASHTRA 440009<br />
+                            NAGPUR, MAHARASHTRA 440008<br />
                             India <br />
                             <a href="tel:91-762-009-8848"><span class="block text-white font20 font700 line20 mt-5 mb-5">
                                 +91 762 009 8848
@@ -89,7 +89,7 @@
                 <div class="row">
                 
                     <div class="col-xs-12 col-sm-6">
-                        <p class="copy-right">&#169; Copyright @{{currentYear}} Meritest - Sabse Best.</p>
+                        <p class="copy-right">&#169; Copyright @{{currentYear}} <a title="Meritest Solutions Pvt. Ltd." alt="Meritest Solutions Pvt. Ltd.">Meritest Solutions Pvt. Ltd.</a></p>
                     </div>
                     
                 </div>

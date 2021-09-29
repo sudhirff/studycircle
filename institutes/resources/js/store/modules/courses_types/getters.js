@@ -6,4 +6,8 @@ export default {
     coursesType(state) {
         return state.coursesType;
     },
+
+    courseTypeList(state) {
+        return state.courseTypeList;
+    },
 }

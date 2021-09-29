@@ -139,42 +139,54 @@
                 </div>
                 
                 <div class="row">
-                
-                    <div class="col-sm-4">
+                    <a href="#" 
+                        data-toggle="modal" 
+                        @click.prevent="selectComp('BuildForTeachers')"
+                        :id="`BuildForTeachers`">
+                        <div class="col-sm-4">
                     
-                        <div class="icon-featured">
+                            <div class="icon-featured">
+                                
+                                <h4>Teachers</h4>
+                                <span class="icon text-primary"><i class="ion-ios-people-outline"></i></span>
+                                <p>Create Question, Design Test, Assign Test, Generate Result.</p>
                             
-                            <h4>Teachers</h4>
-                            <span class="icon text-primary"><i class="ion-ios-people-outline"></i></span>
-                            <p>Create Question, Design Test, Assign Test, Generate Result.</p>
+                            </div>
                         
                         </div>
+                    </a>
+                    <a href="#" 
+                        data-toggle="modal" 
+                        @click.prevent="selectComp('BuildForStudents')"
+                        :id="`BuildForStudents`">
+                        <div class="col-sm-4">
                     
-                    </div>
-                    
-                    <div class="col-sm-4">
-                    
-                        <div class="icon-featured">
+                            <div class="icon-featured">
+                                
+                                <h4>Students</h4>
+                                <span class="icon text-primary"><i class="ion-ios-people-outline"></i></span>
+                                <p>Learn and do exam practice anytime.</p>
                             
-                            <h4>Students</h4>
-                            <span class="icon text-primary"><i class="ion-ios-people-outline"></i></span>
-                            <p>Learn and do exam practice anytime.</p>
+                            </div>
                         
                         </div>
-                    
-                    </div>
-                    
-                    <div class="col-sm-4">
-                    
-                        <div class="icon-featured">
+                    </a>
+                    <a href="#" 
+                        data-toggle="modal" 
+                        @click.prevent="selectComp('BuildForParents')"
+                        :id="`BuildForParents`">
+                        <div class="col-sm-4">
+                        
+                            <div class="icon-featured">
+                                
+                                <h4>Parents</h4>
+                                <span class="icon text-primary"><i class="ion-ios-people-outline"></i></span>
+                                <p>Get a complete track of you kid.</p>
                             
-                            <h4>Parents</h4>
-                            <span class="icon text-primary"><i class="ion-ios-people-outline"></i></span>
-                            <p>Get a complete track of you kid.</p>
+                            </div>
                         
                         </div>
-                    
-                    </div>
+                    </a>
                     
                 </div>
                 
@@ -331,6 +343,9 @@ import ITSolutions from './home/ITSolutions.vue';
 import RecruitmentSurveys from './home/RecruitmentSurveys.vue';
 import SchoolsOlympiads from './home/SchoolsOlympiads.vue';
 import TrainingCertificate from './home/TrainingCertificate.vue';
+import BuildForTeachers from './home/BuildForTeachers.vue';
+import BuildForStudents from './home/BuildForStudents.vue';
+import BuildForParents from './home/BuildForParents.vue';
 
 export default {
     components: {
@@ -341,7 +356,10 @@ export default {
         ITSolutions,
         RecruitmentSurveys,
         TrainingCertificate,
-        SchoolsOlympiads
+        SchoolsOlympiads,
+        BuildForTeachers,
+        BuildForStudents,
+        BuildForParents
     },
     data() {
         return {

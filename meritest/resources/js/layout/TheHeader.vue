@@ -75,6 +75,9 @@
                         <li>
                             <router-link to="/contact-us">Contact Us</router-link>
                         </li>
+                        <li>
+                            <router-link to="/kvpy">KVPY {{ currentYear }}</router-link>
+                        </li>
                         
                     </ul>
                 
@@ -96,8 +99,13 @@ export default {
         getLogo()
         {
             return '/meritest/images/logo/150_height.png';
-        }
-    }
+        },
+    },
+	computed: {
+		currentYear() {
+			return new Date().getFullYear();
+		}
+	},
 
 }
 </script>
