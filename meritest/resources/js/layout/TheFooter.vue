@@ -46,6 +46,7 @@
                             <li><router-link to="/features">Features</router-link></li>
                             <li><router-link to="/how-it-works">How It Works</router-link></li>
                             <li><router-link to="/contact-us">Contact Us</router-link></li>
+                            <li><router-link to="/kvpy">KVPY {{ currentYear }}</router-link></li>
                             <li><a href="/sitemap.xml" target="_blank">Site Map</a></li>
                         </ul>
                     
@@ -89,7 +90,7 @@
                 <div class="row">
                 
                     <div class="col-xs-12 col-sm-6">
-                        <p class="copy-right">&#169; Copyright @{{currentYear}} <a title="Meritest Solutions Pvt. Ltd." alt="Meritest Solutions Pvt. Ltd.">Meritest Solutions Pvt. Ltd.</a></p>
+                        <p class="copy-right">&#169; Copyright @{{currentYear}} <a title="MERITEST SOLUTIONS PRIVATE LIMITED." alt="MERITEST SOLUTIONS PRIVATE LIMITED.">MERITEST SOLUTIONS PRIVATE LIMITED.</a></p>
                     </div>
                     
                 </div>
