@@ -30,10 +30,6 @@ Route::middleware('api')->group(function () {
             Route::resource('v1/courses_type', CoursesTypeController::class);
             Route::get('v1/courses_type/list', [CoursesTypeController::class, 'list'])->name('coursesType.list');
             Route::resource('v1/courses', CourseController::class);
-
-            Route::get('v1/languages', function () {
-                return Language::get();
-            });
         });
     
 });

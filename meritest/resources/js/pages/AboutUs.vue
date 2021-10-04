@@ -71,11 +71,9 @@
 			
 				<div class="row">
 				
-					<div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-					
-						<div class="section-title">
-							<h2 class="text-center">Our Team</h2>
-						</div>
+					<div class="col-sm-10 col-sm-offset-0 col-md-12 col-md-offset-0">
+						<h2>Our Theorists</h2>
+						
 					</div>
 				
 				</div>

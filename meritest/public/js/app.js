@@ -21415,7 +21415,8 @@ __webpack_require__.r(__webpack_exports__);
     currentYear: function currentYear() {
       return new Date().getFullYear();
     }
-  }
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -22357,12 +22358,8 @@ var _hoisted_36 = {
 var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "row"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "section-title"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", {
-  "class": "text-center"
-}, "Our Team")])])], -1
+  "class": "col-sm-10 col-sm-offset-0 col-md-12 col-md-offset-0"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", null, "Our Theorists")])], -1
 /* HOISTED */
 );
 

@@ -1671,6 +1671,9 @@ export default {
 			return new Date().getFullYear();
 		}
 	},
+    mounted() {
+        
+    },
 }
 </script>
 

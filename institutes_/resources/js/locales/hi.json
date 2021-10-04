@@ -1,0 +1,54 @@
+{
+    "navs": {
+        "Dashboard": "डैशबोर्ड",
+        "User Management": "उपयोगकर्ता प्रबंधन",
+        "Permissions": "अनुमति",
+        "Roles": "भूमिकाएँ",
+        "Users": "उपयोगकर्ताओं",
+        "Course Management": "पाठ्यक्रम प्रबंधन",
+        "Course Types": "कोर्स के प्रकार",
+        "Courses": "अभ्यासक्रम",
+        "Subjects": "विषयों"
+    },
+    "role": {
+        "Role": "भूमिका"
+    },
+    "coursetypes": {
+        "header": {
+            "LABEL": "लेबल",
+            "ICON": "चिन्ह"
+        },
+        "Add Course Type": "पाठ्यक्रम प्रकार जोड़ें",
+        "Edit Course Type": "पाठ्यक्रम प्रकार संपादित करें"       
+    },
+    "common": {
+        "ID": "पहचान",
+        "ACTIONS": "कार्रवाई"
+    },
+    "Permission Listing": "अनुमति सूची",
+    "Role Listing": "भूमिका सूची",
+    "Courses Types": "कोर्स के प्रकार",
+    "Courses": "अभ्यासक्रम",
+    "Subjects": "विषयों",
+    "ID": "पहचान",
+    "NAME": "नाम",
+    "ACTIONS": "कार्रवाई",
+    "Edit": "संपादित करें",
+    "Delete": "हटाएं",
+    "Add New Permission": "नई अनुमति जोड़ें",
+    "Add New Role": "नई भूमिका जोड़ें",
+    "message": "मुझे खुशी है कि आप यहां हैं।",
+    "PERMISSIONS": "अनुमति",
+    "LABEL": "लेबल",
+    "ICON": "चिन्ह",
+    "DESCRIPTION": "विवरण",
+    "Sorry, no records found!": "क्षमा करें, कोई रिकॉर्ड नहीं मिला!",
+    "Add Course": "कोर्स जोड़ें",
+    "Choose course type": "कोर्स का प्रकार चुनें",
+    "Name": "नाम",
+    "Course code": "विषय क्रमांक",
+    "Tags": "टैग",
+    "COURSE CODE": "विषय क्रमांक",
+    "TAGS": "टैग",
+    "Language": "भाषा"
+}
