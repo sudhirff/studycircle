@@ -31,5 +31,10 @@ class CoursesType extends Model
         'label',
         'description',
     ];
+    
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class);
+    }
 
 }

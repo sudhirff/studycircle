@@ -24,16 +24,19 @@ class CourseController extends Controller
         //Get all courses list
         $courses = Course::when(request('search'), function ($query) {
             $query->where('name', 'like', '%'. request('search'). '%');
-        })->orderBy('id', 'desc')->paginate();
+        })->with('tagged', 'courses_types')->orderBy('id', 'desc')->paginate(5);
         
         $languages = Language::all()->pluck('name', 'id');
 
         $courseTypes = CoursesType::all()->pluck('label', 'id');
         
+        $tags = Course::with('tagged')->first();
+        
         $response = [
             'courses' => $courses,
             'languages' => $languages,
             'courseTypes' => $courseTypes,
+            'tags' => $tags
         ];
         //$apiData = Course::getApiData();
         return response()->json($response);
@@ -52,7 +55,8 @@ class CourseController extends Controller
         if ($request->validated()) {
             $inputs = [
                 'name'=> $request->name,
-                'course_code' => $request->name,
+                'course_code' => $request->course_code,
+                'type_id' => $request->type_id,
                 'language_id' => $request->language_id,
                 'created_by' => Auth::user()->id,
                 'updated_by' => Auth::user()->id,
@@ -61,7 +65,7 @@ class CourseController extends Controller
     	    $tags = $request->tags;
             $course = Course::create($inputs);
             $course->tag($tags);
-
+            $course->courses_types()->sync($request->type_id);
             $response = [
                 'success' => true,
                 'message' => 'Course category created successfully.',

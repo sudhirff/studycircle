@@ -21,6 +21,16 @@
         "Add Course Type": "पाठ्यक्रम प्रकार जोड़ें",
         "Edit Course Type": "पाठ्यक्रम प्रकार संपादित करें"       
     },
+    "course": {
+        "header": {
+            "COURSE CODE": "कोर्स कोड",
+            "NAME": "नाम",
+            "TAGS": "टैग",
+            "ACTIONS": "कार्रवाई"
+        },
+        "Add Course": "पाठ्यक्रम जोड़ें",
+        "Edit Course": "पाठ्यक्रम संपादित करें"
+    },
     "common": {
         "ID": "पहचान",
         "ACTIONS": "कार्रवाई"
@@ -50,5 +60,5 @@
     "Tags": "टैग",
     "COURSE CODE": "विषय क्रमांक",
     "TAGS": "टैग",
-    "Language": "भाषा"
+    "Language or Medium": "भाषा या माध्यम"
 }

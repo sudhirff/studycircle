@@ -21,6 +21,16 @@
         "Add Course Type": "Add Course Type",
         "Edit Course Type": "Edit Course Type"
     },
+    "course": {
+        "header": {
+            "COURSE CODE": "COURSE CODE",
+            "NAME": "NAME",
+            "TAGS": "TAGS",
+            "ACTIONS": "ACTIONS"
+        },
+        "Add Course": "Add Course",
+        "Edit Course": "Edit Course"
+    },
     "common": {
         "ID": "ID",
         "ACTIONS": "ACTIONS"
@@ -51,5 +61,5 @@
     "Tags": "Tags",
     "COURSE CODE": "COURSE CODE",
     "TAGS": "TAGS",
-    "Language": "Language"
+    "Language or Medium": "Language or Medium"
 }

@@ -34,8 +34,13 @@
                                                     >
                                         <td class="border-b whitespace-nowrap">{{ item.id }}</td>
                                         <td class="border-b whitespace-nowrap">{{ item.course_code }}</td>
-                                        <td class="border-b whitespace-nowrap">{{ item.name }}</td>
-                                        <td class="border-b whitespace-nowrap">{{ item.tags }}</td>
+                                        <td class="border-b whitespace">{{ item.name }}</td>
+                                        <td class="border-b whitespace">
+                                            <span v-for="(tag, index) in item.tagged" :key="index" class="text-xs px-1 rounded-full bg-theme-17 text-white mr-1">
+                                                #{{ tag.tag.name }}
+                                            </span>
+                                            
+                                        </td>
                                         <td class="border-b whitespace-nowrap">
                                             <div class="flex justify-center items-center">
                                                 <a href="#"
@@ -69,7 +74,7 @@
                     <div
                         class="flex items-center p-5 border-b border-gray-200 dark:border-dark-5"
                     >
-                        <h2 class="font-medium text-base mr-auto">{{ $t('Add Course') }}</h2>
+                        <h2 class="font-medium text-base mr-auto">{{ editMode? $t('course.Edit Course'): $t('course.Add Course')}}</h2>
                     </div>
                     <div class="p-5">
                         <div class="flex flex-col-reverse xl:flex-row flex-col">
@@ -77,12 +82,12 @@
                                 <form @submit.prevent="submit">
                                     <div class="grid grid-cols-12 gap-x-5">
                                         <div class="col-span-12 xxl:col-span-6">
-                                            <div>
+                                            <div class="mt-3 ">
                                                 <label for="update-profile-form-1" class="form-label"
                                                     >{{ $t('Choose course type')}}</label
                                                 >
                                                 <TailSelect
-                                                    v-model="course.course_type"
+                                                    v-model="course.type_id"
                                                     :options="{
                                                         search: true,
                                                         hideSelected: true,
@@ -102,18 +107,18 @@
                                             </div>
                                         </div>
                                         <div class="col-span-12 xxl:col-span-6">
-                                            <div>
-                                            <label for="course-name" class="form-label"
-                                                >{{ $t('Name') }}</label
-                                            >
-                                            <input
-                                                id="course-name"
-                                                type="text"
-                                                v-model="course.name"
-                                                class="form-control"
-                                                placeholder="Name of course"
-                                                :class="{ 'border-theme-24': submitted && v$.name.$error }"
-                                            />
+                                            <div class="mt-3 ">
+                                                <label for="course-name" class="form-label"
+                                                    >{{ $t('Name') }}</label
+                                                >
+                                                <input
+                                                    id="course-name"
+                                                    type="text"
+                                                    v-model="course.name"
+                                                    class="form-control"
+                                                    placeholder="Name of course"
+                                                    :class="{ 'border-theme-24': submitted && v$.name.$error }"
+                                                />
                                             </div>
                                         </div>
                                         <div class="col-span-12 xxl:col-span-6">
@@ -133,9 +138,9 @@
                                             </div>
                                         </div>
                                         <div class="col-span-12 xxl:col-span-6">
-                                            <div>
+                                            <div class="mt-3 ">
                                                 <label for="language" class="form-label"
-                                                    >{{ $t('Language')}}</label
+                                                    >{{ $t('Language or Medium')}}</label
                                                 >
                                                 <TailSelect
                                                     id="language"
@@ -279,7 +284,7 @@ export default {
 
         const course = reactive({
             id: '',
-            course_type: '',
+            type_id: '',
             name: '',
             course_code: '',
             tags: [],
@@ -339,10 +344,12 @@ export default {
             while(elements.length > 0){
                 elements[0].classList.remove('bg-gray-200');
             }
-            courseType.id = "";
-            courseType.label = "";
-            courseType.description = "";
-            courseType.icon = "";
+            course.id = '',
+            course.type_id = '';
+            course.name = '';
+            course.course_code = '';
+            course.tags = [];
+            course.language_id = 1;
         }
 
         function editItem(item) {
@@ -353,10 +360,13 @@ export default {
             document.getElementById('list-'+item.id).className = "bg-gray-200";
             
             editMode.value = true;
-            courseType.id = item.id;
-            courseType.label = JSON.parse(item.label);
-            courseType.description = JSON.parse(item.description);
-            courseType.icon = item.icon;
+            course.id = item.id,
+            course.type_id = item.type_id;
+            course.name = item.name;
+            course.course_code = item.course_code;
+            console.log(item)
+            course.tags = item.tagged[0].tag;
+            course.language_id = item.language_id;
         }
         
         function removeItem(item) {

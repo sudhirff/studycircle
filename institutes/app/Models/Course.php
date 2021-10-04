@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use \Conner\Tagging\Taggable;
+use App\Models\CoursesType;
 
 
 class Course extends Model
@@ -28,6 +29,13 @@ class Course extends Model
         'course_code',
     ];
 
+    /**
+     * The roles that belong to the user.
+     */
+    public function courses_types()
+    {
+        return $this->belongsToMany(CoursesType::class, 'course_type', 'course_id', 'type_id');
+    }
 
     
 

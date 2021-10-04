@@ -14,19 +14,21 @@ class CreateSubjects extends Migration
     public function up()
     {
         Schema::create('subjects', function (Blueprint $table) {
-            $table->unsignedBigInteger('id');
+            $table->bigIncrements('id');
             $table->json('description')->nullable();
             $table->json('label');
             $table->string('icon', 250)->nullable();
-            //$table->json('language_id');
-            //$table->unsignedInteger('parent_id');
 
+            $table->unsignedBigInteger('language_id');
+            $table->unsignedBigInteger('parent_id');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
+
             $table->timestamps();
             $table->softDeletes();
 
-            //$table->foreign('parent_id')->references('id')->on('subjects');
+            $table->foreign('language_id')->references('id')->on('languages');
+            $table->foreign('parent_id')->references('id')->on('subjects');
             $table->foreign('created_by')->references('id')->on('users');
             $table->foreign('updated_by')->references('id')->on('users');
         });
