@@ -31,6 +31,16 @@
         "Add Course": "अभ्यासक्रम जोडा",
         "Edit Course": "अभ्यासक्रम संपादित करा"
     },
+    "subject": {
+        "header": {
+            "LABEL": "लेबल",
+            "ICON": "चिन्ह",
+            "LANGUAGE": "भाषा",
+            "ACTIONS": "क्रिया"
+        },
+        "Add Subject": "विषय जोडा",
+        "Edit Subject": "विषय संपादित करा"
+    },
     "common": {
         "ID": "आयडी",
         "ACTIONS": "क्रिया"
@@ -61,5 +71,6 @@
     "Tags": "टॅग्ज",
     "COURSE CODE": "कोर्स कोड",
     "TAGS": "टॅग्ज",
-    "Language or Medium": "भाषा किंवा माध्यम"
+    "Language or Medium": "भाषा किंवा माध्यम",
+    "My Profile": "माझे व्यक्तिचित्र"
 }

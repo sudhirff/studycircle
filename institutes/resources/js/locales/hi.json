@@ -31,6 +31,16 @@
         "Add Course": "पाठ्यक्रम जोड़ें",
         "Edit Course": "पाठ्यक्रम संपादित करें"
     },
+    "subject": {
+        "header": {
+            "LABEL": "लेबल",
+            "ICON": "चिन्ह",
+            "LANGUAGE": "भाषा",
+            "ACTIONS": "कार्रवाई"
+        },
+        "Add Subject": "विषय जोड़ने",
+        "Edit Subject": "विषय संपादित करें"
+    },
     "common": {
         "ID": "पहचान",
         "ACTIONS": "कार्रवाई"
@@ -60,5 +70,6 @@
     "Tags": "टैग",
     "COURSE CODE": "विषय क्रमांक",
     "TAGS": "टैग",
-    "Language or Medium": "भाषा या माध्यम"
+    "Language or Medium": "भाषा या माध्यम",
+    "My Profile": "मेरी प्रोफाइल"
 }

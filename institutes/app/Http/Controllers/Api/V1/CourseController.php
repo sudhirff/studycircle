@@ -24,7 +24,8 @@ class CourseController extends Controller
         //Get all courses list
         $courses = Course::when(request('search'), function ($query) {
             $query->where('name', 'like', '%'. request('search'). '%');
-        })->with('tagged', 'courses_types')->orderBy('id', 'desc')->paginate(5);
+            $query->orWhere('course_code', 'like', '%'. request('search'). '%');
+        })->with('tagged', 'courses_types')->orderBy(request('field'), request('sort'))->paginate(5);
         
         $languages = Language::all()->pluck('name', 'id');
 

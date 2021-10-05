@@ -364,8 +364,11 @@ export default {
             course.type_id = item.type_id;
             course.name = item.name;
             course.course_code = item.course_code;
-            console.log(item)
-            course.tags = item.tagged[0].tag;
+
+            for (let i = 0; i < item.tagged.length; i++) {
+                course.tags.push(item.tagged[i].tag_name);
+            }
+            
             course.language_id = item.language_id;
         }
         

@@ -22,7 +22,7 @@ export default {
         modelValue: {
             type: Array, 
             default: () => [] 
-        }
+        },
     },
     
     setup(props, context) {

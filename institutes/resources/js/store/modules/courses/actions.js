@@ -2,8 +2,9 @@ import axios from "axios"
 
 export default {
     // This action is used to fetch all the courses present in database
-    async fetch(context) {
-        const response = await axios.get('/api/v1/courses') ;
+
+    async fetch(context, params) {
+        const response = await axios.get('/api/v1/courses?page='+params.page+'&search='+params.keyword+'&field='+params.field+'&sort='+params.sort) ;
 
         if (response.status != 200) {
             const error = new Error('Failed to fetch courses')

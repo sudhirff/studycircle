@@ -4,6 +4,7 @@ import store from '../store/index.js';
 /*** Begin Auth component(s)  */
 import Login from '@/components/Pages/Auth/Login.vue'
 import Register from '@/components/Pages/Auth/Register.vue'
+import Profile from '@/components/Pages/Auth/Profile.vue'
 
 /*** Begin Dashboard component(s)  */
 import Dashboard from '@/components/Pages/Dashboard/Index.vue'
@@ -144,12 +145,12 @@ const routes = [
             },
         ]
     },
-    /*{
-        path: '/subjects/create',
-        name: 'subjects',
-        component: SubjectCreate,
+    {
+        path: '/profile',
+        name: 'profile',
+        component: Profile,
         meta: { requiresAuth: true },
-    },*/
+    },
     {
         path: '/login',
         name: 'login',
@@ -159,11 +160,6 @@ const routes = [
     {
         path: '/register',
         name: 'register',
-        component: Register
-    },
-    {
-        path: '/profile',
-        name: 'profile',
         component: Register
     },
     {

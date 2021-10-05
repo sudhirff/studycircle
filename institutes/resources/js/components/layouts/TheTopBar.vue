@@ -33,18 +33,10 @@
                         <div class="text-xs text-theme-13 mt-0.5 dark:text-gray-600">Engineer</div>
                     </div>
                     <div class="p-2">
-                        <a
-                            href="#"
-                            class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"
-                        >
+                        <router-link to="/profile"
+                            class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md">
                             <UserIcon class="w-4 h-4 mr-2" /> Profile
-                        </a>
-                        <a
-                            href="#"
-                            class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"
-                        >
-                            <LockIcon class="w-4 h-4 mr-2" /> Reset Password
-                        </a>
+                        </router-link>
                     </div>
                     <div class="p-2 border-t border-theme-12 dark:border-dark-3">
                         <a href="/logout" 

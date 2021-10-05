@@ -31,6 +31,16 @@
         "Add Course": "Add Course",
         "Edit Course": "Edit Course"
     },
+    "subject": {
+        "header": {
+            "LABEL": "LABEL",
+            "ICON": "ICON",
+            "LANGUAGE": "LANGUAGE",
+            "ACTIONS": "ACTIONS"
+        },
+        "Add Subject": "Add Subject",
+        "Edit Subject": "Edit Subject"
+    },
     "common": {
         "ID": "ID",
         "ACTIONS": "ACTIONS"
@@ -61,5 +71,6 @@
     "Tags": "Tags",
     "COURSE CODE": "COURSE CODE",
     "TAGS": "TAGS",
-    "Language or Medium": "Language or Medium"
+    "Language or Medium": "Language or Medium",
+    "My Profile": "My Profile"
 }

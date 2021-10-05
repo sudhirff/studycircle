@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class SubjectRequest extends FormRequest
 {
@@ -24,7 +25,13 @@ class SubjectRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'label' => [
+                'required',
+                Rule::unique('subjects')->ignore($this->subject)
+            ],
+            'tags' => [
+                'required',
+            ],
         ];
     }
 }

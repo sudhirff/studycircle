@@ -5,7 +5,9 @@ export default {
     namespaced: true,
     state() {
         return {
-            subjects: []
+            subjects: [],
+            subject: null,
+            languages: [],
         }
     },
     actions,
