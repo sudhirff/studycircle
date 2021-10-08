@@ -355,15 +355,15 @@ export default {
             
             editMode.value = true;
             subject.id = item.id,
-            subject.label = item.label;
-            subject.description = item.description;
+            subject.label = parsed(item.label);
+            subject.description = parsed(item.description);
             subject.icon = item.icon;
             subject.language_id = item.language_id;
-
+            
+            subject.tags.length = 0;
             for (let i = 0; i < item.tagged.length; i++) {
                 subject.tags.push(item.tagged[i].tag_name);
             }
-            
             subject.language_id = item.language_id;
         }
         
@@ -388,6 +388,27 @@ export default {
             params.sort = sortArray[1];
             loadItems();
         }
+        
+        function parsed(val) {
+            if (isJSON(val)) {
+                return JSON.parse(val);
+            } else {
+                return val;
+            }
+        }
+        function isJSON(MyTestStr){
+            try {
+                var MyJSON = JSON.stringify(MyTestStr);
+                var json = JSON.parse(MyJSON);
+                if(typeof(MyTestStr) == 'string')
+                    if(MyTestStr.length == 0)
+                        return false;
+            }
+            catch(e){
+                return false;
+            }
+            return true;
+        }
         return {
             isLoading,
             columns,
@@ -411,6 +432,7 @@ export default {
             moduleName: "Course Type",
             select,
             languages,
+            parsed
         }
     },
     computed: {
@@ -425,27 +447,6 @@ export default {
         showDeleteModal(itemId) {
             this.selectedItem = itemId;
             this.openModal(this.options.deleteComponentName, itemId)
-        },
-        
-        parsed(val) {
-            if (this.isJSON(val)) {
-                return JSON.parse(val);
-            } else {
-                return val;
-            }
-        },
-        isJSON(MyTestStr){
-            try {
-                var MyJSON = JSON.stringify(MyTestStr);
-                var json = JSON.parse(MyJSON);
-                if(typeof(MyTestStr) == 'string')
-                    if(MyTestStr.length == 0)
-                        return false;
-            }
-            catch(e){
-                return false;
-            }
-            return true;
         },
     },
 }

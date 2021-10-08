@@ -36,7 +36,7 @@ class CourseController extends Controller
         $response = [
             'courses' => $courses,
             'languages' => $languages,
-            'courseTypes' => $courseTypes,
+            'type_ids' => $courseTypes,
             'tags' => $tags
         ];
         //$apiData = Course::getApiData();
@@ -57,7 +57,7 @@ class CourseController extends Controller
             $inputs = [
                 'name'=> $request->name,
                 'course_code' => $request->course_code,
-                'type_id' => $request->type_id,
+                'type_id' => $request->type_ids,
                 'language_id' => $request->language_id,
                 'created_by' => Auth::user()->id,
                 'updated_by' => Auth::user()->id,
@@ -66,7 +66,8 @@ class CourseController extends Controller
     	    $tags = $request->tags;
             $course = Course::create($inputs);
             $course->tag($tags);
-            $course->courses_types()->sync($request->type_id);
+            $course->courses_types()->sync($request->type_ids);
+            $course->tags = $tags;
             $response = [
                 'success' => true,
                 'message' => 'Course category created successfully.',
@@ -100,15 +101,29 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CourseRequest $request, Course $courseCategory)
+    public function update(CourseRequest $request, Course $course)
     {
         $inputs = $request->all();
         if ($request->validated()) {
-            $courseCategory->update($inputs);
-
+            $inputs = [
+                'name'=> $request->name,
+                'course_code' => $request->course_code,
+                'type_id' => $request->type_ids,
+                'language_id' => $request->language_id,
+                'created_by' => Auth::user()->id,
+                'updated_by' => Auth::user()->id,
+            ];
+            $course->update($inputs);
+            
+            $tags = $request->tags;
+            $course->untag();
+            $course->tag($tags);
+            $course->courses_types()->sync($request->type_ids);
+            $course->tags = $request->tags;
             $response = [
                 'success' => true,
-                'message' => 'Course category updated successfully.',
+                'message' => 'Course updated successfully.',
+                'course' => $course,
             ];
         } else {
             $response = [

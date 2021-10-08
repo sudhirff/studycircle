@@ -27,18 +27,15 @@
                                     </tr>
                                 </tbody>
                                 <tbody v-else>
-                                                                            
-                                    <tr v-for="(item, index) in items.data" 
+                                    <tr v-for="(item, index) in result" 
                                                     :key="index" 
                                                     :id="'list-'+item.id"
                                                     >
                                         <td class="border-b whitespace-nowrap">{{ item.id }}</td>
                                         <td class="border-b whitespace-nowrap">{{ item.course_code }}</td>
                                         <td class="border-b whitespace">{{ item.name }}</td>
-                                        <td class="border-b whitespace">
-                                            <span v-for="(tag, index) in item.tagged" :key="index" class="text-xs px-1 rounded-full bg-theme-17 text-white mr-1">
-                                                #{{ tag.tag.name }}
-                                            </span>
+                                        <td class="border-b whitespace-nowrap">{{ item.tags.toString() }}
+                                            
                                             
                                         </td>
                                         <td class="border-b whitespace-nowrap">
@@ -79,6 +76,10 @@
                     <div class="p-5">
                         <div class="flex flex-col-reverse xl:flex-row flex-col">
                             <div class="flex-1 mt-6 xl:mt-0">
+                                <div class="alert alert-danger show flex items-center mb-2" role="alert" v-if="isErrored">
+                                    <AlertOctagonIcon class="w-6 h-6 mr-2" />
+                                    {{ message }}
+                                </div>
                                 <form @submit.prevent="submit">
                                     <div class="grid grid-cols-12 gap-x-5">
                                         <div class="col-span-12 xxl:col-span-6">
@@ -87,10 +88,11 @@
                                                     >{{ $t('Choose course type')}}</label
                                                 >
                                                 <TailSelect
-                                                    v-model="course.type_id"
+                                                    v-model="form.type_ids"
+                                                    :index="form.id"
                                                     :options="{
                                                         search: true,
-                                                        hideSelected: true,
+                                                        hideSelected: false,
                                                         hideDisabled: true,
                                                         multiLimit: 5,
                                                         multiShowCount: false,
@@ -100,8 +102,9 @@
                                                     multiple
                                                 >
                                                     <option value="">Select a course type</option>
+                                                    
                                                     <option v-for="(courseType, index) in courseTypes" 
-                                                            :key="index" 
+                                                            :key="form.id"
                                                             :value="index">{{ JSON.parse(courseType) }}</option>
                                                 </TailSelect>
                                             </div>
@@ -114,11 +117,14 @@
                                                 <input
                                                     id="course-name"
                                                     type="text"
-                                                    v-model="course.name"
+                                                    v-model="form.name"
                                                     class="form-control"
                                                     placeholder="Name of course"
                                                     :class="{ 'border-theme-24': submitted && v$.name.$error }"
                                                 />
+                                                <span v-if="submitted && v$.name.$error" class="text-theme-24 mt-2">
+                                                    {{ v$.name.$errors[0].$message }}
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="col-span-12 xxl:col-span-6">
@@ -130,11 +136,15 @@
                                                 <input
                                                     id="update-profile-form-4"
                                                     type="text"
-                                                    v-model="course.course_code"
+                                                    v-model="form.course_code"
                                                     class="form-control"
                                                     placeholder="Course code"
                                                     :class="{ 'border-theme-24': submitted && v$.course_code.$error }"
                                                 />
+                                                
+                                                <span v-if="submitted && v$.course_code.$error" class="text-theme-24 mt-2">
+                                                    {{ v$.course_code.$errors[0].$message }}
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="col-span-12 xxl:col-span-6">
@@ -144,13 +154,12 @@
                                                 >
                                                 <TailSelect
                                                     id="language"
-                                                    v-model="course.language_id"
+                                                    v-model="form.language_id"
                                                     :options="{
                                                         search: true,
                                                         classNames: 'w-full'
                                                     }"
                                                 >
-                                                {{ languages}}
                                                     <option v-for="(language, index) in languages" 
                                                             :key="index" 
                                                             :value="index">{{ language}}</option>
@@ -163,16 +172,21 @@
                                             <div class="mt-3">
                                                 <label for="courses-tags" class="form-label">{{ $t('Tags') }}</label>
 
-                                                <tag v-model="course.tags" 
+                                                <tag v-model="form.tags" 
                                                     :inputId="'courses-tags'"
                                                     :allowCustom="true"
-                                                    :showCount="true" />
-                                                
+                                                    :showCount="true"
+                                                    :index="form.id"
+                                                    :class="{ 'border-theme-24': submitted && v$.tags.$error }"
+                                                    />
+                                                <span v-if="submitted && v$.tags.$error" class="text-theme-24 mt-2">
+                                                    {{ v$.tags.$errors[0].$message }}
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="text-right mt-5">
-                                        <button type="button" class="btn btn-outline-secondary w-24 mr-1"> Cancel </button>
+                                        <button type="button" class="btn btn-outline-secondary w-24 mr-1" @click.prevent="clearForm"> Cancel </button>
                                         <button type="submit" class="btn btn-primary w-24 ml-5">Save</button>
                                     </div>
                                 </form>
@@ -184,46 +198,29 @@
             
             </div>
         </div>
-        
+        <loading v-if="isLoading" fixed></loading>
     </div>
 </template>
 
 <script>
 import { useStore } from 'vuex';
 import { ref, reactive, computed, onMounted } from 'vue'
-
-import { useVuelidate } from '@vuelidate/core';
 import { required, helpers } from '@vuelidate/validators'
 
 import BaseDeleteModalCard from '@/components/UI/BaseDeleteModalCard.vue';
 
 import Tag from '@/components/inputs/Tag.vue';
 
+import useCrud from '@/hooks/crud.js'
+
 export default {
     components: {
         BaseDeleteModalCard,
         Tag,
     },
+
     setup(){
         const store = useStore();
-        const submitted = ref(false);
-
-        const isErrored = ref(false);
-        const message = ref('');
-        const isLoading = ref(false);
-        const selectedItem = ref();
-        const showDelete = ref(false);
-        const editMode = ref(false);
-        
-        const select = ref(0);
-
-        const params = reactive({
-            page: 0,
-            keyword: '',
-            sort: 'desc',
-            field: 'id',
-        });
-
         const columns = {
             id: {
                 label: "ID",
@@ -246,32 +243,49 @@ export default {
                 sorting: false,
             }
         };
-
-        // Here we will fetch all the listing.
-        //
-        onMounted(() => {
-            loadItems();
-        })
-        async function loadItems() {
-            isLoading.value = true;
-            try {
-                await store.dispatch('courses/fetch', params);
-                isLoading.value = false;
-            } catch (error) {
-                error = error.message || 'Something went wrong!';
-            }
-            isLoading.value = false;
-        }
-
-        // After items are fetched, we have to get all the items using gettters
-        const items = computed(function () {
-            const getItems = store.getters['courses/courses'];
-            if (getItems.data !== undefined) {
-                if (getItems.data.length > 0)
-                return getItems;
-            }
-            return false;
+        const form = reactive({
+            id: '',
+            type_ids: [],
+            name: '',
+            course_code: '',
+            tags: [],
+            language_id: 1,
         });
+        const initialState = {
+            id: '',
+            type_ids: [],
+            name: '',
+            course_code: '',
+            tags: [],
+            language_id: 1,
+        };
+        const rules = computed(() => {
+            return {
+                name: {
+                    required: helpers.withMessage('Please enter name of course.', required),
+                },
+                course_code: {
+                    required: helpers.withMessage('Please enter course code of course.', required),
+                },
+                tags: {
+                    required: helpers.withMessage('Please enter/select tag(s).', required),
+                },
+            }
+        });
+        
+        const options = {
+            fetch: 'courses/fetch',
+            getters: 'courses/courses',
+            initialState,
+            form,
+            rules,
+            create: 'courses/create',
+            update: 'courses/update',
+            moduleName: 'Course(s)'
+        }
+        const { items, fetch, paginate, search, sort, params, isLoading, submitted, submit, v$, isErrored, message, editItem, editMode, clearForm } = useCrud(options);
+
+        onMounted(fetch);
 
         // After items are fetched, we have to get all the course types using gettters
         const courseTypes = computed(function () {
@@ -282,141 +296,26 @@ export default {
             return store.getters['courses/languages'];
         });
 
-        const course = reactive({
-            id: '',
-            type_id: '',
-            name: '',
-            course_code: '',
-            tags: [],
-            language_id: 1,
-        });
-
-        const rules = computed(() => {
-            return {
-                name: {
-                    required: helpers.withMessage('Please enter name of course.', required),
-                },
-                course_code: {
-                    required: helpers.withMessage('Please enter course_code of course.', required),
-                },
-                tags: {
-                    required: helpers.withMessage('Please enter/select tag(s).', required),
-                },
-            }
-        });
-
-        const v$ = useVuelidate (rules, course);
-
-        async function submit() {
-            submitted.value = true;
-
-            v$.value.$validate(); // checks all inputs
-
-            if (!v$.value.$error) {
-                isLoading.value = true;
-                try {
-                    if (editMode.value === true) {
-                        await store.dispatch('courses/update', course);
-                        message.value = "Course type updated successfully.";
-                    } else {
-                        await store.dispatch('courses/create', course);
-                        message.value = "Course type created successfully.";
-                    }
-
-                    isLoading.value = false;
-                    submitted.value = false;
-                    //alert(message.value);
-                    clearForm();
-                } catch(e) {
-                    isLoading.value = false;
-                    isErrored.value = true;
-                    message.value = "This name is already taken.";
-                }
-            } else {
-                // if ANY fail validation
-                return ;
-            }
-        }
-
-        function clearForm() {
-            editMode.value = false;
-            var elements = document.getElementsByClassName('bg-gray-200');
-            while(elements.length > 0){
-                elements[0].classList.remove('bg-gray-200');
-            }
-            course.id = '',
-            course.type_id = '';
-            course.name = '';
-            course.course_code = '';
-            course.tags = [];
-            course.language_id = 1;
-        }
-
-        function editItem(item) {
-            var elements = document.getElementsByClassName('bg-gray-200');
-            while(elements.length > 0){
-                elements[0].classList.remove('bg-gray-200');
-            }
-            document.getElementById('list-'+item.id).className = "bg-gray-200";
-            
-            editMode.value = true;
-            course.id = item.id,
-            course.type_id = item.type_id;
-            course.name = item.name;
-            course.course_code = item.course_code;
-
-            for (let i = 0; i < item.tagged.length; i++) {
-                course.tags.push(item.tagged[i].tag_name);
-            }
-            
-            course.language_id = item.language_id;
-        }
-        
-        function removeItem(item) {
-            showDelete.value = true;
-            selectedItem.value = item.id;
-        }
-
-        function paginate(page) {
-            params.page = page;
-            loadItems();
-        }
-
-        function search(srchTxt) {
-            params.page = 0,
-            params.keyword = srchTxt;
-            loadItems();
-        }
-
-        function sort(sortArray) {
-            params.field = sortArray[0];
-            params.sort = sortArray[1];
-            loadItems();
-        }
         return {
             isLoading,
             columns,
             items,
-            selectedItem,
-            editItem,
-            removeItem,
-            showDelete,
-            course,
-            submitted,
-            submit,
-            v$,
-            editMode,
-            clearForm,
-            loadItems,
-            paginate,
             search,
+            paginate, 
             sort,
             sortField: params.field,
             sortDirection: params.sort,
-            moduleName: "Course Type",
-            select,
+            editMode,
             courseTypes,
             languages,
+            form,
+            submitted,
+            submit,
+            v$,
+            isErrored,
+            message,
+            editItem,
+            clearForm
         }
     },
     computed: {
@@ -426,6 +325,26 @@ export default {
             }
             return false;
         },
+
+        result() {
+            return this.items.data.map((item) => {
+                return {
+                    id: item.id,
+                    name: item.name,
+                    type_ids: item.courses_types.map((type) => {
+                        if (type) {
+                            return type.id 
+                        } else {
+                            return []
+                        }
+                        
+                    }),
+                    course_code: item.course_code,
+                    language_id: item.language_id,
+                    tags: item.tagged.map((tag) => { return tag.tag_name}),
+                };
+            });
+        }
     },
     methods: {
     },

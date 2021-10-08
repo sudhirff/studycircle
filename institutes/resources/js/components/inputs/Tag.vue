@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { onUpdated, ref } from 'vue';
 export default {
     props: {
         modelValue: {
@@ -26,8 +26,12 @@ export default {
     },
     
     setup(props, context) {
-        const tags = ref([]);
+        const tags = ref(props.modelValue);
 
+        let newTags = onUpdated(function() {
+            tags.value = props.modelValue;
+        });
+        tags.value = newTags;
         function addTag (event) {
             
             event.preventDefault()

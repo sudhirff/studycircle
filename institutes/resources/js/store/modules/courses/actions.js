@@ -13,7 +13,7 @@ export default {
         
         context.commit('FETCH_COURSES', response.data.courses);
         context.commit('LANGUAGES', response.data.languages);
-        context.commit('COURSE_TYPES', response.data.courseTypes);
+        context.commit('COURSE_TYPES', response.data.type_ids);
     },
     
     async create(context, course) {
@@ -35,7 +35,7 @@ export default {
             throw error;
         }
 
-        context.commit('UPDATE_COURSE', permission);
+        context.commit('UPDATE_COURSE', course);
     },
 
     // This action is used to delete permission from serve.
