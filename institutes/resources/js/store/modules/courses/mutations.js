@@ -11,7 +11,7 @@ export default {
     },
 
     DELETE_COURSE(state, id) {
-        let index = state.courses.findIndex(item => item.id === id)
+        let index = state.courses.data.findIndex(item => item.id === id)
         state.courses.data.splice(index, 1)
     },
 

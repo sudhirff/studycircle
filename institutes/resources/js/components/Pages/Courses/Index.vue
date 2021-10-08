@@ -34,7 +34,7 @@
                                         <td class="border-b whitespace-nowrap">{{ item.id }}</td>
                                         <td class="border-b whitespace-nowrap">{{ item.course_code }}</td>
                                         <td class="border-b whitespace">{{ item.name }}</td>
-                                        <td class="border-b whitespace-nowrap">{{ item.tags.toString() }}
+                                        <td class="border-b whitespace">{{ item.tags.toString() }}
                                             
                                             
                                         </td>
@@ -48,7 +48,7 @@
                                                 </a>
                                                 <a class="flex items-center text-theme-24" 
                                                     href="#" 
-                                                    data-toggle="modal" 
+                                                    
                                                     @click.prevent="removeItem(item)"
                                                     > 
                                                     <Trash2Icon class="w-4 h-4 mr-1" /> {{ $t('Delete')}}
@@ -80,7 +80,7 @@
                                     <AlertOctagonIcon class="w-6 h-6 mr-2" />
                                     {{ message }}
                                 </div>
-                                <form @submit.prevent="submit">
+                                <form @submit.prevent="submitForm">
                                     <div class="grid grid-cols-12 gap-x-5">
                                         <div class="col-span-12 xxl:col-span-6">
                                             <div class="mt-3 ">
@@ -89,7 +89,6 @@
                                                 >
                                                 <TailSelect
                                                     v-model="form.type_ids"
-                                                    :index="form.id"
                                                     :options="{
                                                         search: true,
                                                         hideSelected: false,
@@ -104,7 +103,7 @@
                                                     <option value="">Select a course type</option>
                                                     
                                                     <option v-for="(courseType, index) in courseTypes" 
-                                                            :key="form.id"
+                                                            :key="index"
                                                             :value="index">{{ JSON.parse(courseType) }}</option>
                                                 </TailSelect>
                                             </div>
@@ -176,7 +175,6 @@
                                                     :inputId="'courses-tags'"
                                                     :allowCustom="true"
                                                     :showCount="true"
-                                                    :index="form.id"
                                                     :class="{ 'border-theme-24': submitted && v$.tags.$error }"
                                                     />
                                                 <span v-if="submitted && v$.tags.$error" class="text-theme-24 mt-2">
@@ -281,9 +279,26 @@ export default {
             rules,
             create: 'courses/create',
             update: 'courses/update',
+            delete: 'courses/delete',
             moduleName: 'Course(s)'
         }
-        const { items, fetch, paginate, search, sort, params, isLoading, submitted, submit, v$, isErrored, message, editItem, editMode, clearForm } = useCrud(options);
+        const { 
+            items, 
+            fetch, 
+            paginate, 
+            search, 
+            sort, 
+            params, 
+            isLoading, 
+            submitted, 
+            submit, 
+            v$, 
+            isErrored, 
+            message, 
+            editItem, 
+            editMode, 
+            clearForm, 
+            removeItem } = useCrud(options);
 
         onMounted(fetch);
 
@@ -296,6 +311,21 @@ export default {
             return store.getters['courses/languages'];
         });
 
+        const submitForm = async() => {
+            try {
+                await submit();
+                form.id = '',
+                form.type_ids = [],
+                form.name = '',
+                form.course_code = '',
+                form.tags = [],
+                form.language_id = 1,
+                fetch();
+            } catch (e) {
+
+            }
+
+        }
         return {
             isLoading,
             columns,
@@ -315,7 +345,9 @@ export default {
             isErrored,
             message,
             editItem,
-            clearForm
+            clearForm,
+            removeItem,
+            submitForm
         }
     },
     computed: {
@@ -328,25 +360,26 @@ export default {
 
         result() {
             return this.items.data.map((item) => {
-                return {
-                    id: item.id,
-                    name: item.name,
-                    type_ids: item.courses_types.map((type) => {
+                let types = [];
+                if (item.courses_types !==undefined) {
+                    types = item.courses_types.map((type) => {
                         if (type) {
                             return type.id 
                         } else {
                             return []
                         }
-                        
-                    }),
+                    });
+                }
+                return {
+                    id: item.id,
+                    name: item.name,
+                    type_ids: types,
                     course_code: item.course_code,
                     language_id: item.language_id,
                     tags: item.tagged.map((tag) => { return tag.tag_name}),
                 };
             });
         }
-    },
-    methods: {
     },
 }
 </script>

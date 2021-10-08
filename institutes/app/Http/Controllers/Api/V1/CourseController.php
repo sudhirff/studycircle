@@ -19,7 +19,7 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //Get all courses list
         $courses = Course::when(request('search'), function ($query) {
@@ -141,7 +141,7 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $courseCategory)
+    public function destroy(Course $course)
     {
         $response = [
             'success' => false,
@@ -149,12 +149,10 @@ class CourseController extends Controller
             'errors' => null,
         ];
         
-        if ($courseCategory->delete()) {
+        if ($course->delete()) {
             $response = [
                 'success' => true,
                 'message' => 'Permission deleted successfully.',
-                'courseCategory' => $courseCategory,
-                'courseCategories' => Course::latest()->get(),
             ];
         }
         return response()->json($response);

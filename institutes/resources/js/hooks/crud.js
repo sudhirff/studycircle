@@ -30,7 +30,7 @@ export default function useCrud(options) {
         }
         return false;
     });
-    
+
     function paginate(page) {
         params.page = page;
         fetch();
@@ -77,8 +77,6 @@ export default function useCrud(options) {
 
                 isLoading.value = false;
                 submitted.value = false;
-                clearForm();
-                fetch();
             } catch(e) {
                 isLoading.value = false;
                 isErrored.value = true;
@@ -93,15 +91,6 @@ export default function useCrud(options) {
         }
     }
 
-    const clearForm = async() => {
-        var elements = document.getElementsByClassName('bg-gray-200');
-        while(elements.length > 0){
-            elements[0].classList.remove('bg-gray-200');
-        }
-        editMode.value = false;
-        Object.assign(options.form, options.initialState);
-    }
-
     function editItem(item) {
         clearForm(true);
         var elements = document.getElementsByClassName('bg-gray-200');
@@ -113,6 +102,24 @@ export default function useCrud(options) {
         editMode.value = true;
         Object.assign(options.form, item);
         
+    }
+
+    const clearForm = async() => {
+        var elements = document.getElementsByClassName('bg-gray-200');
+        while(elements.length > 0){
+            elements[0].classList.remove('bg-gray-200');
+        }
+        editMode.value = false;
+        Object.assign(options.form, options.initialState);
+    }
+
+    // All delete related
+    const removeItem = async(item) => {
+        if (confirm('Are you sure, you want remove this item?')) {
+            await store.dispatch(options.delete, item.id);
+            fetch();
+        }
+        return ;
     }
 
     return {
@@ -130,6 +137,7 @@ export default function useCrud(options) {
         v$,
         editItem,
         editMode,
-        clearForm
+        clearForm,
+        removeItem
     }
 }

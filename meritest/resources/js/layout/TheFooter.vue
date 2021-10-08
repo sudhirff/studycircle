@@ -57,7 +57,7 @@
                         <div class="social-footer clearfix">
                             <a href="https://www.facebook.com/meritestdotin" target="_blank"><i class="fa fa-facebook-official"></i></a>
                             <a href="https://twitter.com/meritestdotin" target="_blank"><i class="fa fa-twitter"></i></a>
-                            <a href="https://www.linkedin.com/in/meritestdotin" target="_blank"><i class="fa fa-linkedin "></i></a>
+                            <a href="https://www.linkedin.com/company/meritestdotin" target="_blank"><i class="fa fa-linkedin "></i></a>
                             <a href="https://www.pinterest.com/meritestdotin" target="_blank"><i class="fa fa-pinterest "></i></a>
                             <a href="https://www.quora.com/profile/meritestdotin" target="_blank"><i class="fa fa-quora "></i>Q</a>
                             <a href="https://medium.com/" target="_blank"><i class="fa fa-medium "></i></a>

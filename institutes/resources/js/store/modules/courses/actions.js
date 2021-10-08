@@ -35,7 +35,7 @@ export default {
             throw error;
         }
 
-        context.commit('UPDATE_COURSE', course);
+        context.commit('UPDATE_COURSE', response.data);
     },
 
     // This action is used to delete permission from serve.

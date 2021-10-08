@@ -1051,14 +1051,14 @@ Integrated M.Sc. /M.S./M.Math./M.Stat.</td>
                                     </div>
                                     <p><strong>Aptitude Test:</strong> Candidates meeting the eligibility criteria for various streams, will be called for aptitude test conducted both in Hindi and English at different centers across the country on Sunday, the 7th November 2021.</p>										
                                     <h6 class="text-org">Admit Card</h6>
-                                    <p>Students may download the admit card for the aptitude test from the website from the second week of October 2021</p>
+                                    <p>Students may download the admit card for the aptitude test from the website from the second week of November 2021</p>
                                     <p>To get shortlisted for the KVPY scholarship, you need to clear the aptitude test and the interview.</p>
                                     <h6 class="text-org">Aptitude Test</h6>
                                     <ul>
                                         <li>The application forms are first scrutinized to make sure you meet the eligibility criteria</li>
                                         <li>Once you’re eligible, you are called for the aptitude test</li>
                                         <li>This test is conducted in English and Hindi at different centres across the country</li>
-                                        <li>The details of the venue and seat number will be published on the official website in the second week of October 2018</li>
+                                        <li>The details of the venue and seat number will be published on the official website in the second week of November 2021</li>
                                     </ul>
                                     <h6 class="text-org">Personal Interview</h6>
                                     <ul>
@@ -1078,7 +1078,7 @@ Integrated M.Sc. /M.S./M.Math./M.Stat.</td>
                                     <ul>
                                         <li>Visit the official website.</li>
                                         <li>Go through the ‘Useful Links’ section.</li>
-                                        <li>Click the ‘KVPY 2018 Admit Card Download’ tab.</li>
+                                        <li>Click the ‘KVPY 2021 Admit Card Download’ tab.</li>
                                         <li>Enter your ‘Application Number’, ‘Date of Birth’ and ‘Submit’.</li>
                                         <li>Click the ‘Generate Admit Card’ tab.</li>
                                         <li>Download your admit card and take printouts for future purposes.</li>
@@ -1227,7 +1227,7 @@ Integrated M.Sc. /M.S./M.Math./M.Stat.</td>
                                         <h3>Results for KVPY</h3>
                                     </div>
                                     <ul>
-                                        <li>The KVPY results will be declared online in the third week of December, 2018</li>
+                                        <li>The KVPY results will be declared online in the third week of December, 2021</li>
                                         <li>The aptitude test results will be released individually for all three streams</li>
                                         <li>Qualifying candidates will then move on the interview round</li>
                                         <li>For the merit list calculation, 75% weightage will be given to the aptitude test and 25% to the interview</li>
