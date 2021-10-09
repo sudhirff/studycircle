@@ -8,7 +8,8 @@
         "Course Management": "पाठ्यक्रम प्रबंधन",
         "Course Types": "कोर्स के प्रकार",
         "Courses": "अभ्यासक्रम",
-        "Subjects": "विषयों"
+        "Subjects": "विषयों",
+        "Chapters": "अध्याय"
     },
     "role": {
         "Role": "भूमिका"
@@ -74,5 +75,8 @@
     "COURSE CODE": "विषय क्रमांक",
     "TAGS": "टैग",
     "Language or Medium": "भाषा या माध्यम",
-    "My Profile": "मेरी प्रोफाइल"
+    "My Profile": "मेरी प्रोफाइल",
+    "Chapters": "अध्याय",
+    "Add New Chapter": "नया अध्याय जोड़ें",
+    "List all chapters": "सभी अध्यायों की सूची बनाएं"
 }

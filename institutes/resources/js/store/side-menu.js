@@ -48,6 +48,11 @@ const state = () => {
             pageName: 'subjects',
             title: 'Subjects',
           },
+          {
+            icon: 'HomeIcon',
+            pageName: 'chapters',
+            title: 'Chapters',
+          },
           /*{
             icon: 'HomeIcon',
             pageName: 'subjectCreate',

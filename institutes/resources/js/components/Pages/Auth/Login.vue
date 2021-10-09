@@ -54,9 +54,9 @@
                   class="intro-x login__input form-control py-3 px-4 border-gray-300 block"
                   placeholder="Email"
                   v-model="user.email"
-                  :class="{ 'border-theme-21': submitted && v$.email.$error }"
+                  :class="{ 'border-theme-24': submitted && v$.email.$error }"
                 />
-                <span v-if="submitted && v$.email.$error" class="text-theme-21 mt-2">
+                <span v-if="submitted && v$.email.$error" class="text-theme-24 mt-2">
                     {{ v$.email.$errors[0].$message }}
                 </span>
                 <input
@@ -64,9 +64,9 @@
                   class="intro-x login__input form-control py-3 px-4 border-gray-300 block mt-4"
                   placeholder="Password"
                   v-model="user.password"
-                  :class="{ 'border-theme-21': submitted && v$.password.$error }"
+                  :class="{ 'border-theme-24': submitted && v$.password.$error }"
                 />
-                <span v-if="submitted && v$.password.$error" class="text-theme-21 mt-2">
+                <span v-if="submitted && v$.password.$error" class="text-theme-24 mt-2">
                     {{ v$.password.$errors[0].$message }}
                 </span>
               </div>

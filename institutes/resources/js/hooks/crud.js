@@ -15,7 +15,7 @@ export default function useCrud(options) {
     });
 
     const fetch = async() => {
-        clearForm();
+        //clearForm();
         isLoading.value = true;
         await store.dispatch(options.fetch, params);
         isLoading.value = false;
@@ -48,6 +48,13 @@ export default function useCrud(options) {
         fetch();
     }
     
+    const showPagination = computed(function() {
+        if ((items !== undefined) && (items.total / items.to > 1 || items.current_page != 1)) {
+            return true;
+        }
+        return false;
+    });
+
     // All add/edit related
     
     const submitted = ref(false);
@@ -77,6 +84,7 @@ export default function useCrud(options) {
 
                 isLoading.value = false;
                 submitted.value = false;
+                return true;
             } catch(e) {
                 isLoading.value = false;
                 isErrored.value = true;
@@ -84,10 +92,11 @@ export default function useCrud(options) {
                 for (const key in e.response.data.errors) {
                     message.value += e.response.data.errors[key][0] + ' ';
                 }
+                return false;
             }
         } else {
             // if ANY fail validation
-            return ;
+            return false;
         }
     }
 
@@ -101,7 +110,6 @@ export default function useCrud(options) {
         
         editMode.value = true;
         Object.assign(options.form, item);
-        
     }
 
     const clearForm = async() => {
@@ -121,6 +129,32 @@ export default function useCrud(options) {
         }
         return ;
     }
+    
+    
+        
+    function parsed(val) {
+        if (val.length !== 0) {
+            if (isJSON(val)) {
+                return JSON.parse(val);
+            } else {
+                return val;
+            }
+        }
+        
+    }
+    function isJSON(MyTestStr){
+        try {
+            var MyJSON = JSON.stringify(MyTestStr);
+            var json = JSON.parse(MyJSON);
+            if(typeof(MyTestStr) == 'string')
+                if(MyTestStr.length == 0)
+                    return false;
+        }
+        catch(e){
+            return false;
+        }
+        return true;
+    }
 
     return {
         items,
@@ -138,6 +172,9 @@ export default function useCrud(options) {
         editItem,
         editMode,
         clearForm,
-        removeItem
+        removeItem,
+        showPagination,
+        parsed,
+        isJSON
     }
 }

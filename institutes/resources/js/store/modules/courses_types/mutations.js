@@ -12,8 +12,8 @@ export default {
     },
 
     DELETE_COURSES_TYPE(state, id) {
-        let index = state.coursesTypes.findIndex(item => item.id === id)
-        state.coursesTypes.splice(index, 1)
+        let index = state.coursesTypes.data.findIndex(item => item.id === id)
+        state.coursesTypes.data.splice(index, 1)
     },
 
     UPDATE_COURSES_TYPE(state, courseType)

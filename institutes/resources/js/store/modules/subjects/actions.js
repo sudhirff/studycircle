@@ -15,8 +15,8 @@ export default {
         context.commit('LANGUAGES', response.data.languages);
     },
     
-    async create(context, course) {
-        const response = await axios.post('/api/v1/subjects', course) ;
+    async create(context, subject) {
+        const response = await axios.post('/api/v1/subjects', subject) ;
 
         if (response.status != 200) {
             const error = new Error('Failed to create subjects')
@@ -26,15 +26,15 @@ export default {
     },
 
     // After permission submits the form, permission information must be updated in database.
-    async update(context, course) {
-        const response = await axios.put(`/api/v1/subjects/${course.id}`, course);
+    async update(context, subject) {
+        const response = await axios.put(`/api/v1/subjects/${subject.id}`, subject);
 
         if (response.status != 200) {
             const error = new Error('Failed to update course.')
             throw error;
         }
 
-        context.commit('UPDATE_SUBJECT', permission);
+        context.commit('UPDATE_SUBJECT', subject);
     },
 
     // This action is used to delete permission from serve.

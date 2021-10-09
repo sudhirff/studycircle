@@ -11,7 +11,7 @@ export default {
     },
 
     DELETE_SUBJECT(state, id) {
-        let index = state.subjects.findIndex(item => item.id === id)
+        let index = state.subjects.data.findIndex(item => item.id === id)
         state.subjects.data.splice(index, 1)
     },
 

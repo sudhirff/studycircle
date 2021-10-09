@@ -8,7 +8,8 @@
         "Course Management": "अभ्यासक्रम व्यवस्थापन",
         "Course Types": "अभ्यासक्रमाचे प्रकार",
         "Courses": "अभ्यासक्रम",
-        "Subjects": "विषय"
+        "Subjects": "विषय",
+        "Chapters": "अध्याय"
     },
     "role": {
         "dasd": "adas"
@@ -75,5 +76,8 @@
     "COURSE CODE": "कोर्स कोड",
     "TAGS": "टॅग्ज",
     "Language or Medium": "भाषा किंवा माध्यम",
-    "My Profile": "माझे व्यक्तिचित्र"
+    "My Profile": "माझे व्यक्तिचित्र",
+    "Chapters": "अध्याय",
+    "Add New Chapter": "नवीन अध्याय जोडा",
+    "List all chapters": "सर्व अध्यायांची यादी करा"
 }

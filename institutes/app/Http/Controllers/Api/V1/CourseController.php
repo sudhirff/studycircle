@@ -25,7 +25,7 @@ class CourseController extends Controller
         $courses = Course::when(request('search'), function ($query) {
             $query->where('name', 'like', '%'. request('search'). '%');
             $query->orWhere('course_code', 'like', '%'. request('search'). '%');
-        })->with('tagged', 'courses_types')->orderBy(request('field'), request('sort'))->paginate(5);
+        })->with('tagged', 'courses_types')->orderBy(request('field'), request('sort'))->paginate(10);
         
         $languages = Language::all()->pluck('name', 'id');
 
@@ -110,7 +110,6 @@ class CourseController extends Controller
                 'course_code' => $request->course_code,
                 'type_id' => $request->type_ids,
                 'language_id' => $request->language_id,
-                'created_by' => Auth::user()->id,
                 'updated_by' => Auth::user()->id,
             ];
             $course->update($inputs);
@@ -152,7 +151,7 @@ class CourseController extends Controller
         if ($course->delete()) {
             $response = [
                 'success' => true,
-                'message' => 'Permission deleted successfully.',
+                'message' => 'Subject deleted successfully.',
             ];
         }
         return response()->json($response);

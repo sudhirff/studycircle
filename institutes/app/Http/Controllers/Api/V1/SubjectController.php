@@ -61,7 +61,7 @@ class SubjectController extends Controller
             $subject->tag($tags);
             $response = [
                 'success' => true,
-                'message' => 'Course category created successfully.',
+                'message' => 'Subject is created successfully.',
                 'subject' => $subject,
             ];
         } else {
@@ -103,9 +103,38 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SubjectRequest $request, Subject $subject)
     {
-        //
+        if ($request->validated()) {
+            $inputs = [
+                'label'=> json_encode($request->label),
+                'description' => json_encode($request->description),
+                'icon' => $request->icon,
+                'language_id' => $request->language_id,
+                'updated_by' => Auth::user()->id,
+                'parent_id' => NULL
+            ];
+            
+    	    $tags = $request->tags;
+            $subject->update($inputs);
+            $subject->label = $inputs['label'];
+            $subject->description = $inputs['description'];
+            $subject->untag();
+            $subject->tag($tags);
+            $subject->tags = $request->tags;
+            $response = [
+                'success' => true,
+                'message' => 'Subject is updated successfully.',
+                'subject' => $subject,
+            ];
+        } else {
+            $response = [
+                'success' => false,
+                'message' => 'Oops, there seems to have some errors.',
+                'errors' => $this->validated()->errors(),
+            ];
+        }
+        return response()->json($response);
     }
 
     /**
@@ -114,8 +143,20 @@ class SubjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Subject $subject)
     {
-        //
+        $response = [
+            'success' => false,
+            'message' => null,
+            'errors' => null,
+        ];
+        
+        if ($subject->delete()) {
+            $response = [
+                'success' => true,
+                'message' => 'Subject deleted successfully.',
+            ];
+        }
+        return response()->json($response);
     }
 }

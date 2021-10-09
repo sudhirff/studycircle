@@ -28,10 +28,15 @@ import UserEdit from '@/components/Pages/Users/Edit.vue'
 import CoursesList from '@/components/Pages/Courses/Index.vue'
 import CourseTypeList from '@/components/Pages/CoursesTypes/Index.vue'
 
-/*** Begin Course components */
+/*** Begin Subject components */
 import SubjectList from '@/components/Pages/Subjects/Index.vue'
 import SubjectCreate from '@/components/Pages/Subjects/Create.vue'
 import SubjectEdit from '@/components/Pages/Subjects/Edit.vue'
+
+/*** Begin Subject components */
+import ChapterList from '@/components/Pages/Chapters/Index.vue'
+import ChapterCreate from '@/components/Pages/Chapters/Create.vue'
+import ChapterEdit from '@/components/Pages/Chapters/Edit.vue'
 
 /*** Begin Error component(s)  */
 import ErrorPage from '@/components/Error.vue'
@@ -142,6 +147,28 @@ const routes = [
                 component: SubjectEdit,
                 props: true,
                 meta: { requiresAuth: true, parent: 'subjects' },
+            },
+        ]
+    },
+    {
+        path: '/chapters',
+        name: 'chapters',
+        component: ChapterList,
+        meta: { requiresAuth: true },
+        children: [
+            {
+                path: '/chapters/create',
+                name: 'chapterCreate',
+                component: ChapterCreate,
+                parent: 'chapters',
+                meta: { requiresAuth: true, parent: 'chapters' },
+            },
+            {
+                path: '/chapters/:id/edit',
+                name: 'chapterEdit',
+                component: ChapterEdit,
+                props: true,
+                meta: { requiresAuth: true, parent: 'chapters' },
             },
         ]
     },

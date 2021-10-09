@@ -20,7 +20,7 @@ class CreateSubjects extends Migration
             $table->string('icon', 250)->nullable();
 
             $table->unsignedBigInteger('language_id');
-            $table->unsignedBigInteger('parent_id');
+            $table->unsignedBigInteger('parent_id')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
 

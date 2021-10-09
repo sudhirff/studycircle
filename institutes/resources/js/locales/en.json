@@ -8,7 +8,8 @@
         "Course Management": "Course Management",
         "Course Types": "Course Types",
         "Courses": "Courses",
-        "Subjects": "Subjects"
+        "Subjects": "Subjects",
+        "Chapters": "Chapters"
     },
     "role": {
         "dasd": "adas"
@@ -63,7 +64,7 @@
     "LABEL": "LABEL",
     "Label": "Label",
     "ICON": "ICON",
-    "Icon": "Icom",
+    "Icon": "Icon",
     "DESCRIPTION": "DESCRIPTION",
     "Description": "Description",
     "Sorry, no records found!": "Sorry, no records found!",
@@ -75,5 +76,8 @@
     "COURSE CODE": "COURSE CODE",
     "TAGS": "TAGS",
     "Language or Medium": "Language or Medium",
-    "My Profile": "My Profile"
+    "My Profile": "My Profile",
+    "Chapters": "Chapters",
+    "Add New Chapter": "Add New Chapter",
+    "List all chapters": "List all chapters"
 }

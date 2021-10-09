@@ -20,5 +20,6 @@
     
     <script src="{{ mix('js/app.js')}}" defer></script>
     <script src="{{ asset('institute/js/app.js')}}"></script>
+
 </body>
 </html>

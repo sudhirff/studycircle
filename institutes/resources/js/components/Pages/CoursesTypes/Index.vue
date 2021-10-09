@@ -45,7 +45,6 @@
                                                 </a>
                                                 <a class="flex items-center text-theme-24" 
                                                     href="#" 
-                                                    data-toggle="modal" 
                                                     @click.prevent="removeItem(item)"
                                                     > 
                                                     <Trash2Icon class="w-4 h-4 mr-1" /> {{ $t('Delete')}}
@@ -72,7 +71,7 @@
                     <div class="p-5">
                         <div class="flex flex-col-reverse xl:flex-row flex-col">
                             <div class="flex-1 mt-6 xl:mt-0">
-                                <form @submit.prevent="submit">
+                                <form @submit.prevent="submitForm">
                                     <div class="grid grid-cols-12 gap-x-5">
                                         <div class="col-span-12 xxl:col-span-6">
                                             <div>
@@ -84,7 +83,7 @@
                                                     type="text"
                                                     class="form-control"
                                                     placeholder="Label of course type"
-                                                    v-model.trim="courseType.label"
+                                                    v-model.trim="form.label"
                                                     :class="{ 'border-theme-24': submitted && v$.label.$error }"
                                                 />
                                                 <span v-if="submitted && v$.label.$error" class="text-theme-24 mt-2">
@@ -103,7 +102,7 @@
                                                     type="text"
                                                     class="form-control"
                                                     placeholder="Course type description"
-                                                    v-model.trim="courseType.description"
+                                                    v-model.trim="form.description"
                                                     :class="{ 'border-theme-24': submitted && v$.description.$error }"
                                                 />
                                                 <span v-if="submitted && v$.description.$error" class="text-theme-24 mt-2">
@@ -122,7 +121,7 @@
                                                     type="text"
                                                     class="form-control"
                                                     placeholder="Course type icon"
-                                                    v-model="courseType.icon"
+                                                    v-model="form.icon"
                                                 />
                                             </div>
                                         </div>
@@ -142,23 +141,19 @@
 
             </div>
         </div>
-        <base-delete-modal-card v-if="showDelete" 
-                                :item="selectedItem"
-                                :moduleName="moduleName"
-                                :key="selectedItem"></base-delete-modal-card>
+        
         <loading v-if="isLoading" fixed></loading>
     </div>
 </template>
 
 <script>
 import { useStore } from 'vuex';
-import { ref, reactive, computed } from "vue";
+import { ref, reactive, computed, onMounted } from 'vue'
+import { required, helpers } from '@vuelidate/validators'
 
 import BaseDeleteModalCard from '@/components/UI/BaseDeleteModalCard.vue';
 
-import { useVuelidate } from '@vuelidate/core';
-import { required, helpers } from '@vuelidate/validators'
-
+import useCrud from '@/hooks/crud.js'
 
 export default {
     components: {
@@ -171,23 +166,6 @@ export default {
     },
     setup(props, context) {
         const store = useStore();
-        const submitted = ref(false);
-
-        const isErrored = ref(false);
-        const message = ref('');
-        const isLoading = ref(false);
-        const selectedComponent = ref('Create');
-        const selectedItem = ref();
-        const showDelete = ref(false);
-        const editMode = ref(false);
-
-        const params = reactive({
-            page: 0,
-            keyword: '',
-            sort: 'desc',
-            field: 'id',
-        });
-
         const columns = {
             id: {
                 label: "ID",
@@ -206,39 +184,19 @@ export default {
                 sorting: false,
             }
         };
-
-        // Here we will fetch all the listing.
-        loadItems();
-
-        async function loadItems() {
-            isLoading.value = true;
-            try {
-                await store.dispatch('coursesType/fetch', params);
-                isLoading.value = false;
-            } catch (error) {
-                error = error.message || 'Something went wrong!';
-            }
-            isLoading.value = false;
-        }
-
-        // After items are fetched, we have to get all the items using gettters
-        const items = computed(function () {
-            const getItems = store.getters['coursesType/coursesTypes'];
-            if (getItems.data !== undefined) {
-                if (getItems.data.length > 0)
-                return getItems;
-            }
-            return false;
-            //return store.getters['coursesType/coursesTypes'];
-        });
-
-
-        const courseType = reactive({
+        
+        const form = reactive({
             id: '',
             label: '',
             description: '',
             icon: '',
         });
+        const initialState = {
+            id: '',
+            label: '',
+            description: '',
+            icon: '',
+        };
 
         const rules = computed(() => {
             return {
@@ -251,52 +209,38 @@ export default {
             }
         });
 
-        const v$ = useVuelidate (rules, courseType);
-
-        async function submit() {
-            submitted.value = true;
-
-            v$.value.$validate(); // checks all inputs
-
-            if (!v$.value.$error) {
-                isLoading.value = true;
-                try {
-                    if (editMode.value === true) {
-                        await store.dispatch('coursesType/update', courseType);
-                        message.value = "Course type updated successfully.";
-                    } else {
-                        await store.dispatch('coursesType/create', courseType);
-                        message.value = "Course type created successfully.";
-                    }
-
-                    isLoading.value = false;
-                    submitted.value = false;
-                    //alert(message.value);
-                    clearForm();
-                } catch(e) {
-                    isLoading.value = false;
-                    isErrored.value = true;
-                    message.value = "This name is already taken.";
-                }
-            } else {
-                // if ANY fail validation
-                return ;
-            }
+        const options = {
+            fetch: 'coursesType/fetch',
+            getters: 'coursesType/coursesTypes',
+            initialState,
+            form,
+            rules,
+            create: 'coursesType/create',
+            update: 'coursesType/update',
+            delete: 'coursesType/delete',
+            moduleName: 'Course Types(s)'
         }
+        const { 
+            items, 
+            fetch, 
+            paginate, 
+            search, 
+            sort, 
+            params, 
+            isLoading, 
+            submitted, 
+            submit, 
+            v$, 
+            isErrored, 
+            message, 
+            editMode, 
+            clearForm, 
+            removeItem } = useCrud(options);
 
-        function clearForm() {
-            editMode.value = false;
-            var elements = document.getElementsByClassName('bg-gray-200');
-            while(elements.length > 0){
-                elements[0].classList.remove('bg-gray-200');
-            }
-            courseType.id = "";
-            courseType.label = "";
-            courseType.description = "";
-            courseType.icon = "";
-        }
-
+        onMounted(fetch);
+        
         function editItem(item) {
+            clearForm(true);
             var elements = document.getElementsByClassName('bg-gray-200');
             while(elements.length > 0){
                 elements[0].classList.remove('bg-gray-200');
@@ -304,72 +248,38 @@ export default {
             document.getElementById('list-'+item.id).className = "bg-gray-200";
             
             editMode.value = true;
-            courseType.id = item.id;
-            courseType.label = JSON.parse(item.label);
-            courseType.description = JSON.parse(item.description);
-            courseType.icon = item.icon;
+            
+            form.id = item.id;
+            form.label = parsed(item.label);
+            form.description = parsed(item.description);
+            form.icon = item.icon;
+        }
+        const submitForm = async() => {
+            try {
+                let response = await submit();
+                if (response) {
+                    if (!editMode) {
+                        clearForm();
+                    }
+                    fetch();
+                } else {
+                    return response;
+                }
+            } catch (e) {
+
+            }
+
         }
         
-        function removeItem(item) {
-            showDelete.value = true;
-            selectedItem.value = item.id;
-        }
-
-        function paginate(page) {
-            params.page = page;
-            loadItems();
-        }
-
-        function search(srchTxt) {
-            params.page = 0,
-            params.keyword = srchTxt;
-            loadItems();
-        }
-
-        function sort(sortArray) {
-            params.field = sortArray[0];
-            params.sort = sortArray[1];
-            loadItems();
-        }
-
-        return {
-            isLoading,
-            columns,
-            items,
-            selectedComponent,
-            selectedItem,
-            editItem,
-            removeItem,
-            showDelete,
-            courseType,
-            submitted,
-            submit,
-            v$,
-            editMode,
-            clearForm,
-            loadItems,
-            paginate,
-            search,
-            sort,
-            sortField: params.field,
-            sortDirection: params.sort,
-            moduleName: "Course Type",
-        }
-    },
-    methods: {
-        showDeleteModal(itemId) {
-            this.selectedItem = itemId;
-            this.openModal(this.options.deleteComponentName, itemId)
-        },
-        
-        parsed(val) {
-            if (this.isJSON(val)) {
+        function parsed(val) {
+            if (isJSON(val)) {
                 return JSON.parse(val);
             } else {
                 return val;
             }
-        },
-        isJSON(MyTestStr){
+        }
+
+        function isJSON(MyTestStr){
             try {
                 var MyJSON = JSON.stringify(MyTestStr);
                 var json = JSON.parse(MyJSON);
@@ -381,6 +291,35 @@ export default {
                 return false;
             }
             return true;
+        }
+
+        return {
+            isLoading,
+            columns,
+            items,
+            search,
+            paginate, 
+            sort,
+            sortField: params.field,
+            sortDirection: params.sort,
+            editMode,
+            form,
+            submitted,
+            submit,
+            v$,
+            isErrored,
+            message,
+            editItem,
+            clearForm,
+            removeItem,
+            submitForm,
+            parsed
+        }
+    },
+    methods: {
+        showDeleteModal(itemId) {
+            this.selectedItem = itemId;
+            this.openModal(this.options.deleteComponentName, itemId)
         },
     },
     watch: {

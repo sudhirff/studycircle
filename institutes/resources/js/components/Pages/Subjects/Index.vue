@@ -28,34 +28,37 @@
                                 </tbody>
                                 <tbody v-else>
                                                                             
-                                    <tr v-for="(item, index) in items.data" 
+                                    <tr v-for="(item, index) in result" 
                                                     :key="index" 
                                                     :id="'list-'+item.id"
                                                     >
                                         <td class="border-b whitespace-nowrap">{{ item.id }}</td>
                                         <td class="border-b whitespace-nowrap">{{ item.icon }}</td>
-                                        <td class="border-b whitespace">{{ parsed(item.label) }}</td>
-                                        <td class="border-b whitespace">
-                                            <span v-for="(tag, index) in item.tagged" :key="index" class="text-xs px-1 rounded-full bg-theme-17 text-white mr-1">
+                                        <td class="border-b whitespace">{{ item.label }}</td>
+                                        <td class="border-b whitespace">{{ item.tags.toString() }}
+                                            <!--<span v-for="(tag, index) in item.tagged" :key="index" class="text-xs px-1 rounded-full bg-theme-17 text-white mr-1">
                                                 #{{ tag.tag.name }}
-                                            </span>
+                                            </span>-->
                                             
                                         </td>
                                         <td class="border-b whitespace-nowrap">
                                             <div class="flex justify-center items-center">
                                                 <a href="#"
                                                     @click.prevent="editItem(item)" 
-                                                    class="flex items-center mr-3"
+                                                    class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2  rounded-md "
                                                     >
                                                     <CheckSquareIcon class="w-4 h-4 mr-1" /> {{ $t('Edit')}}
                                                 </a>
-                                                <a class="flex items-center text-theme-24" 
-                                                    href="#" 
-                                                    data-toggle="modal" 
-                                                    @click.prevent="removeItem(item)"
-                                                    > 
+                                                <a class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2  rounded-md text-theme-24" 
+                                                        href="#" 
+                                                        @click.prevent="removeItem(item)"
+                                                        > 
                                                     <Trash2Icon class="w-4 h-4 mr-1" /> {{ $t('Delete')}}
                                                 </a>
+                                                <!--<router-link :to="{ name: 'chapterCreate' }"
+                                                            class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2  rounded-md" >
+                                                    <EyeIcon class="w-4 h-4 mr-1" />
+                                                </router-link>-->
                                             </div>
                                         </td>       
                                     </tr>
@@ -79,7 +82,7 @@
                     <div class="p-5">
                         <div class="flex flex-col-reverse xl:flex-row flex-col">
                             <div class="flex-1 mt-6 xl:mt-0">
-                                <form @submit.prevent="submit">
+                                <form @submit.prevent="submitForm">
                                     <div class="grid grid-cols-12 gap-x-5">
                                         
                                         <div class="col-span-12 xxl:col-span-6">
@@ -90,7 +93,7 @@
                                                 <input
                                                     id="subject-label"
                                                     type="text"
-                                                    v-model="subject.label"
+                                                    v-model="form.label"
                                                     class="form-control"
                                                     placeholder="Subject Label"
                                                     :class="{ 'border-theme-24': submitted && v$.label.$error }"
@@ -108,7 +111,7 @@
                                                 >
                                                 <textarea 
                                                     id="subject-description"
-                                                    v-model="subject.description"
+                                                    v-model="form.description"
                                                     class="form-control"
                                                     placeholder="Description"
                                                     :class="{ 'border-theme-24': submitted && v$.description.$error }"></textarea>
@@ -127,7 +130,7 @@
                                                 <input 
                                                     type="text"
                                                     id="subject-icon"
-                                                    v-model="subject.icon"
+                                                    v-model="form.icon"
                                                     class="form-control"
                                                     placeholder="Icon"
                                                     :class="{ 'border-theme-24': submitted && v$.icon.$error }" />
@@ -144,7 +147,7 @@
                                                 >
                                                 <TailSelect
                                                     id="subject-language"
-                                                    v-model="subject.language_id"
+                                                    v-model="form.language_id"
                                                     :options="{
                                                         search: true,
                                                         classNames: 'w-full'
@@ -162,7 +165,7 @@
                                             <div class="mt-3">
                                                 <label for="subject-tags" class="form-label">{{ $t('Tags') }}</label>
 
-                                                <tag v-model="subject.tags" 
+                                                <tag v-model="form.tags" 
                                                     :inputId="'subject-tags'"
                                                     :allowCustom="true"
                                                     :showCount="true" />
@@ -171,7 +174,7 @@
                                         </div>
                                     </div>
                                     <div class="text-right mt-5">
-                                        <button type="button" class="btn btn-outline-secondary w-24 mr-1"> Cancel </button>
+                                        <button type="button" class="btn btn-outline-secondary w-24 mr-1" @click.prevent="clearForm"> Cancel </button>
                                         <button type="submit" class="btn btn-primary w-24 ml-5">Save</button>
                                     </div>
                                 </form>
@@ -190,13 +193,13 @@
 <script>
 import { useStore } from 'vuex';
 import { ref, reactive, computed, onMounted } from 'vue'
-
-import { useVuelidate } from '@vuelidate/core';
 import { required, helpers } from '@vuelidate/validators'
 
 import BaseDeleteModalCard from '@/components/UI/BaseDeleteModalCard.vue';
 
 import Tag from '@/components/inputs/Tag.vue';
+
+import useCrud from '@/hooks/crud.js'
 
 export default {
     components: {
@@ -205,24 +208,6 @@ export default {
     },
     setup(){
         const store = useStore();
-        const submitted = ref(false);
-
-        const isErrored = ref(false);
-        const message = ref('');
-        const isLoading = ref(false);
-        const selectedItem = ref();
-        const showDelete = ref(false);
-        const editMode = ref(false);
-        
-        const select = ref(0);
-
-        const params = reactive({
-            page: 0,
-            keyword: '',
-            sort: 'desc',
-            field: 'id',
-        });
-
         const columns = {
             id: {
                 label: "ID",
@@ -245,38 +230,8 @@ export default {
                 sorting: false,
             }
         };
-
-        // Here we will fetch all the listing.
-        //
-        onMounted(() => {
-            loadItems();
-        })
-        async function loadItems() {
-            isLoading.value = true;
-            try {
-                await store.dispatch('subjects/fetch', params);
-                isLoading.value = false;
-            } catch (error) {
-                error = error.message || 'Something went wrong!';
-            }
-            isLoading.value = false;
-        }
-
-        // After items are fetched, we have to get all the items using gettters
-        const items = computed(function () {
-            const getItems = store.getters['subjects/subjects'];
-            if (getItems.data !== undefined) {
-                if (getItems.data.length > 0)
-                return getItems;
-            }
-            return false;
-        });
-
-        const languages = computed(function() {
-            return store.getters['subjects/languages'];
-        });
-
-        const subject = reactive({
+        
+        const form = reactive({
             id: '',
             label: '',
             description: null,
@@ -284,6 +239,14 @@ export default {
             tags: [],
             language_id: 1,
         });
+        const initialState = {
+            id: '',
+            label: '',
+            description: null,
+            icon: '',
+            tags: [],
+            language_id: 1,
+        };
 
         const rules = computed(() => {
             return {
@@ -298,55 +261,58 @@ export default {
                 },
             }
         });
+        const options = {
+            fetch: 'subjects/fetch',
+            getters: 'subjects/subjects',
+            initialState,
+            form,
+            rules,
+            create: 'subjects/create',
+            update: 'subjects/update',
+            delete: 'subjects/delete',
+            moduleName: 'Subject(s)'
+        }
+        const { 
+            items, 
+            fetch, 
+            paginate, 
+            search, 
+            sort, 
+            params, 
+            isLoading, 
+            submitted, 
+            submit, 
+            v$, 
+            isErrored, 
+            message, 
+            editMode, 
+            clearForm, 
+            removeItem,
+            parsed } = useCrud(options);
 
-        const v$ = useVuelidate (rules, subject);
+        onMounted(fetch);
 
-        async function submit() {
-            submitted.value = true;
+        const languages = computed(function() {
+            return store.getters['subjects/languages'];
+        });
 
-            v$.value.$validate(); // checks all inputs
-
-            if (!v$.value.$error) {
-                isLoading.value = true;
-                try {
-                    if (editMode.value === true) {
-                        await store.dispatch('subjects/update', subject);
-                        message.value = "Course type updated successfully.";
-                    } else {
-                        await store.dispatch('subjects/create', subject);
-                        message.value = "Course type created successfully.";
-                    }
-
-                    isLoading.value = false;
-                    submitted.value = false;
-                    //alert(message.value);
+        const submitForm = async() => {
+            try {
+                let response = await submit();
+                if (response) {
                     clearForm();
-                } catch(e) {
-                    isLoading.value = false;
-                    isErrored.value = true;
-                    message.value = "This name is already taken.";
+                    fetch();
+                } else {
+                    return response;
                 }
-            } else {
-                // if ANY fail validation
-                return ;
+            } catch (e) {
+
             }
+
         }
 
-        function clearForm() {
-            editMode.value = false;
-            var elements = document.getElementsByClassName('bg-gray-200');
-            while(elements.length > 0){
-                elements[0].classList.remove('bg-gray-200');
-            }
-            subject.id = '',
-            subject.label = '';
-            subject.description = '';
-            subject.icon = '';
-            subject.tags = [];
-            subject.language_id = 1;
-        }
-
-        function editItem(item) {
+        function editItem(item, e) {
+            clearForm(true);
             var elements = document.getElementsByClassName('bg-gray-200');
             while(elements.length > 0){
                 elements[0].classList.remove('bg-gray-200');
@@ -354,84 +320,37 @@ export default {
             document.getElementById('list-'+item.id).className = "bg-gray-200";
             
             editMode.value = true;
-            subject.id = item.id,
-            subject.label = parsed(item.label);
-            subject.description = parsed(item.description);
-            subject.icon = item.icon;
-            subject.language_id = item.language_id;
             
-            subject.tags.length = 0;
-            for (let i = 0; i < item.tagged.length; i++) {
-                subject.tags.push(item.tagged[i].tag_name);
-            }
-            subject.language_id = item.language_id;
+            form.id = item.id;
+            form.label = item.label;
+            form.description = item.description;
+            form.icon = item.icon;
+            form.language_id = item.language_id;
+            form.tags = item.tags;
+
         }
         
-        function removeItem(item) {
-            showDelete.value = true;
-            selectedItem.value = item.id;
-        }
-
-        function paginate(page) {
-            params.page = page;
-            loadItems();
-        }
-
-        function search(srchTxt) {
-            params.page = 0,
-            params.keyword = srchTxt;
-            loadItems();
-        }
-
-        function sort(sortArray) {
-            params.field = sortArray[0];
-            params.sort = sortArray[1];
-            loadItems();
-        }
-        
-        function parsed(val) {
-            if (isJSON(val)) {
-                return JSON.parse(val);
-            } else {
-                return val;
-            }
-        }
-        function isJSON(MyTestStr){
-            try {
-                var MyJSON = JSON.stringify(MyTestStr);
-                var json = JSON.parse(MyJSON);
-                if(typeof(MyTestStr) == 'string')
-                    if(MyTestStr.length == 0)
-                        return false;
-            }
-            catch(e){
-                return false;
-            }
-            return true;
-        }
         return {
             isLoading,
             columns,
             items,
-            selectedItem,
-            editItem,
-            removeItem,
-            showDelete,
-            subject,
-            submitted,
-            submit,
-            v$,
-            editMode,
-            clearForm,
-            loadItems,
-            paginate,
             search,
+            paginate, 
             sort,
             sortField: params.field,
             sortDirection: params.sort,
-            moduleName: "Course Type",
-            select,
+            editMode,
             languages,
+            form,
+            submitted,
+            submit,
+            v$,
+            isErrored,
+            message,
+            editItem,
+            clearForm,
+            removeItem,
+            submitForm,
             parsed
         }
     },
@@ -442,6 +361,19 @@ export default {
             }
             return false;
         },
+
+        result() {
+            return this.items.data.map((item) => {
+                return {
+                    id: item.id,
+                    label: JSON.parse(item.label),
+                    icon: item.icon,
+                    description: JSON.parse(item.description),
+                    language_id: item.language_id,
+                    tags: item.tagged.map((tag) => { return tag.tag_name}),
+                };
+            });
+        }
     },
     methods: {
         showDeleteModal(itemId) {

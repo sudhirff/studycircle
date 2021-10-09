@@ -91,7 +91,7 @@
                                                     v-model="form.type_ids"
                                                     :options="{
                                                         search: true,
-                                                        hideSelected: false,
+                                                        hideSelected: true,
                                                         hideDisabled: true,
                                                         multiLimit: 5,
                                                         multiShowCount: false,
@@ -103,8 +103,8 @@
                                                     <option value="">Select a course type</option>
                                                     
                                                     <option v-for="(courseType, index) in courseTypes" 
-                                                            :key="index"
-                                                            :value="index">{{ JSON.parse(courseType) }}</option>
+                                                            :key="random(index)"
+                                                             v-bind:value="index">{{ JSON.parse(courseType) }}</option>
                                                 </TailSelect>
                                             </div>
                                         </div>
@@ -175,6 +175,7 @@
                                                     :inputId="'courses-tags'"
                                                     :allowCustom="true"
                                                     :showCount="true"
+                                                    :index="random+'index'+form.id"
                                                     :class="{ 'border-theme-24': submitted && v$.tags.$error }"
                                                     />
                                                 <span v-if="submitted && v$.tags.$error" class="text-theme-24 mt-2">
@@ -313,14 +314,14 @@ export default {
 
         const submitForm = async() => {
             try {
-                await submit();
-                form.id = '',
-                form.type_ids = [],
-                form.name = '',
-                form.course_code = '',
-                form.tags = [],
-                form.language_id = 1,
-                fetch();
+                let response = await submit();
+                if (response) {
+                    clearForm();
+                    form.tags.length =0;
+                    fetch();
+                } else {
+                    return response;
+                }
             } catch (e) {
 
             }
@@ -379,6 +380,19 @@ export default {
                     tags: item.tagged.map((tag) => { return tag.tag_name}),
                 };
             });
+        }
+    },
+    methods: {
+        random(string) {
+            var s = '';
+            var randomchar = function() {
+                var n = Math.floor(Math.random() * 62);
+                if (n < 10) return n; //1-10
+                if (n < 36) return String.fromCharCode(n + 55); //A-Z
+                return String.fromCharCode(n + 61); //a-z
+            }
+            while (s.length < string) s += randomchar();
+            return s;
         }
     },
 }
