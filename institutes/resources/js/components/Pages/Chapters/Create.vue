@@ -20,7 +20,7 @@
                         <div class="mt-3 ">
                             <label for="update-profile-form-1" class="form-label">{{ $t('Choose subject')}}</label>
                             <TailSelect
-                                v-model="form.subject_id"
+                                v-model="form.parent_id"
                                 :options="{
                                     search: true,
                                     hideSelected: true,
@@ -29,14 +29,19 @@
                                     multiShowCount: false,
                                     multiContainer: true,
                                     classNames: 'w-full'
+                                    
                                 }"
+                                :class="{ 'border-theme-24': submitted && v$.parent_id.$errors.length }"
                             >
                                 <option value="">Select a subject</option>
                                 
                                 <option v-for="(subject, index) in subjects" 
                                         :key="random(index)"
-                                        v-bind:value="index">{{ JSON.parse(subject) }}</option>
+                                        :value="index">{{ JSON.parse(subject) }}</option>
                             </TailSelect>
+                            <div class="text-theme-24 mt-2" v-for="(error, index) of v$.parent_id.$errors" :key="index">
+                                <div class="error-msg">{{ error.$message }}</div>
+                            </div>
                         </div>
                         <div class="mt-3">
                             <label for="form-name" class="form-label">{{ $t('Label') }}</label>
@@ -45,9 +50,9 @@
                                     class="form-control" 
                                     placeholder="Enter label of chapter."
                                     v-model.trim="form.label"
-                                    :class="{ 'border-theme-21': submitted && v$.label.$errors.length }"
+                                    :class="{ 'border-theme-24': submitted && v$.label.$errors.length }"
                                     />
-                            <div class="text-theme-21 mt-2" v-for="(error, index) of v$.label.$errors" :key="index">
+                            <div class="text-theme-24 mt-2" v-for="(error, index) of v$.label.$errors" :key="index">
                                 <div class="error-msg">{{ error.$message }}</div>
                             </div>
                         </div>
@@ -60,6 +65,7 @@
                                 <editor
                                     id="form-description"
                                     v-model="form.description"
+                                    :class="{ 'border-theme-24': submitted && v$.description.$errors.length }"
                                     initialValue="<p>Initial editor content</p>"
                                     apiKey="n10p1o42akootxkapivj4ecxefdo4zlaqd0ek0aa47ld9js7"
                                     :init="{
@@ -82,7 +88,7 @@
                             </div>
                                 
                             <!-- END: Inbox Content -->
-                            <div class="text-theme-21 mt-2" v-for="(error, index) of v$.description.$errors" :key="index">
+                            <div class="text-theme-24 mt-2" v-for="(error, index) of v$.description.$errors" :key="index">
                                 <div class="error-msg">{{ error.$message }}</div>
                             </div>
                         </div>
@@ -103,6 +109,22 @@
                                         :value="index">{{ language}}</option>
                                 
                             </TailSelect>
+                        </div>
+                        <div class="mt-3">
+                            <label for="subject-icon" class="form-label"
+                                >{{ $t('Icon') }}</label
+                            >
+                            <input 
+                                type="text"
+                                id="subject-icon"
+                                v-model="form.icon"
+                                class="form-control"
+                                placeholder="Icon"
+                                :class="{ 'border-theme-24': submitted && v$.icon.$error }" />
+                            <span v-if="submitted && v$.icon.$error" class="text-theme-24 mt-2">
+                                {{ v$.icon.$errors[0].$message }}
+                            </span>
+                            
                         </div>
                         <div class="mt-3">
                             <label for="chapter-tags" class="form-label">{{ $t('Tags') }}</label>
@@ -138,6 +160,7 @@
 <script>
 import { useStore } from 'vuex';
 import { ref, reactive, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { required, helpers } from '@vuelidate/validators'
 
 import Tag from '@/components/inputs/Tag.vue';
@@ -151,7 +174,7 @@ export default {
     },
     setup(props, context) {
         const store = useStore();
-        
+        const router = useRouter();
         const form = reactive({
             id: '',
             label: '',
@@ -159,7 +182,7 @@ export default {
             icon: '',
             tags: [],
             language_id: 1,
-            subject_id: '',
+            parent_id: '',
         });
         const initialState = {
             id: '',
@@ -168,19 +191,23 @@ export default {
             icon: '',
             tags: [],
             language_id: 1,
-            subject_id: '',
+            parent_id: '',
         };
 
+        
         const rules = computed(() => {
             return {
+                parent_id: {
+                    required: helpers.withMessage('Please select subject.', required),
+                },
                 label: {
-                    required: helpers.withMessage('Please enter label of subject.', required),
+                    required: helpers.withMessage('Please enter label of chapter.', required),
                 },
                 description: {
-                    required: helpers.withMessage('Please enter description of subject.', required),
+                    required: helpers.withMessage('Please enter description of chapter.', required),
                 },
                 icon: {
-                    required: helpers.withMessage('Please enter icon of subject.', required),
+                    required: helpers.withMessage('Please enter icon of chapter.', required),
                 },
             }
         });
@@ -202,8 +229,10 @@ export default {
             v$,
             editItem,
             editMode,
-            clearForm} = useCrud(options);
+            clearForm
+            } = useCrud(options);
 
+        onMounted(clearForm);
         // After items are fetched, we have to get all the course types using gettters
         const subjects = computed(function () {
             return store.getters['chapters/subjects'];
@@ -213,6 +242,21 @@ export default {
             return store.getters['chapters/languages'];
         });
 
+        const submitForm = async() => {
+            try {
+                let response = await submit();
+                if (response) {
+                    clearForm();
+                    form.tags.length =0;
+                    router.push('/chapters');
+                } else {
+                    return response;
+                }
+            } catch (e) {
+
+            }
+
+        }
         return {
             form,
             rules,
@@ -224,9 +268,10 @@ export default {
             v$,
             editItem,
             editMode,
-            clearForm,
             subjects,
-            languages
+            languages,
+            clearForm,
+            submitForm
         }
     },
     methods: {

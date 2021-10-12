@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use \Conner\Tagging\Taggable;
 use App\Models\CoursesType;
+use App\Models\Subject;
 
 
 class Course extends Model
@@ -35,6 +36,11 @@ class Course extends Model
     public function courses_types()
     {
         return $this->belongsToMany(CoursesType::class, 'course_type', 'course_id', 'type_id');
+    }
+    
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class);
     }
 
 }

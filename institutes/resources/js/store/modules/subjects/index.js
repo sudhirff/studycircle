@@ -8,6 +8,7 @@ export default {
             subjects: [],
             subject: null,
             languages: [],
+            courses: [],
         }
     },
     actions,

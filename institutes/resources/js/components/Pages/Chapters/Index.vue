@@ -4,11 +4,42 @@
             <the-page-header :title="'Chapters'"></the-page-header>
             <the-base-card>
                 <the-base-header-card>
-                    <the-add-new-button>
-                        <router-link :to="{name: 'chapterCreate'}" 
+                    <router-link :to="{name: 'chapterCreate'}" 
                                     @click="listing = !listing" 
-                                    class="btn btn-primary">{{ $t('Add New Chapter')}} </router-link>
-                    </the-add-new-button>
+                                    class="btn btn-primary shadow-md mr-2">{{ $t('Add New Chapter')}} </router-link>
+                    
+                    <div class="dropdown">
+                        <button
+                            class="dropdown-toggle btn px-2 box text-gray-700 dark:text-gray-300"
+                            aria-expanded="false"
+                        >
+                            <span class="w-5 h-5 flex items-center justify-center">
+                                <PlusIcon class="w-4 h-4" />
+                            </span>
+                        </button>
+                        <div class="dropdown-menu w-40">
+                            <div class="dropdown-menu__content box dark:bg-dark-1 p-2">
+                                <a
+                                    href=""
+                                    class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"
+                                >
+                                    <PrinterIcon class="w-4 h-4 mr-2" /> Print
+                                </a>
+                                <a
+                                    href=""
+                                    class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"
+                                >
+                                    <DownloadCloudIcon class="w-4 h-4 mr-2" /> Import chapters
+                                </a>
+                                <a
+                                    href=""
+                                    class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"
+                                >
+                                    <UploadCloudIcon class="w-4 h-4 mr-2" /> Export to Excel
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="hidden md:block mx-auto text-gray-600">
                         
                     </div>
@@ -37,18 +68,22 @@
                                             :id="'list-'+item.id"
                                             >
                                 <td class="border-b whitespace-nowrap">{{ item.id }}</td>
-                                <td class="border-b whitespace-nowrap">{{ item.icon }}</td>
+                                <td class="border-b whitespace-nowrap">{{ item.subject }}</td>
                                 <td class="border-b whitespace">{{ item.label }}</td>
                                 <td class="border-b whitespace">{{ item.tags.toString() }}</td>
                                 <td class="border-b whitespace-nowrap">
                                     <div class="flex justify-center items-center">
-                                        <a href="#"
-                                            @click.prevent="editItem(item)" 
-                                            class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2  rounded-md "
+                                        <!--<router-link :to="{name: 'chapterEdit'}" 
+                                            @click="listing = !listing" 
+                                            class="btn btn-primary shadow-md mr-2">{{ $t('Add New Chapter')}} </router-link>-->
+                                            
+                                        <router-link :to="{name: 'chapterEdit', params: {id: item.id}}" 
+                                            @click.prevent="listing = !listing" 
+                                            class="flex items-center block p-2 transition duration-300 ease-in-out dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2  rounded-md "
                                             >
                                             <CheckSquareIcon class="w-4 h-4 mr-1" /> {{ $t('Edit')}}
-                                        </a>
-                                        <a class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2  rounded-md text-theme-24" 
+                                        </router-link>
+                                        <a class="flex items-center block p-2 transition duration-300 ease-in-out dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2  rounded-md text-theme-24" 
                                                 href="#" 
                                                 @click.prevent="removeItem(item)"
                                                 > 
@@ -104,8 +139,8 @@ export default {
                 label: "ID",
                 sorting: true,
             },
-            icon: {
-                label: "ICON",
+            subject: {
+                label: "SUBJECT",
                 sorting: false,
             },
             label: {
@@ -140,7 +175,7 @@ export default {
             parsed,
             editItem } = useCrud(options);
 
-        onMounted(fetch);
+        onMounted(fetch(false));
 
         // This is very important from the create/edit form show.
         if (route.name === 'chapters') {
@@ -181,6 +216,7 @@ export default {
                     description: JSON.parse(item.description),
                     language_id: item.language_id,
                     tags: item.tagged.map((tag) => { return tag.tag_name}),
+                    subject: JSON.parse(item.subject.label),
                 };
             });
         }
@@ -195,7 +231,7 @@ export default {
         '$route' (to, from) {
             if (to.name === 'chapters') {
                 this.listing = true;
-                this.fetch();
+                this.fetch(false);
             }
         }
     },

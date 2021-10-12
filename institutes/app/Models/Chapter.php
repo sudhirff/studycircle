@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use \Conner\Tagging\Taggable;
+use App\Models\Subject;
 
 class Chapter extends Model
 {
@@ -31,4 +32,12 @@ class Chapter extends Model
         'id',
         'label',
     ];
+
+    /**
+     * Get the post that owns the comment.
+     */
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class, 'parent_id');
+    }
 }

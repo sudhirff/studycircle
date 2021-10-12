@@ -16,6 +16,16 @@ export default {
         context.commit('SUBJECTS', response.data.subjects);
     },
     
+    async edit(context, id) {
+        const response = await axios.get('/api/v1/chapters/'+id+'/edit') ;
+
+        if (response.status != 200) {
+            const error = new Error('Failed to create chapters')
+            throw response.data.message;
+        }
+        context.commit('EDIT_CHAPTER', response.data);
+    },
+    
     async create(context, chapter) {
         const response = await axios.post('/api/v1/chapters', chapter) ;
 
@@ -35,7 +45,7 @@ export default {
             throw error;
         }
 
-        context.commit('UPDATE_CHAPTER', chapter);
+        context.commit('UPDATE_CHAPTER', response.data);
     },
 
     // This action is used to delete permission from serve.

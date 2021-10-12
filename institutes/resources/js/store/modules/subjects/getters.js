@@ -8,5 +8,8 @@ export default {
 
     subject(state) {
         return state.subject;
+    },
+    courses(state) {
+        return state.courses;
     }
 }

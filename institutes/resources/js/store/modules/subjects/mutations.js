@@ -23,4 +23,10 @@ export default {
     LANGUAGES(state, languages) {
         state.languages = languages;
     },
+    COURSES(state, courses) {
+        state.courses = courses;
+    },
+    VIEW_SUBJECT(state, subject) {
+        state.subject = subject;
+    }
 };

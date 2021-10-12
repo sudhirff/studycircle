@@ -23,7 +23,7 @@
                                 </thead>
                                 <tbody id="listing" v-if="!items">
                                     <tr>
-                                        <td :colspan="columns.length">{{ $t('Sorry, no records found!')}}</td>
+                                        <td :colspan="Object.keys(columns).length" class="text-center">{{ $t('Sorry, no records found!')}}</td>
                                     </tr>
                                 </tbody>
                                 <tbody v-else>

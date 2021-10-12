@@ -23,5 +23,9 @@ const app = createApp(App)
 globalComponents(app)
 utils(app)
 app.config.globalProperties.$axios = axios;
-
+app.config.globalProperties.$filters = {
+  pretty: function(value) {
+    return JSON.parse(value);
+  }
+}
 app.mount('#app')

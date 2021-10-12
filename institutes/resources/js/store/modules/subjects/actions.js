@@ -13,6 +13,7 @@ export default {
         
         context.commit('FETCH_SUBJECTS', response.data.subjects);
         context.commit('LANGUAGES', response.data.languages);
+        context.commit('COURSES', response.data.courses);
     },
     
     async create(context, subject) {
@@ -34,7 +35,7 @@ export default {
             throw error;
         }
 
-        context.commit('UPDATE_SUBJECT', subject);
+        context.commit('UPDATE_SUBJECT', response.data);
     },
 
     // This action is used to delete permission from serve.
@@ -45,5 +46,17 @@ export default {
             throw error;
         }
         context.commit('DELETE_SUBJECT', id);
+    },
+    // This action is used to fetch all the subjects present in database
+
+    async show(context, id) {
+        const response = await axios.get('/api/v1/subjects/show/'+id) ;
+
+        if (response.status != 200) {
+            const error = new Error('Failed to fetch subjects')
+            throw error;
+        }
+        
+        context.commit('VIEW_SUBJECT', response.data);
     },
 };

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SubjectRequest;
+use App\Models\Course;
 use Illuminate\Http\Request;
 use App\Models\Language;
 use App\Models\Subject;
@@ -20,18 +21,24 @@ class SubjectController extends Controller
     {
         //Get all courses list
         $subjects = Subject::when(request('search'), function ($query) {
-            $query->where('label', 'like', '%'. request('search'). '%');
-            $query->orWhere('description', 'like', '%'. request('search'). '%');
-        })->with('tagged')->orderBy(request('field'), request('sort'))->paginate(5);
+                        $query->where('label', 'like', '%'. request('search'). '%');
+                        $query->orWhere('description', 'like', '%'. request('search'). '%');
+                    })
+                    ->where('parent_id', null)
+                    ->with('tagged', 'courses_subjects')
+                    ->orderBy(request('field'), request('sort'))
+                    ->paginate(5);
         
         $languages = Language::all()->pluck('name', 'id');
+        $courses = Course::all()->pluck('name', 'id');
 
         $tags = Subject::with('tagged')->first();
         
         $response = [
             'subjects' => $subjects,
             'languages' => $languages,
-            'tags' => $tags
+            'tags' => $tags,
+            'courses' => $courses
         ];
         //$apiData = Course::getApiData();
         return response()->json($response);
@@ -58,7 +65,12 @@ class SubjectController extends Controller
             
     	    $tags = $request->tags;
             $subject = Subject::create($inputs);
+            
+            $subject->untag();
             $subject->tag($tags);
+            $subject->courses_subjects()->sync($request->course_ids);
+            $subject->tags = $request->tags;
+
             $response = [
                 'success' => true,
                 'message' => 'Subject is created successfully.',
@@ -77,23 +89,12 @@ class SubjectController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Object  $subject
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Subject $subject)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return response()->json($subject); 
     }
 
     /**
@@ -117,11 +118,13 @@ class SubjectController extends Controller
             
     	    $tags = $request->tags;
             $subject->update($inputs);
-            $subject->label = $inputs['label'];
-            $subject->description = $inputs['description'];
+            
+
             $subject->untag();
             $subject->tag($tags);
+            $subject->courses_subjects()->sync($request->course_ids);
             $subject->tags = $request->tags;
+
             $response = [
                 'success' => true,
                 'message' => 'Subject is updated successfully.',

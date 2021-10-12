@@ -14,8 +14,11 @@ export default function useCrud(options) {
         field: 'id',
     });
 
-    const fetch = async() => {
-        //clearForm();
+    const fetch = async(clear = true) => {
+        if (clear) {
+            clearForm();
+        }
+        
         isLoading.value = true;
         await store.dispatch(options.fetch, params);
         isLoading.value = false;
@@ -100,6 +103,10 @@ export default function useCrud(options) {
         }
     }
 
+    async function edit() {
+        await store.dispatch(options.edit, options.itemId); 
+    }
+
     function editItem(item) {
         clearForm(true);
         var elements = document.getElementsByClassName('bg-gray-200');
@@ -123,11 +130,17 @@ export default function useCrud(options) {
 
     // All delete related
     const removeItem = async(item) => {
-        if (confirm('Are you sure, you want remove this item?')) {
-            await store.dispatch(options.delete, item.id);
-            fetch();
-        }
-        return ;
+        //if (confirm('Are you sure, you want remove this item?')) {
+            try {
+                await store.dispatch(options.delete, item.id);
+                fetch();
+            } catch (e) {
+                message.value = e.message;
+                return ;
+            }
+            
+        //}
+        
     }
     
     
@@ -175,6 +188,7 @@ export default function useCrud(options) {
         removeItem,
         showPagination,
         parsed,
-        isJSON
+        isJSON,
+        edit,
     }
 }
