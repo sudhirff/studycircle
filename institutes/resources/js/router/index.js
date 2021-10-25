@@ -29,7 +29,9 @@ import CoursesList from '@/components/Pages/Courses/Index.vue'
 import CourseTypeList from '@/components/Pages/CoursesTypes/Index.vue'
 
 /*** Begin Subject components */
-import SubjectList from '@/components/Pages/Subjects/Index.vue'
+import SubjectList from '@/components/Pages/Subjects/Index.vue';
+import SubjectCreate from '@/components/Pages/Subjects/Create.vue';
+import SubjectEdit from '@/components/Pages/Subjects/Edit.vue';
 import SubjectView from '@/components/Pages/Subjects/View.vue'
 
 /*** Begin Subject components */
@@ -116,14 +118,14 @@ const routes = [
                 path: '/create',
                 name: 'userCreate',
                 component: UserCreate,
-                meta: { requiresAuth: true },
+                meta: { requiresAuth: true, parent: 'users' },
             },
             {
                 path: '/:id/edit',
                 name: 'userEdit',
                 component: UserEdit,
                 props: true,
-                meta: { requiresAuth: true },
+                meta: { requiresAuth: true, parent: 'users' },
             },
         ]
     },
@@ -133,6 +135,20 @@ const routes = [
         component: SubjectList,
         meta: { requiresAuth: true },
         children: [
+            {
+                path: '/subjects/create',
+                name: 'subjectCreate',
+                component: SubjectCreate,
+                parent: 'subjects',
+                meta: { requiresAuth: true, parent: 'subjects' },
+            },
+            {
+                path: '/subjects/:id/edit',
+                name: 'subjectEdit',
+                component: SubjectEdit,
+                props: true,
+                meta: { requiresAuth: true, parent: 'subjects' },
+            },
             {
                 path: '/subjects/show/:id',
                 name: 'subjectView',

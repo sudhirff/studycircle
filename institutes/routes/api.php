@@ -5,12 +5,13 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\V1\PermissionController;
 use App\Http\Controllers\Api\V1\RoleController;
+use App\Http\Controllers\Api\V1\UserController;
 use App\Http\Controllers\Api\V1\CourseController;
 use App\Http\Controllers\Api\V1\CoursesTypeController;
 use App\Http\Controllers\Api\V1\SubjectController;
 use App\Http\Controllers\Api\V1\ChapterController;
-
-use App\Models\Language;
+use App\Http\Controllers\Api\V1\TopicController;
+use App\Http\Controllers\Api\V1\ExportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,11 +30,15 @@ Route::middleware('api')->group(function () {
             Route::resource('v1/permissions', PermissionController::class);
             
             Route::resource('v1/roles', RoleController::class);
+            Route::resource('v1/users', UserController::class);
             Route::resource('v1/courses_type', CoursesTypeController::class);
             Route::get('v1/courses_type/list', [CoursesTypeController::class, 'list'])->name('coursesType.list');
             Route::resource('v1/courses', CourseController::class);
             Route::resource('v1/subjects', SubjectController::class);
             Route::resource('v1/chapters', ChapterController::class);
+            Route::resource('v1/topics', TopicController::class);
+            Route::resource('v1/exports', ExportController::class);
+            Route::get('v1/exports/export/{filename}', [ExportController::class, 'export'])->name('exports.export');
         });
     
 });

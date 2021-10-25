@@ -169,6 +169,11 @@ export default function useCrud(options) {
         return true;
     }
 
+
+    // Code for export as XLS or CSV
+    async function exportMe() {
+        await axios.get(`/api/v1/exports`);
+    }
     return {
         items,
         fetch,
@@ -190,5 +195,6 @@ export default function useCrud(options) {
         parsed,
         isJSON,
         edit,
+        exportMe
     }
 }

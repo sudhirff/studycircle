@@ -23,6 +23,8 @@ import TheBaseCrudTable from '@/components/UI/TheBaseCrudTable.vue'
 import BaseRowCard from '@/components/UI/BaseRowCard.vue'
 import Loading from '@/components/UI/Loading.vue'
 import Pagination from '@/components/UI/Pagination.vue';
+import ExportModal from '@/components/UI/ExportModal.vue';
+import ImportModal from '@/components/UI/ImportModal.vue';
 
 export default app => {
   app.component('Chart', Chart)
@@ -50,6 +52,8 @@ export default app => {
   app.component('Notification', Notification)
   app.component('Loading', Loading)
   app.component('Pagination', Pagination)
+  app.component('ExportModal', ExportModal)
+  app.component('ImportModal', ImportModal)
   
   for (const [key, icon] of Object.entries(featherIcons)) {
     icon.props.size.default = '24'

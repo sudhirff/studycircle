@@ -22,6 +22,7 @@ class SubjectController extends Controller
         //Get all courses list
         $subjects = Subject::when(request('search'), function ($query) {
                         $query->where('label', 'like', '%'. request('search'). '%');
+                        $query->where('parent_id', null);
                         $query->orWhere('description', 'like', '%'. request('search'). '%');
                     })
                     ->where('parent_id', null)
@@ -85,6 +86,19 @@ class SubjectController extends Controller
         }
         return response()->json($response);
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  Object  $course
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Subject $subject)
+    {
+        $subject->tags;
+        return response()->json($subject);
+    }
+
 
     /**
      * Display the specified resource.

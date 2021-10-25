@@ -2,17 +2,19 @@ import axios from "axios"
 
 export default {
     // This action is used to fetch all the users present in database
-    async fetchUsers(context) {
-        const response = await axios.get('/api/v1/users') ;
+    async fetch(context, params) {
+        const response = await axios.get('/api/v1/users?page='+params.page+'&search='+params.keyword+'&field='+params.field+'&sort='+params.sort) ;
+
+        //const response = await axios.get('/api/v1/users') ;
 
         if (response.status != 200) {
             const error = new Error('Failed to fetch users')
             throw error;
         }
-        context.commit('FETCH_USERS', response.data);
+        context.commit('FETCH_USERS', response.data.users);
     },
     
-    async createUser(context, user) {
+    async create(context, user) {
         const response = await axios.post('/api/v1/users', user) ;
 
         if (response.status != 200) {
@@ -23,7 +25,7 @@ export default {
     },
 
     // This action is used to fetch only selected user
-    async editUser(context, id) {
+    async edit(context, id) {
         const response = await axios.get(`/api/v1/users/${id}/edit`);
 
         if (response.status != 200) {
@@ -34,7 +36,7 @@ export default {
     },
 
     // After user submits the form, user information must be updated in database.
-    async updateUser(context, user) {
+    async update(context, user) {
         const response = await axios.put(`/api/v1/users/${user.id}`, user);
 
         if (response.status != 200) {
@@ -46,7 +48,7 @@ export default {
     },
 
     // This action is used to delete user from serve.
-    async deleteUser(context, id) {
+    async delete(context, id) {
         const response = await axios.delete(`/api/v1/users/${id}`);
         if (response.status != 200) {
             const error = new Error('Failed to delete user')

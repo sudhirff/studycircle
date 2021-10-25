@@ -76,7 +76,10 @@
                             <router-link to="/contact-us">Contact Us</router-link>
                         </li>
                         <li>
-                            <router-link to="/kvpy">KVPY {{ currentYear }}</router-link>
+                            <a href="/kvpy" title="KVPY">KVPY {{ currentYear }}</a>
+                        </li>
+                        <li>
+                            <a href="/mht-cet" title="MHT-CET">MHT-CET {{ currentYear }}</a>
                         </li>
                         
                     </ul>

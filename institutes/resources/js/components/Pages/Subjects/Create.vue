@@ -1,264 +1,254 @@
 <template>
     <div>
         <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
-            <h2 class="text-lg font-medium mr-auto">Add New SUbject</h2>
+            <h2 class="text-lg font-medium mr-auto">{{ $t('Add New Subject')}}</h2>
             <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-                <router-link to="/subjects"
+                <router-link :to="{name: 'subjects'}"
                             class="btn box text-gray-700 dark:text-gray-300 mr-2 flex items-center ml-auto sm:ml-0"
-                            ><ArrowLeftCircleIcon class="w-4 h-4 mr-2" />Back
+                            ><ArrowLeftCircleIcon class="w-4 h-4 mr-2" />{{ $t('List all subjects')}}
                 </router-link>
             </div>
         </div>
         <div class="pos intro-y grid grid-cols-12 gap-5 mt-5">
-            
-            <div class="intro-y col-span-12 lg:col-span-8">
-                <!-- BEGIN: Post Content -->
-                <div class="alert alert-danger show flex items-center mb-2" role="alert" v-if="isErrored">
-                    <AlertOctagonIcon class="w-6 h-6 mr-2" />
-                    {{ message }}
-                </div>
-                <form @submit.prevent = "submitForm" class="validate-form">
-                    <div class="modal-body">
-                        <div>
-                            <label for="form-name" class="form-label">Name</label>
+            <div class="intro-y box col-span-12 lg:col-span-12">
+                <div class="p-5">
+                    <div class="alert alert-danger show flex items-center mb-2" role="alert" v-if="isErrored">
+                        <AlertOctagonIcon class="w-6 h-6 mr-2" />
+                        {{ message }}
+                    </div>
+                    <form @submit.prevent = "submitForm" class="validate-form">
+                        <div class="mt-3">
+                            <label for="form-name" class="form-label">{{ $t('Label') }}</label>
                             <input id="form-name" 
                                     type="text" 
                                     class="form-control" 
-                                    placeholder="Enter name of role."
-                                    v-model.trim="subject.name"
-                                    :class="{ 'border-theme-24': submitted && v$.name.$error }"
+                                    placeholder="Enter label of subject."
+                                    v-model.trim="form.label"
+                                    :class="{ 'border-theme-24': submitted && v$.label.$errors.length }"
                                     />
-                            <span v-if="submitted && v$.name.$error" class="text-theme-24 mt-2">
-                                {{ v$.name.$errors[0].$message }}
-                            </span>
-                        </div>
-                        <!--<div>
-                            <label for="form-permission" class="form-label">Permission</label>
-
-                            <div class="form-check mt-2"
-                                v-for="permission in subjects"
-                                :key="permission.id">
-                                <input :id="permission.name" 
-                                        class="form-check-input" 
-                                        type="checkbox" 
-                                        v-model="role.subjects"
-                                        :value="permission.id" />
-                                <label class="form-check-label" 
-                                        :for="permission.name">
-                                        {{ permission.name }}
-                                </label>
+                            <div class="text-theme-24 mt-2" v-for="(error, index) of v$.label.$errors" :key="index">
+                                <div class="error-msg">{{ error.$message }}</div>
                             </div>
-                            <span v-if="submitted && v$.subjects.$error" class="text-theme-24 mt-2">
-                                {{ v$.subjects.$errors[0].$message }}
+                        </div>
+                        <div class="mt-3">
+                            
+                            <label for="form-description" class="form-label">{{ $t('Description')}}</label>
+                                
+                            <div class="mt-3 py-2">
+      
+                                <editor
+                                    id="form-description"
+                                    v-model="form.description"
+                                    :class="{ 'border-theme-24': submitted && v$.description.$errors.length }"
+                                    initialValue="<p>Initial editor content</p>"
+                                    apiKey="n10p1o42akootxkapivj4ecxefdo4zlaqd0ek0aa47ld9js7"
+                                    :init="{
+                                        height: 200,
+                                        menubar: true,
+                                        plugins: [
+                                            'advlist autolink lists link image charmap',
+                                            'searchreplace visualblocks code fullscreen',
+                                            'print preview anchor insertdatetime media',
+                                            'paste code help wordcount table',
+                                        ],
+                                        toolbar:
+                                            'undo redo | formatselect | bold italic | \
+                                            alignleft aligncenter alignright | \
+                                            bullist numlist outdent indent | insert | help | \
+                                            tiny_mce_wiris_formulaEditor | tiny_mce_wiris_formulaEditorChemistry',
+                                    }"
+                                    >
+                                </editor>
+                            </div>
+                                
+                            <!-- END: Inbox Content -->
+                            <div class="text-theme-24 mt-2" v-for="(error, index) of v$.description.$errors" :key="index">
+                                <div class="error-msg">{{ error.$message }}</div>
+                            </div>
+                        </div>
+                        <div class="mt-3 ">
+                            <label for="language" class="form-label"
+                                >{{ $t('Language or Medium')}}</label
+                            >
+                            <TailSelect
+                                id="language"
+                                v-model="form.language_id"
+                                :options="{
+                                    search: true,
+                                    classNames: 'w-full'
+                                }"
+                            >
+                                <option v-for="(language, index) in languages" 
+                                        :key="index" 
+                                        :value="index">{{ language}}</option>
+                                
+                            </TailSelect>
+                        </div>
+                        <div class="mt-3">
+                            <label for="subject-icon" class="form-label"
+                                >{{ $t('Icon') }}</label
+                            >
+                            <input 
+                                type="text"
+                                id="subject-icon"
+                                v-model="form.icon"
+                                class="form-control"
+                                placeholder="Icon"
+                                :class="{ 'border-theme-24': submitted && v$.icon.$error }" />
+                            <span v-if="submitted && v$.icon.$error" class="text-theme-24 mt-2">
+                                {{ v$.icon.$errors[0].$message }}
                             </span>
-                        </div>-->
-                    </div>
-                    <!-- BEGIN: Slide Over Footer -->
-                    <div class="modal-footer text-right w-full absolute bottom-0">
-                        <button type="button" 
-                                data-dismiss="modal" 
-                                class="btn btn-outline-secondary w-20 mr-1" 
-                                >
-                            Cancel
-                        </button>
-                        <button type="submit" class="btn btn-primary w-20">
-                            Save
-                        </button>
-                    </div>
-                    <!-- END: Slide Over Footer -->
-                </form>
+                            
+                        </div>
+                        <div class="mt-3">
+                            <label for="subject-tags" class="form-label">{{ $t('Tags') }}</label>
+
+                            <tag v-model="form.tags" 
+                                :inputId="'subject-tags'"
+                                :allowCustom="true"
+                                :showCount="true" />
+                            
+                        </div>
+                        <!-- BEGIN: Slide Over Footer -->
+                        
+                        <div class="text-right w-full bottom-0 mt-3">
+                            <router-link :to="{name: 'subjects'}" class="btn btn-outline-secondary w-20 mr-1" >
+                                Cancel
+                            </router-link>
+                            <button type="submit" class="btn btn-primary w-20">
+                                Save
+                            </button>
+                        </div>
+                        <!-- END: Slide Over Footer -->
+                    </form>
+                </div>
+                <!-- BEGIN: Post Content -->
+                
+                
             </div>
             <!-- END: Post Content -->
-            <!-- BEGIN: Post Info -->
-            <div class="col-span-12 lg:col-span-4">
-                <div class="intro-y box p-5">
-                <div>
-                    <label class="form-label">Written By</label>
-                    <div class="dropdown">
-                    <div
-                        class="dropdown-toggle btn w-full btn-outline-secondary dark:bg-dark-2 dark:border-dark-2 flex items-center justify-start"
-                        role="button"
-                        aria-expanded="false"
-                    >
-                        <div class="w-6 h-6 image-fit mr-3">
-                        <img
-                            class="rounded"
-                            alt="Icewall Tailwind HTML Admin Template"
-                            :src="require(`@/assets/images/${$f()[0].photos[0]}`)"
-                        />
-                        </div>
-                        <div class="truncate">{{ $f()[0].users[0].name }}</div>
-                        <ChevronDownIcon class="w-4 h-4 ml-auto" />
-                    </div>
-                    <div class="dropdown-menu w-full">
-                        <div class="dropdown-menu__content box dark:bg-dark-1 p-2">
-                        <a
-                            v-for="(faker, fakerKey) in $_.take($f(), 5)"
-                            :key="fakerKey"
-                            href="javascript:;"
-                            class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"
-                        >
-                            <div class="w-6 h-6 absolute image-fit mr-3">
-                            <img
-                                class="rounded"
-                                alt="Icewall Tailwind HTML Admin Template"
-                                :src="require(`@/assets/images/${faker.photos[0]}`)"
-                            />
-                            </div>
-                            <div class="ml-8 pl-1">{{ faker.users[0].name }}</div>
-                        </a>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <div class="mt-3">
-                    <label for="post-form-2" class="form-label">Post Date</label>
-                    <Litepicker
-                    id="post-form-2"
-                    v-model="salesReportFilter"
-                    :options="{
-                        autoApply: false,
-                        showWeekNumbers: true,
-                        dropdowns: {
-                        minYear: 1990,
-                        maxYear: null,
-                        months: true,
-                        years: true
-                        }
-                    }"
-                    class="form-control"
-                    />
-                </div>
-                <div class="mt-3">
-                    <label for="post-form-3" class="form-label">Categories</label>
-                    <TailSelect
-                    id="post-form-3"
-                    v-model="categories"
-                    :options="{
-                        search: false,
-                        hideSelected: true,
-                        hideDisabled: true,
-                        multiLimit: 15,
-                        multiShowCount: false,
-                        multiContainer: true,
-                        classNames: 'w-full'
-                    }"
-                    multiple
-                    >
-                    <option value="1">Horror</option>
-                    <option value="2">Sci-fi</option>
-                    <option value="3">Action</option>
-                    <option value="4">Drama</option>
-                    <option value="5">Comedy</option>
-                    </TailSelect>
-                </div>
-                <div class="mt-3">
-                    <label for="post-form-4" class="form-label">Tags</label>
-                    <TailSelect
-                    id="post-form-4"
-                    v-model="tags"
-                    :options="{
-                        search: false,
-                        hideSelected: true,
-                        hideDisabled: true,
-                        multiLimit: 15,
-                        multiShowCount: false,
-                        multiContainer: true,
-                        classNames: 'w-full'
-                    }"
-                    multiple
-                    >
-                    <option value="1" selected>Leonardo DiCaprio</option>
-                    <option value="2">Johnny Deep</option>
-                    <option value="3" selected>Robert Downey, Jr</option>
-                    <option value="4">Samuel L. Jackson</option>
-                    <option value="5">Morgan Freeman</option>
-                    </TailSelect>
-                </div>
-                <div class="form-check flex-col items-start mt-3">
-                    <label for="post-form-5" class="form-check-label ml-0 mb-2"
-                    >Published</label
-                    >
-                    <input id="post-form-5" class="form-check-switch" type="checkbox" />
-                </div>
-                <div class="form-check flex-col items-start mt-3">
-                    <label for="post-form-6" class="form-check-label ml-0 mb-2"
-                    >Show Author Name</label
-                    >
-                    <input id="post-form-6" class="form-check-switch" type="checkbox" />
-                </div>
-                </div>
-            </div>
-            <!-- END: Post Info -->
-            </div>
+        </div>
     </div>
 </template>
 
 <script>
-
 import { useStore } from 'vuex';
-import { ref, reactive, computed } from 'vue'
-
-import { useVuelidate } from '@vuelidate/core';
+import { ref, reactive, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { required, helpers } from '@vuelidate/validators'
 
-import useCreateUpdate from '@/hooks/create_update.js';
+import Tag from '@/components/inputs/Tag.vue';
 
+import useCrud from '@/hooks/crud.js'
+import Editor from "@tinymce/tinymce-vue";
 export default {
+    components: {
+        Tag,
+        editor: Editor,
+    },
     setup(props, context) {
         const store = useStore();
-        const submitted = ref(false);
-        
-        const isErrored = ref(false);
-        const message = ref('');
-        const isLoading = ref(false);
-
-        const subject = reactive({
+        const router = useRouter();
+        const form = reactive({
             id: '',
-            name: '',
+            label: '',
+            description: null,
+            icon: '',
+            tags: [],
+            language_id: 1,
         });
+        const initialState = {
+            id: '',
+            label: '',
+            description: null,
+            icon: '',
+            tags: [],
+            language_id: 1,
+        };
 
+        
         const rules = computed(() => {
             return {
-                name: {
-                    required: helpers.withMessage('Please enter name of role.', required),
+                label: {
+                    required: helpers.withMessage('Please enter label of subject.', required),
+                },
+                description: {
+                    required: helpers.withMessage('Please enter description of subject.', required),
+                },
+                icon: {
+                    required: helpers.withMessage('Please enter icon of subject.', required),
                 },
             }
         });
 
-        const v$ = useVuelidate (rules, subject);
-
-
-        async function submitForm() {
-            submitted.value = true;
-            v$.value.$validate(); // checks all inputs
-
-            if (!v$.value.$error) {
-                isLoading.value = true;
-                try {
-                    await store.dispatch('roles/createRole', role);
-                    isLoading.value = false;
-                    submitted.value = false;
-                } catch(e) {
-                    isLoading.value = false;
-                    isErrored.value = true;
-                    message.value = "This name is already taken.";
-                }
-            } else {
-                // if ANY fail validation
-                
-                return ;
-            }
+        const options = {
+            initialState,
+            form,
+            rules,
+            create: 'subjects/create',
+            update: 'subjects/update',
+            moduleName: 'Subject(s)'
         }
-
-        return {
+        const {
             submitted,
-            subject,
-            submitForm,
             isLoading,
             isErrored,
             message,
-            v$
+            submit,
+            v$,
+            editItem,
+            editMode,
+            clearForm
+            } = useCrud(options);
+
+        onMounted(clearForm);
+        // After items are fetched, we have to get all the course types using gettters
+        const languages = computed(function() {
+            return store.getters['subjects/languages'];
+        });
+
+        const submitForm = async() => {
+            try {
+                let response = await submit();
+                if (response) {
+                    clearForm();
+                    form.tags.length =0;
+                    router.push('/subjects');
+                } else {
+                    return response;
+                }
+            } catch (e) {
+
+            }
+
+        }
+        return {
+            form,
+            rules,
+            submitted,
+            isLoading,
+            isErrored,
+            message,
+            submit,
+            v$,
+            editItem,
+            editMode,
+            languages,
+            clearForm,
+            submitForm
+        }
+    },
+    methods: {
+        random(string) {
+            var s = '';
+            var randomchar = function() {
+                var n = Math.floor(Math.random() * 62);
+                if (n < 10) return n; //1-10
+                if (n < 36) return String.fromCharCode(n + 55); //A-Z
+                return String.fromCharCode(n + 61); //a-z
+            }
+            while (s.length < string) s += randomchar();
+            return s;
         }
     },
 }

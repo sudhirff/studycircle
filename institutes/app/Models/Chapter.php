@@ -40,4 +40,12 @@ class Chapter extends Model
     {
         return $this->belongsTo(Subject::class, 'parent_id');
     }
+
+    /**
+     * Get the post that owns the comment.
+     */
+    public function topics()
+    {
+        return $this->belongsTo(Subject::class, 'parent_id');
+    }
 }

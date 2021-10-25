@@ -7,6 +7,7 @@ import Blogs from '../pages/Blogs.vue';
 import HowItWorks from '../pages/HowItWorks.vue';
 import Features from '../pages/Features.vue';
 import Kvpy from '../pages/Kvpy.vue';
+import MhtCet from '../pages/MhtCet.vue';
 
 const routes = [
     {
@@ -33,6 +34,11 @@ const routes = [
         path: '/kvpy',
         name: 'kvpy',
         component: Kvpy
+    },
+    {
+        path: '/mht-cet',
+        name: 'mhtCet',
+        component: MhtCet
     },
     {
         path: '/blogs',

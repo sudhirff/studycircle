@@ -1,74 +1,148 @@
 <template>
     <div>
-        <the-page-header :title="'User Listing'"></the-page-header>
-        <the-base-card>
-            <the-base-header-card>
-                <the-add-new-button>
-                    <a href="javascript:;" 
-                        @click.prevent="openModal(options.createComponentName)"
-                        class="btn btn-primary"
-                        >
-                        Add New User
-                    </a>
-                </the-add-new-button>
-                <div class="hidden md:block mx-auto text-gray-600">
+        <template v-if="listing">
+            <the-page-header :title="'Users'"></the-page-header>
+            <the-base-card>
+                <the-base-header-card>
+                    <router-link :to="{name: 'userCreate'}" 
+                                    @click="listing = !listing" 
+                                    class="btn btn-primary shadow-md mr-2">{{ $t('Add New User')}} </router-link>
                     
-                </div>
-                <base-search-card></base-search-card>
-            </the-base-header-card>
-            
-            <!-- BEGIN: Data List -->
-            <the-base-data-list-card>
-                <p v-if="isLoading">I am loading</p>
-                <the-base-crud-table>
-                    <thead>
-                        <base-row-card :columns="columns" :showHeaders="true"></base-row-card>
-                    </thead>
-                    <tbody>
-                        <base-row-card v-for="(item, index) in items" 
-                                        :key="index" 
-                                        :columns="columns"
-                                        :item="item"
-                                        @EditRow="showEditModal"
-                                        @DeleteRow="showDeleteModal"
-                                        ></base-row-card>
-                    </tbody>
-                </the-base-crud-table>
-            </the-base-data-list-card>
-        </the-base-card>
+                    <div class="dropdown">
+                        <button
+                            class="dropdown-toggle btn px-2 box text-gray-700 dark:text-gray-300"
+                            aria-expanded="false"
+                        >
+                            <span class="w-5 h-5 flex items-center justify-center">
+                                <PlusIcon class="w-4 h-4" />
+                            </span>
+                        </button>
+                        <div class="dropdown-menu w-40">
+                            <div class="dropdown-menu__content box dark:bg-dark-1 p-2">
+                                <a
+                                    href=""
+                                    class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"
+                                >
+                                    <PrinterIcon class="w-4 h-4 mr-2" /> Print
+                                </a>
+                                <a
+                                    href="javascript:;"
+                                    data-toggle="modal" data-target="#import-modal"
+                                    class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"
+                                >
+                                    <UploadCloudIcon class="w-4 h-4 mr-2" /> Import
+                                </a>
+                                
+                                <a
+                                    href="javascript:;"
+                                    data-toggle="modal" data-target="#export-modal"
+                                    class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"
+                                >
+                                    <DownloadCloudIcon class="w-4 h-4 mr-2" /> Export
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden md:block mx-auto text-gray-600">
+                        
+                    </div>
+                    <base-search-card @search="search"></base-search-card>
+                </the-base-header-card>
+                <!-- BEGIN: Data List -->
+                <the-base-data-list-card class="user-table-div">
+                    <the-base-crud-table>
+                        <thead>
+                            <base-row-card :columns="columns" 
+                                            :showHeaders="true" 
+                                            @sorting="sort"
+                                            :field="sortField"
+                                            :direction="sortDirection"
+                                            ></base-row-card>
+                        </thead>
+                        
+                        <tbody id="listing" v-if="!items">
+                            <tr>
+                                <td colspan="5" class="text-center">{{ $t('Sorry, no records found!')}}</td>
+                            </tr>
+                        </tbody>
+                        <tbody v-else>
+                                                                    
+                            <tr v-for="(item, index) in items.data" 
+                                            :key="index" 
+                                            :id="'list-'+item.id"
+                                            >
+                                <td class="border-b whitespace-nowrap">{{ item.id }}</td>
+                                <td class="border-b whitespace">{{ item.name }}</td>
+                                <td class="border-b whitespace">{{ item.email }}</td>
+                                <td class="border-b whitespace">{{ item.mobile_no }}</td>
+                                <td class="border-b whitespace-nowrap">
+                                    <div class="flex justify-center items-center">
+                                        <!--<router-link :to="{name: 'chapterEdit'}" 
+                                            @click="listing = !listing" 
+                                            class="btn btn-primary shadow-md mr-2">{{ $t('Add New Chapter')}} </router-link>-->
+                                            
+                                        <router-link :to="{name: 'userEdit', params: {id: item.id}}" 
+                                            @click.prevent="listing = !listing" 
+                                            class="flex items-center block p-2 transition duration-300 ease-in-out dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2  rounded-md "
+                                            >
+                                            <CheckSquareIcon class="w-4 h-4 mr-1" /> {{ $t('Edit')}}
+                                        </router-link>
+                                        <a class="flex items-center block p-2 transition duration-300 ease-in-out dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2  rounded-md text-theme-24" 
+                                                href="#" 
+                                                @click.prevent="removeItem(item)"
+                                                > 
+                                            <Trash2Icon class="w-4 h-4 mr-1" /> {{ $t('Delete')}}
+                                        </a>
+                                        <!--<router-link :to="{ name: 'chapterCreate' }"
+                                                    class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2  rounded-md" >
+                                            <EyeIcon class="w-4 h-4 mr-1" />
+                                        </router-link>-->
+                                    </div>
+                                </td>       
+                            </tr>
+                        </tbody>
+                    </the-base-crud-table>
+                </the-base-data-list-card>
+                <pagination align="center" v-if="showPagination && items" :data="items" @pagination="paginate"></pagination>
+                <!-- End: Data List -->
+            </the-base-card>            
+        </template>
+        <template v-else>
+            <router-view></router-view>
+        </template>
+        
+        <loading v-if="isLoading" fixed></loading>
         <!-- BEGIN: Component form -->
 
-        <teleport to='#app'>
-            <component v-if="selectedComponent !== null" 
-                        :is="selectedComponent"
-                        @closeComp="removeComponent"
-                        @deleteConfirm="deleteItem"
-                        :item="selectedItem"
-                        :moduleName="moduleName"
-                        ></component>
-        </teleport>
+        <export-modal :moduleName="'users'"></export-modal>
+        <import-modal></import-modal>
         <!-- END: Component form -->
     </div>
-    
 </template>
 
 <script>
-import { ref } from 'vue';
+import { useStore } from 'vuex';
+import { ref, reactive, computed, onMounted } from 'vue'
+import { required, helpers } from '@vuelidate/validators'
 
-import useListing from '@/hooks/listing.js';
-
-import CreateUser from '@/components/Pages/Users/Create.vue';
-import EditUser from '@/components/Pages/Users/Edit.vue';
 import BaseDeleteModalCard from '@/components/UI/BaseDeleteModalCard.vue';
+
+import Tag from '@/components/inputs/Tag.vue';
+
+import useCrud from '@/hooks/crud.js'
+import { useRoute, useRouter } from 'vue-router';
 
 export default {
     components: {
-        CreateUser,
-        EditUser,
-        BaseDeleteModalCard
+        BaseDeleteModalCard,
+        Tag,
     },
-    setup(){
-        
+    setup() {
+        const store = useStore();
+        const listing = ref(true);
+        const route = useRoute();
+        const router = useRouter();
+
         const columns = {
             id: {
                 label: "ID",
@@ -80,11 +154,11 @@ export default {
             },
             email: {
                 label: "EMAIL",
-                sorting: true,
+                sorting: false,
             },
             mobile_no: {
-                label:"MOBILE",
-                sorting: true,
+                label: "MOBILE",
+                sorting: false,
             },
             actions: {
                 label:"ACTIONS",
@@ -93,57 +167,81 @@ export default {
         };
 
         const options = {
-            createModalFormId: 'create-user',
-            createComponentName: 'CreateUser',
-            listGetter: 'users/users',
-            listDispatch: 'users/fetchUsers',
-            editModalFormId: 'edit-user',
-            editComponentName: 'EditUser',
-            editGetter: 'users/editUser',
-            editDispatch: 'users/editUser',
-            deleteDispatch: 'users/deleteUser',
-            deleteComponentName: 'BaseDeleteModalCard',
-            moduleName: "User"
-        };
-        
-        const {
-            isLoading,
-            items,
-            //editItemRequest,
-            //editItem,
-            selectedComponent,
-            deleteItem,
-            openModal,
-            removeComponent,
-            selectedItem
-         } = useListing(options);
+            fetch: 'users/fetch',
+            getters: 'users/users',
+            delete: 'users/delete',
+            moduleName: 'User(s)'
+        }
+        const { 
+            items, 
+            fetch, 
+            paginate, 
+            search, 
+            sort, 
+            params, 
+            isLoading, 
+            removeItem,
+            parsed,
+            editItem,
+            exportMe } = useCrud(options);
 
+        onMounted(fetch(false));
+
+        // This is very important from the create/edit form show.
+        if (route.name === 'users') {
+            listing.value = true;
+        } else {
+            listing.value = false;
+        }
         return {
-            columns,
-            options,
             isLoading,
+            columns,
             items,
-            //editItemRequest,
-            //editItem,
-            selectedComponent,
-            deleteItem,
-            openModal,
-            removeComponent,
-            selectedItem,
-            moduleName: options.moduleName
-        };
+            search,
+            paginate, 
+            sort,
+            sortField: params.field,
+            sortDirection: params.sort,
+            editItem,
+            removeItem,
+            parsed,
+            listing,
+            fetch,
+            exportMe
+        }
+    },
+    computed: {
+        showPagination() {
+            if ((this.items !== undefined) && (this.items.total / this.items.to > 1 || this.items.current_page != 1)) {
+                return true;
+            }
+            return false;
+        },
     },
     methods: {
-        showEditModal(item) {
-            this.openModal(this.options.editComponentName, item)
-        },
         showDeleteModal(itemId) {
+            this.selectedItem = itemId;
             this.openModal(this.options.deleteComponentName, itemId)
+        },
+        export() {
+
+        }
+    },
+    watch: {
+        '$route' (to, from) {
+            if (to.name === 'users') {
+                this.listing = true;
+                this.fetch(false);
+            }
         }
     },
 }
 </script>
-
-<style>
-
+<style scoped>
+.user-table-div {
+    width: 100%;
+}
+.active-row {
+    background-color: chartreuse;
+}
 </style>
