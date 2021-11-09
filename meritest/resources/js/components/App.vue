@@ -1,7 +1,5 @@
 <template>
-	<div>
-		<div id="introLoader"></div>
-	
+	<div>	
 		<!-- start Container Wrapper -->
 		<div class="container-wrapper">
 

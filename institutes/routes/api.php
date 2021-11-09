@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\V1\SubjectController;
 use App\Http\Controllers\Api\V1\ChapterController;
 use App\Http\Controllers\Api\V1\TopicController;
 use App\Http\Controllers\Api\V1\ExportController;
+use App\Http\Controllers\Api\V1\ImportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +38,8 @@ Route::middleware('api')->group(function () {
             Route::resource('v1/subjects', SubjectController::class);
             Route::resource('v1/chapters', ChapterController::class);
             Route::resource('v1/topics', TopicController::class);
-            Route::resource('v1/exports', ExportController::class);
-            Route::get('v1/exports/export/{filename}', [ExportController::class, 'export'])->name('exports.export');
+            Route::post('v1/exports/index', [ExportController::class, 'index'])->name('exports.index');
+            Route::post('v1/imports', [ImportController::class, 'store'])->name('imports.store');
         });
     
 });

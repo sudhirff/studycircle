@@ -21,6 +21,9 @@ class UserExport implements
                             WithEvents
 {
     use Exportable;
+
+    private $fileName = "users.xlsx";
+    
     /**
     * @return \Illuminate\Support\Collection
     */

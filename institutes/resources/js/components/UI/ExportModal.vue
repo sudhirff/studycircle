@@ -52,7 +52,7 @@ import axios from 'axios'
 import { ref } from 'vue';
 export default {
     props: {
-        moduleName: {
+        modelName: {
             type: String,
             required: false
         }
@@ -65,16 +65,19 @@ export default {
         
         async function exportMe() {
 
-            downloadFileName.value = props.moduleName+"."+form.export_as;
-
+            downloadFileName.value = props.modelName+"."+form.export_as;
+            const req = {
+                fileName: downloadFileName.value,
+                modelName: props.modelName
+            };
             axios({
-                    url: '/api/v1/exports/export/' + downloadFileName.value,
-                    method: 'GET',
+                    url: '/api/v1/exports/index',
+                    method: 'POST',
+                    data: req,
                     responseType: 'blob',  
                 })
                 .then((response) => {
                         if(response.status === 200) {
-                            
                             var fileURL = window.URL.createObjectURL(new Blob([response.data]));
                             var fileLink = document.createElement('a');
                             fileLink.href = fileURL

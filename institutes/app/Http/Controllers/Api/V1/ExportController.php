@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Exports\UserExport;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Excel;
@@ -22,24 +21,28 @@ class ExportController extends Controller
      */
     public function index(Request $request)
     {
-        
-    }
+        $filename = $request->fileName;
+        $modelName = $request->modelName;
 
-    public function export($filename) {
+        // This is done to make exports class dynamic and can be used by any ExportClass 
+        $exportClass = "App\\Exports\\".$modelName.'Export';
+        $class = new $exportClass;
+
         if ($filename != null) {
             $extensionArray = explode('.', $filename);
             $extension = $extensionArray[1];
+            
             if ($extension == "xlsx") {
-                return $this->excel->download(new UserExport, $filename, Excel::XLSX);
+                return $this->excel->download($class, $filename, Excel::XLSX);
             } 
             if ($extension == "csv") {
-                return $this->excel->download(new UserExport, $filename, Excel::CSV);
+                return $this->excel->download($class, $filename, Excel::CSV);
             }
             if ($extension == "pdf") {
-                return $this->excel->download(new UserExport, $filename, Excel::DOMPDF);
+                return $this->excel->download($class, $filename, Excel::DOMPDF);
             }
             
         }
-        
     }
+
 }

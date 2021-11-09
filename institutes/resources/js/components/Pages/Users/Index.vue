@@ -114,7 +114,7 @@
         <loading v-if="isLoading" fixed></loading>
         <!-- BEGIN: Component form -->
 
-        <export-modal :moduleName="'users'"></export-modal>
+        <export-modal :modelName="'User'"></export-modal>
         <import-modal></import-modal>
         <!-- END: Component form -->
     </div>
