@@ -20,4 +20,8 @@ export default {
         let index = state.users.findIndex(item => item.id === user.id);
         state.users[index] = user;
     },
+
+    SET_ALLOWED_IMPORT_EXTENSIONS(state, payload) {
+        state.allowedImportExtensions = payload;
+    }
 };

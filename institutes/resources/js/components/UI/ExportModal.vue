@@ -31,7 +31,7 @@
                     <!-- END: Modal Body -->
                     <!-- BEGIN: Modal Footer -->
                     <div class="modal-footer text-right">
-                        <button type="button" data-dismiss="modal" class="btn btn-outline-secondary w-20 mr-1">
+                        <button type="button" data-dismiss="modal" class="btn btn-outline-secondary w-20 mr-1" @click="resetForm">
                             {{ $t('Cancel') }}
                         </button>
                         <button type="submit" data-dismiss="modal" class="btn btn-primary w-20">
@@ -49,7 +49,7 @@
 
 <script>
 import axios from 'axios'
-import { ref } from 'vue';
+import { reactive, ref } from 'vue';
 export default {
     props: {
         modelName: {
@@ -58,9 +58,9 @@ export default {
         }
     },
     setup(props, context) {
-        const form = {
+        const form = reactive({
             export_as: ''
-        };
+        });
         const downloadFileName = ref('');
         
         async function exportMe() {
@@ -78,9 +78,10 @@ export default {
                 })
                 .then((response) => {
                         if(response.status === 200) {
+                            form.export_as = '';
                             var fileURL = window.URL.createObjectURL(new Blob([response.data]));
                             var fileLink = document.createElement('a');
-                            fileLink.href = fileURL
+                            fileLink.href = fileURL;
                             fileLink.setAttribute('download', downloadFileName.value);
                             document.body.appendChild(fileLink);
                             fileLink.click();
@@ -88,9 +89,14 @@ export default {
                     })
                 .catch();
         }
+
+        function resetForm() {
+            form.export_as = '';
+        }
         return {
             form,
             exportMe,
+            resetForm
         }
     }
 }

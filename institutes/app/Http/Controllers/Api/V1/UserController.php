@@ -26,6 +26,7 @@ class UserController extends Controller
 
         $response = [
             'users' => $users,
+            'allowedExtensions' => config('app.allowedExtensionForImports'),
         ];
         //$apiData = Course::getApiData();
         return response()->json($response);

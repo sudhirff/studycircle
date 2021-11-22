@@ -5,5 +5,9 @@ export default {
 
     user(state) {
         return state.user;
+    },
+
+    allowedImportExtensions(state) {
+        return state.allowedImportExtensions;
     }
 }

@@ -12,6 +12,7 @@ export default {
             throw error;
         }
         context.commit('FETCH_USERS', response.data.users);
+        context.commit('SET_ALLOWED_IMPORT_EXTENSIONS', response.data.allowedExtensions);
     },
     
     async create(context, user) {

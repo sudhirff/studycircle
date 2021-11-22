@@ -85,5 +85,16 @@
     "Choose subject": "विषय चुनें",
     "Edit Chapter": "अध्याय संपादित करें",
     "Save": "सहेजें",
-    "Cancel": "रद्द करें"
+    "Cancel": "रद्द करें",
+    "Users": "उपयोगकर्ताओं",
+    "Add New User": "नई उपयोगकर्ता को जोड़ना",
+    "EMAIL": "ईमेल",
+    "MOBILE": "मोबाईल",
+    "Export": "निर्यात",
+    "Export as": "निर्यात के रूप में",
+    "Select": "चुनें",
+    "XLSX": "XLSX",
+    "CSV": "CSV",
+    "PDF": "PDF",
+    "Import": "आयात"
 }

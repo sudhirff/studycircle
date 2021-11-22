@@ -115,7 +115,7 @@
         <!-- BEGIN: Component form -->
 
         <export-modal :modelName="'User'"></export-modal>
-        <import-modal></import-modal>
+        <import-modal :modelName="'User'" :allowedExtensions="allowedExtensions"></import-modal>
         <!-- END: Component form -->
     </div>
 </template>
@@ -193,6 +193,8 @@ export default {
         } else {
             listing.value = false;
         }
+
+
         return {
             isLoading,
             columns,
@@ -207,7 +209,7 @@ export default {
             parsed,
             listing,
             fetch,
-            exportMe
+            exportMe,
         }
     },
     computed: {
@@ -217,6 +219,10 @@ export default {
             }
             return false;
         },
+        allowedExtensions() {
+            //return this.$store.getters('users/allowedImportExtensions')
+            return this.$store.state.users['allowedImportExtensions'];
+        }
     },
     methods: {
         showDeleteModal(itemId) {

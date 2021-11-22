@@ -59,7 +59,7 @@
     "Add New Permission": "Add New Permission",
     "Add New": "Add New",
     "message": "I am glad you are here.",
-    "addRoleText": "Add New Role",
+    "Add New Role": "Add New Role",
     "PERMISSIONS": "PERMISSIONS",
     "LABEL": "LABEL",
     "Label": "Label",
@@ -86,5 +86,16 @@
     "Choose subject": "Choose subject",
     "Edit Chapter": "Edit Chapter",
     "Save": "Save",
-    "Cancel": "Cancel"
+    "Cancel": "Cancel",
+    "Users": "Users",
+    "Add New User": "Add New User",
+    "EMAIL": "EMAIL",
+    "MOBILE": "MOBILE",
+    "Export": "Export",
+    "Export as": "Export as",
+    "Select": "Select",
+    "XLSX": "XLSX",
+    "CSV": "CSV",
+    "PDF": "PDF",
+    "Import": "Import"
 }

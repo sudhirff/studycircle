@@ -13,16 +13,16 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Events\AfterSheet;
 
 class UserExport implements 
-                            FromQuery, 
-                            Responsable, 
-                            ShouldAutoSize, 
-                            WithMapping, 
-                            WithHeadings, 
-                            WithEvents
+    FromQuery, 
+    Responsable, 
+    ShouldAutoSize, 
+    WithMapping, 
+    WithHeadings, 
+    WithEvents
 {
     use Exportable;
 
-    private $fileName = "users.xlsx";
+    //private $fileName = "users.xlsx";
     
     /**
     * @return \Illuminate\Support\Collection

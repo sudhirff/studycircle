@@ -8,6 +8,7 @@ export default {
         return {
             users: [],
             user: null,
+            allowedImportExtensions: [],
         }
     },
     actions,

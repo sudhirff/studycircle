@@ -10,19 +10,22 @@
                     </h2>
                 </div>
                 <!-- END: Modal Header -->
-                <form enctype="multipart/form-data" @submit.prevent="importMe">
+                <form enctype="multipart/form-data" @submit.prevent="proceedAction">
                     <!-- BEGIN: Modal Body -->
                     <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
+
                         <div class="col-span-12 sm:col-span-12">
-                            <label for="export-as" class="form-label">{{ $t('Import') }}</label>
-                            <input type="file"
-                                class="custom-file-input"
-                                :class="{'is-invalid' : error.message }" 
-                                id="input-file-import" 
-                                name="file_import" 
-                                ref="import_file" 
-                                @change="onFileChange($event)"
-                                >
+                            
+                            <label for="import" class="form-label mr-3">{{ $t('Import') }}</label>
+                            <span class="btn btn-primary btn-file">
+                                Browse...<input 
+                                            type="file"
+                                            id="import" 
+                                            name="file_import" 
+                                            ref="import_file"
+                                            @change.prevent="onFileChange"
+                                            >
+                            </span>
                         </div>
                     
                         <!--<div class="col-span-12 sm:col-span-6">
@@ -38,7 +41,7 @@
                             {{ $t('Cancel') }}
                         </button>
                         <button type="submit" data-dismiss="modal" class="btn btn-primary w-20">
-                            {{ $t('Export') }}
+                            {{ $t('Import') }}
                         </button>
                     </div>
                     <!-- END: Modal Footer -->
@@ -58,80 +61,113 @@ export default {
         modelName: {
             type: String,
             required: false
+        },
+        allowedExtensions: {
+            type: Array,
+            required: false,
         }
     },
     setup(props, context) {
-        const form = {
-            export_as: ''
-        };
-        const downloadFileName = ref('');
-        
+        const error = ref('');
+        const import_file = ref('');
+        const importError = ref(false);
+        const successful = ref(false);
+        const loading = ref(false);
+        const uploading = ref(false);
+        const fileName = ref('');
+        const errorMessages = ref({});
+        const importWarning = ref(false);
+        const isHidden = ref(false);
+        //const allowedExtensions = props.allowedExtensions;
+        const allowedExtensions = [
+            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 
+            'application/vnd.ms-excel',
+        ];
+        console.log(allowedExtensions);
         function onFileChange(e) {
-            import_file = e.target.files[0];
-            if (this.import_file.size > constant.IMG_SIZE) {
-                e.preventDefault();
-                this.showToast(this.$i18n.t('LABEL_IMAGE'), this.$i18n.t('LABEL_TOO_BIG', { str:this.import_file.name }), 'danger');
-                this.loading = false;
+            import_file.value = e.target.files[0];
+            
+            if (!allowedExtensions.includes(e.target.files[0]['type']) || import_file.value.size > 20000) {
+                alert('Wrong file type or wrong file size.');
+                error.message = "Please select xsls or csv file to import.";
+                return ;
             } else {
-                if(e.target.files[0]['type'] === 'text/csv') { 
-                    this.proceedAction();
-                } else {
-                    this.loading = false;
-                    this.importError = true;
-                    this.showToast(this.$i18n.t('LABEL_IMPORT'), this.$i18n.t('LABEL_FILETYPE'), 'danger');   
-                }
+                loading.value = true;
+                importError.value = false;
             }
-            this.$refs.import_file = null;
-            this.errorMessages = null;
-            this.importError = false;
-            this.successful = false;
-            this.importWarning = false;
+            
+            //$refs.import_file = null;
+            errorMessages.value = null;
+            importError.value = false;
+            successful.value = false;
+            importWarning.value = false;
         }
 
         function proceedAction() {
-            this.loading = true;
+            loading.value = true;
             let formData = new FormData();
-            formData.append('import_file', this.import_file);
-                axios.post(constant.BASE_URL + "/" + this.getUrlExtension(this.module) + "/import", formData, {
-                    headers: { 'content-type': 'multipart/form-data' }
-                })
-                .then(response => {
-                    if(response.status === constant.HTTP_OK) {
-                        // codes here after the file is upload successfully
-                        if(response.data.message.length > 0 ) {
-                            this.loading = false;   
-                            this.uploading = false
-                            this.importError = false;
-                            this.importWarning = true;
-                            this.errorMessages = response.data.message
+            formData.append('import_file', import_file.value);
 
-                        } else { 
-                            this.showToast(this.$i18n.t('LABEL_IMPORT'), this.$i18n.t('SUCCESSFULLY_UPDATED'), 'success');
-                            this.successful = true;
-                            this.loading = false;
-                            this.$bvModal.hide('edit-user')
-                            this.$emit('callback')
-                        }
+            axios.post("/api/v1/imports", formData, {
+                headers: { 'content-type': 'multipart/form-data' }
+            })
+            .then(response => {
+                if(response.status === constant.HTTP_OK) {
+                    // codes here after the file is upload successfully
+                    if(response.data.message.length > 0 ) {
+                        loading.value = false;
+                        uploading.value = false
+                        importError.value = false;
+                        importWarning.value = true;
+                        errorMessages.value = response.data.message
+
+                    } else {
+                        successful = true;
+                        loading = false;
+                        //$bvModal.hide('edit-user')
+                        //$emit('callback')
                     }
-                })
-                .catch(error => {
-                    // code here when an upload is not valid
-                    this.showToast(this.$i18n.t('LABEL_IMPORT'), this.$i18n.t('LABEL_ERROR'), 'danger');
-                    this.uploading = false
-                    this.importError = true;
-                    this.error = error.response.data
-                    this.loading = false;   
-                });
+                }
+            })
+            .catch(error => {
+                // code here when an upload is not valid
+                //this.showToast(this.$i18n.t('LABEL_IMPORT'), this.$i18n.t('LABEL_ERROR'), 'danger');
+                uploading.value = false
+                importError.value = true;
+                error.value = error.response.data
+                loading.value = false;   
+            });
         }
         return {
-            form,
             onFileChange,
-            proceedAction
+            proceedAction,
+            error,
+            import_file,
         }
     }
 }
 </script>
 
-<style>
+<style scoped>
 
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  left: 10px;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
 </style>
